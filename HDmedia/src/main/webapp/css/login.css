@@ -1,0 +1,149 @@
+body {
+	width: 100%;
+	height: 620px;
+}
+
+#register {
+	margin-top: 40px;
+	width: 50%;
+	height: 580px;
+	background: #F7F7F7;
+}
+
+#register #register_logo {
+	width: 12%;
+	height: 14%;
+}
+
+#register #register_title, #pwd_reset {
+	width: 100%;
+	height: 10%;
+	margin-top: 25px;
+	text-align: center;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 30px;
+	font-weight: 600;
+	color: #2F2F2F;
+	letter-spacing: 5px;
+}
+
+form {
+	width: 70%;
+	height: 40%;
+	margin-top: 5px;
+	font-size: 16px;
+}
+
+form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
+	margin-left: 12%;
+	width: 70%;
+	text-align: left;
+	font-size: 12px;
+	font-weight: 600;
+	color: #666;
+	float: left;
+}
+
+#line {
+	margin-top: 10px;
+	width: 60%;
+	height: 3%;
+	font-size: 14px;
+	color: #999;
+}
+
+#line li {
+	width: 33%;
+	list-style: none;
+	float: left;
+}
+
+#picpart {
+	margin-top: 16px;
+	width: 40%;
+	height: 5%;
+}
+
+#picpart li {
+	text-align: center;
+	list-style: none;
+}
+
+#picpart li a {
+	background: #999;
+	width: 25px;;
+	height: 25px;
+	border-radius: 50%;
+	float: left;
+	margin-left: 43px;
+}
+
+#picpart li a:hover {
+	background: #008000;
+	width: 30px;;
+	height: 30px;
+}
+
+#help {
+	margin-top: 16px;
+	width: 45%;
+	height: 3%;
+}
+
+#help li {
+	list-style: none;
+	text-align: center;
+	width: 49%;
+	height: 100%;
+	float: left;
+}
+
+#help li a {
+	font-size: 14px;
+	color: #666;
+	text-decoration: none;
+}
+
+#help li a:hover {
+	color: #EB5B0E;
+}
+
+#yzm, #yzmnum {
+	float: left;
+	margin-left: 12%;
+	width: 150px;
+	height: 40px;
+	margin-top: 7%;
+	display: block;
+}
+
+#load, #next, #submit {
+	width: 350px;
+	height: 40px;
+	margin-top: 30px;
+	background: #EB5B0E;
+	border-style: none;
+	font-family: 'Times New Roman';
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	letter-spacing: 3px;
+	cursor: pointer;
+	float: left;
+	margin-left: 13%;
+}
+
+#pwd, #pwd1, #pwd2 {
+	width: 350px;
+	height: 40px;
+	margin-top: 30px;
+}
+
+#footer {
+	margin-top: 5px;
+	text-align: center;
+	width: width:50%;
+	height: 10px;
+	font-size: 12px;
+	color: #666;
+}
