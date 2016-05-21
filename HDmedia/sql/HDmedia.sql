@@ -9,7 +9,7 @@ create table yonghuzc (
 	yhzctime date,   --用户注册时间
 	yhzcstatus int,  --注册用户的状态  0表示不存在  1表示存在
 	yhzcyl1  varchar2(100),  --预留字段1
-	yhzcyl2  varchar2(100)   --预留字段2
+	yhzcyl2  varchar2(100)   --预留字段2 f
 )
 create sequence seq_yonghuzc_yhzcid start with 1001 increment by 1;
 
@@ -124,7 +124,7 @@ update guanli set glemail='573059383@qq.com' where glid=1001;
 select * from guanli;
 select glid,glname,glpwd from Guanli where glname="zs123" and glpwd=?"
 select glemail from guanli where glemail='57305938531@qq.com';
-
+dd
 
 select * from Guanli where glid in(1021,1023)
 --2.论坛

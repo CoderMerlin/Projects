@@ -86,12 +86,11 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- 解决字符编码集/n问题 -->
+		<!--oracle 数据库驱动包 -->
 		<dependency>
-		  <groupId>oracle</groupId>
-		  <artifactId>jdbc</artifactId>
-		  <version>6</version>
-		  <classifier>jdbc6</classifier>
+			<groupId>com.oracle</groupId>
+			<artifactId>oracle_driver</artifactId>
+			<version>oracle11g</version>
 		</dependency>
 
 		<dependency>
