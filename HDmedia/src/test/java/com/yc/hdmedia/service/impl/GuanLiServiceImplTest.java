@@ -24,6 +24,7 @@ public class GuanLiServiceImplTest {
 	public void testFindAllGuanLis() {
 		List<GuanLi> guanLis=guanLiService.findAllGuanLis(1,10);
 		LogManager.getLogger().debug("查询所有的管理员列表==>"+guanLis);
+		System.out.println("张艳容修改成功");
 	}
 
 }
