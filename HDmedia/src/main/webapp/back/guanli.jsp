@@ -108,7 +108,7 @@ $(function(){
 							}
 							glids+=rows[i].glid;
 							//将要删除glid发送到服务器
-							$.post("../guanliServlet",{op:"delGuanliInfo",glids:glids},function(data){
+							$.post("",{op:"delGuanliInfo",glids:glids},function(data){
 								if(data==1){ //添加成功
 									$.messager.show({
 										title:'删除提示',

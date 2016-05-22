@@ -139,8 +139,18 @@
 			<version>1.2</version>
 		</dependency>
 		
+		
+		<!-- 解决字符编码集/n问题 -->
+		<dependency>
+		  <groupId>oracle</groupId>
+		  <artifactId>jdbc</artifactId>
+		  <version>6</version>
+		  <classifier>jdbc6</classifier>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<finalName>HDmedia</finalName>
 	</build>
 </project>
+

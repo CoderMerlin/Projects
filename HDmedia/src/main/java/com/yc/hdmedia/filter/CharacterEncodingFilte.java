@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class CharacterEncodingFilte implements Filter {
-private String encoding="utf-8";
+private String encoding="UTF-8";
 	
 	public void destroy() {
 
