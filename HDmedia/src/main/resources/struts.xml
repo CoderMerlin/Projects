@@ -14,7 +14,10 @@
 	<package name="default" namespace="/" extends="struts-default">
 		 <action name="*_*" class="{1}Action" method="{2}">
 			<result name="{2}">/{2}.jsp</result>
+			<result name="register">/login.jsp</result>
+			<result name="login">/index.jsp</result>
 		</action>
+		
 	</package>
 	
 	<package name="json" namespace="/" extends="json-default">

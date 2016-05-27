@@ -20,15 +20,15 @@
 			</div>
 			<div id="register_title" style="display: block;">帐号登录</div>
 			<div id="pwd_reset" style="display: none;">重置密码</div>
-			<form id="mianform" action="loginServlet?op=yonghuLogin"
+			<form id="mianform" action="user_login.action"
 				method="post" role="form">
 				<p id="p1" style="display: none;">请输入注册的邮箱地址、手机号码或弘道账号：</p>
 				<p id="p2" style="display: none;">请重设您的帐号密码：</p>
-				<input type="text" name="user" id="user" placeholder="邮箱/手机号码/弘道账号"
+				<input type="text" name="yhname" id="user" placeholder="邮箱/手机号码/弘道账号"
 					style="width: 350px; height: 40px; display: block;" /> <label
 					id="usert" style="color: #EB5B0E; display: none;"> <img
 					src="images/tishi.png" style="margin-left: 5px; margin-right: 5px;" />请输入您的账号
-				</label> <input type="password" name="pwd" id="pwd" placeholder="请输入你的密码"
+				</label> <input type="password" name="yhpwd" id="pwd" placeholder="请输入你的密码"
 					style="display: block;" /> <input type="password" name="pwd"
 					id="pwd1" placeholder="请输入你的新密码" style="display: none;" /> <label
 					id="pwdt1" style="color: #EB5B0E; display: none;"> <img

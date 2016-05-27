@@ -1,2 +1,9 @@
 eclipse.preferences.version=1
+encoding//sql/HDmedia.sql=UTF-8
+encoding//src/main/java=UTF-8
+encoding//src/main/java/com/yc/hdmedia/entity/User.java=GBK
+encoding//src/main/java/com/yc/hdmedia/filter/CheckGuanLiLogin.java=UTF-8
+encoding//src/main/java/com/yc/hdmedia/web/action/GuanLiAction.java=UTF-8
+encoding//src/main/webapp/css/register.css=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding//src/test/java/com/yc/hdmedia/service/impl/GuanLiServiceImplTest.java=UTF-8
