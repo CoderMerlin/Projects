@@ -21,9 +21,9 @@
 	</package>
 	
 	<package name="json" namespace="/" extends="json-default">
-		 <action name="guanLi_getAllGuanLi" class="guanLiAction" method="getAllGuanLi">
+		 <action name="*_*" class="{1}Action" method="{2}">
 			<result type="json">
-				<param name="root">guanLiDataMap</param> 
+				<param name="root">DataMap</param> 
 			</result>
 			<result name="fail">/fail.jsp</result>
 		</action>

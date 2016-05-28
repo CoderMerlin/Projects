@@ -258,8 +258,6 @@
 		 }
 	 });
 	 
-	 
-	 
 	 //作者及作品管理
 	 $("#authorandwork-tree").tree({
 		 onClick:function(node){
@@ -290,12 +288,7 @@
 				}
 			 }
 		 }
-	 });
-	 
-	 
-	 
-	 
-	 
+	 });	 
 	 //前台界面管理
 	 $("#qtstage-tree").tree({
 		 onClick:function(node){
@@ -322,6 +315,18 @@
 							closable:true,
 							fit:true,
 							href:"back/hdnavtwo.jsp"
+						});
+					}
+			  }else if(node.id=="geography"){  //说明是二级导航
+					//判断一级导航是否打开
+					if(obj.tabs("exists","地域")){  //则选中
+						obj.tabs("select","地域");
+					}else{
+						obj.tabs('add',{
+							title:'地域',
+							closable:true,
+							fit:true,
+							href:"back/geography.jsp"
 						});
 					}
 			  }

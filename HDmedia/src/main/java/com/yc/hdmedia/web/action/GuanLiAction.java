@@ -35,14 +35,13 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 	public void setGuanLi(GuanLi guanLi) {
 		this.guanLi = guanLi;
 	}
-	
-	
-	private Map<String,Object> guanLiDataMap=new HashMap<String,Object>();;
-	public void setGuanLiDataMap(Map<String, Object> guanLiDataMap) {
-		this.guanLiDataMap = guanLiDataMap;
+
+	private Map<String,Object> DataMap=new HashMap<String,Object>();
+	public Map<String, Object> getDataMap() {
+		return DataMap;
 	}
-	public Map<String, Object> getGuanLiDataMap() {
-		return guanLiDataMap;
+	public void setDataMap(Map<String, Object> dataMap) {
+		DataMap = dataMap;
 	}
 
 	public String login(){
@@ -51,15 +50,16 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 	
 	
 	public String getAllGuanLi(){
-		guanLiDataMap.clear(); 
+		DataMap.clear(); 
 		List<GuanLi> guanLis=guanLiService.findAllGuanLis(page,rows);
 		if(guanLis!=null){
-			guanLiDataMap.put("total",guanLiService.total());
-			guanLiDataMap.put("rows", guanLis);
+			DataMap.put("total",guanLiService.total());
+			DataMap.put("rows", guanLis);
 			return "success";
 		}
 		return "fail";
 	}
+	
 	
 	
 	public String addGuanLi(){
