@@ -18,7 +18,7 @@
 	<context:component-scan base-package="com.yc" />
 
 	<!-- 引入外部属性文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:db.properties,classpath:mail.properties" />
 
 	<!-- 数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
@@ -43,4 +43,19 @@
 		
 	<!-- 2.配制事务关联 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+	<!-- 配置邮件发送bean-->
+	<bean id="JavaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="${mail.smtp.host}"/>
+		<property name="username" value="${mail.smtp.username}"/>
+		<property name="password" value="${mail.smtp.password}"/>
+		<property name="defaultEncoding" value="${mail.smtp.defaultEncoding}"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">${mail.smtp.auth}</prop>
+				<prop key="mail.smtp.timeout">${mail.smtp.timeout}</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>
