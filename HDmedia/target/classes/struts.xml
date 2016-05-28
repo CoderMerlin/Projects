@@ -19,6 +19,7 @@
 		</action>
 		
 	</package>
+
 	
 	<package name="json" namespace="/" extends="json-default">
 		 <action name="*_*" class="{1}Action" method="{2}">

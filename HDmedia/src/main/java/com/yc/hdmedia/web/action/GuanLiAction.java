@@ -44,9 +44,17 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 		DataMap = dataMap;
 	}
 
-	public String login(){
-		return "guanLiLogin";
-	}
+	//管理员登陆操作
+		public String login(){
+			LogManager.getLogger().debug("login登陆操作...");
+			GuanLi guanlis=guanLiService.login(guanLi);
+			System.out.println(guanlis);
+			if(guanlis==null){
+				return "fail";
+			}
+			session.put("loginGuanLi",guanLi);
+			return "login";
+		}
 	
 	
 	public String getAllGuanLi(){

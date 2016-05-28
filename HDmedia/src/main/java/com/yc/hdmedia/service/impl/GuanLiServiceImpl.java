@@ -18,8 +18,8 @@ public class GuanLiServiceImpl implements GuanLiService {
 	private GuanLiMapper guanLiMapper;
 
 	@Override
-	public boolean GuanLiLogin(String glname, String glpwd) {
-		return false;
+	public GuanLi login(GuanLi guanLi) {
+		return guanLiMapper.login(guanLi);
 	}
 
 	@Override
@@ -59,5 +59,7 @@ public class GuanLiServiceImpl implements GuanLiService {
 	public GuanLi findGuanLiByGLId(int glid) {
 		return guanLiMapper.selectGuanLiByGLId(glid);
 	}
+
+	
 
 }

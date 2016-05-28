@@ -20,7 +20,7 @@
 			</div>
 			<div id="register_title" style="display: block;">帐号登录</div>
 			<div id="pwd_reset" style="display: none;">重置密码</div>
-			<form id="mianform" action="admin_login.action"
+			<form id="mianform" action="guanLi_login.action"
 				method="post" role="form">
 				<p id="p1" style="display: none;">请输入注册的邮箱地址、手机号码或弘道账号：</p>
 				<p id="p2" style="display: none;">请重设您的帐号密码：</p>

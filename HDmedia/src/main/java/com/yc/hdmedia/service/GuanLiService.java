@@ -12,7 +12,7 @@ public interface GuanLiService {
 	 * @param glpwd :管理员密码
 	 * @return
 	 */
-	public boolean GuanLiLogin(String glname, String glpwd);
+	public GuanLi login(GuanLi guanLi); 
 	
 	/**
 	 * 添加管理员信息

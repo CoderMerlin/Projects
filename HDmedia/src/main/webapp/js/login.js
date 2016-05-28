@@ -48,6 +48,7 @@ function hidenloginpage() {
     $(".bg").hide();
 }
 
+
 //注册显示
 function showzc(){
 	$("#zcuname").val("");
