@@ -5,6 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
 <mapper namespace="com.yc.hdmedia.mapper.GuanLiMapper">
 	
+	<!-- 登录 -->
+	<select id="login" parameterType="GuanLi" resultType="GuanLi">
+		select * from guanli where glname=#{glname} and glpwd=#{glpwd}
+	</select>
+	
 	<!-- 查询一共有多少个管理员 -->
 	<select id="selectTotal" resultType="int">
 		select count(1) from Guanli

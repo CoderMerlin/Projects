@@ -28,12 +28,12 @@
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" id="newslogo">
 		<div id="top_adminlogin_right">
-			<c:if test="${not empty loginGuanLi }">
+			<c:if test="${not empty sessionScope.loginGuanLi.glname}">
 				<a href="#"><font color="#FF000" size="2">当前登录用户：${loginGuanLi.glname }</font></a>&nbsp;&nbsp;
 					<a href="javascript:loginOut()"><font color="#FF0000" size="2">[注销]</font></a>
 			</c:if>
-			<c:if test="${empty loginGuanLi }">
-				<a href="javascript:showlogin()"><font color="#FF0000" size="2">请登录</font></a>
+			<c:if test="${sessionScope.loginGuanLi.glname eq null}">
+				<a href="guanLi.jsp"><font color="#FF0000" size="2">请登录</font></a>
 				&nbsp;&nbsp;
 				<a href="javascript:showzc()"><font color="#FF0000" size="2">免费注册</font></a>
 			</c:if>

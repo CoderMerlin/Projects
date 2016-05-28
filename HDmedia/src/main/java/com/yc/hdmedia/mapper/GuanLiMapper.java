@@ -7,6 +7,8 @@ import com.yc.hdmedia.entity.GuanLi;
 
 public interface GuanLiMapper {
 
+	GuanLi login(GuanLi guanLi);     //管理员登录
+	
 	public List<GuanLi> selectAllGuanLis(Map<String,Object> params);
 	
 	public GuanLi selectGuanLiByGLId(int glid);

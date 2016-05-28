@@ -19,6 +19,7 @@
 		</action>
 		
 	</package>
+
 	
 	<package name="json" namespace="/" extends="json-default">
 		 <action name="guanLi_getAllGuanLi" class="guanLiAction" method="getAllGuanLi">
