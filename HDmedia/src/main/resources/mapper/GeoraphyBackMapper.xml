@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.GeoraphyBackMapper">
+	
+	<!-- 查询一共有多少个管理员 -->
+	<select id="selectTotal" resultType="int">
+		select count(1) from province
+	</select>
+	
+	<!-- 通过管理员id查找管理员 -->
+	<!-- <select id="selectGuanLiByGLId" parameterType="int" resultType="GuanLi">
+		select * from GuanLi where glid=#{glid}
+	</select> -->
+	
+	<!-- 查找所有的管理员 -->
+	<select id="selectAllProvinces" parameterType="map" resultType="provinceBack">
+		select * from (select a.*,rownum rn from (select * from province order by prid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	
+</mapper>

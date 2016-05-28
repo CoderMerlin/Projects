@@ -78,8 +78,7 @@ drop sequence seq_yonghu_yhid;
 create sequence seq_yonghu_yhid start with 1001 increment by 1;
 insert into yonghu values(seq_yonghu_yhid.nextval,1002,'haha','男',18,'1320740104','','','','','','','','','',0,0,'','',1,'','');
 select * from yonghu
- select yhid from (select distinct yhzsname,yhid  from yonghu  where yhstatus=1) where yhzsname='haha'
->>>>>>> .r237
+select yhid from (select distinct yhzsname,yhid  from yonghu  where yhstatus=1) where yhzsname='haha'
 select * from (select a.*,rownum rn from (select yh.*,yhname,yhemail,yhpwd,yhzctime from yonghuzc yhzc,yonghu yh where yhzc.yhzcid=yh.yhzcid  order by yhzc.yhzcid desc) a where rownum<=10) b where rn>0
 
 --管理员表
@@ -122,10 +121,8 @@ drop table guanli;
 
 update guanli set glemail='573059383@qq.com' where glid=1001;
 select * from guanli;
-select glid,glname,glpwd from Guanli where glname="zs123" and glpwd=?"
+select glid,glname,glpwd from Guanli where glname="zs123" and glpwd=?
 select glemail from guanli where glemail='57305938531@qq.com';
-dd
-
 select * from Guanli where glid in(1021,1023)
 --2.论坛
 --===========================================================
@@ -494,5 +491,50 @@ create table picshow(
 )
 create sequence seq_picshow_psid start with 0001 increment by 1;
 
+--创建地理中的省份表
+create table province(
+	prid int primary key,  --id
+	prname varchar2(100),  --省份的名称
+	prcontent varchar2(500),  --省份的介绍内容
+	prstatus int, --状态 0表示不存在，1表示存在
+	pryl1 varchar2(500),  --预留字段
+	pryl2 varchar2(500)
+)
+create sequence seq_province_prid start with 1001 increment by 1;
+drop table province;
+drop sequence seq_province_prid;
+--增删改查
+
+insert into province (prid, prname, prcontent,prstatus,pryl1,pryl2)
+values (1001, '北京','北京，中华人民共和国首都、直辖市和国家中心城市，中国的政治、文化、科教和国际交往中心，
+				中国经济、金融的决策和管理中心，中华人民共和国中央人民政府和全国人民代表大会所在地，也是世界上最大的城市之一。', 1,'','');
+insert into province (prid, prname, prcontent,prstatus,pryl1,pryl2)
+values (1002, '天津','天津位于华北平原海河五大支流汇流处，东临渤海，北依燕山，海河在城中蜿蜒而过，海河是天津的母亲河
+。天津滨海新区被誉为“中国经济第三增长极”。天津是夏季达沃斯论坛常驻举办城市。',1, '','');
+
+select * from province;
+
+
+--创建省份中人物表
+create table properson(
+	prpid int primary key,  --id
+	prid int,  --省份的id
+	ppname varchar2(100),  --人物名字
+	ppcontent varchar2(500),  --人物的介绍
+	ppyl1 varchar2(500),  --预留字段
+	ppyl2 varchar2(500)
+)
+create sequence seq_properson_ppid start with 1001 increment by 1;
+
+
+--创建省份中的风景表
+create table proscenery(
+	prsid int primary key,
+	prid int, --省份的id
+	prsname varchar2(100),  --风景的名称
+	prscontent varchar2(500), -- 风景的介绍
+	prsyl1 varchar2(500),
+	prsyl2 varchar2(500)
+)
 
 

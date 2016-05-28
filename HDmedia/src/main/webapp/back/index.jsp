@@ -103,12 +103,20 @@
 						<ul>
 							<li id="hd_nav_one">一级导航管理</li>
 							<li id="hd_nav_two">二级导航管理</li>
-						</ul></li>
+						</ul>
+					</li>
 					<li data-options="state:'open'"><span>首页管理</span>
 						<ul>
 							<li id="index_image">首页图片管理</li>
 							<li id="index_zixun">首页资讯管理</li>
-						</ul></li>
+						</ul>
+					</li>
+					<li data-options="state:'open'"><span>地域与名族</span>
+						<ul>
+							<li id="geography">地域</li>
+							<li id="">名族</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 
