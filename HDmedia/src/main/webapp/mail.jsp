@@ -20,12 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="register_logo">
         	<img src="images/hd_02.png"/>
         </div>
-		<form id="#mainForm1" class="mainForm mainForm1">
+		<form id="#mainForm1" class="mainForm mainForm1" method="post" action="user_registers.action">
 			<div class="number">
 				<a href="##" class="linkABlue">邮箱号注册</a>
 			</div>
 			<div class="normalInput">
-				<input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+				<input type="text" class="kapkey" name="email" maxlength="4" placeholder="验证码">
 			</div>
 			<span class="error error2"></span>
 			<div class="rememberField">
@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="#" target="_blank" class="linkABlue">《弘道传媒服务协议条款》</a>
 			</div>
 			<span class="otherError">请确认已阅读并同意《弘道传媒服务协议条款》</span>
-			<a href="" class="fullBtnBlue">注册</a>
+			<input type="submit" class="fullBtnBlue" value="注册"/>
 		</form>        
                 
 	</div>

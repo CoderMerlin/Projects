@@ -18,9 +18,28 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public int addUserByMail(User user) {
+		return userMapper.addUserByMail(user);
+	}
+
+	@Override
 	public User login(User user) {
-	
 		return userMapper.login(user);
 	}
+	
+	@Override
+	public User loginByMail(User user) {
+		return userMapper.loginByMail(user);
+	}
+	
+	
+	@Override
+	public int update(String yhname) {
+		return userMapper.update(yhname);
+	}
+
+	
+
+	
 
 }

@@ -20,19 +20,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="register_logo">
         	<img src="images/hd_02.png"/>
         </div>
-		<form id="#mainForm1" class="mainForm mainForm1">
+		<form id="#mainForm1" class="mainForm mainForm1" method="post" action="user_registerBymail.action">
 			<div class="number">
 				<a href="##" class="linkABlue">邮箱号注册</a>
 				<span></span>
 				<a href="##" class="linkAGray number1">账户名注册</a>
 			</div>
 			<div class="normalInput">
-				<input type="text" class="email1" maxlength="11" placeholder="安全邮箱">	
+				<input type="text" class="email1" name="yhemail" maxlength="11" placeholder="安全邮箱">	
 			</div>
 			<span class="error error1"></span>
 			<span class="error error2"></span>
 			<div class="normalInput">
-				<input type="password" class="password" id="epassword" maxlength="16" autocomplete="off" placeholder="密码">
+				<input type="password" class="password" name="yhpwd" id="epassword" maxlength="16" autocomplete="off" placeholder="密码">
 				<a id="pwdBtn" href="##" class="pwdBtnShow" isshow="false">
 					<i class="i_icon"></i>
 				</a>
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="#" target="_blank" class="linkABlue">《弘道传媒服务协议条款》</a>
 			</div>
 			<span class="otherError">请确认已阅读并同意《弘道传媒服务协议条款》</span>
-			<a href="mail.jsp" class="fullBtnBlue">注册</a>
+			<input type="submit" class="fullBtnBlue" value="注册"/>
 		</form>        
                 
         <!--这是账号注册-->

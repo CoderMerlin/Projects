@@ -53,7 +53,7 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 				return "fail";
 			}
 			session.put("loginGuanLi",guanLi);
-			return "login";
+			return "index";
 		}
 	
 	

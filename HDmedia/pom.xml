@@ -47,6 +47,12 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>4.2.6.RELEASE</version>
+		</dependency>
+
 		<!-- spring框架支持数据访问层的包 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -141,6 +147,12 @@
 
 
 		<!-- 解决字符编码集/n问题 -->
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>jdbc</artifactId>
+			<version>6</version>
+			<classifier>jdbc6</classifier>
+		</dependency>
 
 		<!-- 邮箱 -->
 		<dependency>

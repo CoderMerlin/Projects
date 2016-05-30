@@ -147,3 +147,11 @@ form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
 	font-size: 12px;
 	color: #666;
 }
+
+.login a:link, .login a:visited {
+	color: #ff8000;
+}
+.login a:hover,.login a:active {
+	color: #F00;
+	text-decoration: none;
+}
