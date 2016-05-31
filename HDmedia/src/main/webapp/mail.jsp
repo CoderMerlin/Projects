@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html>
 <html>
 <head>
-	<title>弘道传媒注册</title>
+	<title>邮箱验证</title>
 	<meta http-equiv="content-Type" content="text/html" charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/register.css">
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
@@ -20,24 +20,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<div class="register_logo">
         	<img src="images/hd_02.png"/>
         </div>
-		<form id="#mainForm1" class="mainForm mainForm1" method="post" action="user_registerBymail.action">
+		<form id="#mainForm1" class="mainForm mainForm1" method="post" action="user_registers.action">
 			<div class="number">
 				<a href="##" class="linkABlue">邮箱号注册</a>
-				<span></span>
-				<a href="##" class="linkAGray number1">账户名注册</a>
 			</div>
 			<div class="normalInput">
-				<input type="text" class="email1" name="yhemail" maxlength="11" placeholder="安全邮箱">	
+				<input type="text" class="kapkey" name="email" maxlength="4" placeholder="验证码">
 			</div>
-			<span class="error error1"></span>
 			<span class="error error2"></span>
-			<div class="normalInput">
-				<input type="password" class="password" name="yhpwd" id="epassword" maxlength="16" autocomplete="off" placeholder="密码">
-				<a id="pwdBtn" href="##" class="pwdBtnShow" isshow="false">
-					<i class="i_icon"></i>
-				</a>
-			</div>
-			<span class="error error3"></span>
 			<div class="rememberField">
 				<span class="checkboxPic check_chk" tabindex="-1" isshow="false">
 					<i class="i_icon"></i>
@@ -49,44 +39,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="submit" class="fullBtnBlue" value="注册"/>
 		</form>        
                 
-        <!--这是账号注册-->
-		<form id="#mainForm2" class="mainForm mainForm2" method="post" action="user_register.action">
-			<div class="number">
-				<a href="##" class="linkABlue2 number2">邮箱号注册</a>
-				<span></span>
-				<a href="" class="linkAGray2">账户名注册</a>
-			</div>
-			<div class="normalInput">
-				<input type="text" class="username" name="yhname" id="yhname" maxlength="32" placeholder="账户名" autocomplete="off">	
-				<span class="grayTip"></span>
-			</div>
-			<span class="error error1"></span>		
-			<div class="normalInput">
-				<input type="password" class="passwordN" name="yhpwd" id="yhpwd" maxlength="16" autocomplete="off" placeholder="密码">
-				<a id="pwdBtnN" href="##" class="pwdBtnShowN" isshow="false">
-					<i class="i_icon"></i>
-				</a>
-			</div>
-			<span class="error error3"></span>         
-            <div class="normalInput">
-            	<input type="password" class="password2N" maxlength="16" autocomplete="off" placeholder="确认密码">
-                <a id="pwdBtnN1" href="##" class="pwdBtnShowN1" isshow="false">
-					<i class="i_icon"></i>
-				</a>
-            </div>
-            <span class="error error4"></span>
-            
-			<div class="rememberField">
-				<span class="checkboxPic check_chk" tabindex="-1" isshow="false">
-					<i class="i_icon"></i>
-				</span>
-				<label class="pointer">我已阅读并接受</label>
-				<a href="ServiceAgreement.jsp" target="_blank" class="linkABlue">《弘道传媒服务协议条款》</a>
-			</div>
-			<span class="otherError">请确认已阅读并同意《弘道传媒服务协议条款》</span>
-			<input type="submit" class="fullBtnBlue" value="注册"/>
-			
-		</form>
 	</div>
 	
 	</div>

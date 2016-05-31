@@ -12,10 +12,12 @@
 	<constant name="struts.objectFactory " value="spring" />
 
 	<package name="default" namespace="/" extends="struts-default">
+	
 		 <action name="*_*" class="{1}Action" method="{2}">
 			<result name="{2}">/{2}.jsp</result>
-			<result name="register">/login.jsp</result>
-			<result name="login">/index.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="mail">/mail.jsp</result>
 		</action>
 		
 	</package>
@@ -26,7 +28,10 @@
 			<result type="json">
 				<param name="root">DataMap</param> 
 			</result>
-			<result name="fail">/fail.jsp</result>
+			<result name="{2}">/{2}.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="mail">/mail.jsp</result>
 		</action>
 	</package>
 </struts>

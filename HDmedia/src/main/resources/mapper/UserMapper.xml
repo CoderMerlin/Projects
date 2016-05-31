@@ -9,7 +9,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into yonghuzc values(seq_yonghuzc_yhzcid.nextval,#{yhname},#{yhemail,jdbcType=VARCHAR},#{yhpwd},#{yhzctime,jdbcType=VARCHAR},#{yhzcstatus},#{yhzcyl1,jdbcType=VARCHAR},#{yhzcyl2,jdbcType=VARCHAR})
 	</insert>
 	
+	<insert id="addUserByMail" parameterType="User">
+		insert into yonghuzc values(seq_yonghuzc_yhzcid.nextval,#{yhname,jdbcType=VARCHAR},#{yhemail},#{yhpwd},#{yhzctime,jdbcType=VARCHAR},#{yhzcstatus},0,#{yhzcyl2,jdbcType=VARCHAR})
+	</insert>
+	
 	<select id="login" parameterType="User" resultType="User">
 		select * from yonghuzc where yhname=#{yhname} and yhpwd=#{yhpwd}
 	</select>
+	
+	<select id="loginByMail" parameterType="User" resultType="User">
+		select * from yonghuzc where yhemail=#{yhemail} and yhpwd=#{yhpwd}
+	</select>
+	
+	<update id="update" parameterType="String">
+		update yonghuzc set yhzcyl1=1 where yhname=#{yhname}
+	</update>
 </mapper>

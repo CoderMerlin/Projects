@@ -9,9 +9,7 @@
 <link type="text/css" rel="stylesheet" href="css/login.css" />
 <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="home/js/login.js"></script>
-
 </head>
-
 <body>
 	<center>
 		<div id="register">
@@ -25,14 +23,14 @@
 			<a href="loginByMail.jsp">邮箱登录</a>
 			</div>
 			<div id="pwd_reset" style="display: none;">重置密码</div>
-			<form id="mianform" action="user_login.action"
+			<form id="mianform" action="user_loginByMail.action"
 				method="post" role="form">
-				<p id="p1" style="display: none;">请输入弘道账号：</p>
+				<p id="p1" style="display: none;">请输入注册的邮箱地址：</p>
 				<p id="p2" style="display: none;">请重设您的帐号密码：</p>
-				<input type="text" name="yhname" id="user" placeholder="弘道账号"
+				<input type="text" name="yhemail" id="user" placeholder="邮箱"
 					style="width: 350px; height: 40px; display: block;" /> <label
 					id="usert" style="color: #EB5B0E; display: none;"> <img
-					src="images/tishi.png" style="margin-left: 5px; margin-right: 5px;" />请输入您的账号
+					src="images/tishi.png" style="margin-left: 5px; margin-right: 5px;" />请输入您的邮箱
 				</label> <input type="password" name="yhpwd" id="pwd" placeholder="请输入你的密码"
 					style="display: block;" /> <input type="password" name="pwd"
 					id="pwd1" placeholder="请输入你的新密码" style="display: none;" /> <label
