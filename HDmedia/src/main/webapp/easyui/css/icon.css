@@ -28,6 +28,11 @@
 .icon-reload{
 	background:url('../icons/reload.png') no-repeat center center;
 }
+
+.icon-man{
+	background:url('../icons/man.png') no-repeat center center;
+}
+
 .icon-search{
 	background:url('../icons/search.png') no-repeat center center;
 }
@@ -55,8 +60,25 @@
 .icon-filter{
 	background:url('../icons/filter.png') no-repeat center center;
 }
+
+.icon-search1{
+	background:url('../icons/search.png') no-repeat center center;
+}
+.icon-padding{
+	padding-left:40px;
+}
+
+.icon-search2{
+	background:url('../icons/search.png') no-repeat left;
+}
+.icon-padding2{
+	padding-left:20px;
+}
+
+
+
 .icon-mini-add{
-	background:url('../icons/mini_add.png') no-repeat centerd  center;
+	background:url('../icons/mini_add.png') no-repeat center center;
 }
 .icon-mini-edit{
 	background:url('../icons/mini_edit.png') no-repeat center center;
@@ -64,25 +86,3 @@
 .icon-mini-refresh{
 	background:url('../icons/mini_refresh.png') no-repeat center center;
 }
-.icon-full{
-	background:url('../icons/full_screen.png') no-repeat center center;
-}
-.icon-unfull{
-	background:url('../icons/unfull_screen.png') no-repeat center center;
-}
-
-
-.icon-file{
-	background:url('../icons/file.png') no-repeat left center;
-}
-.icon-padding{
-	padding-left: 18px;
-}
-.icon-world{
-	background:url('../icons/world.png') no-repeat center center;
-}
-.icon-date{
-	background:url('../icons/date.png') no-repeat center center;
-}
-
-
