@@ -14,5 +14,12 @@ public interface GuanLiMapper {
 	public GuanLi selectGuanLiByGLId(int glid);
 
 	public int selectTotal();
+	public int updateGuanLiByGLId(GuanLi guanLi);
+
+	public GuanLi getGuanLiById(int glid);
+
+	public int addGuanLi(GuanLi guanLi);
+
+	public int deleteGuanLiById(int[] glid);
 	
 }

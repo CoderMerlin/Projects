@@ -72,7 +72,48 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 	
 	public String addGuanLi(){
 		System.out.println("进入了添加管理员！"+guanLi);
-		return "success";
+		int result=guanLiService.addGuanLi(guanLi);
+		if(result>0){
+			DataMap.put("result", result);
+			return "success";
+		}
+		return "fail";
+	}
+	public String getGuanLiById(){
+		int glid=guanLi.getGlid();
+		LogManager.getLogger().debug("传过来的glid==》"+glid);
+		GuanLi gl=guanLiService.getGuanLiById(glid);
+		LogManager.getLogger().debug("查到的数据==》"+gl);
+		if(gl!=null){
+			DataMap.put("guanLi", gl);
+			return "success";
+		}
+		return "fail";
+	}
+	public String updateGuanLi(){
+		System.out.println("修改的值==》"+guanLi);
+		int result=guanLiService.updateGuanLiInfo(guanLi);
+		if(result>0){
+			DataMap.put("result", result);
+			return "success";
+		}
+		return "fail";
+	}
+	public String deleteGuanLiById(){
+		String gls=ServletActionContext.getRequest().getParameter("glids");
+		String[] glis=gls.split(",");
+		int[] glids=new int[glis.length];     
+        for (int i=0; i<glids.length; i++) {
+        	glids[i] = Integer.parseInt(glis[i]);
+        	System.out.println(glids[i]);
+        }
+        int result=guanLiService.del(glids);
+		System.out.println(result);
+		if(result>0){
+			DataMap.put("delId", result);
+			return "success";
+		}
+		return "fail";
 	}
 	
 	

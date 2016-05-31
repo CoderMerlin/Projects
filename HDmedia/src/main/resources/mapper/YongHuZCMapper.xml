@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.YongHuZCMapper">
+	
+	<!-- 查询一共有多少个用户 -->
+	<select id="selectTotal" resultType="int">
+		select count(1) from yonghuzc
+	</select>
+	
+	<!-- 通过用户id查找用户 -->
+	<select id="selectYongHuZCById" parameterType="int" resultType="YongHuZC">
+		select * from yonghuzc where yhzcid=#{yhzcid}
+	</select>
+	
+	<!-- 查找所有的用户 -->
+	<select id="getAllYongHuZC" parameterType="map" resultType="YongHuZC">
+		select * from (select a.*,rownum rn from (select * from yonghuzc order by yhzcid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<insert id="addYongHuZC" parameterType="YongHuZC">
+		<trim prefixOverrides="," suffixOverrides="," prefix="insert into yonghuzc(" suffix=")">
+			yhzcid,
+			<if test="yhname!=null">
+				yhname,
+			</if>
+				<if test="yhemail!=null">
+				yhemail,
+			</if>
+				<if test="yhpwd!=null">
+				yhpwd,
+			</if>
+				<if test="yhzctime!=null">
+				yhzctime,
+			</if>
+				<if test="yhzcstatus!=null">
+				yhzcstatus,
+			</if>
+			<if test="yhzcyl1!=null">
+				yhzcyl1,
+			</if>
+			<if test="yhzcyl2!=null">
+				yhzcyl2
+			</if>
+		</trim>
+		<trim prefixOverrides="," suffixOverrides="," prefix="values(" suffix=")">
+			 <choose>
+			 	<when test="yhzcid!=0">yhzcid=#{yhzcid},</when>
+			 	<otherwise> seq_yonghuzc_yhzcid.nextval,</otherwise>
+			 </choose>
+			<if test="yhname!=null">
+				#{yhname},
+			</if>
+				<if test="yhemail!=null">
+				#{yhemail},
+			</if>
+				<if test="yhpwd!=null">
+				#{yhpwd},
+			</if>
+				<if test="yhzctime!=null">
+				to_date(#{yhzctime},'yyyy-MM-dd'),
+			</if>
+				<if test="yhzcstatus!=null">
+				#{yhzcstatus},
+			</if>
+			<if test="yhzcyl1!=null">
+				#{yhzcyl1},
+			</if>
+			<if test="yhzcyl2!=null">
+				#{yhzcyl2})
+			</if>
+		</trim>
+	</insert>
+	
+	<select id="getYongHuZCById" parameterType="int" resultType="YongHuZC">
+		select * from yonghuzc where yhzcid=#{yhzcid}
+	</select>
+	
+	<delete id="deleteYongHuZCById" parameterType="int">
+		<foreach collection="array" item="yhzcids" close=")"  open="delete yonghuzc where yhzcid in (" separator=",">
+		 	#{yhzcids}
+		 </foreach>
+	</delete>
+	
+	<update id="updateYongHuZCById" parameterType="YongHuZC">
+		update yonghuzc
+		<set>
+			<if test="yhname!=null">
+				yhname=#{yhname},
+			</if>
+			<if test="yhpwd!=null">
+				yhpwd=#{yhpwd},
+			</if>
+			<if test="yhemail!=null">
+				yhemail=#{yhemail},
+			</if>
+			<if test="yhzcstatus!=null">
+				yhzcstatus=#{yhzcstatus},
+			</if>
+		</set>
+		<if test="yhzcid!=0">
+			where yhzcid=#{yhzcid}
+		</if> 
+	</update>
+</mapper>
