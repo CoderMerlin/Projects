@@ -77,4 +77,11 @@ public class GeoraphyBackServiceImpl implements GeoraphyBackService {
 		return georaphyBackMapper.selectAllProvincePrnames();
 	}
 
+
+	@Override
+	public int addPersonInfo(PropersonBack propersonBack) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -14,8 +14,6 @@ create table yonghuzc (
 create sequence seq_yonghuzc_yhzcid start with 1001 increment by 1;
 
 --增删改查
-
-create sequence seq_yonghuzc_yhzcid start with 1001 increment by 1;
 insert into yonghuzc values(seq_yonghuzc_yhzcid.nextval,'Mi丶','573059382@qq.com','a',to_date('2015-12-30 11:15:44','yyyy-mm-dd hh24:mi:ss'),1,'','');
 
 insert into yonghuzc values(seq_yonghuzc_yhzcid.nextval,'黄迈1','573059381@qq.com','a',to_date('2015-12-30 11:15:44','yyyy-MM-dd hh:mi:ss'),1,'','');

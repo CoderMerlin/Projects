@@ -25,7 +25,7 @@
 	
 		<label>内 容 :</label>
 		<div>
-			<script id="editor" type="text/plain" style="width:800px;height:200px;"></script>
+			<script id="editor11" type="text/plain" style="width:800px;height:200px;"></script>
 		</div><br/><br/>
 		<a href="javascript:adddiyuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
 	</form>
@@ -112,30 +112,29 @@
 <!-- 选择添加人物或者是景点 -->
 <div id="win22" class="easyui-window" title="添加信息" style="width:200px;height:100px" data-options="iconCls:'icon-save',modal:true,closed:true">   
     <div style="margin:20px 5px;">
-		<a  class="easyui-linkbutton" onclick="addPersonInfo()">添加人物</a>
+		<a  class="easyui-linkbutton" onclick="openAddPersonInfo()">添加人物</a>
 		<a class="easyui-linkbutton" onclick="">添加景点</a>
 	</div> 
 </div> 
 
 <!-- 添加人物 -->
-<div id="add_person_Info" class="easyui-dialog" title="添加人物信息" style="width:1000px;height:600px"  data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
+<div id="add_person_Info" class="easyui-dialog" title="添加人物信息" style="width:1300px;height:600px"  data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
 		<label>地域名称:</label><select id="show_province_prname" name="prname" style="width:150px;">
 		</select>
-		<label>人物名称:</label><input name="ppname" id="person_Info_name" class="myinput" ><br /><br />
-		<label> 标 题 :</label><input name="area_title" id="" class="myinput" required/><br /><br />
-		<label> 图 片 :</label><input type="file" name="" id="" onchange="previewMultipleImage(this,'pic_show')" required/><br /><br />
-		<label> 状态 :</label><input name="ppstatus" id="" class="myinput" required/><br /><br />
+		<label>人物名称:</label><input name="ppname" id="person_Info_ppname" class="myinput" ><br /><br />
+		<label>人物图片:</label><input type="file" name="ppimg" id="person_Info_ppimg" onchange="previewMultipleImage(this,'show_person_Info_ppimg')" required/><br /><br />
+		<label> 状态 :</label><input name="ppstatus" id="person_Info_ppstatus" class="myinput" required/><br /><br />
 		<label>内 容 :</label>
 		<div>
-			<script id="editor" type="text/plain" style="width:800px;height:200px;"></script>
+			<script id="editor" type="text/plain" style="width:800px;height:200px;">
+			</script>
 		</div><br/><br/>
-		<a href="javascript:adddiyugInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+		<a href="javascript:addPersonInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
 	</form>
 	<div style="float:right;width:380px;margin-right:20px;">
-		<fieldset id="pic_show">
+		<fieldset id="show_person_Info_ppimg">
 			<legend>图片预览</legend>
-		
 		</fieldset>
 	</div>
 </div>
@@ -297,7 +296,6 @@ $(function(){
 });
 </script>
 <script>
-var geue = UE.getEditor('editor');
 var geue1 = UE.getEditor('editors');
 
 function getPersonDetal(prpid){
@@ -310,7 +308,6 @@ function getPersonDetal(prpid){
 	},"json");
 
 } 
-
 
 /* 显示省份中所有的人物 */
 function showdiyuperson(prid) {
@@ -343,8 +340,9 @@ function showdiyuperson(prid) {
 	},"json");
 }
 
-
-function addPersonInfo(){
+//打开添加人物信息
+var addPersonUE = UE.getEditor('editor');
+function openAddPersonInfo(){
 	$("#win22").dialog("close");
 	$("#add_person_Info").dialog("open");
 	$.post("georaphyBack_getAllProvincePrnames.action",function(data){
@@ -357,25 +355,43 @@ function addPersonInfo(){
 			obj.append($(opt));
 		});
 	},"json");
-	
-	
-	$.post("georaphyBack_addPersonInfo.action",{prid:prid},
-			function(data) {
-				var persons = data.persons[0];
-				/* $("#show_person_ppname").val(persons.ppname); */
-				$("#show_person_status").val(persons.ppsatus);
-				$("#show_person_content").html(persons.ppcontent);
-				/* var str = "";
-				var pics = persons.ppimg.split(",");
-				for ( var i = 0; i < pics.length; i++) {
-					str += "<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
-				}
-				$("#show_person_ppimg").html($(str)); */
-			}, "json");
-	
-	console.info("添加人物");
-	
 }
+
+//添加人物
+function addPersonInfo(){
+	console.info("添加人物信息");
+	var prname=$("#show_province_prname").val();
+	var ppname = $("#person_Info_ppname").val();
+	var ppstatus= $("#person_Info_ppstatus").val();	
+	var ppcontent = addPersonUE.getContent();
+
+	$.ajaxFileUpload({
+		url : "propersonBack_addPersonInfo.action",
+		secureuri : false,
+		fileElementId : "update_area_pic",
+		dataType : "json",
+		data : {prname : prname,
+				ppname : ppname,
+				ppstatus:ppstatus,
+				ppcontent : ppcontent
+			 },
+		success : function(data, status) {
+			if (parseInt($.trim(data)) == 1) {//说明是成功的
+				$.messager.show({
+					title : '成功提示',
+					msg : '人物信息添加成功...',
+					timeout : 2000,
+					showType : 'slide'
+				});
+				$("#add_person_Info").dialog("close");
+				$("#diyu_info").datagrid("reload");
+			} else {
+				$.messager.alert("失败提示", "地域信息修改失败...", "error");
+			}
+		}
+	});
+}
+
 
 
 

@@ -45,6 +45,14 @@ public interface GeoraphyBackService {
 	 * @return
 	 */
 	List<ProvinceBack> getAllProvincePrnames();
+
+	
+	/**
+	 * 后台添加人物
+	 * @param propersonBack
+	 * @return
+	 */
+	int addPersonInfo(PropersonBack propersonBack);
 	
 
 }
