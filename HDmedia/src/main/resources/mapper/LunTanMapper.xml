@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.LunTanMapper">
+	<!-- 论坛 -->
+	<!-- 添加论坛栏目   订房-->
+	<insert id="addLunTan" parameterType="LunTan">
+		insert into luntan values(seq_luntan_ltid.nextval,#{ltname},sysdate,#{ltstatus},#{ltyl1},'')
+	</insert>
+	
+	<!-- 添加论坛图片 也可以修改 -->
+	<update id="addLtPic" parameterType="LunTan">
+		update luntan set ltyl2=#{ltyl2} where ltid=#{ltid}
+	</update>
+	
+	<!-- 通过论坛id删除论坛的相应栏目 可以同时删除多个 -->
+	<delete id="delLunTan" parameterType="int">
+		delete from luntan where ltid=#{ltid}
+	</delete>
+	
+	<!-- 更新论坛栏目的内容 -->
+	<update id="updateLunTan" parameterType="LunTan" >
+		update luntan 
+		<set>
+			<if test="ltname!=null and ltname!='' ">
+				ltname=#{ltname}
+			</if>
+				,ltstatus=#{ltstatus}
+			<if test="ltyl1!=null and ltyl1!=''">
+				,ltyl1=#{ltyl1}
+			</if>
+			 where ltid=#{ltid}
+		</set> 
+	</update>
+	
+	<!-- 查询一共有多少个论坛栏目-->
+	<select id="total" resultType="int">
+		select count(1) from luntan
+	</select>
+	
+	
+	<!-- 查找所有的论坛栏目 -->
+	<select id="find" parameterType="map" resultType="LunTan">
+		select * from (select a.*,rownum rn from (select * from luntan order by ltid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.HuiTieMapper">
+	<insert id="addHuiTie" parameterType="HuiTie">
+	<!-- 回帖mapper.xml 放飞关-->
+		<selectKey keyColumn="tid" keyProperty="tid" order="BEFORE" resultType="int">
+			select tid from (select distinct tzname,tid  from tiezi  where status=1) where tzname=#{tzname}
+		</selectKey>
+		insert into huitie values(seq_huitie_htid.nextval,#{yhid},#{tid},#{httext},to_date(#{httime},'yyyy-mm-dd hh24:mi:ss'),0,1,'','')
+	</insert>
+	
+	<!-- 查询一共有多少个回帖-->
+	<select id="total" resultType="int">
+		select count(1) from huitie where htstatus=1
+	</select>
+	
+	<select id="totalByTid" resultType="int">
+		select count(*) from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid and tz.tid=#{tid} and ht.htstatus=1
+	</select>
+	
+	<!-- 查找所有的回帖信息 -->
+	<select id="findAllHuiTie" parameterType="map" resultType="HuiTie">
+		select * from (select a.*,rownum rn from (select ht.*,tz.tzname,yh.yhzsname,yh.yhphoto 
+		from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid  and ht.htstatus=1) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<update id="updateHuiTie" parameterType="HuiTie">
+	<selectKey keyColumn="tid" keyProperty="tid" order="BEFORE" resultType="int">
+			select tid from (select distinct tzname,tid  from tiezi  where status=1) where tzname=#{tzname}
+		</selectKey>
+		update huitie 
+		<set>
+			<if test="tzname!=null and tzname!=''">
+				tid=#{tid}
+			</if>
+			<if test="httext!=null and httext!=''">
+				,httext=#{httext}
+			</if>
+			<if test="httime!=null and httime!=''">
+				,httime=to_date(#{httime},'yyyy-mm-dd hh24:mi:ss')
+			</if>
+			where htid=#{htid}
+		</set>
+	</update>
+	
+	<select id="find" parameterType="int" resultType="HuiTie">
+		select ht.*,yh.yhzsname,tz.tzname from huitie ht,yonghu yh,tiezi tz where ht.htid=#{htid} and ht.yhid=yh.yhid and ht.tid=tz.tid
+	</select>
+	
+	<delete id="delHuiTie" parameterType="int">
+		update huitie set htstatus=0 where htid=#{htid}
+	</delete>
+</mapper>
