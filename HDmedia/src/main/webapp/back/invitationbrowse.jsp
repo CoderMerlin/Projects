@@ -1,20 +1,18 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <table id="huitie_info"  data-options="fit:true"></table>
-
-
-
 <script>
+/**
+ * 发个
+ */
 		var op;
 		var flag;
 		var statusObj=[{sid:0,sname:'不可用'},{sid:1,sname:'可用'}];
 		var ht;
 	$(function(){
-		var datagrid;
+		var mydatagrid;
 		var editRow=undefined;
-		
-		datagrid=$('#huitie_info').datagrid({
-			url:"../huiTieServlet",
-			queryParams:{op:"getPageHuiTieInfo"},
+		mydatagrid=$('#huitie_info').datagrid({
+			url:"huiTie_getPageHuiTieInfo",
 			fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -40,7 +38,6 @@
 	        		return value;
 	        	}	
 	        } 
-		               
 		    ]],
 		    toolbar:[{
 		    	text:"添加",
@@ -52,13 +49,13 @@
 		    	text:"修改",
 		    	iconCls:'icon-edit',
 		    	handler:function(){
-		    		var rows=datagrid.datagrid("getChecked")[0];
+		    		var rows=mydatagrid.datagrid("getChecked")[0];
 		    		if(rows==undefined){
 		    			$.messager.show({title:'温馨提示',msg:'您没有选中数据或选中多行数据,请重新选择...',timeout:2000,showType:'slide'});
 		    		}else{
 						htid=rows.htid;
-						$.post("../huiTieServlet",{op:"findHuiTieByHtid",htid:htid},function(data){
-							ht=data.rows;
+						$.post("huiTie_findHuiTieByHtid",{op:"findHuiTieByHtid",htid:htid},function(data){
+							ht=data.rows[0];
 							console.info(data.rows);
 							$("#ht_updateyhid").val(ht.yhid);
 							$("#ht_updatetzname").val(ht.tzname);
@@ -74,7 +71,7 @@
 		    	text:"删除",
 		    	iconCls:'icon-remove',
 		    	handler:function(){
-		    		var rows=datagrid.datagrid("getChecked");
+		    		var rows=mydatagrid.datagrid("getChecked");
 		    		
 		    		if(rows.length<=0){
 		    			$.messager.show({title:'温馨提示',msg:'请选择您要删除的数据...',timeout:2000,showType:'slide'});
@@ -87,12 +84,12 @@
 		    					}
 		    					htids+=rows[i].htid;
 		    					
-		    					$.post("../huiTieServlet",{op:"delHuiTieInfo",htids:htids},function(data){
-		    						if(data>0){
-		    							$.messager.show({title:'成功提示',msg:'新闻信息删除成功...',timeout:2000,showType:'slide'});
-										datagrid.datagrid("reload");
+		    					$.post("huiTie_delHuiTieInfo",{op:"delHuiTieInfo",htids:htids},function(data){
+		    						if(data.total>0){
+		    							$.messager.show({title:'成功提示',msg:'回帖信息删除成功...',timeout:2000,showType:'slide'});
+		    							mydatagrid.datagrid("reload");
 		    						}else{
-		    							$.messager.alert('失败提示','新闻信息删除失败...');
+		    							$.messager.alert('失败提示','回帖信息删除失败...');
 		    						}
 		    					});
 		    				}
@@ -103,8 +100,8 @@
 		  		text:'撤销',
 		  		iconCls:'icon-redo',
 		    	handler:function(){
-		    		datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
-		    		datagrid.datagrid("endEdit",editRow);
+		    		mydatagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+		    		mydatagrid.datagrid("endEdit",editRow);
 		    		editRow=undefined;
 		    	}
 		  	}]
@@ -164,12 +161,12 @@
 		var htdianzan=$("#ht_htdianzan").val();
 		var httext=ue.getContent();
 		$.ajaxFileUpload({
-			url:"../huiTieServlet?op=addHuiTieInfo",
+			url:"huiTie_addHuiTieInfo",
 			secureuri:false,
 			dataType:"json",
 			data:{yhid:yhid,tzname:tzname,httime:httime,htdianzan:htdianzan,httext:httext},
 			success:function(data,status){
-				if(parseInt($.trim(data))==1){
+				if(data.total==1){
 					$("#huitie_add_huitie").dialog("close");
 					$("#huitie_info").datagrid("reload");
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
@@ -194,12 +191,12 @@
 		var htdianzan=$("#ht_updatehtdianzan").val();
 		var httext=updateUE.getContent();
 		$.ajaxFileUpload({
-			url:"../huiTieServlet?op=updateHuiTieInfo",
+			url:"huiTie_updateHuiTieInfo",
 			secureuri:false,
 			dataType:"json",
 			data:{htid:htid,yhid:yhid,tzname:tzname,httime:httime,htdianzan:htdianzan,httext:httext},
 			success:function(data,status){
-				if(parseInt($.trim(data))==1){
+				if(data.total==1){
 					$("#huitie_update_huitie").dialog("close");
 					$("#huitie_info").datagrid("reload");
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
