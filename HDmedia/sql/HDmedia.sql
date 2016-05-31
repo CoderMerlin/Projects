@@ -500,6 +500,7 @@ create table province(
 	pryl1 varchar2(500),  --预留字段
 	pryl2 varchar2(500)
 )
+select prname from province where prstatus=1;
 create sequence seq_province_prid start with 1001 increment by 1;
 drop table province;
 drop sequence seq_province_prid;
@@ -520,21 +521,43 @@ create table properson(
 	prpid int primary key,  --id
 	prid int,  --省份的id
 	ppname varchar2(100),  --人物名字
-	ppcontent varchar2(500),  --人物的介绍
+	ppcontent varchar2(4000),  --人物的介绍 varchar2的最大长度
+	ppimg varchar2(500),   --人物图片
+	ppstatus int,    --人物状态  0不存在  1存在
 	ppyl1 varchar2(500),  --预留字段
 	ppyl2 varchar2(500)
 )
+select * from properson;
+drop table properson;
 create sequence seq_properson_ppid start with 1001 increment by 1;
 
+insert into properson (prpid,prid, ppname, ppcontent,ppimg,ppstatus,ppyl1,ppyl2)
+values (1001,1001, '王实甫','王实甫(1260年-1336年)，名德信。大都(今北京市)人。元代杂剧作家。中国著名剧作《西厢记》的作者。关于他生平情况的历史记载却很少。后人推测他的生卒年大约是1260-1336年，主要创作活动大约在元成宗元贞、大德年间(1295年-1307年)，这正是元杂剧的鼎盛时期。
+　　王实甫的父亲，曾“赠通议大夫、礼部尚书、太原郡侯。”母亲阿噜浑氏，“赠太原郡夫人”。王实甫不仅出身官宦名门之家，而且他自己也是做过官的。先以县官入仕，因治县有声，后提升为陕西行台监察御史。但总因“与台臣议不合，40岁即弃官不复仕。”王实甫40岁就当了省级领导干部，本来前途无量，却弃官不仕。回到大都后，他一头扎进关汉卿的“玉京书会”，出入于歌台舞榭之中，厮混于勾栏瓦舍之间，开始了他的戏剧创作生涯。
+　　王实甫所作杂剧中名目可考的有14种。今存有：《崔莺莺待月西厢记》《吕蒙正风雪破窑记》《四大王歌舞丽春堂》《韩采云丝竹芙蓉亭》《苏小卿月夜贩茶船》，还有少量散曲流传：有小令1首，套曲3种(其中有一残套)，散见于《中原音韵》、《雍熙乐府》、《北宫词纪》和《九宫大成》等书中。
+　　《西厢记》是王实甫在元稹的传奇《莺莺传》基础上创作，共五本二十一折。《西厢记》可谓是家喻户晓的一部剧作，在元代就被誉为:“新杂剧，旧传奇，《西厢记》天下夺魁。”她诞生七百年来，被全国多个剧种演唱至今，久演不衰。《西厢记》有鲜明、深刻的反封建的主题。张生和崔莺莺的恋爱故事，已经不再停留在“才子佳人”的模式上，也没有把“夫贵妻荣”作为婚姻的理想。他们否定了封建社会传统的联姻方式，始终追求真挚的感情，爱情已被置于功名利禄之上。《西厢记》结尾处，在中国文学史上第一次正面地表达了“愿普天下有情的都成了眷属”的美好愿望，表达了反对封建礼教、封建婚姻制度、封建等级制度的进步主张，鼓舞了青年男女为争取爱情自由、婚姻自主而抗争。
+　　《西厢记》之所以能成为元杂剧的“压卷”之作，不仅在于其表现了反对封建礼教和封建婚姻制度的进步思想，而且它在戏剧冲突、结构安排、人物塑造等方面，都取得了很高的艺术成就。
+　　“碧云天，黄花地，西风紧，北雁南飞。晓来谁染霜林醉?总是离人泪„„”谁不为这华彩的词章而拍案叫绝?可见，王实甫的《西厢记》不仅是一部戏剧，它也是中国文学史上的一部不朽名著。更多地域文化方面的知识，尽在传统文化网。',
+　　'',1,'','');
+insert into properson (prpid,prid, ppname, ppcontent,ppimg,ppstatus,ppyl1,ppyl2)
+values (1002,1001, '梅兰芳','　梅兰芳，祖籍江苏泰州，生于北京的一个梨园世家。梅兰芳是中国的文化，艺术的象征，他的表演艺术很早就蜚声海内外。他交游广泛，阅历丰富，尤其对京剧艺术的改良和创新有着杰出的贡献。梅兰芳对京剧旦角的唱腔、念白、舞蹈、音乐、服装、化妆等各方面都有所创造发展，形成了自己的艺术风格，世称“梅派”。',
+　　'',1,'','');
+
+select pp.* from properson pp,province p where p.prid=pp.prid and p.prid=1001 and ppstatus=1 and prstatus=1;
+select pp.* from properson pp,province p where p.prid=pp.prid and pp.prpid=1002 and ppstatus=1 and prstatus=1;
+ 
 
 --创建省份中的风景表
 create table proscenery(
 	prsid int primary key,
 	prid int, --省份的id
 	prsname varchar2(100),  --风景的名称
-	prscontent varchar2(500), -- 风景的介绍
+	prsimg varchar2(500),   --风景图片
+	prscontent varchar2(4000), -- 风景的介绍
+	prsstatus  int,  --风景状态 0表示不存在  1表示存在
 	prsyl1 varchar2(500),
 	prsyl2 varchar2(500)
+	
 )
 
 
