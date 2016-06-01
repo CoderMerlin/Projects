@@ -18,11 +18,13 @@ import com.yc.hdmedia.service.GeoraphyBackService;
 //人物
 @Controller("propersonBackAction")
 public class PropersonBackAction implements SessionAware,ModelDriven<PropersonBack>{
+	@Autowired
+	private GeoraphyBackService georaphyBackService;
+	
 	private Map<String, Object> session;
 	private PropersonBack propersonBack;
 	
-	@Autowired
-	private GeoraphyBackService georaphyBackService;
+
 	private Map<String,Object> DataMap=new HashMap<String,Object>();
 	public Map<String, Object> getDataMap() {
 		return DataMap;
@@ -40,10 +42,12 @@ public class PropersonBackAction implements SessionAware,ModelDriven<PropersonBa
 		DataMap.clear();
 		LogManager.getLogger().debug("获取前台人物信息==:>"+propersonBack);
 		int result=georaphyBackService.addPersonInfo(propersonBack);
+		System.out.println("result"+result);
 		if(result>0){
 			DataMap.put("rows", result);
 			return "success";
 		}
+		DataMap.put("rows", result);
 		return "fail";
 	}
 	

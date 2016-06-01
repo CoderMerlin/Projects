@@ -40,4 +40,11 @@ public interface GeoraphyBackMapper {
 	 * @return
 	 */
 	public List<ProvinceBack> selectAllProvincePrnames();
+
+	/**
+	 * 添加人物信息
+	 * @param propersonBack
+	 * @return
+	 */
+	public int insertPersonInfo(PropersonBack propersonBack);
 }

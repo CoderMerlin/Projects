@@ -319,7 +319,7 @@ drop table huitie;
 drop sequence seq_huitie_htid;
 insert into huitie values(seq_huitie_htid.nextval,1002,( select tid from (select distinct tzname,tid  from tiezi  where status=1) where tzname='“鸟的王国”——青海湖鸟岛'),
 '但是客服尽快',to_date('2015-10-10 00:00:00','yyyy-mm-dd hh24:mi:ss'),0,1,'','')
-create sequence seq_huitie_htid start with 0001 increment by 1;
+create sequence seq_huitie_htid start with 10001 increment by 1;
 select ht.*,count(ht.htid),yh.yhzsname,yh.yhphoto,tz.tzname from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid and ht.htstatus=1 order by ht.httime desc"
 "select ht.*,yh.yhzsname,tz.tzname from huitie ht,yonghu yh,tiezi tz  where ht.htid=1002 and ht.yhid=yh.yhid and ht.tid=tz.tid"
 select ht.*,yh.yhzsname,tz.tzname from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid and ht.htstatus
@@ -525,10 +525,13 @@ create table properson(
 	ppyl1 varchar2(500),  --预留字段
 	ppyl2 varchar2(500)
 )
+
+
 select * from properson;
 drop table properson;
-create sequence seq_properson_ppid start with 1001 increment by 1;
-
+create sequence seq_properson_ppid start with 1003 increment by 1;
+drop sequence seq_properson_ppid
+insert into properson values (seq_properson_ppid.nextval,1001,'aaa','wwww','',1,'','')
 insert into properson (prpid,prid, ppname, ppcontent,ppimg,ppstatus,ppyl1,ppyl2)
 values (1001,1001, '王实甫','王实甫(1260年-1336年)，名德信。大都(今北京市)人。元代杂剧作家。中国著名剧作《西厢记》的作者。关于他生平情况的历史记载却很少。后人推测他的生卒年大约是1260-1336年，主要创作活动大约在元成宗元贞、大德年间(1295年-1307年)，这正是元杂剧的鼎盛时期。
 　　王实甫的父亲，曾“赠通议大夫、礼部尚书、太原郡侯。”母亲阿噜浑氏，“赠太原郡夫人”。王实甫不仅出身官宦名门之家，而且他自己也是做过官的。先以县官入仕，因治县有声，后提升为陕西行台监察御史。但总因“与台臣议不合，40岁即弃官不复仕。”王实甫40岁就当了省级领导干部，本来前途无量，却弃官不仕。回到大都后，他一头扎进关汉卿的“玉京书会”，出入于歌台舞榭之中，厮混于勾栏瓦舍之间，开始了他的戏剧创作生涯。

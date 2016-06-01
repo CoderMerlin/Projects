@@ -40,4 +40,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select prid,prname from province where prstatus=1
 	</select>
 	
+	<!-- 添加人物 -->
+	<insert id="insertPersonInfo" parameterType="PropersonBack">
+		insert into properson values (seq_properson_ppid.nextval,#{prid},#{ppname},#{ppcontent},#{ppimg},#{ppstatus},'','')
+	</insert>
 </mapper>

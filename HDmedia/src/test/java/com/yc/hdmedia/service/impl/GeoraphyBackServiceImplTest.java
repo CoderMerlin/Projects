@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.yc.hdmedia.entity.PropersonBack;
 import com.yc.hdmedia.service.GeoraphyBackService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -19,8 +20,9 @@ public class GeoraphyBackServiceImplTest {
 	
 	
 	@Test
-	public void testGetAllPersonsByPrid() {
-		
+	public void testAddPersonInfo() {
+		int result=georaphyBackService.addPersonInfo(new PropersonBack(1,1001,"aaaa","dada","not",1));
+		System.out.println(result);
 	}
 
 }

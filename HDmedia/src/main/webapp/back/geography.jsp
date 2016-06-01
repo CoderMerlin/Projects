@@ -360,23 +360,24 @@ function openAddPersonInfo(){
 //添加人物
 function addPersonInfo(){
 	console.info("添加人物信息");
-	var prname=$("#show_province_prname").val();
+	var prid=$("#show_province_prname").val();
 	var ppname = $("#person_Info_ppname").val();
 	var ppstatus= $("#person_Info_ppstatus").val();	
 	var ppcontent = addPersonUE.getContent();
-
 	$.ajaxFileUpload({
 		url : "propersonBack_addPersonInfo.action",
 		secureuri : false,
-		fileElementId : "update_area_pic",
+		fileElementId : "person_Info_ppimg",
 		dataType : "json",
-		data : {prname : prname,
+		data : {
+				prid : prid,
 				ppname : ppname,
 				ppstatus:ppstatus,
 				ppcontent : ppcontent
 			 },
 		success : function(data, status) {
-			if (parseInt($.trim(data)) == 1) {//说明是成功的
+			console.info(data);
+			if (parseInt($.trim(data.rows)) == 1) {//说明是成功的
 				$.messager.show({
 					title : '成功提示',
 					msg : '人物信息添加成功...',
@@ -384,9 +385,9 @@ function addPersonInfo(){
 					showType : 'slide'
 				});
 				$("#add_person_Info").dialog("close");
-				$("#diyu_info").datagrid("reload");
+				$("#georaphy").datagrid("reload");
 			} else {
-				$.messager.alert("失败提示", "地域信息修改失败...", "error");
+				$.messager.alert("失败提示", "地域信息添加失败...", "error");
 			}
 		}
 	});
@@ -425,7 +426,7 @@ function updatediyuInfo(){
 					showType : 'slide'
 				});
 				$("#diyu_update_Info").dialog("close");
-				$("#diyu_info").datagrid("reload");
+				$("#georaphy").datagrid("reload");
 			} else {
 				$.messager.alert("失败提示", "地域信息修改失败...", "error");
 			}

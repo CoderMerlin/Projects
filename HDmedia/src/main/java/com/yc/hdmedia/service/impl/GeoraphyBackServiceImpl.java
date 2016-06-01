@@ -80,8 +80,7 @@ public class GeoraphyBackServiceImpl implements GeoraphyBackService {
 
 	@Override
 	public int addPersonInfo(PropersonBack propersonBack) {
-		// TODO Auto-generated method stub
-		return 0;
+		return georaphyBackMapper.insertPersonInfo(propersonBack);
 	}
 
 }
