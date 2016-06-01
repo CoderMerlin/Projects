@@ -8,8 +8,7 @@
 		var flag;
 		var yonghustatusObj=[{yonghuid:0,yonghuname:'不可用'},{yonghuid:1,yonghuname:'可用'}];
 		datagrid=$('#yonghu_info').datagrid({   
-		    url:'../yongHuServlet', 
-		    queryParams:{op:"getPageYongHuZCInfo"},
+		    url:'yongHuZC_getPageYongHuZCInfo.action', 
 		    fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -54,49 +53,49 @@
 		    		}else{
 		    			//获取当前选择行的索引
 		    			var yhzcid=rows.yhzcid;  //获取要修改的用户id
-		    			$.post("../yongHuServlet",{op:"findYonghuByYHZCid",yhzcid:yhzcid},function(data){
-							var yonghu=data.rows;
-							if(yonghu==undefined){
-								$("#yonghu_update_yonghusInfo").dialog("open");
-								$("#update_yonghu").css("display","none");
-								$("#add_yonghu").css("display","block");
-								$("#yh_zsname").val("");
-								$("#yh_sex").val("");
-								$("#yh_phone").val("");
-								$("#yh_indentity").val("");
-								$("#yh_qq").val("");
-								$("#yh_birthday").datebox('setValue','');
-								$("#yh_addr").val("");
-								$("#yh_ftnum").val("0");
-								$("#yh_jf").val("0");
-								$("#yh_qd").val("0");
-								$("#yh_jy").val("0");
-								$("#yh_qianming").val("");
+		    			$.post("yongHu_findByYongHuZCById.action",{yhzcid:yhzcid},function(data){
+		    				var yh=data.yh;
+							if(yh==null){
+								$("#yonghu_add_yonghusInfo").dialog("open");
+								$("#yh_zcid_add").val(yhzcid);//用户注册编号
+								$("#yh_zsname_add").val("");
+								$("#yh_sex_add").val("");
+								$("#yh_phone_add").val("");
+								$("#yh_indentity_add").val("");
+								$("#yh_qq_add").val("");
+								$("#yh_birthday_add").datebox('setValue','');
+								$("#yh_addr_add").val("");
+								$("#yh_ftnum_add").val("0");
+								$("#yh_jf_add").val("0");
+								$("#yh_qd_add").val("0");
+								$("#yh_jy_add").val("0");
+								$("#yh_qianming_add").val("");
 								$("#yonghu_photo_show").html(""); //用户头像
 							}else{
 								$("#yonghu_update_yonghusInfo").dialog("open");
-								$("#add_yonghu").css("display","none");
-								$("#update_yonghu").css("display","block");
-								$("#yh_zsname").val(yonghu.yhzsname);  //用户真实姓名 
-								$("#yh_sex").val(yonghu.yhsex);   //用户性别
-						 		$("#yh_age").val(yonghu.yhage);   //用户年龄
-								$("#yh_phone").val(yonghu.phone);  //用户手机号
-								$("#yh_indentity").val(yonghu.yhindentity); //用户身份证
-								$("#yh_qq").val(yonghu.yhqq);  //用户qq号
-								$("#yh_birthday").datebox('setValue',yonghu.yhbirthday);  //用户生日
-								$("#yh_addr").val(yonghu.yhaddr);  //用户地址
-								$("#yh_ftnum").val(yonghu.yhftnum);  //用户发帖次数
-								$("#yh_jf").val(yonghu.yhjf);  //用户积分
-								$("#yh_qd").val(yonghu.yhqd);  //用户签到
-								$("#yh_jy").val(yonghu.yhjy);  //用户用户经验
-								$("#yh_qianming").val(yonghu.yhqianming); //用户签名
+								$("#yh_zcid_update").val(yhzcid);//用户注册编号
+								$("#yh_id_update").val(yh.yhid);//用户编号
+								$("#yh_zsname_update").val(yh.yhzsname);  //用户真实姓名 
+								$("#yh_sex_update").val(yh.yhsex);   //用户性别
+						 		$("#yh_age_update").val(yh.yhage);   //用户年龄
+								$("#yh_phone_update").val(yh.phone);  //用户手机号
+								$("#yh_indentity_update").val(yh.yhindentity); //用户身份证
+								$("#yh_qq_update").val(yh.yhqq);  //用户qq号
+								$("#yh_birthday_update").datebox('setValue',yh.yhbirthday);  //用户生日
+								$("#yh_addr_update").val(yh.yhaddr);  //用户地址
+								$("#yh_ftnum_update").val(yh.yhftnum);  //用户发帖次数
+								$("#yh_jf_update").val(yh.yhjf);  //用户积分
+								$("#yh_qd_update").val(yh.yhqd);  //用户签到
+								$("#yh_jy_update").val(yh.yhjy);  //用户用户经验
+								$("#yh_qianming_update").val(yh.yhqianming); //用户签名
 								
 								var str="";
-								str="<img src='../../uploadPic/"+yonghu.yhphoto+"' width='100px' height='100px' />&nbsp;";
+								str="<img src='../../uploadPic/"+yh.yhphoto+"' width='100px' height='100px' />&nbsp;";
 								$("#yonghu_photo_show").html($(str)); //用户头像
 							}
 							
-						},"json");	
+						},"json");
+		    			$("#yonghu_update_yonghusInfo").dialog("open");
 		    		}
 		        }
 		    }]   
@@ -110,111 +109,6 @@
 
 
 
-
-//添加用户信息
-	function addyonghuInfo(){
-		var rows=datagrid.datagrid("getChecked")[0];  //获取要添加的行
-		var yhzcid=rows.yhzcid;
-		var yhzsname=$("#yh_zsname").val();  //用户真实姓名 
-		var yhsex=$("#yh_sex").combobox('getValue');   //用户性别
- 		var yhage=$("#yh_age").val();   //用户年龄
-		var yhphone=$("#yh_phone").val();  //用户手机号
-		var yhindentity=$("#yh_indentity").val(); //用户身份证
-		var yhqq=$("#yh_qq").val();  //用户qq号
-		var yhbirthdays=$("#yh_birthday").datebox('getValue');  //用户生日
-		var yhaddr=$("#yh_addr").val();  //用户地址
-		var yhftnum=$("#yh_ftnum").val();  //用户发帖次数
-		var yhjf=$("#yh_jf").val();  //用户积分
-		var yhqd=$("#yh_qd").val();  //用户签到
-		var yhjy=$("#yh_jy").val();  //用户用户经验
-		var yhqianming=$("#yh_qianming").val(); //用户签名
-		
-		$.ajaxFileUpload({
-			url:"../yongHuServlet?op=addYongHuInfo",
-			secureuri:false,
-			fileElementId:"yh_photo",
-			dataType:"json",
-			data:{yhzsname:yhzsname,yhsex:yhsex,yhage:yhage,yhphone:yhphone,yhindentity:yhindentity,yhqq:yhqq,yhbirthdays:yhbirthdays,yhaddr:yhaddr,yhftnum:yhftnum,
-					yhjf:yhjf,yhqd:yhqd,yhjy:yhjy,yhqianming:yhqianming,yhzcid:yhzcid},
-			success:function(data,status){
-				if(parseInt($.trim(data))==1){//说明成功
-					$.messager.show({title:'成功提示',msg:'用户详细信息添加成功！',timeout:2000,showType:'slide'});
-					$("#yonghu_update_yonghusInfo").dialog("close");
-					$("#yonghu_info").datagrid("reload");
-					$("#yh_zsname").val("");
-					$("#yh_sex").combobox('setValue','男');
-					$("#yh_phone").val("");
-					$("#yh_indentity").val("");
-					$("#yh_qq").val("");
-					$("#yh_birthday").datebox('setValue','');
-					$("#yh_addr").val("");
-					$("#yh_ftnum").val("0");
-					$("#yh_jf").val("0");
-					$("#yh_qd").val("0");
-					$("#yh_jy").val("0");
-					$("#yh_qianming").html("");
-				}else{
-					$.messager.alert("失败提示","用户详细信息添加失败！","error");
-				}
-			},
-			error:function(data,status,e){
-				$.messager.alert("错误提示！","用户详细信息添加有误！\n"+e,"error");
-			}
-		});
-	}
-		
-	//修改用户
-	function updateyonghuInfo(){
-		var rows=datagrid.datagrid("getChecked")[0];  //获取要添加的行
-		var yhzcid=rows.yhzcid;
-		var yhzsname=$("#yh_zsname").val();  //用户真实姓名 
-		var yhsex=$("#yh_sex").combobox('getValue');   //用户性别
- 		var yhage=$("#yh_age").val();   //用户年龄
-		var yhphone=$("#yh_phone").val();  //用户手机号
-		var yhindentity=$("#yh_indentity").val(); //用户身份证
-		var yhqq=$("#yh_qq").val();  //用户qq号
-		var yhbirthdays=$("#yh_birthday").datebox('getValue');  //用户生日
-		var yhaddr=$("#yh_addr").val();  //用户地址
-		var yhftnum=$("#yh_ftnum").val();  //用户发帖次数
-		var yhjf=$("#yh_jf").val();  //用户积分
-		var yhqd=$("#yh_qd").val();  //用户签到
-		var yhjy=$("#yh_jy").val();  //用户用户经验
-		var yhqianming=$("#yh_qianming").val(); //用户签名
-		
-		$.ajaxFileUpload({
-			url:"../yongHuServlet?op=updateYongHuInfo",
-			secureuri:false,
-			fileElementId:"yh_photo",
-			dataType:"json",
-			data:{yhzsname:yhzsname,yhsex:yhsex,yhage:yhage,yhphone:yhphone,yhindentity:yhindentity,yhqq:yhqq,yhbirthdays:yhbirthdays,yhaddr:yhaddr,yhftnum:yhftnum,
-					yhjf:yhjf,yhqd:yhqd,yhjy:yhjy,yhqianming:yhqianming,yhzcid:yhzcid},
-			success:function(data,status){
-				if(parseInt($.trim(data))==1){//说明成功
-					$.messager.show({title:'成功提示',msg:'用户详细信息修改成功！',timeout:2000,showType:'slide'});
-					$("#yonghu_update_yonghusInfo").dialog("close");
-					$("#yonghu_info").datagrid("reload");
-					$("#yh_zsname").val("");
-					$("#yh_sex").combobox('setValue','');
-					$("#yh_phone").val("");
-					$("#yh_indentity").val("");
-					$("#yh_qq").val("");
-					$("#yh_birthday").datebox('setValue','');
-					$("#yh_addr").val("");
-					$("#yh_ftnum").val("0");
-					$("#yh_jf").val("0");
-					$("#yh_qd").val("0");
-					$("#yh_jy").val("0");
-					$("#yh_qianming").html("");
-				}else{
-					$.messager.alert("失败提示","用户详细信修改失败！","error");
-				}
-			},
-			error:function(data,status,e){
-				$.messager.alert("错误提示！","用户详细修改有误！\n"+e,"error");
-			}
-		});
-
-	} 
 
 
 	//显示用户详细信息
@@ -274,61 +168,111 @@
 </style>
 
 <!-- 添加或修改用户-->
-<div id="yonghu_update_yonghusInfo" class="easyui-dialog" title="添加或修改用户" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="" style="padding:20px;float:lect;display:inline-block;">
-		<label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname"  class="myinput"/><br /><br />
+<div id="yonghu_add_yonghusInfo" class="easyui-dialog" title="添加用户" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="yongHu_addYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
+       	<input type="hidden" name="yhzcid" id="yh_zcid_add"/>
+        <label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_add"  class="myinput"/>&nbsp;&nbsp;&nbsp;
 		<label>用户性别:</label>
-			<select id="yh_sex" class="easyui-combobox" name="yhsex" style="width:200px;"> 
+			<select id="yh_sex_add" class="easyui-combobox" name="yhsex" style="width:200px;"> 
 				<option value="男">男</option>  
 				<option value="女">女</option>
-			</select> 
-		<label>用户年龄:</label><input type="text" name="yhage" id="yh_age"   class="easyui-numberspinner" style="width:80px;"  required="required" data-options="min:6,max:150,editable:false">  <br /><br />
-		<label>用户手机号码:</label><input  class="easyui-numberbox myinput" name="yhphone" id="yh_phone" /><br /><br />
-		<label>用户身份证号：</label><input type="text" name="yhindentity" id="yh_indentity"  class="myinput"/><br /><br />
-		<label>用户qq:</label><input class="easyui-numberbox myinput" name="yhqq" id="yh_qq" /><br /><br />
-		<label>用户生日:</label><input type="text" name="yhbirthday" id="yh_birthday" class="easyui-datebox" required="required"/><br /><br />
-		<label>用户地址:</label><input type="text" name="yhaddr" id="yh_addr"  class="myinput"/><br /><br />
-		<label>用户头像:</label><input type="file" name="yhphoto" id="yh_photo"  multiple="multiple" onchange="previewMultipleImage(this,'yonghu_photo_show')"/><br /><br />
-		<label>用户发帖次数:</label><input class="easyui-numberbox myinput" name="yhftnum" id="yh_ftnum" /><br /><br />
-		<label>用户积分:</label><input lass="easyui-numberbox myinput" name="yhjf" id="yh_jf"  /><br /><br />
-		<label>用户签到次数:</label><input lass="easyui-numberbox myinput" name="yhqd" id="yh_qd"  /><br /><br />
-		<label>用户经验:</label><input lass="easyui-numberbox myinput" name="yhjy" id="yh_jy" /><br /><br />
-		<label>用户签名:</label><input type="textarea" name="yhqianming" id="yh_qianming"  style="maxlength=140;warp=soft;"/><br /><br />
-		<div id="add_yonghu" style="display:none;">
-			<a href="javascript:addyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" >添加</a>
-		</div>
-		<div id="update_yonghu" style="display:none;">
-			<a href="javascript:updateyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">保存修改</a>
-		</div>
+			</select> &nbsp;&nbsp;&nbsp;
+		<label>用户年龄:</label><input type="text" name="yhage" id="yh_age_add"   class="easyui-numberspinner" style="width:80px;"  data-options="min:6,max:150,editable:false">  <br /><br />
+		<label>用户手机号码:</label><input  class="easyui-numberbox myinput" name="yhphone" id="yh_phone_add" />&nbsp;&nbsp;&nbsp;
+		<label>用户qq:&nbsp;&nbsp;&nbsp;</label><input class="easyui-numberbox myinput" name="yhqq" id="yh_qq_add" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>用户生日:</label><input type="text" name="yhbirthday" id="yh_birthday_add" class="easyui-datebox"/><br /><br />
 		
+		<label>用户身份证号:</label><input type="text" name="yhindentity" id="yh_indentity_add"  class="myinput"/>&nbsp;&nbsp;&nbsp;
+		<label>用户地址:&nbsp;</label><input type="text" name="yhaddr" id="yh_addr_add"  class="myinput"/>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>用户头像:</label><input type="file" name="upload" id="yh_photo_add" onchange="previewMultipleImage(this,'yonghu_photo_show')"/><br /><br />
+		
+		<label>用户发帖次数:</label><input class="easyui-numberbox myinput" name="yhftnum" id="yh_ftnum_add" /><br /><br />
+		<label>用户签到次数:</label><input lass="easyui-numberbox myinput" name="yhqd" id="yh_qd_add"  /><br /><br />
+		
+		<label>用户积分:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input lass="easyui-numberbox myinput" name="yhjf" id="yh_jfv"  /><br /><br />
+		<label>用户经验:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input lass="easyui-numberbox myinput" name="yhjy" id="yh_jy_add" /><br /><br />
+		<label>用户签名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="textarea" name="yhqianming" id="yh_qianming_add"  style="maxlength=140;warp=soft;"/><br /><br />
+		
+ 		<!-- <div id="add_yonghu" style="display:block;">
+			<a href="javascript:addyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" >添加</a>
+		</div><br/> -->
+		<input type="submit" value="添加" />
 	</form>
+	
 	<div style="float:right;width:380px; margin-right:20px;">
 		<fieldset id="yonghu_photo_show" >
 			<legend>头像预览</legend>
-			
+		</fieldset>
+	</div>
+</div>
+
+<div id="yonghu_update_yonghusInfo" class="easyui-dialog" title="修改用户" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="yongHu_updateYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
+		<input type="hidden" name="yhzcid" id="yh_zcid_update"/>
+		<label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_update"  class="myinput"/>&nbsp;&nbsp;&nbsp;
+		<label>用户性别:</label>
+			<select id="yh_sex_update" class="easyui-combobox" name="yhsex" style="width:200px;"> 
+				<option value="男">男</option>  
+				<option value="女">女</option>
+			</select> &nbsp;&nbsp;&nbsp;
+		<label>用户年龄:</label><input type="text" name="yhage" id="yh_age_update"   class="easyui-numberspinner" style="width:80px;"  required="required" data-options="min:6,max:150,editable:false">  <br /><br />
+		<label>用户手机号码:</label><input  class="easyui-numberbox myinput" name="yhphone" id="yh_phone_update" />&nbsp;&nbsp;&nbsp;
+		<label>用户qq:&nbsp;&nbsp;&nbsp;</label><input class="easyui-numberbox myinput" name="yhqq" id="yh_qq_update" />&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>用户生日:</label><input type="text" name="yhbirthday" id="yh_birthday_update" class="easyui-datebox" /><br /><br />
+		
+		<label>用户身份证号:</label><input type="text" name="yhindentity" id="yh_indentity_update"  class="myinput"/>&nbsp;&nbsp;&nbsp;
+		<label>用户地址:&nbsp;</label><input type="text" name="yhaddr" id="yh_addr_update"  class="myinput"/>&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>用户头像:</label><input type="file" name="upload" id="yh_photo_update"  onchange="previewMultipleImage(this,'yonghu_photo_show_update')"/><br /><br />
+		
+		<label>用户发帖次数:</label><input class="easyui-numberbox myinput" name="yhftnum" id="yh_ftnum_update" /><br /><br />
+		<label>用户签到次数:</label><input lass="easyui-numberbox myinput" name="yhqd" id="yh_qd_update"  /><br /><br />
+		
+		<label>用户积分:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input lass="easyui-numberbox myinput" name="yhjf" id="yh_jf_update"  /><br /><br />
+		<label>用户经验:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input lass="easyui-numberbox myinput" name="yhjy" id="yh_jy_update" /><br /><br />
+		<label>用户签名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="textarea" name="yhqianming" id="yh_qianming_update"  style="maxlength=140;warp=soft;"/><br /><br />
+		
+		<!-- <div id="update_yonghu" style="display:block;">
+			<a href="javascript:updateyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">保存修改</a>
+		</div> -->
+		<input type="submit" value="修改" />
+	</form>
+	<div style="float:right;width:380px; margin-right:20px;">
+		<fieldset id="yonghu_photo_show_update" >
+			<legend>头像预览</legend>
 		</fieldset>
 	</div>
 </div>
 
 
-
-
 <!-- 详细 -->
 <div id="yonghu_show_yonghusInfo" class="easyui-dialog" title="用户详细信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:lect;display:inline-block;">
-		<label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_show"  class="myinput" readonly="readonly" /><br /><br />
-		<label>用户年龄:</label><input type="text" name="yhage" id="yh_age_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户性别:</label><input type="text" name="yhsex" id="yh_sex_show" class="myinput" readonly="readonly" />
-		<label>用户手机号码:</label><input class="easyui-numberbox myinput" name="yhphone" id="yh_phone_show" readonly="readonly"/><br /><br />
-		<label>用户身份证号：</label><input type="text" name="yhindentity" id="yh_indentity_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户qq:</label><input type="text" name="yhqq" id="yh_qq_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户生日:</label><input type="text" name="yhbirthday" id="yh_birthday_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户地址:</label><input type="text" name="yhaddr" id="yh_addr_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户发帖次数:</label><input type="text" name="yhftnum" id="yh_ftnum_show"  class="myinput" readonly="readonly"/><br /><br />
+		<label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_show"  class="myinput" readonly="readonly" />&nbsp;&nbsp;&nbsp;
+		<label>用户年龄:</label><input type="text" name="yhage" id="yh_age_show"  class="myinput" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
 		<label>用户积分:</label><input type="text" name="yhjf" id="yh_jf_show"  class="myinput" readonly="readonly"/><br /><br />
+		
+		<label>用户手机号码:</label><input class="easyui-numberbox myinput" name="yhphone" id="yh_phone_show" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
+		<label>用户性别:</label><input type="text" name="yhsex" id="yh_sex_show" class="myinput" readonly="readonly" />&nbsp;&nbsp;&nbsp;
 		<label>用户签到:</label><input type="text" name="yhqd" id="yh_qd_show"  class="myinput" readonly="readonly"/><br /><br />
+		
+		<label>用户身份证号:</label><input type="text" name="yhindentity" id="yh_indentity_show"  class="myinput" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
+		<label>用户生日:</label><input type="text" name="yhbirthday" id="yh_birthday_show"  class="myinput" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
 		<label>用户经验:</label><input type="text" name="yhjy" id="yh_jy_show"  class="myinput" readonly="readonly"/><br /><br />
-		<label>用户签名:</label><input type="text" name="yhqianming" id="yh_qianming_show"  readonly="readonly"/><br /><br />
+		
+		
+		<label>用户发帖次数:</label><input type="text" name="yhftnum" id="yh_ftnum_show"  class="myinput" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
+		<label>用户地址:</label><input type="text" name="yhaddr" id="yh_addr_show"  class="myinput" readonly="readonly"/>&nbsp;&nbsp;&nbsp;
+		<label>用户qq:&nbsp;&nbsp;</label><input type="text" name="yhqq" id="yh_qq_show"  class="myinput" readonly="readonly"/><br /><br />
+		
+		<label>用户签名:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" name="yhqianming" id="yh_qianming_show"  readonly="readonly"/><br /><br />
+		
 	</form>
 	<div style="float:right;width:380px;margin-right:20px; margin-top:20px;" id="yh_photo_show_info">  
 		

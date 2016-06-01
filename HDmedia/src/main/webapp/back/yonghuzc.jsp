@@ -6,6 +6,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <table id="yonghuzc_info"></table>
 <script>
+	function addYongHuZCInfo(){
+		var yhzctime;
+		var yhname=$("#yhname_add").val();
+		var yhemail=$("#yhemail_add").val();
+		var yhpwd=$("#yhpwd_add").val();
+		var yhzcstatus=$("#yhzcstatus_add").val();
+		
+		$.post("yongHuZC_addYongHuZCInfo.action",{yhzctime:yhzctime,yhname:yhname,yhemail:yhemail,yhpwd:yhpwd,yhzcstatus:yhzcstatus},function(data){
+			var result=data.result;
+			if(result==1){
+				$.messager.show({title:'成功提示',msg:'用户注册信息添加成功...',timeout:2000,showType:'slide'});
+				$("#yonghuzc_add_yonghuzcInfo").dialog("close");
+				$("#yonghuzc_info").datagrid("reload");
+				$("#yhname_add").val("");
+				$("#yhemail_add").val("");
+				$("#yhpwd_add").val("");
+				$("#yhzcstatus_add").val("");
+			}else{
+				$.messager.alert("失败提示","用户注册信息添加失败...","error");
+			}	
+		});
+	}
+	
+	function updateYongHuZCInfo(){
+		var yhzcid=$("#yhzcid_update").val();
+		var yhname=$("#yhname_update").val();
+		var yhemail=$("#yhemail_update").val();
+		var yhpwd=$("#yhpwd_update").val();
+		var yhzcstatus=$("#yhzcstatus_update").val();
+		$.post("yongHuZC_updateYongHuZCInfo.action",{yhzcid:yhzcid,yhname:yhname,yhemail:yhemail,yhpwd:yhpwd,yhzcstatus:yhzcstatus},function(data){
+			var result=data.result;
+			if(result==1){
+				$.messager.show({title:'成功提示',msg:'用户注册信息修改成功...',timeout:2000,showType:'slide'});
+				$("#yonghuzc_update_yonghuzcInfo").dialog("close");
+				$("#yonghuzc_info").datagrid("reload");
+				$("#yhname_update").val("");
+				$("#yhname_update").val("");
+				$("#yhemail_update").val("");
+				$("#yhpwd_update").val("");
+			}else{
+				$.messager.alert("失败提示","用户注册信息修改失败...","error");
+			}
+		});
+	}
+
 	$(function(){
 		var datagrid;
 		var editRow=undefined;
@@ -13,8 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var flag;
 		var yonghuzcstatusObj=[{yonghuid:0,yonghuname:'不可用'},{yonghuid:1,yonghuname:'可用'}];
 		datagrid=$('#yonghuzc_info').datagrid({   
-		    url:'../yongHuServlet', 
-		    queryParams:{op:"getPageYongHuZCInfo"},
+		    url:'yongHuZC_getPageYongHuZCInfo.action', 
 		    fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -46,19 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        text:"添加",   
 		        iconCls:'icon-add',   
 		        handler:function(){   
-		           op="addYongHuZCInfo"; //当前的操作
-		           flag="添加";
-		           //先判断又没有正在编辑的行
-		           if(editRow!=undefined){//说明有行正在被编辑，则还原当前的修改
-		        		datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
-		        		datagrid.datagrid("endEdit",editRow); //关闭当前正在编辑的行
-		        		editRow=undefined;
-		           }else{  //在表格的最前面添加一行
-		        	   datagrid.datagrid("insertRow",{index:0,row:{}});
-		           	   //打开编辑器
-		           	   datagrid.datagrid("beginEdit",0);
-		           	   editRow=0;  //记录当前正在被编辑的行
-		           }
+		        	$("#yonghuzc_add_yonghuzcInfo").dialog("open");
 		        }
 		    },{
 		    	text:"修改",
@@ -77,13 +109,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        		editRow=undefined;
 		    			}else{
 		    				//获取当前选择行的索引
-		    				var index=datagrid.datagrid("getRowIndex",rows);
-		    				
-		    				datagrid.datagrid("updateRow",{index:index,row:rows});
-		    				
-		    				//打开编辑器
-		    				datagrid.datagrid("beginEdit",index);
-		           	   		editRow=index;  //记录当前正在被编辑的行
+							var row=datagrid.datagrid("getChecked");
+		    				var yhzcid=row[0].yhzcid;
+		    				$.post("yongHuZC_getYongHuZCById.action",{yhzcid:yhzcid},function(data){
+		    					var yh=data.yongHuZC;
+		    					$("#yhzcid_update").val(yh.yhzcid);
+		    					$("#yhname_update").val(yh.yhname);
+		    					$("#yhpwd_update").val(yh.yhpwd);
+		    					$("#yhemail_update").val(yh.yhemail);
+		    					$("#yhzcstatus_update").val(yh.yhzcstatus);
+		    				},'json');
+							$("#yonghuzc_update_yonghuzcInfo").dialog("open");
 		    			}
 		    		}
 		    	}
@@ -109,8 +145,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    					}
 		    					yhzcids+=rows[i].yhzcid;
 		    					//将要删除yhzcid 发送到服务器
-		    					$.post("../yongHuServlet",{op:"delYongHuZCInfo",yhzcids:yhzcids},function(data){
-				    				if(data==1){ //删除成功
+		    					$.post("yongHuZC_delYongHuZCById.action",{yhzcids:yhzcids},function(data){
+				    				var result=data.delId;
+		    						if(result>0){ //删除成功
 				    					$.messager.show({
 				    						title:'删除提示',
 				    						msg:'用户注册信息删除成功..',
@@ -175,3 +212,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		});	
 	});
 </script>
+<style>
+	.myinput{
+		width:150px;
+		border:1px solid #f63;
+	}
+	label{
+		padding-right:10px;
+	}
+</style>
+
+
+<div id="yonghuzc_add_yonghuzcInfo" class="easyui-dialog" title="添加用户注册信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+		<input type="hidden" name="yhzctime" id="yhzctime_add"/> 
+		<label>用户姓名：</label><input type="text" id="yhname_add" name="yhname" class="myinput"/><br/><br/>
+		<label>用户邮箱：</label><input type="text" id="yhemail_add" name="yhemail" class="easyui-validatebox" data-options="required:true,validType:'email'"/><br/><br/>
+		<label>用户密码：</label><input type="text" id="yhpwd_add" name="yhpwd" class="myinput" /><br/><br/>
+		<label>状态：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" id="yhzcstatus_add" name="yhzcstatus" class="myinput" ><br/><br/>
+		<a href="javascript:addYongHuZCInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>	
+	</form>
+</div>
+
+<div id="yonghuzc_update_yonghuzcInfo" class="easyui-dialog" title="修改用户注册信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="" style="padding:20px;float:left;display:inline-block;">
+		<label>用户注册编号:
+		</label><input type="text" id="yhzcid_update" name="yhzcid" class="myinput" readonly="readonly"/><br/><br/>
+		<label>用户姓名：&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" id="yhname_update" name="yhname" class="myinput"/><br/><br/>
+		<label>用户邮箱：&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" id="yhemail_update" name="yhemail" class="easyui-validatebox" data-options="required:true,validType:'email'"/><br/><br/>
+		<label>用户密码：&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" id="yhpwd_update" name="yhpwd" class="myinput" /><br/><br/>
+		<label>状态：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</label><input type="text" id="yhzcstatus_update" name="yhzcstatus" class="myinput" ><br/><br/>
+		<a href="javascript:updateYongHuZCInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">修改</a>	
+	</form>
+</div>

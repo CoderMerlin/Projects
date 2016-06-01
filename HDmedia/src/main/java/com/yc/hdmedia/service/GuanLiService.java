@@ -19,7 +19,7 @@ public interface GuanLiService {
 	 * @param guanLi：要添加的管理员
 	 * @return
 	 */
-	public boolean addGuanLi(GuanLi guanLi);
+	public int addGuanLi(GuanLi guanLi);
 	
 	/**
 	 * 修改管理员信息
@@ -42,7 +42,8 @@ public interface GuanLiService {
 	 * @param glid：要删除的管理员编号，如果要同时删除多个，则用逗号隔开
 	 * @return
 	 */
-	public boolean del(int glid);
+	public int del(int[] glids);
+	
 	
 	
 	/**
@@ -65,5 +66,8 @@ public interface GuanLiService {
 	 * @return
 	 */
 	public GuanLi findGuanLiByGLId(int glid);
+	public int updateGuanLiInfo(GuanLi guanLi);
+
+	public GuanLi getGuanLiById(int glid);
 
 }

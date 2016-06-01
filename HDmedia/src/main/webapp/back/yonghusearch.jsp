@@ -55,8 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var yhzctime=$.trim( $("#search_yh_zctime").datebox('getValue') );  //注册时间
 		
 		$('#search_yonghu_info').datagrid({
-			url:'../yongHuServlet',
-			queryParams:{op:"findYongHuByInfo",yhname:yhname,yhemail:yhemail,yhphone:yhphone,yhzctime:yhzctime}
+			url:'yHSearchBean_findYongHuByInfo',
+			queryParams:{yhname:yhname,yhemail:yhemail,yhphone:yhphone,yhzctime:yhzctime}
 		});
 		
 	}

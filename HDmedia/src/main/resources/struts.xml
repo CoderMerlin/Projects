@@ -18,6 +18,13 @@
 			<result name="login">/login.jsp</result>
 			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
+			<result name="updateSuccess">/back/guanli.jsp</result>
+			
+			<interceptor-ref name="fileUpload"><!-- 文件上传的拦截器 -->
+				<param name="allowedExtensions">jpg,png</param>
+				<param name="allowedTypes">image/jpeg,image/png,application/octet-stream</param>
+			</interceptor-ref>
+			<interceptor-ref name="basicStack" /><!-- 基本struts拦截器 -->
 		</action>
 		
 	</package>
@@ -28,6 +35,9 @@
 			<result type="json">
 				<param name="root">DataMap</param> 
 			</result>
+			<result name="addSuccess">/back/yonghu.jsp</result>
+			<result name="updatesuccess">/back/index.jsp</result>
+			<result name="fail">/fail.jsp</result>
 			<result name="{2}">/{2}.jsp</result>
 			<result name="login">/login.jsp</result>
 			<result name="index">/index.jsp</result>

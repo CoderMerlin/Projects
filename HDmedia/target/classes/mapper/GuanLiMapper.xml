@@ -26,4 +26,121 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+<update id="updateGuanLiByGLId" parameterType="GuanLi">
+		update GuanLi
+		<set>
+			<if test="glname!=null">
+				glname=#{glname},
+			</if>
+				<if test="glpwd!=null">
+				glpwd=#{glpwd},
+			</if>
+				<if test="glsex!=null">
+				glsex=#{glsex},
+			</if>
+				<if test="glemail!=null">
+				glemail=#{glemail},
+			</if>
+				<if test="glphone!=null">
+				glphone=#{glphone},
+			</if>
+			<if test="glstatus!=null">
+				glstatus=#{glstatus},
+			</if>
+		</set>
+		<if test="glid!=0">
+			where glid=#{glid}
+		</if> 
+	</update>
+	
+	<select id="getGuanLiById" parameterType="int" resultType="GuanLi">
+		select * from GuanLi where glid=#{glid}
+	</select>
+	
+	<insert id="addGuanLi" parameterType="GuanLi">
+		<trim prefixOverrides="," suffixOverrides="," prefix="insert into GuanLi(" suffix=")">
+			glid,
+			<if test="glname!=null">
+				glname,
+			</if>
+				<if test="glpwd!=null">
+				glpwd,
+			</if>
+				<if test="glsex!=null">
+				glsex,
+			</if>
+				<if test="glemail!=null">
+				glemail,
+			</if>
+				<if test="glphone!=null">
+				glphone,
+			</if>
+			<if test="glzsname!=null">
+				glzsname,
+			</if>
+			<if test="glindentity!=null">
+				glindentity,
+			</if>
+			<if test="glzhtime!=null">
+				glzhtime,
+			</if>
+			<if test="glstatus!=null">
+				glstatus,
+			</if>
+			<if test="glyl1!=null">
+				glyl1,
+			</if>
+			<if test="glyl2!=null">
+				glyl2
+			</if>
+		</trim>
+		<trim prefixOverrides="," suffixOverrides="," prefix="values(" suffix=")">
+			 <choose>
+			 	<when test="glid!=0">glid=#{glid},</when>
+			 	<otherwise> seq_guanli_glid.nextval,</otherwise>
+			 </choose>
+			<if test="glname!=null">
+				#{glname},
+			</if>
+				<if test="glpwd!=null">
+				#{glpwd},
+			</if>
+				<if test="glsex!=null">
+				#{glsex},
+			</if>
+				<if test="glemail!=null">
+				#{glemail},
+			</if>
+				<if test="glphone!=null">
+				#{glphone},
+			</if>
+			<if test="glzsname!=null">
+				#{glzsname},
+			</if>
+			<if test="glindentity!=null">
+				#{glindentity},
+			</if>
+			<if test="glzhtime!=null">
+				to_date(#{glzhtime},'yyyy-MM-dd'),
+			</if>
+			<if test="glstatus!=null">
+				#{glstatus},
+			</if>
+			<if test="glyl1!=null">
+				#{glyl1},
+			</if>
+			<if test="glyl2!=null">
+				#{glyl2})
+			</if>
+		</trim>
+		<selectKey keyProperty="glid" keyColumn="gllid" order="AFTER" resultType="int">
+			select max(glid) gllid from GuanLi
+		</selectKey>
+	</insert>
+
+	<delete id="deleteGuanLiById" parameterType="int">
+		<foreach collection="array" item="glids" close=")"  open="delete GuanLi where glid in (" separator=",">
+		 	#{glids}
+		 </foreach>
+	</delete>
 </mapper>
