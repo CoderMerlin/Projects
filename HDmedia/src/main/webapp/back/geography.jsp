@@ -96,7 +96,7 @@
 		<label>人物图片:</label><input name="ppimg" id="show_person_ppimg" class="myinput"><br /><br />
 		<label>人物详解:</label>
 		<div id="show_person_content">
-		
+			
 		</div>
 	</form>
 	<div style="float:right;width:380px;margin-right:20px;">
@@ -118,19 +118,25 @@
 </div> 
 
 <!-- 添加人物 -->
-<div id="add_person_Info" class="easyui-dialog" title="添加人物信息" style="width:1300px;height:600px"  data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="" style="padding:20px;float:left;display:inline-block;">
-		<label>地域名称:</label><select id="show_province_prname" name="prname" style="width:150px;">
+<div id="add_person_Info" class="easyui-dialog" title="添加人物信息" style="width:1000px;height:600px"  data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
+	<form action="propersonBack_addPersonInfo.action" style="padding:20px;float:left;display:inline-block;" method="post" enctype="multipart/form-data">
+		<label>地域名称:</label><select id="show_province_prname" name="prid" style="width:150px;">
 		</select>
 		<label>人物名称:</label><input name="ppname" id="person_Info_ppname" class="myinput" ><br /><br />
-		<label>人物图片:</label><input type="file" name="ppimg" id="person_Info_ppimg" onchange="previewMultipleImage(this,'show_person_Info_ppimg')" required/><br /><br />
-		<label> 状态 :</label><input name="ppstatus" id="person_Info_ppstatus" class="myinput" required/><br /><br />
+		<label>人物图片:</label><input type="file" name="upload" id="person_Info_ppimg" onchange="previewMultipleImage(this,'show_person_Info_ppimg')" required/><br /><br />
+		<label> 状态 :</label>
+		<select id="person_Info_ppstatus" name="ppstatus" style="width:150px;">
+			<option value="1">存在</option>
+			<option value="0">不存在</option>
+		</select>
 		<label>内 容 :</label>
 		<div>
-			<script id="editor" type="text/plain" style="width:800px;height:200px;">
-			</script>
+			<textarea rows="" cols="" name="ppcontent" style="resize:none; width:300px;height:250px">
+				
+			</textarea>
 		</div><br/><br/>
-		<a href="javascript:addPersonInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
+		<input type="submit" class="easyui-linkbutton" data-options="iconCls:'icon-add'" value="添加"/> 
+		<!-- <a href="javascript:addPersonInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a> -->
 	</form>
 	<div style="float:right;width:380px;margin-right:20px;">
 		<fieldset id="show_person_Info_ppimg">
@@ -341,7 +347,6 @@ function showdiyuperson(prid) {
 }
 
 //打开添加人物信息
-var addPersonUE = UE.getEditor('editor');
 function openAddPersonInfo(){
 	$("#win22").dialog("close");
 	$("#add_person_Info").dialog("open");
@@ -357,8 +362,8 @@ function openAddPersonInfo(){
 	},"json");
 }
 
-//添加人物
-function addPersonInfo(){
+//添加人物信息
+/* function addPersonInfo(){
 	console.info("添加人物信息");
 	var prid=$("#show_province_prname").val();
 	var ppname = $("#person_Info_ppname").val();
@@ -393,7 +398,7 @@ function addPersonInfo(){
 	});
 }
 
-
+ */
 
 
 

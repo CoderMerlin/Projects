@@ -15,5 +15,14 @@ public interface YongHuMapper {
 	int updateYongHu(YongHu yongHu);
 	int addYongHu(YongHu yongHu);
 	List<YHBean> findYongHuByBean(YHBean yhBean);
+	
+
+	/**
+	 * 前台获取用户信息
+	 * @param yhzcid
+	 * @return
+	 * @author HM
+	 */
+	YongHu selectYongHuInfo(int yhzcid);
 
 }

@@ -237,4 +237,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 			order by yhzctime desc) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
+	
+	
+	<!-- 前台获取用户信息 -->
+	<select id="selectYongHuInfo" parameterType="int" resultType="YongHu">
+		select * from yonghu where yhzcid=#{yhzcid}
+	</select>
+	
+	
 </mapper>

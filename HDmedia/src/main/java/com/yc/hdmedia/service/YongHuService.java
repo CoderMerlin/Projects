@@ -20,4 +20,14 @@ public interface YongHuService {
 
 	List<YHBean> findYongHuByBean(YHBean yhBean);
 
+	
+	/**
+	 * 前台获取用户信息
+	 * @param yhzcid
+	 * @return
+	 * @author HM
+	 */
+	YongHu getYongHuInfo(int yhzcid);
+	
+	
 }

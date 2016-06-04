@@ -54,4 +54,10 @@ public class YongHuServiceImpl implements YongHuService {
 		return yongHuMapper.findYongHuByBean(yhBean);
 	}
 
+	
+	@Override
+	public YongHu getYongHuInfo(int yhzcid) {
+		return yongHuMapper.selectYongHuInfo(yhzcid);
+	}
+
 }
