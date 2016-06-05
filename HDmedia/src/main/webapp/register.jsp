@@ -42,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span class="checkboxPic check_chk" tabindex="-1" isshow="false">
 					<i class="i_icon"></i>
 				</span>
+				<input type="checkbox" clstag="pageclick|keycount|20150112ABD|6" tabindex="3" class="jdcheckbox" name="chkRememberMe" id="autoLogin">
 				<label class="pointer">我已阅读并接受</label>
 				<a href="#" target="_blank" class="linkABlue">《弘道传媒服务协议条款》</a>
 			</div>

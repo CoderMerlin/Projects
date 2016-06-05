@@ -22,6 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="update" parameterType="String">
-		update yonghuzc set yhzcyl1=1 where yhname=#{yhname}
+		update yonghuzc set yhzcyl1=1 where yhemail=#{yheamil}
 	</update>
 </mapper>

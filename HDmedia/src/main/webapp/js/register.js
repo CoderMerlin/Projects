@@ -174,7 +174,7 @@
 			$(".error2").html("请填写验证码");
 			$(".error2").css("display","block");
 		}
-        else if($(".kapkey").val().length<6)
+        else if($(".kapkey").val().length<3)
         {   
         	$(".kapkey").parent().addClass("errorC");
             $(".error2").html("验证码长度有误！");

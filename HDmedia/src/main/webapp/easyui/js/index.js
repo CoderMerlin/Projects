@@ -334,6 +334,26 @@
 	 });
 	 
 	 
+	 //公告管理
+	 $("#gonggao-tree").tree({
+		 onClick:function(node){
+			 var obj=$('#index_content');
+			 if(node.id=="notice_operate"){
+				//判断浏览公告是否打开
+				if(obj.tabs("exists","公告操作")){  //则选中
+					obj.tabs("select","公告操作");
+				}else{
+					obj.tabs('add',{
+						title:'公告操作',
+						closable:true,
+						fit:true,
+						href:"back/noticeoperate.jsp"
+					});
+				}
+			 }
+		 }
+	 });	 
+	 
 	 
  });
  

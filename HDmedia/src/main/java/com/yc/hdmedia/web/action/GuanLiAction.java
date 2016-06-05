@@ -55,6 +55,12 @@ public class GuanLiAction implements ModelDriven<GuanLi>,SessionAware {
 			session.put("loginGuanLi",guanLi);
 			return "index";
 		}
+		
+	//管理员登陆注销
+		public String loginOut(){
+			session.put("loginGuanLi",null);
+			return "index";
+		}
 	
 	
 	public String getAllGuanLi(){

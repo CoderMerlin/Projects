@@ -30,7 +30,7 @@
 		<div id="top_adminlogin_right">
 			<c:if test="${not empty sessionScope.loginGuanLi.glname}">
 				<a href="#"><font color="#FF000" size="2">当前登录用户：${loginGuanLi.glname }</font></a>&nbsp;&nbsp;
-					<a href="javascript:loginOut()"><font color="#FF0000" size="2">[注销]</font></a>
+					<a href="guanLi_loginOut.action"><font color="#FF0000" size="2">[注销]</font></a>
 			</c:if>
 			<c:if test="${sessionScope.loginGuanLi.glname eq null}">
 				<a href="guanLi.jsp"><font color="#FF0000" size="2">请登录</font></a>
@@ -121,8 +121,13 @@
 			</div>
 
 			<div title="公告管理" iconcls="icon-reload" style="overflow: auto;"padding: 10px;">
-				<li id="notice_browse">浏览公告</li>
-				<li id="notice_operate">公告操作</li>
+					<ul class="easyui-tree" id="gonggao-tree">
+						<li data-options="state:'open'"><span>公告管理</span>
+							<ul>
+							<li id="notice_operate">公告操作</li>
+							</ul>
+						</li>
+					</ul>	
 			</div>
 			<div title="帖子管理" iconcls="icon-search" style="overflow: auto;"padding: 10px;">
 			</div>

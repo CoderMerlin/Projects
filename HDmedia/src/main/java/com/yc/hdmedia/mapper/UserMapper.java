@@ -11,5 +11,5 @@ public interface UserMapper {
 	
 	User loginByMail(User user);     //用户登录通过邮箱
 	
-	int update(String yhname);
+	int update(String yhemail);
 }

@@ -118,7 +118,7 @@ form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
 }
 
 #load, #next, #submit {
-	width: 350px;
+	width: 360px;
 	height: 40px;
 	margin-top: 30px;
 	background: #EB5B0E;
@@ -130,7 +130,7 @@ form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
 	letter-spacing: 3px;
 	cursor: pointer;
 	float: left;
-	margin-left: 13%;
+	margin-left: 9%;
 }
 
 #pwd, #pwd1, #pwd2 {

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.GongGaoMapper">
+	
+	<insert id="addGongGao" parameterType="GongGao">
+		insert into gonggao values(seq_gonggao_gid.nextval,#{gtitle},#{gtext},#{gtime},#{gstatus},#{ggyl1},#{ggyl2,jdbcType=VARCHAR})
+	</insert>
+	
+	<!-- 查询一共有多少个公告 -->
+	<select id="total" resultType="int">
+		select count(1) from gonggao
+	</select>
+	
+	<!-- 通过公告id查找公告 -->
+	<select id="findGongGaoByGid" parameterType="int" resultType="GongGao">
+		select * from gonggao where gid=#{gid}
+	</select>
+	
+	<!-- 查找所有的公告 -->
+	<select id="getAllGongGao" parameterType="map" resultType="GongGao">
+		select * from (select a.*,rownum rn from (select * from gonggao order by gid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	
+</mapper>
