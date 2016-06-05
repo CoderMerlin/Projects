@@ -3,6 +3,7 @@ package com.yc.hdmedia.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.yc.hdmedia.entity.HDSearch;
 import com.yc.hdmedia.entity.TieZi;
 
 /**
@@ -54,4 +55,13 @@ public interface TieZiMapper {
 	public List<TieZi> findstzlcw(int tid);
 	
 	public TieZi findshow(int ltid);
+
+	
+	/**
+	 * 根据内容搜索相关帖子
+	 * @param content 
+	 * @author HM
+	 * @return
+	 */
+	public List<HDSearch> selectTeiZiByContent(String content);
 }

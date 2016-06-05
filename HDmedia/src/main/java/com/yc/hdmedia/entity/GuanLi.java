@@ -67,7 +67,10 @@ public class GuanLi {
 		return glindentity;
 	}
 	public void setGlindentity(String glindentity) {
-		this.glindentity = glindentity;
+		if(glindentity!=null){
+			String glidents=glindentity.substring(0,3)+"*****"+glindentity.substring(11,glindentity.length());
+			this.glindentity = glidents;
+		}
 	}
 	public String getGlzhtime() {
 		return glzhtime;

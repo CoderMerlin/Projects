@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.websocket.Session;
 
@@ -42,6 +43,7 @@ public class PropersonBackAction implements SessionAware,ModelDriven<PropersonBa
 	private File[] upload;//上传文件
 	private String[] uploadFileName;//上传文件名
 	private String[] uploadContentType;//上传文件类型
+	//路径
 	
 	
 	public void setUpload(File[] upload) {
@@ -61,23 +63,29 @@ public class PropersonBackAction implements SessionAware,ModelDriven<PropersonBa
 	public String addPersonInfo(){
 		DataMap.clear();
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
-		System.out.println("上传的地址："+path);
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//开始上传
-				File[] fs=new File(path).listFiles(); //取出所有上传文件
-				List<String> files=new ArrayList<String>();
-				for(File file:fs){
-					files.add(file.getName());
-				}
-				ActionContext.getContext().getSession().put("image",files);//解耦合方法取出session
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//开始上传
+    			//为了方便多次测试，把上传到服务器的文件中，在工程中也传一份，开发完成后在删除
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//开始上传
+    			System.out.println("上传成功！");
+    			
 			} catch (IOException e) {
 				System.out.println("上传失败...");
 				e.printStackTrace();
 			}
-			propersonBack.setPpimg(path+"/"+uploadFileName[0]);
-			
 		}
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		propersonBack.setPpimg(fileName+picture);
 		LogManager.getLogger().debug("获取前台人物信息==:>"+propersonBack);
 		int result=georaphyBackService.addPersonInfo(propersonBack);
 		if(result>0){
@@ -87,8 +95,6 @@ public class PropersonBackAction implements SessionAware,ModelDriven<PropersonBa
 		DataMap.put("rows", result);
 		return "fail";
 	}
-	
-	
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
