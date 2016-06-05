@@ -60,6 +60,8 @@ create table yonghu(
    yhyl2   varchar2(100)   --预留字段2
 )
 
+
+select yhname  from yonghu yh,yonghuzc yhzc where yhzc.yhzcid=yh.yhzcid and yhzcid=1001;
 select * from yonghu where yhname='zs123' and yhpwd='3DA8155EE7F6A2FB';
 
 select * from yonghuzc yhzc,yonghu yh  where yhzc.yhzcid=yh.yhzcid and  (yhzc.yhname='zs123' and yhzc.yhpwd='3DA8155EE7F6A2FB')
@@ -147,7 +149,6 @@ select count(gid) from gonggao
 --论坛栏目表
  --论坛栏目表
 create table luntan(
-
    ltid int primary key,            --论坛编号
    ltname varchar2(50) not null,     --论坛名称
    lttime date,     --论坛栏目创建时间
@@ -156,7 +157,7 @@ create table luntan(
    ltyl2  varchar2(2000)        --图片
 )
 
-
+select ltname from luntan where ltid=1001;
 --增删改查
 create sequence seq_luntan_ltid start with 1001 increment by 1;
 insert into luntan values(seq_luntan_ltid.nextval,'站长互助',to_date('2015-12-30 11:15:44','yyyy-mm-dd hh24:mi:ss'),1,'交流区','');
@@ -284,13 +285,26 @@ create table tiezi(
    tzyl1  varchar2(100),        --预留字段1
    tzyl2  varchar2(100)       --预留字段2
    )
-   drop table tiezi;
+drop table tiezi;
+insert into tiezi (tid, ltid, yhid,tzname,tzzy,tztime,weight,tztext,tzphoto,tzclick,status,tzyl1,tzyl2)
+values (1001,1001,1001,'接口是干嘛用的?','首页上全都是水，你们就不怕山洪暴发么,我来点干货填一填,中午休息的时候看了这个帖子',
+to_date('2015-10-10 00:00:00','yyyy-mm-dd hh24:mi:ss'),1,'先来看看什么样的语言有接口语法注意这里说的是编写程序的时候使用的接口语法至于其他形式完成接口功能的方式不讨论Java有，C++有，C#有JavaScript没有，Python没有，Ruby没有',
+'',11,1,'','');
+
+
+select yhname from yonghuzc yhzc,yonghu yh where yhzc.yhzcid=yh.yhzcid and yh.yhid=1001;
+select ltname from luntan where ltid=1001 and ltstatus=1;
+
+select lt.ltname,yhzc.yhname,tz.tzname,tz.tzclick,tz.tztext,tz.tztime from  tiezi tz,luntan lt,yonghu yh, yonghuzc yhzc 
+where status=1 and tz.ltid=lt.ltid and  tz.yhid=yh.yhid  and yh.yhzcid=yhzc.yhzcid 
+and tztext like '%Java%' order by tzclick
+
+
+
+
+
+
    drop sequence seq_tiezi_tid;
-   select * from tiezi where tid=7;
-   select * from luntan;
-   delete luntan where ltid=1004; 
-   select * from tiezi;
-   delete tiezi where tid=4;
    select * from tiezi where status=1 order by tzclick
 create sequence seq_tiezi_tid start with 0001 increment by 1;
 select * from (select a.*,rownum rn from (select ht.*,tz.tzname,yh.yhzsname,yh.yhphoto from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid and tz.tid=7 and ht.htstatus=1) a where rownum<=7)b where rn>0;

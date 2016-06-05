@@ -1,0 +1,78 @@
+body{background: #fafafa; min-height:600px}
+.footerWrap{background-color:#f2f2f2}
+.turnbackhome{display: inline-block; float: left; font-size: 16px; color: #7e7e7e}
+.turnbackhome:hover{color: #32a5e7}
+#accountOpt{margin-top: 0}
+#hd{border-bottom: none; height: auto; overflow: hidden; background: #fafafa; min-height: 720px}
+#hd .wp{min-height: 100px; height:auto; overflow: hidden}
+#logo{display:block;width:272px;margin: 0 auto; float: none}
+.iconfont {
+    font-size: 69px;
+}
+#searchNav{display: block; width: 614px; overflow: hidden; margin:30px auto 10px;height: 20px;}
+.searchNav{display: block; cursor: pointer; font-size: 16px; color: #7e7e7e; line-height: 20px;}
+#searchNav .active{color: #32a5e7}
+.pull-left{float: left; margin-right: 15px;}
+.pull-right{float: right; margin-left: 15px;}
+.searchBtn{display: block; width: 614px; height: auto; overflow: hidden; margin:0 auto 30px}
+.searchBtn .searchTxt{display: block; float: left; font-size: 16px; color: #7e7e7e; text-indent: 18px; width: 562px; line-height: 21px; padding-top: 13px; padding-bottom: 14px; border: 1px solid #1788e8; border-top-left-radius: 5px; border-bottom-left-radius: 5px;background: #fafafa;}
+.searchBtn .searchSubmit{display: block; float: left; width: 50px; height: 50px; outline: none; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border: none; background: #1788E8}
+.icon{background:#fff url("../images/searchSprite.png") no-repeat 0 0}
+.icon_search{width: 40px; height: 45px; margin: auto; background-position: -50px 0;}
+.icon_arrow{display:inline-block; width: 20px; height: 20px; margin: auto; background-position: -20px -25px; vertical-align: middle; background-color: transparent}
+.searchNav:hover .icon_arrow{background-position: -20px 0}
+.tag{width: 614px; height: auto; overflow: hidden; margin: 0 auto}
+.tag span{display: inline; zoom: 1; display: inline-block; padding: 6px 12px; background: #c7c7c7; border-radius: 5px; margin-right: 20px; margin-bottom: 10px;}
+.tag span:hover{background:#919191}
+.tag span a{font-size: 16px; color: #f6f6f6;}
+#adPanel{display: none; width: 136px; height: auto; overflow: hidden; padding: 4px 10px; background: #fff;
+    box-shadow: #bebebe 5px 5px 20px, #bebebe -5px -5px 20px; position: absolute; top: 295px; left: 768px; z-index: 999; border-radius: 5px;}
+#adPanel a{display:block; font-size: 16px; line-height: 32px; color: #7e7e7e}
+#adPanel a:hover{background:#e5edf2; color:#00a7ea}
+.searchAdForm{width: 614px; height: auto; overflow: hidden; margin: 10px auto}
+.searchAdForm .row{width: 100%; clear: both; height: auto; overflow: hidden; font-size: 16px; color: #7e7e7e; margin: 35px auto}
+.searchAdForm .td1{display: block; float: left; width: 102px; height: 42px; text-align: left; line-height: 42px;}
+.searchAdForm .td2{display: block; float: left; width: 512px; height: auto; min-height: 42px; overflow: visible; line-height: 42px;}
+.searchAdForm .td2 button{display: block; width: 102px; height: 38px; color: #fff; background: #32a5e7; text-align: center; line-height: 38px; border: none; border-radius: 5px; font-size: 18px;}
+.searchAdForm .keyword, .searchAdForm .author{display: block; width: 510px; height: 40px; border: 1px solid #cdcdcd; border-radius: 5px; font-size: 16px; color: #7e7e7e; line-height: 40px; text-indent: 18px;}
+.searchAdForm .radio,.searchAdForm .select,.searchAdForm .checkbox{display:block; float:left; margin-right: 25px; cursor: pointer; white-space: nowrap; height: 42px; line-height: 42px;}
+.searchAdForm .radio .icon_radio,.searchAdForm .checkbox .icon_checkbox{display: block; float: left; width: 20px; height: 20px; margin-top: 11px; margin-right: 4px; vertical-align:text-bottom; background: url("../img/searchSprite.png") no-repeat 0 0}
+.searchAdForm .active .icon_radio{background-position: 0 -20px}
+.searchAdForm .checkbox .icon_checkbox{background-position: -80px 0}
+.searchAdForm .active .icon_checkbox{background-position: -80px -20px}
+.searchAdForm .checkbox input{display: none}
+.searchAdForm .select {display: block;position: relative; min-width: 108px; text-align: center; border-radius: 5px; height: 38px; line-height: 38px; border: 1px solid #cdcdcd; padding-left: 16px; padding-right: 16px; color: #7e7e7e; overflow: visible}
+.selectUl{position: absolute;display: none; background: #fff; border-radius: 5px; width: 122px;height: auto; overflow: hidden; text-align: center; padding: 4px 10px; box-shadow: #cdcdcd 5px 5px 20px, #cdcdcd -5px -5px 20px;z-index: 999}
+.selectUl li{font-size: 16px; color: #7e7e7e; line-height: 32px; cursor: pointer}
+#sel4searchRange{height: 300px; display: none; position: absolute}
+#sel4searchRange ul{text-align:left; height: auto; overflow: hidden;}
+#sel4searchRange li{padding-left: 10px;}
+#sel4searchRange .subUl{position: absolute}
+
+.result{display: block; width: 800px; height: auto; overflow: hidden; padding: 20px 30px; margin: 50px auto 32px; background: #fff}
+.result .resultTips{font-size: 16px; line-height: 16px; text-align: left}
+.rlt_table{margin: 32px auto 0;}
+.rlt_table .rlt_tr{width: 100%; border-bottom: 1px solid #ebebeb; border-top: 1px solid #fafafa; height: auto; overflow: hidden; clear: both}
+.rlt_table .rlt_th{font-size: 16px; float: left; line-height: 48px; height: 48px; text-align: center; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; padding-left: 5px; padding-right: 5px;}
+.rlt_thead .rlt_tr{border-top: none}
+.rlt_thead .rlt_th{color: #2b2b2b;}
+.rlt_thead .active,.rlt_thead .rlt_complex a:hover,.rlt_lastUpdate:hover{color:#00a7ea; cursor: pointer}
+.rlt_tbody .rlt_tr:last-child{border-bottom: none}
+.rlt_tbody .rlt_th{color: #7e7e7e}
+.rlt_table .rlt_title{width: 405px; text-align: left; text-indent: 18px;}
+.rlt_table .rlt_module{width: 100px;}
+.rlt_table .rlt_author{width: 65px;}
+.rlt_tbody .rlt_module a,.rlt_tbody .rlt_author a{color: #32a5e7; display: inline-block; width: 100%; white-space: nowrap; text-overflow: ellipsis; overflow: hidden}
+.rlt_table .rlt_complex{width: 95px;}
+.rlt_table .rlt_lastUpdate{width: 85px;}
+.rlt_table .rlt_content{padding:0 18px; height: auto; width: 764px; *padding-bottom: 20px; overflow: hidden; clear: both; line-height: 24px; margin-bottom: 24px; white-space: normal; text-align: left; word-break: break-all; word-wrap: break-word}
+.rlt_table .keyword{color: #ea5246}
+.rlt_tbody .rlt_complex a,.rlt_tbody .rlt_lastUpdate{cursor: default}
+@media (max-device-width: 800px) {
+    .searchBtn .searchTxt{width: 561px; border-left-width: 2px; line-height: 20px; border-bottom-width: 2px}
+    #pageInput{width: 44px;border-right-width: 2px; height: 34px; border-top-width: 2px;}
+    .pg a, .pg strong, .pgb a, .pg label .px, .pg .page_go{border-width:2px}
+}
+@media (max-device-width: 768px) {
+    .searchBtn .searchTxt{line-height: 21px; border-bottom-width: 1px}
+}

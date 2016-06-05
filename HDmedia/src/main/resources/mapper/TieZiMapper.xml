@@ -66,4 +66,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="find" parameterType="int" resultType="TieZi">
 		select tz.*,lt.ltname,yh.yhzsname from tiezi tz,luntan lt,yonghu yh where tz.ltid=lt.ltid and tz.yhid=yh.yhid and tz.status=1 and tz.tid=#{tid}
 	</select>
+	
+	
+	<!-- 根据内容搜索相关帖子(hm) -->
+	<select id="selectTeiZiByContent" parameterType="string" resultType="HDSearch">	
+		select lt.ltname,yhzc.yhname,tz.tzname,tz.tzname,tz.tzclick,tz.tztext,tz.tztime from  tiezi tz,luntan lt,yonghu yh, yonghuzc yhzc 
+		where status=1 and tz.ltid=lt.ltid and  tz.yhid=yh.yhid  and yh.yhzcid=yhzc.yhzcid 
+		and tztext like '%Java%' order by tzclick
+	</select>
+	
+	
+	
 </mapper>

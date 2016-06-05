@@ -183,7 +183,7 @@
 			0730-100888666
 		</p>
 	</div>
-	<div data-options="region:'center',title:'内容',iconCls:'icon-world' " >
+	<div data-options="region:'center',title:'内容',iconCls:'icon-world'" >
 		<div id="index_content" class="easyui-tabs" data-options="fit:true">
 		</div>
 	</div>
