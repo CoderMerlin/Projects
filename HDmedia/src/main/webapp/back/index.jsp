@@ -6,7 +6,8 @@
 <base href="/HDmedia/">
 <meta charset="UTF-8">
 <title>弘道传媒—后台管理</title>
-<link rel="stylesheet" type="text/css" href="easyui/css/easyui.css">
+<!-- <link rel="stylesheet" type="text/css" href="easyui/css/easyui.css"> -->
+<link rel="stylesheet" id="easyuiTheme" type="text/css" href="easyui/themes/<c:out value="${cookie.easyuiThemeName.value}" default="default" />/easyui.css">
 <link rel="stylesheet" type="text/css" href="easyui/css/icon.css">
 <link rel="stylesheet" type="text/css" href="easyui/css/demo.css">
 <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -16,6 +17,7 @@
 <script type="text/javascript" src="easyui/js/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="easyui/js/index.js"></script>
 <script type="text/javascript" src="easyui/js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="easyui/js/jquery.cookie.js"></script>
 
 <script type="text/javascript" src="js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="js/showpic.js"></script>
@@ -24,9 +26,41 @@
 <script type="text/javascript" src="ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="ueditor/ueditor.all.min.js"></script>
 <script type="text/javascript" src="ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+	$(function() {
+     	var adminName=localStorage.getItem("currentAdminUser");
+     	if(adminName!=null){
+     		document.getElementById("currentAdminUser").innerHTML=adminName;
+     	}
+	});
+
+	function loginOutAdminInfo() {
+		$.messager.confirm('信息确认', '您确定要退出?', function(r) {
+			if (r) {
+				localStorage.removeItem("currentAdminUser");
+				localStorage.clear();
+				window.location = "adminLoginOut.jsp";
+			}
+		});
+	}
+</script>
 </head>
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false" id="newslogo">
+		<div style="float:right;margin-right:20px">
+			<a href="" id="mb" class="easyui-menubutton"
+				 data-options="menu:'#mm',iconCls:'icon-edit'" style="margin-right:20px">更换主题</a>   
+			<div id="mm" style="width:150px;">       
+			    <div onClick="changeTheme('default')">默认皮肤</div>   
+			    <div onClick="changeTheme('gray')">灰色惬意</div>   
+			    <div onClick="changeTheme('sunny')">橙色活力</div>   
+			    <div onClick="changeTheme('cupertino')">现代蓝调</div>   
+			    <div onClick="changeTheme('metro')">Metro风格</div>   
+			</div>  
+		<!-- 	<label>当前用户：</label>
+			<span id="currentAdminUser" style="font-size: 15px;color: green"> </span> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a rel="nofollow" href="#" onclick="loginOutAdminInfo()">退出登录</a> -->
+		</div>
 		<div id="top_adminlogin_right">
 			<c:if test="${not empty sessionScope.loginGuanLi.glname}">
 				<a href="#"><font color="#FF000" size="2">当前登录用户：${loginGuanLi.glname }</font></a>&nbsp;&nbsp;
@@ -39,7 +73,7 @@
 			</c:if>
 		</div>
 	</div>
-	<div data-options="region:'west',split:true,title:'导航'"
+	<div data-options="region:'west',split:true,title:'导航',iconCls:'icon-search'" 
 		style="width: 200px; padding: 10px;">
 		<div id="aa" class="easyui-accordion"
 			style="position: absolute; top: 27px; left: 0px; right: 0px; bottom: 0px;">
@@ -134,9 +168,12 @@
 			<div title="资源管理"></div>
 		</div>
 	</div>
-	<div data-options="region:'east',split:true,collapsed:true,title:'帮助'"
+	<!-- <div data-options="region:'east',split:true,collapsed:true,title:'帮助'"
 		style="width: 100px; padding: 0px; margin: 0px;">
 		<img alt="图片加载失败" src="images/weixin.jpg" width="90px" height="90px">
+	</div> -->
+	<div data-options="region:'east',collapsed:false,title:'日期',iconCls:'icon-date'" style="width: 240px;padding: 10px;">
+		<div id="dd" class="easyui-calendar" style="width: 220px;height: 220px"></div>
 	</div>
 	<div class="footer" data-options="region:'south',border:false"
 		id="copyright">
@@ -146,7 +183,7 @@
 			0730-100888666
 		</p>
 	</div>
-	<div data-options="region:'center',title:'内容'">
+	<div data-options="region:'center',title:'内容',iconCls:'icon-world' " >
 		<div id="index_content" class="easyui-tabs" data-options="fit:true">
 		</div>
 	</div>

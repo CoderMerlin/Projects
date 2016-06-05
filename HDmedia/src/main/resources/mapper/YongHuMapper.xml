@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.YongHuMapper">
+	
+	<!-- 查询一共有多少个用户 -->
+	<select id="getTotal" resultType="int">
+		select count(1) from yonghu
+	</select>
+	
+	<!-- 通过用户id查找用户 -->
+	<select id="selectYongHuByGLId" parameterType="int" resultType="YongHu">
+		select * from yonghu where yhid=#{yhid}
+	</select>
+	
+	<select id="getAllYongHu" parameterType="map" resultType="YongHu">
+		select * from (select a.*,rownum rn from (select * from yonghu order by yhid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<update id="updateYongHu" parameterType="YongHu">
+		update yonghu
+		<set>
+			<if test="yhzcid!=null">
+				yhzcid=#{yhzcid},
+			</if>
+			<if test="yhsex!=null">
+				yhsex=#{yhsex},
+			</if>
+				<if test="yhage!=null">
+				yhage=#{yhage},
+			</if>
+				<if test="yhphone!=null">
+				yhphone=#{yhphone},
+			</if>
+				<if test="yhqq!=null">
+				yhqq=#{yhqq},
+			</if>
+				<if test="yhbirthday!=null">
+				yhbirthday=to_date(#{yhbirthday},'yyyy-MM-dd'),
+			</if>
+			<if test="yhaddr!=null">
+				yhaddr=#{yhaddr},
+			</if>
+			<if test="yhphoto!=null">
+				yhphoto=#{yhphoto},
+			</if>
+			<if test="yhftnum!=null">
+				yhftnum=#{yhftnum},
+			</if>
+			<if test="yhdownload!=null">
+				yhdownload=#{yhdownload},
+			</if>
+			<if test="yhupload!=null">
+				yhupload=#{yhupload},
+			</if>
+			<if test="yhjf!=null">
+				yhjf=#{yhjf},
+			</if>
+			<if test="yhqd!=null">
+				yhqd=#{yhqd},
+			</if>
+			<if test="yhjy!=null">
+				yhjy=#{yhjy},
+			</if>
+			<if test="yhzhtime!=null">
+				yhzhtime=to_date(#{yhzhtime},'yyyy-MM-dd'),
+			</if>
+			<if test="yhqianming!=null">
+				yhqianming=#{yhqianming},
+			</if>
+			<if test="yhstatus!=null">
+				yhstatus=#{yhstatus},
+			</if>
+		</set>
+		where yhid=#{yhid}
+	</update>
+	
+	<select id="getYongHuById" parameterType="int" resultType="YongHu">
+		select * from yonghu where yhid=#{yhid}
+	</select>
+	
+	<insert id="addYongHu" parameterType="YongHu">
+		<trim prefixOverrides="," suffixOverrides="," prefix="insert into yonghu(" suffix=")">
+			yhid,yhzcid,
+			<if test="yhzsname!=null">
+				yhzsname,
+			</if>
+			<if test="yhsex!=null">
+				yhsex,
+			</if>
+			<if test="yhage!=null">
+				yhage,
+			</if>
+				<if test="yhphone!=null">
+				yhphone,
+			</if>
+				<if test="yhindentity!=null">
+				yhindentity,
+			</if>
+			<if test="yhqq!=null">
+				yhqq,
+			</if>
+			<if test="yhbirthday!=null">
+				yhbirthday,
+			</if>
+			<if test="yhaddr!=null">
+				yhaddr,
+			</if>
+			<if test="yhphoto!=null">
+				yhphoto,
+			</if>
+			<if test="yhftnum!=null">
+				yhftnum,
+			</if>
+			<if test="yhdownload!=null">
+				yhdownload,
+			</if>
+			<if test="yhupload!=null">
+				yhupload,
+			</if>
+			<if test="yhjf!=null">
+				yhjf,
+			</if>
+			<if test="yhqd!=null">
+				yhqd,
+			</if>
+			<if test="yhjy!=null">
+				yhjy,
+			</if>
+			<if test="yhzhtime!=null">
+				yhzhtime,
+			</if>
+			<if test="yhqianming!=null">
+				yhqianming,
+			</if>
+			<if test="yhstatus!=null">
+				yhstatus,
+			</if>
+			<if test="yhyl1!=null">
+				yhyl1,
+			</if>
+			<if test="yhyl2!=null">
+				yhyl2
+			</if>
+		</trim>
+		<trim prefixOverrides="," suffixOverrides="," prefix="values(" suffix=")">
+			 <choose>
+			 	<when test="yhid!=0">yhid=#{yhid},</when>
+			 	<otherwise> seq_yonghu_yhid.nextval,</otherwise>
+			 </choose>
+			#{yhzcid},
+			<if test="yhzsname!=null">
+				#{yhzsname},
+			</if>
+			<if test="yhsex!=null">
+				#{yhsex},
+			</if>
+			<if test="yhage!=null">
+				#{yhage},
+			</if>
+			<if test="yhphone!=null">
+				#{yhphone},
+			</if>
+				<if test="yhindentity!=null">
+				#{yhindentity},
+			</if>
+			<if test="yhqq!=null">
+				#{yhqq},
+			</if>
+			<if test="yhbirthday!=null">
+				to_date(#{yhbirthday},'yyyy-MM-dd'),
+			</if>
+			<if test="yhaddr!=null">
+				#{yhaddr},
+			</if>
+			<if test="yhphoto!=null">
+				#{yhphoto},
+			</if>
+			<if test="yhftnum!=null">
+				#{yhftnum},
+			</if>
+			<if test="yhdownload!=null">
+				#{yhdownload},
+			</if>
+			<if test="yhupload!=null">
+				#{yhupload},
+			</if>
+			<if test="yhjf!=null">
+				#{yhjf},
+			</if>
+			<if test="yhqd!=null">
+				#{yhqd},
+			</if>
+			<if test="yhjy!=null">
+				#{yhjy},
+			</if>
+			<if test="yhzhtime!=null">
+				to_date(#{yhzhtime},'yyyy-MM-dd'),
+			</if>
+			<if test="yhqianming!=null">
+				#{yhqianming},
+			</if>
+			<if test="yhstatus!=null">
+				#{yhstatus},
+			</if>
+			<if test="yhyl1!=null">
+				#{yhyl1},
+			</if>
+			<if test="yhyl2!=null">
+				#{yhyl1})
+			</if>
+		</trim>
+	</insert>
+	<delete id="deleteYongHuById" parameterType="int">
+		delete yonghu where yhid=#{yhid}
+	</delete>
+	
+	<select id="getYongHuInfo" parameterType="int" resultType="YongHu">
+		select * from yonghu where yhzcid=#{yhzcid}
+	</select>
+	<select id="findYongHuByBean" parameterType="YHBean" resultType="YHBean">
+		select * from (select a.*,rownum rn from (select yh.yhzcid,yhname,yhemail,yhphone,yhzctime from yonghu yh,yonghuzc yhzc where yh.yhzcid=yhzc.yhzcid
+		
+			<if test="yhname!=0">
+			and	yhname like CONCAT(('%',#{yhname}),'%') 
+			</if> 
+			<if test="yhemail!=null">
+				and yhemail like CONCAT(('%',#{yhemail}),'%')
+			</if>
+			<if test="yhphone!=null">
+				and yhphone like CONCAT(('%',#{yhphone}),'%')
+			</if>
+			<if test="yhzctime!=null">
+				and yhzctime=to_date(#{yhzhtime},'yyyy-MM-dd')
+			</if>
+			order by yhzctime desc) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	
+	<!-- 前台获取用户信息 -->
+	<select id="selectYongHuInfo" parameterType="int" resultType="YongHu">
+		select * from yonghu where yhzcid=#{yhzcid}
+	</select>
+	
+	
+</mapper>

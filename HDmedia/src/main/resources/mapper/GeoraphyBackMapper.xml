@@ -20,5 +20,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from (select a.*,rownum rn from (select * from province order by prid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
 	
+	<!-- 通过省份id查看所有的人物 -->
+	<select id="selectAllPersonsByPrid" parameterType="int" resultType="propersonBack">
+		select pp.* from properson pp,province p where p.prid=pp.prid and p.prid=#{prid} and ppstatus=1 and prstatus=1
+	</select>
 	
+	<!-- 通过省份id查找所有人物的名称 -->
+	<select id="selectAllPersonNamesByPrid" parameterType="int" resultType="PropersonBack">
+		select pp.ppname, prpid from properson pp,province p where p.prid=pp.prid and p.prid=#{prid} and ppstatus=1 and prstatus=1
+	</select>
+	
+	<!-- 通过人物id获取人物的信息 -->
+	<select id="selectPersonByPrpid" parameterType="int" resultType="PropersonBack">
+		select * from properson where prpid=#{prpid}
+	</select>
+	
+	<!-- 后台获取所有省份的名称 -->
+	<select id="selectAllProvincePrnames" resultType="provinceBack">
+		select prid,prname from province where prstatus=1
+	</select>
+	
+	<!-- 添加人物 -->
+	<insert id="insertPersonInfo" parameterType="PropersonBack">
+		insert into properson values (seq_properson_ppid.nextval,#{prid},#{ppname},#{ppcontent},#{ppimg},#{ppstatus},'','')
+	</insert>
 </mapper>

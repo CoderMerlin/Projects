@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yc.hdmedia.entity.PropersonBack;
 import com.yc.hdmedia.entity.ProvinceBack;
 import com.yc.hdmedia.mapper.GeoraphyBackMapper;
 import com.yc.hdmedia.service.GeoraphyBackService;
@@ -35,6 +36,51 @@ public class GeoraphyBackServiceImpl implements GeoraphyBackService {
 	@Override
 	public int total() {
 		return georaphyBackMapper.selectTotal();
+	}
+
+
+
+	/**
+	 * 通过省份id查看所有人物信息
+	 * @param prpid
+	 * @return
+	 */
+	@Override
+	public List<PropersonBack> getAllPersonsByPrid(int prid) {
+		return georaphyBackMapper.selectAllPersonsByPrid(prid);
+	}
+
+
+	/**
+	 * 后台通过省份id获得所有的人物名称
+	 * @param prid
+	 * @return
+	 */
+	@Override
+	public List<PropersonBack> getAllPersonNamesByPrid(int prid) {
+		return georaphyBackMapper.selectAllPersonNamesByPrid(prid);
+	}
+
+	//通过人物id获取人物的信息
+	@Override
+	public PropersonBack getPersonByPrpid(int prpid) {
+		return georaphyBackMapper.selectPersonByPrpid(prpid);
+	}
+
+
+	/**
+	 * 后台获取所有省份的名称
+	 * @return
+	 */
+	@Override
+	public List<ProvinceBack> getAllProvincePrnames() {
+		return georaphyBackMapper.selectAllProvincePrnames();
+	}
+
+
+	@Override
+	public int addPersonInfo(PropersonBack propersonBack) {
+		return georaphyBackMapper.insertPersonInfo(propersonBack);
 	}
 
 }

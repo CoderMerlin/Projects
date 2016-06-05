@@ -22,10 +22,6 @@ public class GuanLiServiceImpl implements GuanLiService {
 		return guanLiMapper.login(guanLi);
 	}
 
-	@Override
-	public boolean addGuanLi(GuanLi guanLi) {
-		return false;
-	}
 
 	@Override
 	public boolean alterGuanli(GuanLi guanLi) {
@@ -38,8 +34,8 @@ public class GuanLiServiceImpl implements GuanLiService {
 	}
 
 	@Override
-	public boolean del(int glid) {
-		return false;
+	public int del(int[] glid) {
+		return guanLiMapper.deleteGuanLiById(glid);
 	}
 
 	@Override
@@ -60,6 +56,19 @@ public class GuanLiServiceImpl implements GuanLiService {
 		return guanLiMapper.selectGuanLiByGLId(glid);
 	}
 
-	
+	@Override
+	public int updateGuanLiInfo(GuanLi guanLi) {
+		return guanLiMapper.updateGuanLiByGLId(guanLi);
+	}
+
+	@Override
+	public GuanLi getGuanLiById(int glid) {
+		return guanLiMapper.getGuanLiById(glid);
+	}
+
+	@Override
+	public int addGuanLi(GuanLi guanLi) {
+		return guanLiMapper.addGuanLi(guanLi);
+	}
 
 }

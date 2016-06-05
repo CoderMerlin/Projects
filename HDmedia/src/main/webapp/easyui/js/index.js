@@ -258,6 +258,8 @@
 		 }
 	 });
 	 
+	 
+	 
 	 //作者及作品管理
 	 $("#authorandwork-tree").tree({
 		 onClick:function(node){
@@ -288,7 +290,7 @@
 				}
 			 }
 		 }
-	 });	 
+	 });
 	 //前台界面管理
 	 $("#qtstage-tree").tree({
 		 onClick:function(node){
@@ -393,5 +395,20 @@
 	 }
  }
  
-
+ /**
+  * EasyUI 更换主题的方法
+  * 
+  * @author Henry
+  * @requires jQuery cookie plugin
+  * @param themeName : 主题名称
+  */
+ changeTheme=function(themeName){
+ 	var $easyuiTheme = $('#easyuiTheme');
+ 	var url = $easyuiTheme.attr('href');
+ 	var href = url.substring(0, url.indexOf('themes')) + 'themes/' + themeName + '/easyui.css';
+ 	$easyuiTheme.attr('href', href);	
+ 	$.cookie('easyuiThemeName', themeName, {
+ 		expires : 7
+ 	});
+ } 
  

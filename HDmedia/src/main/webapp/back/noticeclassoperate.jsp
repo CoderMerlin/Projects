@@ -3,18 +3,20 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<table id="luntan_info"></table>
+<table id="luntan_info"  data-options="fit:true"></table>
 <script>
 var datagrid;
 var ltid;
+/**
+ * 论坛对方省份
+ */
 	$(function(){
 		var editRow=undefined;
 		var op;
 		var flag;
 		var luntanstatusObj=[{luntanid:0,luntanstatus:'不可用'},{luntanid:1,luntanstatus:'可用'}];
 		datagrid=$('#luntan_info').datagrid({   
-		    url:'../lunTanServlet', 
-		    queryParams:{op:"getPageLunTanInfo"},
+		    url:'lunTan_showAll.action', 
 		    fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -119,8 +121,8 @@ var ltid;
 		    					}
 		    					ltids+=rows[i].ltid;
 		    					//将要删除ltid 发送到服务器
-		    					$.post("../lunTanServlet",{op:"delLunTanInfo",ltids:ltids},function(data){
-				    				if(data==1){ //删除成功
+		    					$.post("lunTan_delLunTanInfo",{op:"delLunTanInfo",ltids:ltids},function(data){
+				    				if(data.total>0){ //删除成功
 				    					$.messager.show({
 				    						title:'删除提示',
 				    						msg:'论坛栏目信息删除成功..',
@@ -146,31 +148,43 @@ var ltid;
 		    		
 		    		//获取当前被修改的数据
 		    		var rows=datagrid.datagrid("getChanges")[0];
+		    		alert(rows);
+		    		var ltname=rows.ltname;
+		    		var ltstatus=rows.ltstatus
+		    		var ltyl1=rows.ltyl1;
 		    		if(rows==undefined){//说明当前没有被编辑
 		    			datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
 		        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
 		        		editRow=undefined;
 		    		}else{
-		    			rows["op"]=op;
-		    			
-		    			$.post("../lunTanServlet",rows,function(data){
-		    				data=parseInt( $.trim(data) );
-		    				if(data==1){ //添加成功
-		    					$.messager.show({
-		    						title:'成功提示',
-		    						msg:'论坛栏目信息'+flag+'成功..',
-		    						timeout:2000, //时间
-		    						showType:'slide'
-		    					});
-		    				}else{ //添加失败
-		    					$.messager.alert('失败提示！','论坛栏目信息'+flag+'失败...','error');
-		    				}
-		    				rows=null;
-		    				datagrid.datagrid("reload");  //重新加载数据一次
-		    				editRow=undefined;
-		    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
-			        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
-		    			});
+		    			if(op=="addLunTanInfo"){
+		    				$.post("lunTan_addLunTanInfo",{ltname:ltname,ltstatus:ltstatus,ltyl1:ltyl1},function(data){
+			    				if(data.total==1){ //添加成功
+			    					$.messager.show({title:'成功提示',msg:'论坛栏目信息'+flag+'成功..',timeout:2000,showType:'slide'});
+			    				}else{ //添加失败
+			    					$.messager.alert('失败提示！','论坛栏目信息'+flag+'失败...','error');
+			    				}
+			    				rows=null;
+			    				datagrid.datagrid("reload");  //重新加载数据一次
+			    				editRow=undefined;
+			    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+				        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+			    			});
+		    			}else if(op=="updateLunTanInfo"){
+		    				var ltid=rows.ltid;
+		    				$.post("lunTan_updateLunTanInfo",{ltid:ltid,ltname:ltname,ltstatus:ltstatus,ltyl1:ltyl1},function(data){
+			    				if(data.total==1){ //添加成功
+			    					$.messager.show({title:'成功提示',msg:'论坛栏目信息'+flag+'成功..',timeout:2000,showType:'slide'});
+			    				}else{ //添加失败
+			    					$.messager.alert('失败提示！','论坛栏目信息'+flag+'失败...','error');
+			    				}
+			    				rows=null;
+			    				datagrid.datagrid("reload");  //重新加载数据一次
+			    				editRow=undefined;
+			    				datagrid.datagrid("rejectChanges");  //回滚自创建以来或上次调用AcceptChanges，所有的变化数据
+				        		datagrid.datagrid("unselectAll"); //关闭当前正在编辑的行
+			    			});
+		    			}
 		    		}
 		    	}
 		  	},{
@@ -197,7 +211,7 @@ var ltid;
 	
 	function addLtpic(){
 		$.ajaxFileUpload({
-		  	url:"../lunTanServlet?op=addLunTanPicture",
+		  	url:"lunTan_addLunTanPicture",
 		  	secureuri:false,
 		  	fileElementId:"lt_ltpic",
 		  	dataType:"json",

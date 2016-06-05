@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<jsp:forward page="back/index.jsp" />
+<jsp:forward page="personalData_getYongHuInfo.action" />
 
 <!-- <!DOCTYPE html>
 <html>
