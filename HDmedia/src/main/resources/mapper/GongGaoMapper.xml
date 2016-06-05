@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.hdmedia.mapper.GongGaoMapper">
 	
 	<insert id="addGongGao" parameterType="GongGao">
-		insert into gonggao values(seq_gonggao_gid.nextval,#{gtitle},#{gtext},#{gtime},#{gstatus},#{ggyl1},#{ggyl2,jdbcType=VARCHAR})
+		insert into gonggao values(seq_gonggao_gid.nextval,#{gtitle},#{gtext},to_date(#{gtime},'yyyy-MM-dd'),#{gstatus},#{ggyl1},null)
 	</insert>
 	
 	<!-- 查询一共有多少个公告 -->
@@ -23,6 +23,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getAllGongGao" parameterType="map" resultType="GongGao">
 		select * from (select a.*,rownum rn from (select * from gonggao order by gid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
+	
+	<!-- 修改 -->
+	<update id="updateGongGao" parameterType="GongGao">
+		update gonggao
+		<set>
+			<if test="gtitle!=null">
+				gtitle=#{gtitle},
+			</if>
+				<if test="gtext!=null">
+				gtext=#{gtext},
+			</if>
+				<if test="gtime!=null">
+				gtime=to_date(#{gtime},'yyyy-MM-dd'),
+			</if>
+			<if test="gstatus!=null">
+				gstatus=#{gstatus},
+			</if>
+			<if test="ggyl1!=null">
+				ggyl1=#{ggyl1},
+			</if>
+		</set>
+		where gid=#{gid}
+	</update>
 	
 	
 </mapper>

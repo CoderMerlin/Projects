@@ -90,7 +90,7 @@
 								$("#yh_qianming_update").val(yh.yhqianming); //用户签名
 								
 								var str="";
-								str="<img src='../../uploadPic/"+yh.yhphoto+"' width='100px' height='100px' />&nbsp;";
+								c
 								$("#yonghu_photo_show").html($(str)); //用户头像
 							}
 							

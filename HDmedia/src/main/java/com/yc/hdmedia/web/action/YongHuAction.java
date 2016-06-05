@@ -29,9 +29,9 @@ public class YongHuAction implements ModelDriven<YongHu>{
 	@Autowired
 	private YongHuService yongHuService;
 	
-	private File[] upload;//ä¸Šä¼ æ–‡ä»¶
-	private String[] uploadFileName;//ä¸Šä¼ æ–‡ä»¶å
-	private String[] uploadContentType;//ä¸Šä¼ æ–‡ä»¶ç±»å‹
+	private File[] upload;//ÉÏ´«ÎÄ¼ş
+	private String[] uploadFileName;//ÉÏ´«ÎÄ¼şÃû
+	private String[] uploadContentType;//ÉÏ´«ÎÄ¼şÀàĞÍ
 	public void setUpload(File[] upload) {
 		this.upload = upload;
 	}
@@ -76,15 +76,15 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
-				File[] fs=new File(path).listFiles(); //å–å‡ºæ‰€æœ‰ä¸Šä¼ æ–‡ä»¶
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//¿ªÊ¼ÉÏ´«
+				File[] fs=new File(path).listFiles(); //È¡³öËùÓĞÉÏ´«ÎÄ¼ş
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){
 					files.add(file.getName());
 				}
-				ActionContext.getContext().getSession().put("image",files);//è§£è€¦åˆæ–¹æ³•å–å‡ºsession
+				ActionContext.getContext().getSession().put("image",files);//½âñîºÏ·½·¨È¡³ösession
 			} catch (IOException e) {
-				System.out.println("ä¸Šä¼ å¤±è´¥...");
+				System.out.println("ÉÏ´«Ê§°Ü...");
 				e.printStackTrace();
 			}
 		}
@@ -98,16 +98,16 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
-				System.out.println("ä¸Šä¼ æˆåŠŸ...");
-				File[] fs=new File(path).listFiles(); //å–å‡ºæ‰€æœ‰ä¸Šä¼ æ–‡ä»¶
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//¿ªÊ¼ÉÏ´«
+				System.out.println("ÉÏ´«³É¹¦...");
+				File[] fs=new File(path).listFiles(); //È¡³öËùÓĞÉÏ´«ÎÄ¼ş
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){
 					files.add(file.getName());
 				}
-				ActionContext.getContext().getSession().put("image",files);//è§£è€¦åˆæ–¹æ³•å–å‡ºsession
+				ActionContext.getContext().getSession().put("image",files);//½âñîºÏ·½·¨È¡³ösession
 			} catch (IOException e) {
-				System.out.println("ä¸Šä¼ å¤±è´¥...");
+				System.out.println("ÉÏ´«Ê§°Ü...");
 				e.printStackTrace();
 			}
 		}

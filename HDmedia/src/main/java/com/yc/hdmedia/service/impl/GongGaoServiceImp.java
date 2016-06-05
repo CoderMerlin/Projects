@@ -50,4 +50,5 @@ public class GongGaoServiceImp implements GongGaoService {
 		return gongGaoMapper.findGongGaoByGid(gid);
 	}
 
+
 }

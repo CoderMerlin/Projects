@@ -1,5 +1,9 @@
 package com.yc.hdmedia.entity;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class GongGao {
 	private int gid;  //公告id
 	private String gtitle;//公告标题
@@ -8,6 +12,14 @@ public class GongGao {
 	private String gstatus;//状态       -- 0 表示删除   1表示存在
 	private String ggyl1;//预留字段1
 	private String ggyl2;//预留字段2
+	
+	public GongGao(){
+		Date currDate = Calendar.getInstance().getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		gtime= sdf.format(currDate);
+	}
+	
+	
 	public int getGid() {
 		return gid;
 	}
@@ -55,6 +67,19 @@ public class GongGao {
 		return "GongGao [gid=" + gid + ", gtitle=" + gtitle + ", gtext="
 				+ gtext + ", gtime=" + gtime + ", gstatus=" + gstatus
 				+ ", ggyl1=" + ggyl1 + ", ggyl2=" + ggyl2 + "]";
+	}
+
+
+	public GongGao(int gid, String gtitle, String gtext, String gtime,
+			String gstatus, String ggyl1, String ggyl2) {
+		super();
+		this.gid = gid;
+		this.gtitle = gtitle;
+		this.gtext = gtext;
+		this.gtime = gtime;
+		this.gstatus = gstatus;
+		this.ggyl1 = ggyl1;
+		this.ggyl2 = ggyl2;
 	}
 	
 	
