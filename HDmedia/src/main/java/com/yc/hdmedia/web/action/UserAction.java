@@ -37,7 +37,7 @@ public class UserAction implements ModelDriven<User>,SessionAware{
 		int result=userService.addUser(user);
 			System.out.println(user);
 			if(result>0){
-				return "login";
+				return "registerSuccess";
 			}
 			return "fail";
 			}
@@ -51,7 +51,7 @@ public class UserAction implements ModelDriven<User>,SessionAware{
 		smm.setSubject("验证码");
 		String uuid=vc.code();
 		ActionContext.getContext().getSession().put("user",user);
-		ActionContext.getContext().getSession().put("code", uuid);
+		ActionContext.getContext().getSession().put("code",uuid);
 		smm.setText(uuid);
 		javaMailSender.send(smm);
 		int result=userService.addUserByMail(user);
@@ -66,9 +66,9 @@ public class UserAction implements ModelDriven<User>,SessionAware{
 		String jiaoyan=(String) ActionContext.getContext().getSession().get("code");
 		if(jiaoyan.equals(email)){
 			User us=(User) ActionContext.getContext().getSession().get("user");
-			String yhname=us.getYhname();
-			int result=userService.update(yhname);
-			return "login";
+			String yhemail=us.getYhemail();
+			int result=userService.update(yhemail);
+			return "registerSuccess";
 			
 		}
 		return  "false";

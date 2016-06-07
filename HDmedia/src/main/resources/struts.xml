@@ -8,7 +8,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.multipart.maxSize" value="1000000000"/><!--设置文件上传的大小  -->
-	
+	<constant name="struts.devMode" value="false" />
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
 
@@ -41,6 +41,7 @@
 			<result name="fail">/fail.jsp</result>
 			<result name="{2}">/{2}.jsp</result>
 			<result name="login">/login.jsp</result>
+			<result name="registerSuccess">/registerSuccess.jsp</result>
 			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
 		</action>

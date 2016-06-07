@@ -126,3 +126,15 @@ body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,H
 
 
 .mainForm2{display: none;}
+
+.success{text-align:center;}
+.success_login{background:#eb5b0e; margin-top:30px; cursor:pointer;}
+
+.success a:link, .success a:visited {
+	text-decoration: none;
+	color: #000;
+}
+.success a:hover, .success a:active {
+	color: #F00;
+	text-decoration: none;
+}

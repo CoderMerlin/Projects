@@ -34,8 +34,8 @@ public class UserServiceImpl implements UserService {
 	
 	
 	@Override
-	public int update(String yhname) {
-		return userMapper.update(yhname);
+	public int update(String yhemail) {
+		return userMapper.update(yhemail);
 	}
 
 	
