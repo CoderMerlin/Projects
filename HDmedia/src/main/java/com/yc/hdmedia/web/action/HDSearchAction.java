@@ -1,5 +1,6 @@
 package com.yc.hdmedia.web.action;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,9 @@ public class HDSearchAction implements SessionAware{
 	private HDSearchService hDSearchService;
 	private String content;
 	
+	private Map<String,Object> DataMap=new HashMap<String,Object>();
+	
+	
 	public void setContent(String content) {
 		this.content = content;
 	}
@@ -27,6 +31,10 @@ public class HDSearchAction implements SessionAware{
 	 */
 	public String getTeiZiByContent(){
 		List<HDSearch> searchs=hDSearchService.getTeiZiByContent(content);
+		if(searchs!=null){
+			
+			return "success";
+		}
 		return "fail";
 	}
 	

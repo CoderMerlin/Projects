@@ -7,6 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
 	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="1000000000"/><!--设置文件上传的大小  -->
 	
 	 <!-- 把struts的action对象交给spring容器管理 -->
 	<constant name="struts.objectFactory " value="spring" />
@@ -24,7 +25,7 @@
 				<param name="allowedExtensions">jpg,png</param>
 				<param name="allowedTypes">image/jpeg,image/png,application/octet-stream</param>
 			</interceptor-ref>
-			<interceptor-ref name="basicStack" /><!-- 基本struts拦截器 -->
+			<interceptor-ref name="defaultStack" /><!-- 基本struts拦截器 -->
 		</action>
 		
 	</package>

@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
-import com.yc.hdmedia.entity.GuanLi;
-import com.yc.hdmedia.entity.YongHu;
 import com.yc.hdmedia.entity.YongHuZC;
-import com.yc.hdmedia.service.YongHuService;
 import com.yc.hdmedia.service.YongHuZCService;
 @Controller("yongHuZCAction")
 public class YongHuZCAction implements ModelDriven<YongHuZC>{
@@ -38,8 +35,8 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
 	}
 	
 	public String getPageYongHuZCInfo(){
+		DataMap.clear();
 		List<YongHuZC> yongHuZCs=yongHuZCService.findAllYongHuZC(page,rows);
-		System.out.println(yongHuZCs);
 		if(yongHuZCs!=null){
 			DataMap.put("total",yongHuZCService.total());
 			DataMap.put("rows", yongHuZCs);
@@ -49,9 +46,8 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
 	}
 	
 	public String addYongHuZCInfo(){
-		System.out.println("要添加的数据"+yongHuZC);
+		DataMap.clear();
 		int result=yongHuZCService.addYongHuZC(yongHuZC);
-		System.out.println(result);
 		if(result>0){
 			DataMap.put("result", result);
 			return "success";
@@ -59,8 +55,8 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
 		return "fail";
 	}
 	public String delYongHuZCById(){
+		DataMap.clear();
 		String yhs=ServletActionContext.getRequest().getParameter("yhzcids");
-		System.out.println("要删除的值==》"+yhs);
 		String[] yhzcs=yhs.split(",");
 		int[] yhzcids=new int[yhzcs.length];     
         for (int i=0; i<yhzcids.length; i++) {
@@ -68,7 +64,6 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
         	System.out.println(yhzcids[i]);
         }
 		int result=yongHuZCService.delYongHuZCByIds(yhzcids);
-		System.out.println(result);
 		if(result>0){
 		DataMap.put("delId", result);
 		return "success";
@@ -76,6 +71,7 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
 		return "fail";
 	}
 	public String getYongHuZCById(){
+		DataMap.clear();
 		int yhzcid=yongHuZC.getYhzcid();
 		YongHuZC yh=yongHuZCService.getYongHuZCById(yhzcid);
 		LogManager.getLogger().debug("查到的数据==》"+yh);
@@ -86,9 +82,7 @@ public class YongHuZCAction implements ModelDriven<YongHuZC>{
 		return "fail";
 	}
 	public String updateYongHuZCInfo(){
-		System.out.println("修改的值==》"+yongHuZC);
 		int result=yongHuZCService.updateYongHuZCInfo(yongHuZC);
-		System.out.println(result);
 		if(result>0){
 			DataMap.put("result", result);
 			return "success";

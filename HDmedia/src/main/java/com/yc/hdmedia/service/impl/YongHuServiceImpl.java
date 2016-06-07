@@ -59,5 +59,13 @@ public class YongHuServiceImpl implements YongHuService {
 	public YongHu getYongHuInfo(int yhzcid) {
 		return yongHuMapper.selectYongHuInfo(yhzcid);
 	}
+	
+	@Override
+	public List<YongHu> findAllYongHuInfo(int pageNo, int pageSize) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("pageNo", pageNo*pageSize);
+		params.put("pageSize", (pageNo-1)*pageSize);
+		return yongHuMapper.getAllYongHuInfo(params);
+	}
 
 }

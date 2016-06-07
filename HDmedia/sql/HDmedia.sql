@@ -211,7 +211,7 @@ create table wenzhang(
    wzdianjinnum int,  --文章点击数
    wzweight int,  --文章权重
    wzstatus int,      --1表示存在，0表示不存在	
-   wzyl1  varchar2(100),        --预留字段1
+   wzyl1  varchar2(100),        --预留字段1   //文章作者
    wzy12  varchar2(100)        --预留字段2
 );
 create sequence seq_wenzhang_wzid start with 1000001 increment by 1;
