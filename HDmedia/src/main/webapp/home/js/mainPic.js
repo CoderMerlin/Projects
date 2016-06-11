@@ -1,6 +1,6 @@
 // JavaScript Document
 	var MOVE = 686, CURRENT = 0;
-	var IMGS = ["1.jpg", "2.jpg", '3.jpg'];  /*图片*/
+	var IMGS = ["a1.jpg", "a2.jpg", 'a3.jpg'];  /*图片*/
 	var TITLES = ["清末 山水画 12399元", "魅力山水 ————", "心有灵犀一点通..."];  /*图片下放的文字*/
 	
 	jQuery (function ($){
@@ -9,8 +9,8 @@
 	var ra = $('div.roll_title a:first');
 	$ (IMGS).each (function (i, dom)
 	{
-		um.append('<li><a href="#"><div class="roll_img_kk" style="background: url(Hd_index_img/'+dom+'); width: 1450px; height: 650px;"></div> </a></li>');//给ul添加标签
-		smalldiv.append('<img class="roll_small_signimg"  src="Hd_index_img/'+dom+'">');
+		um.append('<li><a href="#"><div class="roll_img_kk" style="background: url(home/images/'+dom+'); width: 1450px; height: 650px;"></div> </a></li>');//给ul添加标签
+		smalldiv.append('<img class="roll_small_signimg"  src="home/images/'+dom+'">');
 	});
 	var sc = smalldiv.children ('img');
 	sc.eq(CURRENT).addClass('current_con'); //获取sc中的第一个img

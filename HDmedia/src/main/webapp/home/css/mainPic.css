@@ -68,10 +68,8 @@ a {
 
 .banana_rotate .leftbtn_picturn,.banana_rotate .rightbtn_picturn {
 	background:
-		url("icon.png")
 		no-repeat scroll 0 0;
 	_background:
-		url("icon.gif")
 		no-repeat scroll 0 0;
 	height: 25px;
 	left: 4px;
@@ -85,10 +83,8 @@ a {
 /*小箭头*/
 .banana_rotate .leftbtn_picturn,.banana_rotate .rightbtn_picturn {
 	background:
-		url("icon.png")
 		no-repeat scroll 0 0;
 	_background:
-		url("icon.gif")
 		no-repeat scroll 0 0;
 	height: 25px;
 	left: 4px;

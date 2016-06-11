@@ -24,7 +24,7 @@
         </div>
         <div class="hd_footer_down">
             <div  class="hd_footer_last menu_content">
-                    <a class="hd_img"><img src="images/1.png" /></a>
+                    <a class="hd_img"><img src="images/hd_02.png" /></a>
                     <span>COPYRIGHT&copy;WZGS.NET,2015,.</span>
                     <a href="#">备案号：湘ICP备13003602号-2</a>
                     <a href="#">经营许可证编号：湘B2-20130198</a>

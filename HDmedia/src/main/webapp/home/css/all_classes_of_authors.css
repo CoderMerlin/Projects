@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*诸子百家*/
+.all_classes_of_authors{
+	margin: 0 5%; 
+	padding:0px; 
+	width:90%; 
+	height:50px; 
+	float:left;
+}
+
+.all_classes_of_authors p{ /*标题*/
+	padding:0.5% 1%;
+	margin:0; 
+	width:50%; 
+	height:60%; 
+	float:left; 
+	display:inline; 
+	font-size:150%;
+	color:#000;
+}
+
+.all_classes_of_authors img{
+	padding:0; 
+	margin:0;
+	width:100%; 
+	height:10%; 
+	float:left; 
+	display:inline;
+}
+
+body .all_classes_of_authors_img{
+	margin: 0 5%; 
+	padding:0px; 
+	width:90%; 
+	height:250px;  
+	float:left;
+}
+
+.all_classes_of_authors_img_1{
+	margin:10px 2.5%; 
+	padding:0px; 
+	width:28%; 
+	height:230px; 
+	float:left;
+}
+
+
+.all_classes_of_authors_img_1 .focus{
+	width:100%; 
+	height:100%; 
+	overflow:hidden; 
+	position:relative;
+}
+
+.all_classes_of_authors_img_1 .focus ul{
+	height:100%;
+	position:absolute;
+}
+
+.all_classes_of_authors_img_1 .focus ul li img{
+	width:100%; 
+	height:100%;
+}
+
+#focus ul li {
+	float:left; 
+	width:50%; 
+	height:100%; 
+	overflow:hidden; 
+	position:relative; 
+	background:#000;
+} 
+
+#focus1 ul li {
+	float:left; 
+	width:50%; 
+	height:100%; 
+	overflow:hidden; 
+	position:relative; 
+	background:#000;
+} 
+#focus2 ul li {
+	float:left; 
+	width:50%; 
+	height:100%; 
+	overflow:hidden; 
+	position:relative; 
+	background:#000;
+} 
