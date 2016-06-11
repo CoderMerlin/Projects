@@ -84,24 +84,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 </foreach>
 	</delete>
 	
-	<update id="updateYongHuZCById" parameterType="YongHuZC">
+		<update id="updateYongHuZCById" parameterType="YongHuZC">
 		update yonghuzc
 		<set>
-			<if test="yhname!=null">
+			<if test="yhname!=null and yhname!=''">
 				yhname=#{yhname},
 			</if>
-			<if test="yhpwd!=null">
+			<if test="yhpwd!=null and yhpwd!=''">
 				yhpwd=#{yhpwd},
 			</if>
-			<if test="yhemail!=null">
+			<if test="yhemail!=null and yhemail!=''">
 				yhemail=#{yhemail},
 			</if>
-			<if test="yhzcstatus!=null">
+			<if test="yhzcstatus!=0 and yhzcstatus!=''">
 				yhzcstatus=#{yhzcstatus},
 			</if>
 		</set>
-		<if test="yhzcid!=0">
+		<if test="yhzcid!=0 and yhzcid!=''">
 			where yhzcid=#{yhzcid}
 		</if> 
 	</update>
+	
+	<select id="findYongHuBeanByInfo" parameterType="YongHuBean" resultType="YongHuBean">
+		select * from yonghu yh, yonghuzc yhz 
+		<where>
+			yh.yhzcid=yhz.yhzcid
+			<if test="yhname!=null and yhname!=''">
+			   and yhname like CONCAT(CONCAT('%', #{yhname}), '%')
+			</if>
+			<if test="yhemail!=null and yhname!=''">
+				and yhemail like CONCAT(CONCAT('%', #{yhemail}), '%')
+			</if>
+			<if test="yhphone!=null and yhphone!=''">
+				and yhphone like CONCAT(CONCAT('%', #{yhphone}), '%')
+			</if>
+			<if test="yhzctime!=null and yhzctime!=''">
+				and yhzctime=to_date(#{yhzctime},'yyyy-MM-dd')
+			</if>
+		</where>
+		order by yhzctime desc
+	</select>
 </mapper>

@@ -23,6 +23,29 @@ public class YongHu {
 	private int yhstatus;
 	private String yhyl1;
 	private String yhyl2;
+	
+	private String yhname;
+	private String yhemail;
+	private String yhzctime;
+	
+	public String getYhname() {
+		return yhname;
+	}
+	public void setYhname(String yhname) {
+		this.yhname = yhname;
+	}
+	public String getYhemail() {
+		return yhemail;
+	}
+	public void setYhemail(String yhemail) {
+		this.yhemail = yhemail;
+	}
+	public String getYhzctime() {
+		return yhzctime;
+	}
+	public void setYhzctime(String yhzctime) {
+		this.yhzctime = yhzctime;
+	}
 	public int getYhid() {
 		return yhid;
 	}
@@ -72,8 +95,10 @@ public class YongHu {
 		this.yhqq = yhqq;
 	}
 	public String getYhbirthday() {
-		String [] arr=yhbirthday.split(" ");
-		yhbirthday=arr[0];
+		/*String [] arr=yhbirthday.split(" ");
+		if(arr.length>0){
+			yhbirthday=arr[0];
+		}*/
 		return yhbirthday;
 	}
 	public void setYhbirthday(String yhbirthday) {
@@ -159,9 +184,10 @@ public class YongHu {
 	}
 	@Override
 	public String toString() {
-		return "\nYongHu [yhid=" + yhid + ", yhzcid=" + yhzcid + ", yhzsname=" + yhzsname + ", yhsex=" + yhsex + ", yhage=" + yhage + ", yhphone=" + yhphone + ", yhindentity=" + yhindentity + ", yhqq="
+		return "YongHu [yhid=" + yhid + ", yhzcid=" + yhzcid + ", yhzsname=" + yhzsname + ", yhsex=" + yhsex + ", yhage=" + yhage + ", yhphone=" + yhphone + ", yhindentity=" + yhindentity + ", yhqq="
 				+ yhqq + ", yhbirthday=" + yhbirthday + ", yhaddr=" + yhaddr + ", yhphoto=" + yhphoto + ", yhftnum=" + yhftnum + ", yhdownload=" + yhdownload + ", yhupload=" + yhupload + ", yhjf="
-				+ yhjf + ", yhqd=" + yhqd + ", yhjy=" + yhjy + ", yhzhtime=" + yhzhtime + ", yhqianming=" + yhqianming + ", yhstatus=" + yhstatus + ", yhyl1=" + yhyl1 + ", yhyl2=" + yhyl2 + "]";
+				+ yhjf + ", yhqd=" + yhqd + ", yhjy=" + yhjy + ", yhzhtime=" + yhzhtime + ", yhqianming=" + yhqianming + ", yhstatus=" + yhstatus + ", yhyl1=" + yhyl1 + ", yhyl2=" + yhyl2
+				+ ", yhname=" + yhname + ", yhemail=" + yhemail + ", yhzctime=" + yhzctime + "]";
 	}
 	
 }

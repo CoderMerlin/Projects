@@ -72,13 +72,27 @@
 								$("#yh_qianming_add").val("");
 								$("#yonghu_photo_show").html(""); //用户头像
 							}else{
+			
 								$("#yonghu_update_yonghusInfo").dialog("open");
 								$("#yh_zcid_update").val(yhzcid);//用户注册编号
 								$("#yh_id_update").val(yh.yhid);//用户编号
 								$("#yh_zsname_update").val(yh.yhzsname);  //用户真实姓名 
-								$("#yh_sex_update").val(yh.yhsex);   //用户性别
+							//	$("#yh_sex_update").val(yh.yhsex);   //用户性别
+								
+								if(yh.yhsex=="男"){
+									 alert("1"+yh.yhsex);
+									// $("#yh_sex_update option:eq('男')").attr("selected","selected");
+									document.getElementById('yh_sex_update').options[0].value='yh.yhsex';
+									 document.getElementById('yh_sex_update').options[0].text='yh.yhsex';
+								}else if(yh.yhsex=="女"){
+									alert(yh.yhsex);
+									// $("#yh_sex_update option:eq('女')").attr("selected","selected");
+									document.getElementById('yh_sex_update').options[0].value='yh.yhsex';
+									 document.getElementById('yh_sex_update').options[0].text='yh.yhsex';
+								} 
+								
 						 		$("#yh_age_update").val(yh.yhage);   //用户年龄
-								$("#yh_phone_update").val(yh.phone);  //用户手机号
+								$("#yh_phone_update").val(yh.yhphone);  //用户手机号
 								$("#yh_indentity_update").val(yh.yhindentity); //用户身份证
 								$("#yh_qq_update").val(yh.yhqq);  //用户qq号
 								$("#yh_birthday_update").datebox('setValue',yh.yhbirthday);  //用户生日
@@ -114,8 +128,8 @@
 	//显示用户详细信息
 	function showyonghuDetail(yhzcid){
 		$("#yonghu_show_yonghusInfo").dialog("open");
-		$.post("../yongHuServlet",{op:"findYonghuByYHZCid",yhzcid:yhzcid},function(data){
-			var yonghu=data.rows;
+		$.post("yongHu_findByYongHuZCById.action",{yhzcid:yhzcid},function(data){
+			var yonghu=data.yh;
 			if(yonghu==undefined){
 				alert("该用户没有填写详细信息,请先填写详细信息,再查看！");
 				$("#yh_zsname_show").val();  //用户真实姓名 
@@ -154,6 +168,51 @@
 			}		
 		},"json");
 	}
+	
+	
+	function addData() {		
+		var formData = new FormData($("#myAdd")[0]);
+		$.ajax({
+				type:'post',
+				url:"yongHu_addYongHuInfo",
+				data:formData,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,//好像不可缺！
+				success:function(data){
+					if(data=="1"){
+						alert("用户添加失败!");
+				  	} else{
+						$.messager.show({title:'温馨提示',msg:'添加成功',timeout:2000,showType:'slide'});
+				  	}
+	    			$("#yonghu_add_yonghusInfo").dialog("close");
+	    			$("#yonghu_update_yonghusInfo").dialog("close");
+				}
+			});
+	}
+	function updateData() {		
+		var formData = new FormData($("#myUpdate")[0]);
+		$.ajax({
+				type:'post',
+				url:"yongHu_updateYongHuInfo",
+				data:formData,
+				async: false,
+				cache: false,
+				contentType: false,
+				processData: false,//好像不可缺！
+				success:function(data){
+					if(data=="1"){
+						alert("用户修改失败!");
+				  	} else{
+						$.messager.show({title:'温馨提示',msg:'修改成功',timeout:2000,showType:'slide'});
+				  	}
+	    			$("#yonghu_update_yonghusInfo").dialog("close");
+	    			$("#yonghu_add_yonghusInfo").dialog("close");
+				}
+			});
+	}
+	
 </script>
 
 <style>
@@ -169,8 +228,9 @@
 
 <!-- 添加或修改用户-->
 <div id="yonghu_add_yonghusInfo" class="easyui-dialog" title="添加用户" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="yongHu_addYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
+	<form id="myAdd" action="yongHu_addYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
        	<input type="hidden" name="yhzcid" id="yh_zcid_add"/>
+       	<input type="hidden" name="yhid" id="yh_id_add"/>
         <label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_add"  class="myinput"/>&nbsp;&nbsp;&nbsp;
 		<label>用户性别:</label>
 			<select id="yh_sex_add" class="easyui-combobox" name="yhsex" style="width:200px;"> 
@@ -199,7 +259,7 @@
  		<!-- <div id="add_yonghu" style="display:block;">
 			<a href="javascript:addyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" >添加</a>
 		</div><br/> -->
-		<input type="submit" value="添加" />
+		<input type="button" value="添加" onclick="addData()" />
 	</form>
 	
 	<div style="float:right;width:380px; margin-right:20px;">
@@ -210,8 +270,9 @@
 </div>
 
 <div id="yonghu_update_yonghusInfo" class="easyui-dialog" title="修改用户" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="yongHu_updateYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
+	<form id="myUpdate" action="yongHu_updateYongHuInfo" method="post" style="padding:20px;float:lect;display:inline-block;" enctype="multipart/form-data">
 		<input type="hidden" name="yhzcid" id="yh_zcid_update"/>
+		<input type="hidden" name="yhid" id="yh_id_update"/>
 		<label>用户真实姓名:</label><input type="text" name="yhzsname" id="yh_zsname_update"  class="myinput"/>&nbsp;&nbsp;&nbsp;
 		<label>用户性别:</label>
 			<select id="yh_sex_update" class="easyui-combobox" name="yhsex" style="width:200px;"> 
@@ -240,7 +301,7 @@
 		<!-- <div id="update_yonghu" style="display:block;">
 			<a href="javascript:updateyonghuInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-edit'">保存修改</a>
 		</div> -->
-		<input type="submit" value="修改" />
+		<input type="button" value="修改" onclick="updateData()" />
 	</form>
 	<div style="float:right;width:380px; margin-right:20px;">
 		<fieldset id="yonghu_photo_show_update" >

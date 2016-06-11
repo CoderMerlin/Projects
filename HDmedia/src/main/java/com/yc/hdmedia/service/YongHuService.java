@@ -19,6 +19,8 @@ public interface YongHuService {
 	int addYungHuInfo(YongHu yongHu);
 
 	List<YHBean> findYongHuByBean(YHBean yhBean);
+	
+	List<YongHu> findAllYongHuInfo(int page, int rows);
 
 	
 	/**

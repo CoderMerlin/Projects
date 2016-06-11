@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.yc.hdmedia.entity.GuanLi;
+import com.yc.hdmedia.entity.YongHuBean;
 import com.yc.hdmedia.entity.YongHuZC;
 
 public interface YongHuZCMapper {
@@ -19,5 +20,7 @@ public interface YongHuZCMapper {
 	int updateYongHuZCById(YongHuZC yongHuZC);
 
 	YongHuZC getYongHuZCById(int yhzcid);
+
+	List<YongHuBean> findYongHuBeanByInfo(YongHuBean yongHuBean);
 	
 }

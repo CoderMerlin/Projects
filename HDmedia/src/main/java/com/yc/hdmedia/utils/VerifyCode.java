@@ -3,7 +3,7 @@ package com.yc.hdmedia.utils;
 import java.util.Random;
 
 /**
- * ÑéÖ¤Âë
+ * éªŒè¯ç 
  * @author 
  */
 

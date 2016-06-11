@@ -26,7 +26,7 @@ http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	<!-- 过滤字符编码集 -->
 	<filter-mapping>
 		<filter-name>CharacterEncodingFilter</filter-name>
-		<url-pattern>/*</url-pattern>
+		<url-pattern>/back/*</url-pattern>
 	</filter-mapping>
 	<!-- 过滤管理员登录 ,做完再用-->
 	<!-- <filter-mapping>

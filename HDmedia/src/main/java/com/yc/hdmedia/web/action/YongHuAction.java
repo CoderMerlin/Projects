@@ -2,10 +2,13 @@ package com.yc.hdmedia.web.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -22,16 +25,16 @@ import com.yc.hdmedia.utils.UploadUtil;
 
 @Controller("yongHuAction")
 public class YongHuAction implements ModelDriven<YongHu>{
-	private YongHu yongHu;
+	private YongHu yongHu=new YongHu();
 	private Map<String,Object> DataMap=new HashMap<String,Object>();
 	private int page;
 	private int rows;
 	@Autowired
 	private YongHuService yongHuService;
 	
-	private File[] upload;//…œ¥´Œƒº˛
-	private String[] uploadFileName;//…œ¥´Œƒº˛√˚
-	private String[] uploadContentType;//…œ¥´Œƒº˛¿‡–Õ
+	private File[] upload;//‰∏ä‰º†Êñá‰ª∂
+	private String[] uploadFileName;//‰∏ä‰º†Êñá‰ª∂Âêç
+	private String[] uploadContentType;//‰∏ä‰º†Êñá‰ª∂Á±ªÂûã
 	public void setUpload(File[] upload) {
 		this.upload = upload;
 	}
@@ -43,7 +46,6 @@ public class YongHuAction implements ModelDriven<YongHu>{
 	}
 	@Override
 	public YongHu getModel() {
-		yongHu=new YongHu();
 		return yongHu;
 	}
 	public void setPage(int page) {
@@ -59,6 +61,7 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		DataMap = dataMap;
 	}
 	public String getAllYongHu(){
+		DataMap.clear();
 		List<YongHu> yongHus=yongHuService.findAllYongHu(page,rows);
 		if(yongHus!=null){
 			DataMap.put("total",yongHuService.total());
@@ -76,21 +79,21 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//ø™ º…œ¥´
-				File[] fs=new File(path).listFiles(); //»°≥ˆÀ˘”–…œ¥´Œƒº˛
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//ÂØÆÔøΩÊøÆÂ¨©Á¨ÇÊµºÔøΩ
+				File[] fs=new File(path).listFiles(); //ÈçôÊ†ßÂö≠ÈéµÔøΩÈèàÂ§âÁ¨ÇÊµºÁä≥ÊûÉÊµ†ÔøΩ
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//ÂºÄÂßã‰∏ä‰º†
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){
 					files.add(file.getName());
 				}
-				ActionContext.getContext().getSession().put("image",files);//Ω‚ÒÓ∫œ∑Ω∑®»°≥ˆsession
+				ActionContext.getContext().getSession().put("image",files);//Ëß£ËÄ¶ÂêàÊñπÊ≥ïÂèñÂá∫session
 			} catch (IOException e) {
-				System.out.println("…œ¥´ ß∞‹...");
+				System.out.println("‰∏ä‰º†Â§±Ë¥•...");
 				e.printStackTrace();
 			}
 		}
 		yongHu.setYhphoto(path+"/"+uploadFileName[0]);
 		int result=yongHuService.addYungHuInfo(yongHu);
-		DataMap.put("result",result);
 		return "addSuccess";
 	}
 	
@@ -98,22 +101,32 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//ø™ º…œ¥´
-				System.out.println("…œ¥´≥…π¶...");
-				File[] fs=new File(path).listFiles(); //»°≥ˆÀ˘”–…œ¥´Œƒº˛
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//ÂºÄÂßã‰∏ä‰º†
+				System.out.println("‰∏ä‰º†ÊàêÂäü...");
+				File[] fs=new File(path).listFiles(); //ÂèñÂá∫ÊâÄÊúâ‰∏ä‰º†Êñá‰ª∂
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){
 					files.add(file.getName());
 				}
-				ActionContext.getContext().getSession().put("image",files);//Ω‚ÒÓ∫œ∑Ω∑®»°≥ˆsession
+				ActionContext.getContext().getSession().put("image",files);//Ëß£ËÄ¶ÂêàÊñπÊ≥ïÂèñÂá∫session
 			} catch (IOException e) {
-				System.out.println("…œ¥´ ß∞‹...");
+				System.out.println("‰∏ä‰º†Â§±Ë¥•...");
 				e.printStackTrace();
 			}
 		}
+		yongHu.setYhphoto(path+"/"+uploadFileName[0]);
 		int result=yongHuService.updateYungHuInfo(yongHu);
-		if(result>0){
-			return "updatesuccess";
+		return "updatesuccess";
+	}
+	
+	public String findPageYongHuInfo(){
+		DataMap.clear();
+		List<YongHu> yhs=yongHuService.findAllYongHuInfo(page,rows);
+		if(yhs!=null){
+			DataMap=new HashMap<String,Object>();
+			DataMap.put("rows", yhs);
+			DataMap.put("total",yongHuService.total());
+			return "success";
 		}
 		return "fail";
 	}

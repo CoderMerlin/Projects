@@ -10,11 +10,19 @@ import com.yc.hdmedia.entity.YongHu;
 public interface YongHuMapper {
 
 	List<YongHu> getAllYongHu(Map<String,Object> params);
+	
 	int getTotal();
+	
+	
 	YongHu getYongHuInfo(int yhzcid);
+	
 	int updateYongHu(YongHu yongHu);
+	
 	int addYongHu(YongHu yongHu);
+	
 	List<YHBean> findYongHuByBean(YHBean yhBean);
+	
+	List<YongHu> getAllYongHuInfo(Map<String, Object> params);
 	
 
 	/**
