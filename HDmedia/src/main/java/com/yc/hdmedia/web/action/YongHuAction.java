@@ -79,8 +79,8 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//寮�濮嬩笂浼�
-				File[] fs=new File(path).listFiles(); //鍙栧嚭鎵�鏈変笂浼犳枃浠�
+				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));
+				File[] fs=new File(path).listFiles(); 
 				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//开始上传
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){

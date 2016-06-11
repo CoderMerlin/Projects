@@ -214,6 +214,13 @@ create table wenzhang(
    wzyl1  varchar2(100),        --预留字段1   //文章作者
    wzy12  varchar2(100)        --预留字段2
 );
+--首页查询文章等
+select wzid,wzyl1,wztitle,wztext,wzpicture from wenzhang;
+
+
+
+
+
 create sequence seq_wenzhang_wzid start with 1000001 increment by 1;
 insert into wenzhang values(seq_wenzhang_wzid.nextval,10023,1000001,'山水','大峰','',0,1,1,'','');
 delete wenzhang where wzid=1000001;
@@ -242,6 +249,12 @@ create table wzyhpinglun(
    wzpl1   varchar2(100),        --预留字段1
    wzpl2  varchar2(100)        --预留字段2
 );
+
+
+
+
+
+
 create sequence seq_wzyhpinglun_wzplid start with 1000000001 increment by 1;
 insert into wzyhpinglun values(seq_wzyhpinglun_wzplid.nextval,10001,'888',to_date('2015-10-22 22:22:22' ,'yyyy-mm-dd hh24:mi:ss'),1000075,1,'','');
 drop table wzyhpinglun;
@@ -298,6 +311,7 @@ select ltname from luntan where ltid=1001 and ltstatus=1;
 select lt.ltname,yhzc.yhname,tz.tzname,tz.tzclick,tz.tztext,tz.tztime from  tiezi tz,luntan lt,yonghu yh, yonghuzc yhzc 
 where status=1 and tz.ltid=lt.ltid and  tz.yhid=yh.yhid  and yh.yhzcid=yhzc.yhzcid 
 and tztext like '%Java%' order by tzclick
+
 
 
 
@@ -372,7 +386,7 @@ create sequence seq_hd_nav2_nav2id start with 1001 increment by 1;
 create table index_img(
    index_imgid int  primary key,  --首页图片id
    yhid  int
-          constraints FK_yonghu_yhid references yonghu(yhid),    --用户id (放用户图片)  外键
+          constraints FK_index_img_yonghu_yhid references yonghu(yhid),    --用户id (放用户图片)  外键
    img_position int,    --广告位置   
    img_begin date, --广告开始时间 
    img_end  date, --广告结束时间

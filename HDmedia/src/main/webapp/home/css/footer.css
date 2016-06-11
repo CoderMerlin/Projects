@@ -1,0 +1,84 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+a {  /*去除a标签的下划线*/
+	text-decoration: none;
+}
+
+
+/*尾部样式编码*/
+
+.hd_footer_menu_all{ /*主*/
+	width:100%;
+	margin:0 auto;
+	clear:both;
+	height:200px;
+}
+.hd_footer_menu_all .hd_footer_menu_content{
+	width:100%;
+	padding: 45px 0 5px;
+}
+
+.hd_footer_menu_all .hd_footer_menu_content .menu_content{
+	overflow: hidden;
+	width: 100%;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hd_footer_menu_all .hd_footer_menu_content .menu_content .footer_menu_con{
+	width:100%;
+	margin-left:33%;
+}
+
+.hd_footer_menu_all .hd_footer_menu_content .menu_content dl{
+	float: left;
+    border-left: 1px solid #4a4a4a;
+}
+.hd_footer_menu_all .hd_footer_menu_content .menu_content dl dd{
+	margin-bottom: 17px;
+}
+
+.menu_content dl dd a{
+	display: block;
+    width: 125px;
+    padding-left: 40px;
+    text-align: left;
+    font-size: 14px;
+    color: #6d6d6d;
+    line-height: 20px;
+}
+
+.menu_content dl dd a:hover{
+	color: #ff7519;
+}
+
+.hd_footer_menu_all  .hd_footer_down{
+	width:100%;
+	text-align:center;
+	padding-bottom:20px;
+}
+
+
+
+.hd_footer_down .hd_footer_last a, .hd_footer_last span{
+	font-family:arial,"Microsoft Yahei","Hiragino Sans GB",sans-serif;
+	color:#6d6d6d;
+}
+.menu_content1{
+	margin-left:20%;
+	}
+.hd_footer_down .hd_footer_last a:hover{
+	color: #ff7519;
+}
+
+.hd_footer_down .hd_footer_last .hd_img img{
+	width:50px;
+	height:50px;
+}
+
+.hd_footer_last span{
+	display:block;
+}

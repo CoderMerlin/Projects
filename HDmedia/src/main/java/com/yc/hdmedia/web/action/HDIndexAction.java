@@ -20,9 +20,14 @@ public class HDIndexAction implements SessionAware{
 	
 	
 	
+	
+	//弘道首页获取所有的页面信息
 	public String getIndexAllInfo(){
 		List<HDIndexBean>  hdIndexInfo=hDIndexService.getIndexAllInfo();
-		
+		if(hdIndexInfo!=null){
+			System.out.println("获取的首页信息:"+hdIndexInfo);
+			return "success";
+		}
 		return "fail";
 	}
 	

@@ -1,0 +1,268 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*主页上的轮番播放图片*/
+* {
+	margin: 0 auto;
+	padding: 0;
+	 /*word-wrap: break-word; 长单词允许内部换行*/
+}
+
+.box1 {  /*设置盒子模型,使其有阴影*/
+	margin: 0 auto;
+	height: 100%;
+	width: 90%;
+	overflow: hidden;
+	border: 1px solid #E6E6E6;
+	background-color: #FFF;
+	box-shadow: 0px 0px 4px #ECECEC;
+	moz-box-shadow: 0px 0px 4px #cecccc;
+	-webkit-box-shadow: 0px 0px 4px #CECCCC;
+	box-shadow: 0px 0px 4px #CECCCC;
+	box-shadow: 0px 0px 4px #CECCCC;
+}
+
+
+/*放图片的框*/
+.banana_rotate {
+	position: relative; /*绝对定位*/
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	margin: 10px auto;  /*与外边框的距离*/
+	
+}
+
+.banana_rotate .roll_img {
+	padding:0px;
+	height: 650px;
+	width:1450px;
+	overflow: hidden;
+	/*position: relative;*/
+}
+
+.inrotate_img {
+	margin: 0px !important;  /*优先级高*/
+	padding: 0px !important;
+	width:100%;
+	height:100%;
+}
+/*
+.block {
+	margin: 10px 10px 0;
+}*/
+
+.inrotate_img ul li {
+	padding: 0px !important;
+}
+
+ul li,.xl li {
+	list-style: none;
+	float: left;
+}
+
+a {
+	color: #222;
+	text-decoration: none;
+}
+
+.banana_rotate .leftbtn_picturn,.banana_rotate .rightbtn_picturn {
+	background:
+		url("icon.png")
+		no-repeat scroll 0 0;
+	_background:
+		url("icon.gif")
+		no-repeat scroll 0 0;
+	height: 25px;
+	left: 4px;
+	position: absolute;
+	top: 125px;
+	width: 18px;
+	cursor: pointer;
+	display: none;
+}
+
+/*小箭头*/
+.banana_rotate .leftbtn_picturn,.banana_rotate .rightbtn_picturn {
+	background:
+		url("icon.png")
+		no-repeat scroll 0 0;
+	_background:
+		url("icon.gif")
+		no-repeat scroll 0 0;
+	height: 25px;
+	left: 4px;
+	position: absolute;
+	top: 125px;
+	width: 18px;
+	cursor: pointer;
+	display: none;
+}
+
+.banana_rotate .roll_opacity {
+	filter: alpha(opacity = 20);
+	-moz-opacity: 0.5;
+	opacity: 0.5; /*透明度*/
+	-khtml-opacity: 0.5;
+	background-color:#333;
+	height: 42px;
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+}
+/*小图片*/
+.banana_rotate .roll {
+	height: 52px;
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+}
+/*与小图片一起的字*/
+.banana_rotate .roll .roll_title {
+	float: left;
+	font-family:"方正舒体";
+	width: 600px;
+	color: #FFF;
+	font-size: 20px;
+	margin: 20px 0 0 10px;
+}
+
+.banana_rotate .roll .roll_title a,.banana_rotate .roll .roll_title a:hover {
+	color: #FFF;
+}
+
+/*小图片的位置*/
+.banana_rotate .roll .roll_small_signimg_div {
+	float: right;
+	width: 300px; /*距离右边的偏移量*/
+	margin: 15px 0 0 0;
+}
+
+/*设置小图片的大小*/
+.banana_rotate .roll .roll_small_signimg_div img {
+	width: 70px;
+	height: 29px;	
+}
+
+/*图片之间的距离*/
+.banana_rotate .roll .roll_small_signimg {
+	margin: 0 3px;  
+	border: 1px solid #CBC7C7;
+	cursor: pointer;
+	filter: alpha(opacity =50);
+	-moz-opacity: 0.5;
+	opacity: 0.5;
+	-khtml-opacity: 0.5;
+}
+/*点击图片会改变小图片的颜色*/
+.banana_rotate .roll .current_con {
+	filter: alpha(opacity =100);
+	-moz-opacity: 1;
+	opacity: 1;
+	-khtml-opacity: 1;
+	border: 1PX solid #E6E6E6;
+}
+
+
+/*======================================资讯图片样式*/
+
+.hd_culture_info{  /*整个文化资讯*/
+	margin:0 5%; 
+	height:500px; 
+	background-color:#333;
+}
+.culture_info_container > p{
+	font-size:28px; 
+	color:#FFF;
+}
+
+.figure-info{
+	width:100%;
+	height:450px;
+	margin-top:20px; 
+	display:block;
+}
+
+.cul_info_four{
+	width:25%; 
+	height:450px; 
+	float:left; 
+}
+
+.cul_info_four > div{  /*下面的第一个div*/
+	margin:0 auto;
+	width:90%; 
+	height:200px; 
+	display:block; 
+}
+
+.cul_info_four .info-img{
+	width:100%; 
+	height:100%;
+}
+
+img.info-img{
+    -webkit-transform: scale(1, 1);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 250ms;
+    -moz-transform: scale(1, 1);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 250ms;
+}
+img.info-img:hover{
+    -webkit-transform: scale(1.09);
+    -webkit-transition-timing-function: ease-out;
+    -webkit-transition-duration: 750ms;
+    -moz-transform: scale(1.09);
+    -moz-transition-timing-function: ease-out;
+    -moz-transition-duration: 750ms;
+    overflow: hidden !important;
+}
+.info_introduce{ /*信息介绍*/
+	margin:0 auto;
+}
+
+.info_introduce > h4{
+	font-size:18px; 
+	color:#FF0; 
+	display:block; 
+	margin:10px auto; 
+	text-align:center; 
+}
+
+.info_introduce > p{
+	font-size:14px; 
+	line-height:1.8em; 
+	font-family:'仿宋';
+	color:#fff; 
+	margin:0; 
+	display:block;
+}
+
+
+
+.info_introduce .btn{  /*按钮*/
+	margin-top:10px;
+	display:block;
+}
+.re-clr1{
+    background: #DAE246;
+    border: none !important;
+    border-radius: 0 !important;
+    color: #303e4b;
+    outline: none !important;
+}
+.re-clr1:hover{
+    background: #fff;
+    border: none !important;
+    outline: none !important;
+    border-radius: none !important;
+    color:#303e4b;
+    transition: 0.5s all;
+}
+
+.re-clr1{
+    padding: 4px 8px;
+}

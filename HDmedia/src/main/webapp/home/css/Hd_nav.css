@@ -1,0 +1,128 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+*{	
+	margin:0 auto;
+	padding:0;
+	list-style-type:none;
+}
+body{
+	background-color:#eaebe9;
+}
+.hd_title{  /*图片与文字的区域*/
+	 margin-left:5%;
+	 padding:0px;
+	 width:30%;
+	 height:100px;
+	 float:left;	
+}
+.hd_title img{ /*弘道图片*/
+	width:25%; 
+	height:100%; 
+	display:block;
+	float:left;
+}
+
+.hd_title p{ /*弘道口号标题*/
+	font-family:'叶根友毛笔行书2.0版';
+	letter-spacing:5px; 
+	font-size:20px; 
+	padding-top:5%;
+}
+
+.hd_nav_menu{ /*整个导航栏菜单*/
+	 margin:0; 
+	 padding:20px 35px 0; 
+	 width:60%; 
+	 height:0px; 
+	 float:left;
+	 position:relative;
+	 z-index:101;
+}
+
+
+.hd_nav_menu .sep{ /*竖线*/
+	padding-top:1.5%;
+	font-size:10px;
+	color:#aeadad;
+	float:left;
+	height:20px;
+	border-top:none;
+}
+
+.hd_menu_name li a{  /*含二级菜单的样式*/
+	font:bold 14px arial;
+	text-decoration:none;
+	color:#303030;
+	outline:none;
+	text-align:center;
+	top:6px;
+	letter-spacing:0;
+	display:block;
+	height:28px;
+	position:relative;
+	overflow:hidden;
+	font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";
+	font-weight:normal;
+	font-size:13px;
+}
+
+#hd_menu li {
+	float: left;
+	position: relative;
+}
+#hd_menu li a{
+	padding:5px 20px 0;
+}
+
+#hd_menu ul {
+	padding:2.5%;
+	opacity: 0;   /*设置不透明*/
+	visibility: hidden;
+	position: absolute;
+	background: #fff;
+	border:3px;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-box-border-radius: 10px 10px 0 0;
+	-o-linear-border-radius: 10px 10px 0 0;
+	-ms-linear-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	
+    -webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+#hd_menu li:hover > ul {
+	opacity: 1;
+	visibility: visible;   /*规定元素的可见*/
+	margin: 0;
+}
+
+#hd_menu ul li {
+	display: block;
+	-moz-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	-webkit-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+#hd_menu ul li:last-child {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#hd_menu ul a {/*二级菜单的设置*/
+	padding: 5px;
+	width: 80px;
+	display: block;
+	white-space: nowrap;  /*规定段落中的文本不进行  换行文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+	float: none;
+	text-transform: none;
+}
+
+.hd_menu_name li a:hover,.hd_menu_name li a:active{
+	border:none;
+	color:#ff7519;
+	text-decoration:none;
+}

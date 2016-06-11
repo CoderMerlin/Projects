@@ -6,16 +6,17 @@
 <html>
 <head>
 <title>弘道传媒</title>
+<base href="/HDmedia/">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/> <!--默认为屏幕的宽度-->
 <link rel="shortcut icon" type="image/x-icon" href="../images/hd_01.png"> <!--小图标，需要浏览器兼容-->
 
-<link rel="stylesheet" href="css/footer.css" />
-<link rel="stylesheet" href="css/Hd_nav.css" />
+<link rel="stylesheet" href="home/css/footer.css" />
+<link rel="stylesheet" href="home/css/Hd_nav.css" />
 <link rel="stylesheet" href="css/mainPic.css" />
 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="js/mainPic.js"></script>
+<script type="text/javascript" src="home/js/mainPic.js"></script>
 </head>
 
 <body>
