@@ -10,7 +10,7 @@ public interface GongGaoMapper {
 	
 	public int updateGongGao(GongGao gonggao); //修改公告
 		
-	public int del(int gid);//删除
+	public int del(int[] gid);//删除
 	
 	public int total();//总记录数
 	

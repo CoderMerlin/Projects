@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							var str="";
 							var pics=gonggao.ggyl1.split(",");
 							for(var i=0; i<pics.length;i++){
-								str+="<img src='../"+pics[i]+"' width='100px' height='100px' />&nbsp;";
+								str+="<img src=upload/"+pics[i]+" width='100px' height='100px'/> &nbsp;";
 							}
 							$("#gonggao_pic_update").html($(str));
 						},"json");
@@ -108,8 +108,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    					}
 		    					gids+=rows[i].gid;
 		    					//将要删除gid 发送到服务器
-		    					$.post("../gongGaoServlet",{op:"delGongGaoInfo",gids:gids},function(data){
-				    				if(data==1){ //删除成功
+		    					$.post("gongGao_delete.action",{gids:gids},function(data){
+		    						var del=data.delId;
+				    				if(del>0){ //删除成功
 				    					$.messager.show({
 				    						title:'删除提示',
 				    						msg:'公告信息删除成功..',
