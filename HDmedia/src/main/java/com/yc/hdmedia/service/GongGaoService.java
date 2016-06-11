@@ -5,25 +5,25 @@ import java.util.List;
 import com.yc.hdmedia.entity.GongGao;
 
 public interface GongGaoService {
-	public int addGongGao(GongGao gonggao); //Ìí¼Ó¹«¸æ
+	public int addGongGao(GongGao gonggao); //æ·»åŠ å…¬å‘Š
 	
-	public int updateGongGao(GongGao gonggao); //ĞŞ¸Ä¹«¸æ
+	public int updateGongGao(GongGao gonggao); //ä¿®æ”¹å…¬å‘Š
 		
-	public int del(int[] gid);//É¾³ı
+	public int del(int[] gid);//åˆ é™¤
 	
-	public int total();//×Ü¼ÇÂ¼Êı
+	public int total();//æ€»è®°å½•æ•°
 	
 	/**
-	 * ·ÖÒ³²éÑ¯¹«¸æĞÅÏ¢
-	 * @param pageNo£ºÒª²éÑ¯µÄÒ³Êı£¬Èç¹ûÎªnull£¬Ôò²éÑ¯È«²¿
-	 * @param pageSize£ºÒ³ÃæÏÔÊ¾µÄÌõÊı
+	 * åˆ†é¡µæŸ¥è¯¢å…¬å‘Šä¿¡æ¯
+	 * @param pageNoï¼šè¦æŸ¥è¯¢çš„é¡µæ•°ï¼Œå¦‚æœä¸ºnullï¼Œåˆ™æŸ¥è¯¢å…¨éƒ¨
+	 * @param pageSizeï¼šé¡µé¢æ˜¾ç¤ºçš„æ¡æ•°
 	 * @return
 	 */
 	public List<GongGao> getAllGongGao(int pageNo,int pageSize);
 	
 	/**
-	 * ²éÑ¯Ö¸¶¨µÄ¹«¸æĞÅÏ¢
-	 * @param gid£ºÒª²éÑ¯µÄ¹«¸æ±àºÅ
+	 * æŸ¥è¯¢æŒ‡å®šçš„å…¬å‘Šä¿¡æ¯
+	 * @param gidï¼šè¦æŸ¥è¯¢çš„å…¬å‘Šç¼–å·
 	 * @return
 	 */
 	public GongGao findGongGaoByGid(int gid);
