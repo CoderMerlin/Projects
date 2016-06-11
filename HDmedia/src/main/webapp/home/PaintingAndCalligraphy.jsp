@@ -18,83 +18,7 @@
 
 </head>
 <body>
-	
-
-<div id="hd_nav" class="hd_nav" style="height: 100px"><!--弘道菜单导航-->
-		<div id="hd_title" class="hd_title">
-        	<img src="images/hd_02.png"/>
-            <p>弘扬中华文化	传颂道德品行</p>
-        </div>
-        <div id="hd_nav_menu" class="hd_nav_menu">
-        	<ul  id="hd_menu" class="hd_menu_name">	  	
-                <li class="hd_home_page">
-                    <a href="">首页</a>
-                </li>
-                <span class="sep">|</span>	
-                <li>
-                    <a href="">人文地理</a>
-                    <ul>
-                        <li><a href="">名族</a></li>
-                        <li><a href="">地域</a></li> 
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">文化</a>
-                     <ul>
-                        <li><a href="">茶艺文化</a></li>
-                        <li><a href="">酒水文化</a></li>
-                        <li><a href="">美食文化</a></li>  
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">中华文学</a>
-                    <ul>
-                        <li><a href="#hd_Ancient_poetry_title" name="hd_Ancient_poetry_title">古诗词</a></li>
-                        <li><a href="">文言文</a></li>
-                        <li><a href="">古代典籍</a></li>
-                        <li><a href="">历史故事</a></li>
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">书画风采</a>
-                    <ul>
-                         <li><a href="">国画</a></li>
-                         <li><a href="">书法</a></li>
-                         <li><a href="">古代书法</a></li>
-                         <li><a href="">古代绘画</a></li>
-                         <li><a href="">近代绘画</a></li>
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">鉴赏文宝</a>
-                    <ul>
-                      <li><a href="">玉器</a></li>
-                      <li><a href="">书画</a></li>
-                      <li><a href="">陶瓷</a></li>           
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">在线商城</a>
-                    <ul>
-                      <li><a href="">拍卖会场</a></li>
-                    </ul>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">社区论坛</a>
-                </li>
-                <span class="sep">|</span>				
-                <li >
-                    <a href="">登录</a>
-                </li>			
-             </ul>
-        </div>
-</div>
+	<%@ include file="header.jsp" %>
 	<div class="menuer">
 	    <div class="center">
 	        <div class="mlist">
@@ -302,45 +226,7 @@
         </div>
     </div>
 </div>
-<!--END底部-->
-
- <div class="hd_footer_menu_all"><!--下放所有的菜单信息-->
-    	<div class="hd_footer_menu_content">
-        	<div class="menu_content">
-            	<div class="footer_menu_con">
-                	<dl>
-                    	<dd><a href="">新人报道</a></dd>
-                        <dd><a href="">论坛社区</a></dd>
-                    </dl>
-                    <dl>
-                    	<dd><a href="">资源分享</a></dd>
-                        <dd><a href="">加入我们</a></dd>
-                    </dl>
-                    <dl>
-                    	<dd><a href="">法律声明</a></dd>
-                        <dd><a href="">关于弘道</a></dd>
-                    </dl>
-                    <dl>
-                    	<dd><a href="">联系客服</a></dd>
-                        <dd><a href="">新浪微博</a></dd>
-                    </dl>
-                </div>
-            </div>
-        </div>
-        <div class="hd_footer_down">
-            <div  class="hd_footer_last menu_content">
-                    <a class="hd_img"><img src="Hd_index_img/hd_02.png" /></a>
-                    <span>COPYRIGHT&copy;WZGS.NET,2015,.</span>
-                    <a href="#">备案号：湘ICP备13003602号-2</a>
-                    <a href="#">经营许可证编号：湘B2-20130198</a>
-                    <a href="#">营业执照</a>
-                    <span>.ALL RIGHT BY YC_弘道传媒</span>
-                </ul>
-            </div>
-        </div>         
-    </div>
-    
-    
+ <%@ include file="footer.jsp" %>    
      <script type="text/javascript">
         var st = '200';
         _PageTag = "index";
