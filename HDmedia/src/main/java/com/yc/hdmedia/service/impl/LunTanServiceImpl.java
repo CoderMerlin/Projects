@@ -81,13 +81,21 @@ public class LunTanServiceImpl implements ILunTanService {
 	/**
 	 * 添加论坛图片
 	 */
-	public int addLtPic(LunTan luntan) {
-		return lunTanMapper.addLtPic(luntan);
+	public int addLtPic(String ltid,String ltphoto) {
+		Map<String, Object> params=new HashMap<String, Object>();
+		params.put("ltid", ltid);
+		params.put("ltyl2", ltphoto);
+		return lunTanMapper.addLtPic(params);
 	}
 
 	//查看论坛图片
 	public LunTan findltPic(int ltid) {
 		return lunTanMapper.findltPic(ltid);
+	}
+
+	@Override
+	public List<LunTan> findById(String ltid) {
+		return lunTanMapper.findById(ltid);
 	}
 
 

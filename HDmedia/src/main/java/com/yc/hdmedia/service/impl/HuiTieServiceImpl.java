@@ -62,8 +62,8 @@ public class HuiTieServiceImpl implements HuiTieService {
 	@Override
 	public List<HuiTie> findAllHuiTie(int pageNo, int pageSize) {
 		Map<String , Object> params=new HashMap<String , Object> ();
-		params.put("pageNo",(pageNo+1)*pageSize);
-		params.put("pageSize",(pageNo)*pageSize);
+		params.put("pageNo",pageNo*pageSize);
+		params.put("pageSize",(pageNo-1)*pageSize);
 		return huiTieMapper.findAllHuiTie(params);
 	}
 

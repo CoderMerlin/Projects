@@ -41,5 +41,17 @@
 			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
 		</action>
+		
+		
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+			<interceptor-ref name="fileUpload"><!-- 文件上传的拦截器 -->
+				<param name="allowedExtensions">jpg,png,gif</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" /><!-- 基本struts拦截器 -->
+			<result name="fail">/fail.jsp</result>
+		</action>
 	</package>
 </struts>

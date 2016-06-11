@@ -27,7 +27,7 @@ public interface LunTanMapper {
 	 * @param luntan
 	 * @return
 	 */
-	public int addLtPic(LunTan luntan);
+	public int addLtPic(Map<String , Object> params);
 	
 	/**
 	 * 通过论坛id删除论坛的相应栏目 可以同时删除多个
@@ -59,7 +59,7 @@ public interface LunTanMapper {
 	 */
 	public List<LunTan> find(Map<String , Object> params);
 	
-	
+	public List<LunTan> findById(String ltid);
 	public List<LunTan> finds();
 	
 	/**

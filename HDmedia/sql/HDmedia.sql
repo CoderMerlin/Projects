@@ -312,12 +312,6 @@ select lt.ltname,yhzc.yhname,tz.tzname,tz.tzclick,tz.tztext,tz.tztime from  tiez
 where status=1 and tz.ltid=lt.ltid and  tz.yhid=yh.yhid  and yh.yhzcid=yhzc.yhzcid 
 and tztext like '%Java%' order by tzclick
 
-
-
-
-
-
-
    drop sequence seq_tiezi_tid;
    select * from tiezi where status=1 order by tzclick
 create sequence seq_tiezi_tid start with 0001 increment by 1;
@@ -436,43 +430,39 @@ drop table author
 drop sequence seq_author_author_id;
 delete  form author where author_id=21
 
+
+create table worktype(
+	wtid  int primary key, --作品编号
+	wtname varchar2(100) not null unique	--作品类型名
+)
+create sequence seq_wt_wtid start with 0001 increment by 1
+insert into worktype values(seq_wt_wtid.nextval,'古诗词');
+insert into worktype values(seq_wt_wtid.nextval,'文言文');
+insert into worktype values(seq_wt_wtid.nextval,'诸子百家');
+insert into worktype values(seq_wt_wtid.nextval,'书画风采');
+insert into worktype values(seq_wt_wtid.nextval,'地域名族');
+insert into worktype values(seq_wt_wtid.nextval,'中华美食');
+--作品类型  1 表示古诗词作品  2表示文言文作品 3表示诸子百家  4表示书画风采 5表示地域名族  6表示中华美食  等
 --作品表
 create table works(
        works_id int primary key, --作品编号
 	   author_id int
-                         constraints FK_author_id references author(author_id),
+            constraints FK_author_id references author(author_id),
        works_name varchar2(40) not null, --作品名称
        works_time date,--作品的发表时间
        works_img  varchar2(3000),                     --作品图片
        works_click int,                 --点击量
 	   works_weight int,                 --作品权重
-      
-       works_type varchar2(100),    --作品类型  1 表示古诗词作品  2表示文言文作品 3表示诸子百家  4表示书画风采 5表示地域名族  6表示中华美食  等
+       wtid int
+            constraints FK_worktype_id references worktype(wtid),    --作品类型  1 表示古诗词作品  2表示文言文作品 3表示诸子百家  4表示书画风采 5表示地域名族  6表示中华美食  等
 	   status int,	--0表示不存在 	1表示存在
        works_details varchar2(3000),       --详细信息
        works_yl1 varchar2(100),   
        works_yl2 varchar2(100)
 );
-select * from works;
-insert into works values(seq_works_works_id.nextval,2,'舌尖上的中国','','',1000,1,'古代书画',1,66666,'','');
-insert into works values(seq_works_works_id.nextval,2,'舌尖上的中国','','',1000,1,'古代书法',1,66666,'','');
-insert into works values(seq_works_works_id.nextval,2,'舌尖上的中国',default,'',1000,1,'','美食',1,'','');
-drop table works;
 drop sequence seq_works_works_id;
-create sequence seq_works_works_id start with 0001 increment by 1
-drop sequence seq_works_works_id
-select w.*,a.author_name from works w,author a where w.works_id=1 and w.author_id=a.author_id and w.status=1
-select * from works where status=1;
-select * from (select w.*,a.* from works w, author a,where (works_type='文化资讯' and  status=1 and w.author_id=a.author_id) order by works_weight desc) where rownum<=4 order by rownum asc
-drop table works;
-create sequence seq_works_works_id start with 0001 increment by 1;
+create sequence seq_works_works_id start with 1000 increment by 1
 
-select * from works
-
-select * from works;
-create sequence seq_works_works_id start with 0001 increment by 1
-select w.*,a.author_name from works w,author a where w.works_id=1 and w.author_id=a.author_id and w.status=1
-select * from works where status=1;
 
 
 
@@ -482,10 +472,28 @@ select * from works where status=1;
 
 
 --总表：饮食表
+create table dietarytype(
+	dtpid int primary key,--Id
+	dtpname varchar2(100) not null
+);
+create sequence seq_dtp_dtpid start with 10000 increment by 1;
+insert into dietarytype values(seq_dtp_dtpid.nextval,'中华菜系');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'美图共赏');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'美食典故');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'名茶共赏');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'品茶思人生');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'茶语茶话');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'酒的历史');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'名酒赏析');
+insert into dietarytype values(seq_dtp_dtpid.nextval,'把酒话英雄');
+
+select * from (select a.*,rownum rn from (select dt.*,dtp.dtpname from dietary dt,dietarytype dtp where dt.status=1 and dt.dtpid=dtp.dtpid order by dt.dtid)a  where 10>=rownum)b where rn>0
+select count(1) from dietary where status=1
 create table dietary(
       dtid int primary key,--Id
 	  photo varchar(3000),--图片
-	  dttype int ,--饮食类型		 1.表示中华菜系  2表示美图共赏 3表示美食典故 4名茶共赏 5品茶思人生 6茶语茶话 7酒的历史 8名酒赏析 9把酒话英雄
+	  dtpid int 
+	  	constraints FK_dietarytype_dtpid references dietarytype(dtpid),--饮食类型		 1.表示中华菜系  2表示美图共赏 3表示美食典故 4名茶共赏 5品茶思人生 6茶语茶话 7酒的历史 8名酒赏析 9把酒话英雄
       dtname varchar2(40) not null ,--名称
 	  dttitle varchar2(100) not null ,--标题
       dttext clob,--内容
@@ -497,12 +505,7 @@ insert into dietary values(seq_dietary_dtid.nextval,null,1,'鲁菜','鲁菜',nul
 
 drop table dietary
 drop sequence seq_dietary_dtid
-create sequence seq_dietary_dtid start with 0001 increment by 1;
-select * from picshow
-select * from dietary
-select * from dietary where dttype=8 order by dtid
-select * from yonghu
-select ht.*,yh.yhzsname,yh.yhphoto,tz.tzname from huitie ht,yonghu yh,tiezi tz where ht.yhid=yh.yhid and ht.tid=tz.tid and ht.htstatus=1 order by ht.httime desc
+create sequence seq_dietary_dtid start with 10000 increment by 1;
 --图片类型表
 create table picshow(
        psid int primary key,--id

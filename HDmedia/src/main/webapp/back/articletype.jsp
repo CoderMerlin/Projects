@@ -14,8 +14,7 @@ $(function(){
 	var statusObj=[{sid:0,sname:'不可用'},{sid:1,sname:'可用'}];
 	
 	datagrid=$('#type_info').datagrid({   
-	    url:'../wenzhangTypeServlet',
-	    queryParams:{op:"getPageTypeInfo"},
+	    url:'wenZhangType_getPageTypeInfo',
 	    fitColumns:true,
 	    striped:true,
 	    loadMsg:"数据加载中...",
@@ -107,10 +106,10 @@ $(function(){
 								wztypeids+=rows[i].wztypeid+",";
 							}
 							wztypeids+=rows[i].wztypeid;
-							
+							console.info(wztypeids);
 							//将要删除wztypeid发送到服务器
-							$.post("../wenzhangTypeServlet",{op:"delTypeInfo",wztypeids:wztypeids},function(data){
-								if(data==1){ //添加成功
+							$.post("wenZhangType_delTypeInfo",{op:"delTypeInfo",wztypeids:wztypeids},function(data){
+								if(data.total>=1){ //添加成功
 									$.messager.show({
 										title:'删除提示',
 										msg:'文章类型信息删除成功...',
@@ -134,31 +133,48 @@ $(function(){
 				
 				//获取当前被修改的数据
 				var rows=datagrid.datagrid("getChanges")[0];
+				var wzname=rows.wzname;
+				var status=rows.status;
+				alert(rows);
+				console.info(rows);
 				if(rows==undefined){
 					datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
 					datagrid.datagrid("unselectAll");
 					editRow=undefined;
 				}else{
-					rows["op"]=op;
-					
-					$.post("../wenzhangTypeServlet",rows,function(data){
-						data=parseInt( $.trim(data));
-						if(data==1){ //添加成功
-							$.messager.show({
-								title:'成功提示',
-								msg:'文章类型信息'+flag+'成功...',
-								timeout:2000,
-								showType:'slide'
-							});
-						}else{
-							$.messager.alert('失败提示','文章类型信息'+flag+'失败...','error');
-						}
-						rows=null;
-						datagrid.datagrid("reload"); //重新加载数据一次
-						editRow=undefined;
-						datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
-						datagrid.datagrid("unselectAll");
-					});
+					console.info(wzname+"======="+status);
+					if(op=="addTypeInfo"){
+						$.post("wenZhangType_"+op,{wzname:wzname,status:status},function(data){
+							if(data.total==1){ //添加成功
+								$.messager.show({
+									title:'成功提示',msg:'文章类型信息'+flag+'成功...',timeout:2000,showType:'slide'
+								});
+							}else{
+								$.messager.alert('失败提示','文章类型信息'+flag+'失败...','error');
+							}
+							rows=null;
+							datagrid.datagrid("reload"); //重新加载数据一次
+							editRow=undefined;
+							datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
+							datagrid.datagrid("unselectAll");
+						});
+					}else if(op=="updateTypeInfo"){
+						var wztypeid=rows.wztypeid;
+						$.post("wenZhangType_"+op,{wztypeid:wztypeid,wzname:wzname,status:status},function(data){
+							if(data.total==1){ //添加成功
+								$.messager.show({
+									title:'成功提示',msg:'文章类型信息'+flag+'成功...',timeout:2000,showType:'slide'
+								});
+							}else{
+								$.messager.alert('失败提示','文章类型信息'+flag+'失败...','error');
+							}
+							rows=null;
+							datagrid.datagrid("reload"); //重新加载数据一次
+							editRow=undefined;
+							datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
+							datagrid.datagrid("unselectAll");
+						});
+					}
 				}
 			}
 		},{

@@ -14,8 +14,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var flag;
 		var gonggaostatusObj=[{gongaoid:0,gonggaostatus:'不可用'},{gonggaoid:1,gonggaostatus:'可用'}];
 		datagrid=$('#gonggao_info').datagrid({   
-		    url:'gongGao_getAllGongGao.action', 
-		    queryParams:{op:"getAllGongGao"},
+		    url:'../gongGaoServlet', 
+		    queryParams:{op:"getPageGongGaoInfo"},
 		    fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        {field:'gid',title:'公告编号',width:100,align:'center',sortable:true},
 		        {field:'gtitle',title:'公告标题',width:100,align:'center',editor:{type:"text",options:{required:true}}},   
 		        {field:'gtime',title:'公告创建时间',width:100,align:'center'},
-		        {field:'gtext',title:'公告内容',width:100,align:'center',
+		        {field:'_operate',title:'公告内容',width:100,align:'center',
 		        	formatter:function(value,rowData,index){
 		        		//console.info(JSON.stringify(rowDate));  //将对象转换成字符串
 		        		//console.info(JSON.parse(rowData));  //将字符串转换成对象
@@ -67,9 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    			$("#gonggao_update_Info").dialog("open");
 		    			var gid=rows.gid; //获取要修改的公告id
 		    			var ue1=UE.getEditor('editor1');  //打开编辑器
-		    			$.post("gongGao_findGongGaoByGid.action",{gid:gid},function(data){
-							var gonggao=data.gg;
-							console.info("公告"+gonggao);
+		    			$.post("../gongGaoServlet",{op:"findGongGaoByGid",gid:gid},function(data){
+							var gonggao=data.rows;
 							var rows=datagrid.datagrid("getChecked")[0];
 							$("#g_title_update").val(gonggao.gtitle);  //公告标题
 							$("#g_status_update").val(gonggao.gstatus);  //公告状态
@@ -80,7 +79,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							var str="";
 							var pics=gonggao.ggyl1.split(",");
 							for(var i=0; i<pics.length;i++){
-								str+="<img src=upload/"+pics[i]+" width='100px' height='100px'/> &nbsp;";
+								str+="<img src='../"+pics[i]+"' width='100px' height='100px' />&nbsp;";
 							}
 							$("#gonggao_pic_update").html($(str));
 						},"json");
@@ -108,9 +107,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    					}
 		    					gids+=rows[i].gid;
 		    					//将要删除gid 发送到服务器
-		    					$.post("gongGao_delete.action",{gids:gids},function(data){
-		    						var del=data.delId;
-				    				if(del>0){ //删除成功
+		    					$.post("../gongGaoServlet",{op:"delGongGaoInfo",gids:gids},function(data){
+				    				if(data==1){ //删除成功
 				    					$.messager.show({
 				    						title:'删除提示',
 				    						msg:'公告信息删除成功..',
@@ -128,50 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		    		}
 		    	}
-		    },{
-				text:"保存",
-				iconCls:'icon-save',
-				handler:function(){
-					datagrid.datagrid("endEdit",editRow); //关闭当前正在编辑的行
-					
-					//获取当前被修改的数据
-					var rows=datagrid.datagrid("getChanges")[0];
-					if(rows==undefined){
-						datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
-						datagrid.datagrid("unselectAll");
-						editRow=undefined;
-					}else{
-						rows["op"]=op;
-						
-						$.post("../guanliServlet",rows,function(data){
-							data=parseInt( $.trim(data));
-							if(data==1){ //添加成功
-								$.messager.show({
-									title:'成功提示',
-									msg:'公告操作信息'+flag+'成功...',
-									timeout:2000,
-									showType:'slide'
-								});
-							}else{
-								$.messager.alert('失败提示','管理员信息'+flag+'失败...','error');
-							}
-							rows=null;
-							datagrid.datagrid("reload"); //重新加载数据一次
-							editRow=undefined;
-							datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
-							datagrid.datagrid("unselectAll");
-						});
-					}
-				}
-			},{
-				text:'撤销',
-				iconCls:'icon-redo',
-				handler:function(){
-					datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
-					datagrid.datagrid("endEdit",editRow);
-					editRow=undefined;
-				}
-			}]   
+		    }]   
 		});	
 	});
 </script>
@@ -196,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<option value="1">可用</option>  
 				<option value="0">不可用</option>
 			</select><br /><br /> 
-		<label>公告图片:</label><input type="file" name="upload" id="g_pic" multiple="multiple" onchange="previewMultipleImage(this,'gonggao_pic_show')"/><br /><br />
+		<label>公告图片:</label><input type="file" name="gpic" id="g_pic" multiple="multiple" onchange="previewMultipleImage(this,'gonggao_pic_show')"/><br /><br />
 		<label>公告内容:</label>
 		<div>
 			<script id="editor" type="text/javascript" style="width:800px;height:400px;"></script>
@@ -220,10 +175,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<option value="1">可用</option>  
 				<option value="0">不可用</option>
 			</select><br /><br /> 
-		<label>公告图片:</label><input type="file" name="upload" id="g_pic_update" multiple="multiple" onchange="previewMultipleImage(this,'gonggao_pic_update')"/><br /><br />
+		<label>公告图片:</label><input type="file" name="gpic" id="g_pic_update" multiple="multiple" onchange="previewMultipleImage(this,'gonggao_pic_update')"/><br /><br />
 		<label>公告内容:</label>
 		<div>
-			<script id="editor1" type="text/javascript" name="gtext" style="width:800px;height:400px;"></script>
+			<script id="editor1" type="text/javascript" style="width:800px;height:400px;"></script>
 		</div><br /><br />
 		<a href="javascript:updategonggaoInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">保存修改</a>
 	</form>
@@ -239,16 +194,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function addgonggaoInfo(){
 		var gtitle=$("#g_title").val();  //公告标题
 		var gstatus=$("#g_status").combobox('getValue'); //公告状态
-		var ggyl1=$("#g_pic").val();  //公告图片
+		var gpic=$("#g_pic");  //公告图片
 		var gtext=ue.getContent();  //公告内容
+		
 		$.ajaxFileUpload({
-			url:"gongGao_add.action",
+			url:"../gongGaoServlet?op=addGongGaoInfo",
 			secureuri:false,
 			fileElementId:"g_pic",
 			dataType:"json",
 			data:{gtitle:gtitle,gstatus:gstatus,gtext:gtext},
 			success:function(data,status){
-				if(parseInt($.trim(data.result))==1){//说明成功
+				if(parseInt($.trim(data))==1){//说明成功
 					$.messager.show({title:'成功提示',msg:'公告信息添加成功！',timeout:2000,showType:'slide'});
 					$("#gonggao_add_Info").dialog("close");
 					$("#gonggao_info").datagrid("reload");
@@ -258,14 +214,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					ue.getContent();
 					
 				}else{
-					console.info("date"+date);
 					$.messager.alert("失败提示","公告信息添加失败！","error");
 				}
 			},
-			 error:function(data,status,e){
-				 console.info("data"+data.result);
+			error:function(data,status,e){
 				$.messager.alert("错误提示！","公告信息添加有误！\n"+e,"error");
-			} 
+			}
 		});
 	}
 
@@ -280,14 +234,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		var gtext=ue1.getContent();  //公告内容
 		console.info(gstatus);
 		$.ajaxFileUpload({
-			url:"gongGao_update.action",
+			url:"../gongGaoServlet?op=updateGongGaoInfo",
 			secureuri:false,
 			fileElementId:"g_pic_update",
 			dataType:"json",
 			data:{gid:gid,gtitle:gtitle,gstatus:gstatus,gtext:gtext},
 			success:function(data,status){
-				if(parseInt($.trim(data.results))==1){//说明成功
-					$.messager.show({title:'成功提示',msg:'公告信息修改成功！',timeout:2000,showType:'slide'});
+				if(parseInt($.trim(data))==1){//说明成功
+					$.messager.show({title:'成功提示',msg:'新闻信息修改成功！',timeout:2000,showType:'slide'});
 					$("#gonggao_update_Info").dialog("close");
 					$("#gonggao_info").datagrid("reload");
 				}else{

@@ -10,8 +10,7 @@
 		var op;
 		var flag;
 	 datagrid=$('#works_info').datagrid({
-			url:"../worksServlet",
-			queryParams:{op:"getPageWorksInfo"},
+			url:"works_getPageWorksInfo",
 			fitColumns:true,
 		    striped:true,
 		    loadMsg:"数据加载中...",
@@ -26,7 +25,7 @@
 		        {field:'works_name',title:'作品名',width:100,align:'center',editor:{type:"text",options:{required:true}}},  
 		        {field:'author_name',title:'作者姓名',width:100,align:'center',editor:{type:"text",options:{required:true}}},
 		        {field:'works_time',title:'发表时间',width:100,align:'center',editor:{type:"text",options:{required:true}}},   
-		        {field:'works_type',title:'作品类型',width:100,align:'center',editor:{type:"text",options:{required:true}}},
+		        {field:'wtname',title:'作品类型',width:100,align:'center',editor:{type:"text",options:{required:true}}},
 		        {field:'works_click',title:'作品点击量',width:100,align:'center',editor:{type:"text",options:{required:true}}},   
 		        {field:'status',title:'状态',width:100,align:'center',editor:{type:"text",options:{required:true}}},
 		        {field:'_operate',title:'操作',width:100,align:'center',
@@ -51,22 +50,23 @@
 		    		}else{
 		    			works=wrows[0];
 		    			works_id=works.works_id;
-		    			$.post("../worksServlet",{op:"findWorksInfoById",works_id:works_id},function(data){
-		    				var workss=data.rows;
+		    			$.post("works_findWorksInfoById",{works_id:works_id},function(data){
+		    				var workss=data.rows[0];
+		    				$("#works_upid").val(workss.works_id);
 							$("#works_updatetype").val(workss.works_type);
 							$("#works_updatename").val(workss.works_name);
 							$("#author_updateauthorname").val(workss.author_name);
 							$("#works_updatetime").datebox('setValue',workss.works_time);
 							$("#works_updaclick").datebox('setValue',workss.works_click);
 							$("#works_updateweight").val(workss.works_weight);
-							
-							var str="";
-							var works_img=workss.works_img.split(",");
-							for(var i=0;i<works_img.length;i++){
-								str+="<img src='../"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+							if(workss.works_img!=null){
+								var str="";
+								var works_img=workss.works_img.split(",");
+								for(var i=0;i<works_img.length;i++){
+									str+="<img src='upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+								}
+								$("#works_img_update").html($(str));
 							}
-							$("#works_img_update").html($(str));
-							
 							upue.setContent(workss.works_details);
 							$("#works_update_worksInfo").dialog("open");
 			
@@ -91,12 +91,12 @@
 		    					}
 		    					works_ids+=rows[i].works_id;
 		    					
-		    					$.post("../worksServlet",{op:"delWorksInfo",works_ids:works_ids},function(data){
-		    						if(data>0){
-		    							$.messager.show({title:'成功提示',msg:'新闻信息删除成功...',timeout:2000,showType:'slide'});
+		    					$.post("works_delWorksInfo",{works_ids:works_ids},function(data){
+		    						if(data.total>0){
+		    							$.messager.show({title:'成功提示',msg:'作品信息删除成功...',timeout:2000,showType:'slide'});
 										datagrid.datagrid("reload");
 		    						}else{
-		    							$.messager.alert('失败提示','新闻信息删除失败...');
+		    							$.messager.alert('失败提示','作品信息删除失败...');
 		    						}
 		    					});
 		    				}
@@ -116,16 +116,6 @@
 		});
 	});
 	
-	$.post("../worksServlet",{op:"getAllWorksType"},function(data){
-		var obj=$("#works_selecttype");
-		var obj1=$("#works_updateselecttype");
-		var opt;
-		$.each(data.zplx,function(index,item){
-			opt="<option value=' "+item.works_type+" '>"+item.works_type+"</option>";
-			obj.append($(opt));
-			obj1.append($(opt));
-		});
-	},"json");	
 </script>
 
 
@@ -140,15 +130,16 @@
 	}
 </style>
 <div id="works_add_worksInfo" class="easyui-dialog" title="添加作品" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="" style="padding:20px;float:left;display:inline-block;">
-		<label>作品类型</label><input type="works_type" name="title" id="works_workstype" class="myinput"/>
-		<select name="workstype" id="works_selecttype" class="myinput" onclick="getvalue()" >
-		
+	<form method="post" id="add_works" style="padding:20px;float:left;display:inline-block;">
+		<input type="text" name="works_details" id="works_details" style="display:none"/>
+		<label>作品类型</label>
+		<select name="wtid" id="works_selecttype" class="myinput"  >
+			
 		</select><br /><br />
 		<label>作品名称:</label><input type="text" name="works_name" id="works_worksname" class="myinput"/><br /><br />
 		<label>作者名称:</label><input type="text" name="author_name" id="author_authorname" class="myinput"/><br /><br />
 		<label>发表时间:</label><input name="works_time" id="works_workstime" class="easyui-datebox myinput" required/><br /><br />
-		<label>作品图片:</label><input type="file" name="works_img" id="works_worksimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_show')"/><br /><br />
+		<label>作品图片:</label><input type="file" name="upload" id="works_worksimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_show')"/><br /><br />
 		<label>作品权重:</label><input class="easyui-numberbox myinput" name="works_weight" id="works_worksweight" value="0"/><br /><br />
 		<label>作品内容:</label>
 		<div>
@@ -166,7 +157,7 @@
 
 <div id="works_show_worksInfo" class="easyui-dialog" title="查看作品" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
-		<label>作品类型</label><input type="works_type" name="title" id="works_showtype" class="myinput" readonly="readonly"/>
+		<label>作品类型</label><input type="text" name="wtname" id="works_showtype" class="myinput" readonly="readonly"/><br /><br />
 		<label>作品名称:</label><input type="text" name="works_name" id="works_showname" class="myinput"  readonly="readonly"/><br /><br />
 		<label>作者名称:</label><input type="text" name="author_name" id="author_showauthorname" class="myinput" readonly="readonly"/><br /><br />
 		<label>发表时间:</label><input type="text" name="works_time" id="works_showtime" class=" myinput" readonly="readonly"/><br /><br />
@@ -183,15 +174,17 @@
 </div>
 
 <div id="works_update_worksInfo" class="easyui-dialog" title="修改作品" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form action="" style="padding:20px;float:left;display:inline-block;">
-		<label>作品类型</label><input type="works_type" name="title" id="works_updatetype" class="myinput"/>
-		<select name="workstype" id="works_updateselecttype" class="myinput" onclick="getvalue()" >
+	<form method="post" id="update_works" style="padding:20px;float:left;display:inline-block;">
+		<input type="text" name="works_id" id="works_upid" style="display:none"/>
+		<input type="text" name="works_details" id="works_updetails" style="display:none"/>
+		<label>作品类型</label>
+		<select name="wtid" id="works_updateselecttype" class="myinput" >
 		
 		</select><br /><br />
 		<label>作品名称:</label><input type="text" name="works_name" id="works_updatename" class="myinput"/><br /><br />
 		<label>作者名称:</label><input type="text" name="author_name" id="author_updateauthorname" class="myinput"/><br /><br />
 		<label>发表时间:</label><input name="works_time" id="works_updatetime" class="easyui-datebox myinput" required/><br /><br />
-		<label>作品图片:</label><input type="file" name="works_img" id="works_updateimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_update')"/><br /><br />
+		<label>作品图片:</label><input type="file" name="upload" id="works_updateimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_update')"/><br /><br />
 		<label>作品点击量:</label><input  class="easyui-numberbox myinput" name="works_click" id="works_updateclick"/><br /><br />
 		<label>作品权重:</label><input class="easyui-numberbox myinput" name="works_weight" id="works_updateweight" value="0"/><br /><br />
 		<label>作品内容:</label>
@@ -207,27 +200,32 @@
 	</div>
 </div>
 <script>
+$.post("worksType_getAllWorksType",function(data){
+	var obj=$("#works_selecttype");
+	var obj1=$("#works_updateselecttype");
+	var opt;
+	$.each(data.rows,function(index,item){
+		opt="<option value=' "+item.wtid+" '>"+item.wtname+"</option>";
+		obj.append($(opt));
+		obj1.append($(opt));
+	});
+},"json");	
 	var ue11=UE.getEditor('editor11');
 	var upue=UE.getEditor('updateUE');		
 	
 	function updateWorksInfo(){
-		var works_id=works.works_id;
-		var works_type=$("#works_updatetype").val();
-		var works_name=$("#works_updatename").val();
-		var author_name=$("#author_updateauthorname").val();
-		var works_time=$("#works_updatetime").datebox('getValue');
-		var works_click=$("#works_updaclick").datebox('getValue');
-		var works_weight=$("#works_updateweight").val();
-		var works_details=upue.getContent();
-		
-		$.ajaxFileUpload({
-			url:"../worksServlet?op=updateWorksInfo",
-			secureuri:false,
-			fileElementId:"works_updateimg",
-			dataType:"json",
-			data:{works_id:works_id,works_name:works_name,author_name:author_name,works_time:works_time,works_click:works_click,works_type:works_type,works_weight:works_weight,works_details:works_details},
-			success:function(data,status){
-				if(parseInt($.trim(data))==1){
+		$("#works_updetails").val(upue.getContent());
+		var formData=new FormData($("#update_works")[0]);
+		$.ajax({
+			type:"post",
+			url:"works_updateWorksInfo",
+			processData:false,
+			contentType:false,
+			async:false,
+			cache:false,
+			data:formData,
+			success:function(data){
+				if(data.total=="1"){
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
 					$("#works_update_worksInfo").dialog("close");
 					$("#works_info").datagrid("reload");
@@ -236,53 +234,47 @@
 				}
 			}
 		});
-		
 	}
+	
 	function showWorksDetails(works_id){
-		$("#works_show_worksInfo").dialog("open");
-		$.post("../worksServlet",{op:"findWorksInfoById",works_id:works_id},function(data){
-			var workss=data.rows;
-			$("#works_showtype").val(workss.works_type);
+		
+		$.post("works_findWorksInfoById",{works_id:works_id},function(data){
+			var workss=data.rows[0];
+			$("#works_showtype").val(workss.wtname);
 			$("#works_showname").val(workss.works_name);
 			$("#author_showauthorname").val(workss.author_name);
 			$("#works_showtime").val(workss.works_time);
 			$("#works_showclick").val(workss.works_click);
 			$("#works_showweight").val(workss.works_weight);
 			$("#works_showdetails").html(workss.works_details);
-			
-			var str="";
-			var works_img=workss.works_img.split(",");
-			for(var i=0;i<works_img.length;i++){
-				str+="<img src='../"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+			if(workss.works_img!=null){
+				var str="";
+				var works_img=workss.works_img.split(",");
+				for(var i=0;i<works_img.length;i++){
+					str+="<img src='upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+				}
+				$("#works_img_show_info").html($(str));
 			}
-			$("#works_img_show_info").html($(str));
+			
+			$("#works_show_worksInfo").dialog("open");
 			
 		},"json");
 	}
 	
 	
-	function getvalue(){
-	$("#works_workstype").val($("#works_selecttype").val());
-	$("#works_updatetype").val($("#works_updateselecttype").val());
-	}
-	
-	
 	function addWorksInfo(){
-		var works_name=$("#works_worksname").val();
-		var author_name=$("#author_authorname").val();
-		var works_time=$("#works_workstime").datebox('getValue');
-		var works_type=$.trim( $("#works_workstype").val());
-		console.info(works_type);
-		var works_weight=$("#works_worksweight").val();
-		var works_details=ue11.getContent();
-		$.ajaxFileUpload({
-			url:"../worksServlet?op=addWorksInfo",
-			secureuri:false,
-			fileElementId:"works_worksimg",
-			dataType:"json",
-			data:{works_name:works_name,author_name:author_name,works_time:works_time,works_type:works_type,works_weight:works_weight,works_details:works_details},
-			success:function(data,status){
-				if(parseInt($.trim(data))==1){
+		$("#works_details").val(ue11.getContent());
+		var formData=new FormData($("#add_works")[0]);
+		$.ajax({
+			type:"post",
+			url:"works_addWorksInfo",
+			processData:false,
+			contentType:false,
+			async:false,
+			cache:false,
+			data:formData,
+			success:function(data){
+				if(data.total=="1"){
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
 					$("#works_add_worksInfo").dialog("close");
 					$("#works_info").datagrid("reload");
@@ -298,5 +290,6 @@
 			}
 		});
 	}
+	
 </script>
 

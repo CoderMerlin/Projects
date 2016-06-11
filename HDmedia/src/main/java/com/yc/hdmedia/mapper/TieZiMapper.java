@@ -56,12 +56,5 @@ public interface TieZiMapper {
 	
 	public TieZi findshow(int ltid);
 
-	
-	/**
-	 * 根据内容搜索相关帖子
-	 * @param content 
-	 * @author HM
-	 * @return
-	 */
 	public List<HDSearch> selectTeiZiByContent(String content);
 }

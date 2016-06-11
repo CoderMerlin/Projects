@@ -25,7 +25,7 @@ public interface ILunTanService {
 	 * @param luntan
 	 * @return
 	 */
-	public int addLtPic(LunTan luntan);
+	public int addLtPic(String ltid,String ltphoto);
 	
 	/**
 	 * 通过论坛id删除论坛的相应栏目 可以同时删除多个
@@ -59,6 +59,8 @@ public interface ILunTanService {
 	
 	
 	public List<LunTan> finds();
+	
+	public List<LunTan> findById(String ltid);
 	
 	/**
 	 * 查找论坛图片

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.IWzyhpinglunMapper">
+	<insert id="addWzyhpinglun" parameterType="Wzyhpinglun">
+		insert into wzyhpinglun values(seq_wzyhpinglun_wzplid.nextval,#{yhzcid},#{wzpltext},to_date(substr(#{wzpltime},0,19),'yyyy-mm-dd hh24:mi:ss'),#{wzid},1,'','')
+	</insert>
+	
+	<update id="updateWzyhpinglun" parameterType="Wzyhpinglun">
+		update wzyhpinglun set wzpltext=#{wzpltext} where wzplid=#{wzplid}
+	</update>
+	
+	<select id="findAllPingLun" parameterType="map" resultType="Wzyhpinglun">
+		select * from (select a.*,rownum rn from (select wzpl.*,wzb.wztitle  from wzyhpinglun wzpl,wenzhang wzb where wzpl.wzid=wzb.wzid and wzpl.status=1 order by wzb.wzid desc)a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<select id="findById" parameterType="int" resultType="Wzyhpinglun">
+		select wzplid,yhzcid,wzpltext,wzyh.wzid,wzpltime,wztitle,status from wenzhang wzb,wzyhpinglun wzyh where wzb.wzid=wzyh.wzid and wzplid=#{wzplid} and status=1
+	</select>
+	
+	<update id="del" parameterType="String">
+		update wzyhpinglun set status=0 where wzplid=#{wzplid}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(1) from wzyhpinglun where status=1
+	</select>
+
+</mapper>

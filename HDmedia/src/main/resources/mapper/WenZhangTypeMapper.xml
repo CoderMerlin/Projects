@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.WenZhangTypeMapper">
+	<insert id="addWenzhangtype" parameterType="WenzhangType">
+		insert into wenzhangtype values(seq_wenzhangtype_wztypeid.nextval,#{wzname},#{status},'','')
+	</insert>
+	
+	<update id="update" parameterType="WenzhangType">
+		update wenzhangtype set wzname=#{wzname} where wztypeid=#{wztypeid}
+	</update>
+	
+	
+	<update id="del" parameterType="int">
+		update wenzhangtype set status=0 where wztypeid=#{wztypeid}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(*) from wenzhangtype where status=1 
+	</select>
+	
+	<select id="findAllWzType" parameterType="map" resultType="WenzhangType">
+		select * from (select a.*,rownum rn from (select * from wenzhangtype where status=1  order by wztypeid) a where #{pageNo}>=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<select id="findByWzId" parameterType="int">
+		select wztypeid,wzname,status from wenzhangtype where wztypeid=#{wztypeid}
+	</select>
+	
+	<select id="findAllWz" resultType="WenzhangType">
+		select * from  wenzhangtype where status=1
+	</select>
+</mapper>

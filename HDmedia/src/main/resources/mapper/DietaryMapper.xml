@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.hdmedia.mapper.DietaryMapper">
+	<select id="findAll" parameterType="map" resultType="Dietary">
+		select * from (select a.*,rownum rn from (select dt.*,dtp.dtpname from dietary dt,dietarytype dtp where dt.status=1 and dt.dtpid=dtp.dtpid order by dt.dtid)a  where #{pageNo} >=rownum)b where rn>#{pageSize}
+		
+	</select>
+	
+	<insert id="addDietary" parameterType="Dietary">
+		insert into dietary values(seq_dietary_dtid.nextval,#{photo},#{dtpid},#{dtname},#{dttitle},#{dttext},1,'','')
+	</insert>
+	
+	<update id="updateDietary" parameterType="Dietary">
+		update dietary
+		<set>
+		<if test="dtpid!=null and dtpid!=''">
+				dtpid=#{dtpid}
+			</if>
+			<if test="photo!=null and photo!=''">
+				,photo=#{photo}
+			</if>
+			
+			<if test="dtname!=null and dtname!=''">
+				,dtname=#{dtname}
+			</if>
+			<if test="dttitle!=null and dttitle!=''">
+				,dttitle=#{dttitle}
+			</if>
+			<if test="dttext!=null and dttext!=''">
+				,dttext=#{dttext}
+			</if>
+		</set>
+		where dtid=#{dtid}
+	</update>
+	
+	<update id="delDietary" parameterType="String">
+		update dietary set status=0 where dtid=#{dtid}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(1) from dietary where status=1
+	</select>
+	
+	<select id="findAllType" resultType="DietaryType">
+		select * from dietarytype 
+	</select>
+
+	<select id="findById" resultType="Dietary" parameterType="int">
+		select dt.*,dtp.dtpname from dietary dt,dietarytype dtp where dt.status=1 and dt.dtpid=dtp.dtpid and dt.dtid=#{dtid}
+	</select>
+</mapper>

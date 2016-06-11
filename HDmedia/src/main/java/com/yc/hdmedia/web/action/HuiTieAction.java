@@ -1,9 +1,10 @@
 package com.yc.hdmedia.web.action;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import com.opensymphony.xwork2.ModelDriven;
+
 import com.yc.hdmedia.entity.HuiTie;
 import com.yc.hdmedia.entity.JsonObject;
 import com.yc.hdmedia.service.HuiTieService;
@@ -12,37 +13,17 @@ import com.yc.hdmedia.service.HuiTieService;
  * 天天人员
  */
 @Controller("huiTieAction")
-public class HuiTieAction implements ModelDriven<HuiTie>{
+public class HuiTieAction{
 	@Autowired
 	private HuiTieService huiTieService;
-	private HuiTie huiTie;
+	private HuiTie huiTie=new HuiTie();
 	private JsonObject<HuiTie> jsonObject;
 	private String htids;
-	
 	private int page;
 	private int rows;
 	
-	public void setHtids(String htids) {
-		this.htids = htids;
-	}
-
-	public JsonObject<HuiTie> getJsonObject() {
-		return jsonObject;
-	}
-
-	public void setPage(int page) {
-		System.out.println(page);
-		this.page = page;
-	}
-
-	public void setRows(int rows) {
-		System.out.println(rows);
-		this.rows = rows;
-	}
-
+	
 	public String getPageHuiTieInfo(){
-		System.out.println("page=====>"+page);
-		System.out.println("rows======>"+rows);
 		List<HuiTie> huiTies=huiTieService.findAllHuiTie(page, rows);
 		int result=huiTieService.total();
 		jsonObject=new JsonObject<HuiTie>();
@@ -52,7 +33,6 @@ public class HuiTieAction implements ModelDriven<HuiTie>{
 	}
 
 	public String addHuiTieInfo(){
-		System.out.println("添加回帖获取到的回帖=========》"+huiTie);
 		int result=huiTieService.addHuiTie(huiTie);
 		jsonObject=new JsonObject<HuiTie>();
 		jsonObject.setTotal(result);
@@ -68,7 +48,7 @@ public class HuiTieAction implements ModelDriven<HuiTie>{
 	
 	
 	public String findHuiTieByHtid(){
-		List<HuiTie> ht=huiTieService.find(Integer.valueOf(huiTie.getHtid()));
+		List<HuiTie> ht=huiTieService.find(huiTie.getHtid());
 		jsonObject=new JsonObject<HuiTie>();
 		jsonObject.setRows(ht);
 		return "success";
@@ -81,10 +61,20 @@ public class HuiTieAction implements ModelDriven<HuiTie>{
 		return "success";
 	}
 	
-	@Override
-	public HuiTie getModel() {
-		this.huiTie=new HuiTie();
-		return huiTie;
+	public void setHtids(String htids) {
+		this.htids = htids;
 	}
-	
+
+	public JsonObject<HuiTie> getJsonObject() {
+		return jsonObject;
+	}
+
+	public void setPage(int page) {
+		System.out.println(page);
+		this.page = page;
+	}
+	public void setRows(int rows) {
+		System.out.println(rows);
+		this.rows = rows;
+	}
 }

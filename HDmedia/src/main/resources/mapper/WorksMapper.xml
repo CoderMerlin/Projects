@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yc.hdmedia.mapper.WorksMapper">
+	
+	<insert id="addWorks" parameterType="Works">
+		<selectKey keyColumn="author_id" keyProperty="author_id" order="BEFORE" resultType="int" >
+			select author_id from author where author_name=#{author_name}
+		</selectKey>
+		insert into works values(seq_works_works_id.nextval,#{author_id},#{works_name},to_date(substr(#{works_time},0,10),'yyyy-mm-dd'),#{works_img},#{works_click},#{works_weight},#{wtid},1,#{works_details},'','')
+	</insert>
+	
+	<update id="updateWorks" parameterType="Works">
+		<selectKey keyColumn="author_id" keyProperty="author_id" order="BEFORE" resultType="int" >
+			select author_id from author where author_name=#{author_name}
+		</selectKey>
+		update works
+		<set>
+			<if test="author_name!=null and author_name!=''">
+				author_id=#{author_id}
+			</if>
+			<if test="works_name!=null and works_name!=''">
+				,works_name=#{works_name}
+			</if>
+			<if test="works_time!=null and works_time!=''">
+				,works_time=to_date(substr(#{works_time},0,10),'yyyy-mm-dd')
+			</if>
+			<if test="works_img!=null and works_img!=''">
+				,works_img=#{works_img}
+			</if>
+			<if test="works_click!=null and works_click!=''">
+				,works_click=#{works_click}
+			</if>
+			<if test="works_weight!=null and works_weight!=''">
+				,works_weight=#{works_weight}
+			</if>
+			<if test="wtid!=null and wtid!=''">
+				,wtid=#{wtid}
+			</if>
+			<if test="works_details!=null and works_details!=''">
+				,works_details=#{works_details}
+			</if>
+		</set>
+		where works_id=#{works_id}
+	</update>
+	
+	<update id="delWorks" parameterType="String">
+		update works set status=0 where works_id=#{works_id}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(1) from works where status=1
+	</select>
+	
+	<select id="findAllWorks" parameterType="map" resultType="Works">
+		select * from (select a.*,rownum rn from (select a.author_name,wt.wtname,w.* from works w,author a,worktype wt where a.author_id=w.author_id and w.wtid=wt.wtid and w.status=1) a where #{pageNo}>=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<select id="findById" parameterType="int" resultType="Works">
+		select a.author_name,wt.wtname,w.* from works w,author a,worktype wt where a.author_id=w.author_id and w.wtid=wt.wtid and w.status=1 and w.works_id=#{works_id}
+	</select>
+	
+	<select id="findAllType" resultType="WorksType">
+		select * from worktype
+	</select>
+</mapper>

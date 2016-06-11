@@ -5,7 +5,6 @@
 		var op;
 		var flag;
 		var statusObj=[{sid:0,sname:'不可用'},{sid:1,sname:'可用'}];
-		var tiezi;
 	$(function(){
 		var datagrid;
 		var editRow=undefined;
@@ -56,9 +55,8 @@
 						tid=rows.tid;
 						$.post("tieZi_findTieZiByTid",{op:"findTieZiByTid",tid:tid},function(data){
 							console.info(data);
-							tiezi=data.rows[0];
-							console.info(tiezi.tzclick);
- 							console.info(tiezi.tzphoto);
+							var tiezi=data.rows[0];
+							$("#tid").val(tiezi.tid);
  							$("#tz_updateyhid").val(tiezi.yhid);
 							$("#tz_updateltname").val(tiezi.ltname);
 							$("#tz_updatetzname").val(tiezi.tzname);
@@ -69,7 +67,7 @@
 							var str="";
  							var tzphoto=tiezi.tzphoto.split(",");
 							for(var i=0;i<tzphoto.length;i++){
-								str+="<img src='../"+tzphoto[i]+"' width='100px' height='100px'>&nbsp;";
+								str+="<img src='upload/"+tzphoto[i]+"' width='100px' height='100px'>&nbsp;";
 							}
 							$("#tiezi_img_updateshow").html($(str));
 							updateUE.setContent(tiezi.tztext);
@@ -134,21 +132,23 @@
 	}
 </style>
 <div id="tiezi_add_tiezixu" class="easyui-dialog" title="添加帖子信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data" >
+	<form id="add_tiezi" method="post" action="tieZi_addTieZiInfo" style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data" >
+		<input type="text" name="tztext" id="tz_addtztext" style="display:none"/>
 		<label>用户id:</label><input type="text" name="yhid" id="tz_yhid" class="myinput"><br/><br/>
 	    <label>论坛名字:</label><input type="text" name="ltname" id="tz_ltname" class=" myinput" /><br/><br/>
 	    <label>帖子标题:</label><input type="text" name="tzname" id="tz_tzname" class="myinput"><br/><br/>
 	    <label>帖子摘要:</label><input type="text" name="tzzy" id="tz_tzzy" class=" myinput" /><br/><br/>
-	    <label>发表时间:</label><input name="tztime" id="tz_tztime" class="easyui-datetimebox myinput" required/><br /><br />
+	    <label>发表时间:</label><input name="tztime" id="tz_tztime" class="easyui-datetimebox myinput"/><br /><br />
 		<label>帖子权重:</label><input type="text" name="weight" id="tz_weight" class="myinput"/><br/><br/>
 		<label>帖子点击量:</label><input type="text" name="tzclick" id="tz_tzclick" class="myinput" value="0"/><br/><br/>
-		<label>帖子图片:</label ><input type="file" name="uploadUtil.pic" id="tz_photo" multiple="multiple" onchange="previewMultipleImage(this,'tiezi_img_show')"/><br /><br />
+		<label>帖子图片:</label ><input type="file" name="upload" id="tz_photo" multiple="multiple" onchange="previewMultipleImage(this,'tiezi_img_show')"/><br /><br />
 		
 		<label>帖子简介:</label>
 		<div>
 			<script type="text/javascript" id="editor" style="width:800px;height:400px;"></script>
 		</div><br/><br/>
-		<a href="javascript:addTieZi()" class="easyui-linkbutton" data-option="iconCls:'icon-add'">添加</a>
+		
+ 		<a href="javascript:addTieZi()" class="easyui-linkbutton" data-option="iconCls:'icon-add'">添加</a>
 	</form>
 	
 	<div style="float:right;width:380px; margin-right:20px;">
@@ -159,7 +159,9 @@
 </div>
 
 <div id="tiezi_update_tiezi" class="easyui-dialog" title="修改帖子信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form style="padding:20px;float:left;display:inline-block;" >
+	<form style="padding:20px;float:left;display:inline-block;" id="update_tiezi" enctype="multipart/form-data" >
+		<input type="text" name="tid" id="tid" style="display:none"/>
+		<input type="text" name="tztext" id="tz_uptztext" style="display:none"/>
 		<label>用户id:</label><input type="text" name="yhid" id="tz_updateyhid" class="myinput"><br/><br/>
 	    <label>论坛名字:</label><input type="text" name="ltname" id="tz_updateltname" class=" myinput" /><br/><br/>
 	    <label>帖子标题:</label><input type="text" name="tzname" id="tz_updatetzname" class="myinput"><br/><br/>
@@ -167,7 +169,7 @@
 	    <label>发表时间:</label><input name="tztime" id="tz_updatetztime" class="easyui-datetimebox myinput" required/><br /><br />
 		<label>帖子权重:</label><input type="text" name="weight" id="tz_updateweight" class="myinput"/><br/><br/>
 		<label>帖子点击量:</label><input type="text" name="tzclick" id="tz_updatetzclick" class="myinput" value="0"/><br/><br/>
-		<label>帖子图片:</label><input type="file" name="uploadUtil.pic" id="tz_updatephoto" multiple="multiple" onchange="previewMultipleImage(this,'tiezi_img_updateshow')"/><br /><br />
+		<label>帖子图片:</label><input type="file" name="upload" id="tz_updatephoto" multiple="multiple" onchange="previewMultipleImage(this,'tiezi_img_updateshow')"/><br /><br />
 		<label>帖子简介:</label>
 		<div>
 			<script type="text/javascript" id="updateUE" style="width:800px;height:400px;"></script>
@@ -187,23 +189,19 @@
 	var updateUE=UE.getEditor("updateUE");
 	
 	function addTieZi(){
-		var yhid=$("#tz_yhid").val();
-		var ltname=$("#tz_ltname").val();
-		var tzname=$("#tz_tzname").val();
-		var tzzy=$("#tz_tzzy").val();
-		var tztime=$("#tz_tztime").datebox('getValue');
-		var weight=$("#tz_weight").val();
-		var tzclick=$("#tz_tzclick").val();
-		var tztext=uezxl1.getContent();
-		$.ajaxFileUpload({
+		var formData=new FormData($("#add_tiezi")[0]);
+		$("#tz_addtztext").val(uezxl1.getContent());
+		$.ajax({
+			type:"post",
 			url:"tieZi_addTieZiInfo",
-			secureuri:false,
-			fileElementId:"tz_photo",
-			dataType:"json",
-			data:{yhid:yhid,ltname:ltname,tzname:tzname,tzzy:tzzy,tztime:tztime,weight:weight,tzclick:tzclick,tztext:tztext},
-			success:function(data,status){
-				if(data.total>0){
-					$("#tiezi_add_tiezixu").dialog("close");
+			processData:false,
+			contentType:false,
+			async:false,
+			cache:false,
+			data:formData,
+			success:function(data){
+				if(data.total=="1"){
+					$("#tiezi_update_tiezixu").dialog("close");
 					$("#tiezi_info").datagrid("reload");
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
 					$("#tz_yhid").val("");
@@ -223,30 +221,28 @@
 	}
 	
 	function updateTieZi(){
-		var tid=tiezi.tid;
-		 var yhid=$("#tz_updateyhid").val();
-		var ltname=$("#tz_updateltname").val();
-		var tzname=$("#tz_updatetzname").val();
-		var tzzy=$("#tz_updatetzzy").val();
-		var tztime=$("#tz_updatetztime").datebox('getValue');
-		var weight=$("#tz_updateweight").val();
-		var tzclick=$("#tz_updatetzclick").val();
-		var tztext=updateUE.getContent();
-		$.ajaxFileUpload({
+		var formData=new FormData($("#update_tiezi")[0]);
+		$("#tz_uptztext").val(updateUE.getContent());
+		$.ajax({
+			type:"post",
 			url:"tieZi_updateTieZiInfo",
-			secureuri:false,
-			fileElementId:"tz_updatephoto",
-			dataType:"json",
-			data:{tid:tid,ltname:ltname,tzname:tzname,tzzy:tzzy,tztime:tztime,weight:weight,tzclick:tzclick,tztext:tztext},
-			success:function(data,status){
-				if(data.total>0){
-					$("#tiezi_update_tiezi").dialog("close");
+			processData:false,
+			contentType:false,
+			async:false,
+			cache:false,
+			data:formData,
+			success:function(data){
+				if(data.total=="1"){
+					$("#tiezi_add_tiezixu").dialog("close");
 					$("#tiezi_info").datagrid("reload");
-					$.messager.show({title:'成功提示',msg:'作品信息修改成功...',timeout:2000,showType:'slide'});
+					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
 				}else{
-					$.messager.alert("失败提示","作品信息修改失败...","error");
+					$.messager.alert("失败提示","作品信息添加失败...","error");
 				}
 			}
 		});
+		
+		
 	}
+	
 </script>

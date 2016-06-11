@@ -7,11 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 论坛 -->
 	<!-- 添加论坛栏目   订房-->
 	<insert id="addLunTan" parameterType="LunTan">
-		insert into luntan values(seq_luntan_ltid.nextval,#{ltname},sysdate,#{ltstatus},#{ltyl1},'')
+		insert into luntan values(seq_luntan_ltid.nextval,#{ltname},to_date(substr(#{lttime},1,19),'yyyy-mm-dd hh24:mi:ss'),1,#{ltyl1},#{ltyl2})
 	</insert>
 	
 	<!-- 添加论坛图片 也可以修改 -->
-	<update id="addLtPic" parameterType="LunTan">
+	<update id="addLtPic" parameterType="map">
 		update luntan set ltyl2=#{ltyl2} where ltid=#{ltid}
 	</update>
 	
@@ -27,12 +27,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="ltname!=null and ltname!='' ">
 				ltname=#{ltname}
 			</if>
-				,ltstatus=#{ltstatus}
+			<if test="lttime!=null and lttime!=''">
+				,lttime=to_date(substr(#{lttime},1,19),'yyyy-mm-dd hh24:mi:ss')
+			</if>
 			<if test="ltyl1!=null and ltyl1!=''">
 				,ltyl1=#{ltyl1}
 			</if>
-			 where ltid=#{ltid}
+			<if test="ltyl2!=null and ltyl2!=''">
+				,ltyl2=#{ltyl2}
+			</if>
 		</set> 
+		where ltid=#{ltid}
 	</update>
 	
 	<!-- 查询一共有多少个论坛栏目-->
@@ -40,11 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(1) from luntan
 	</select>
 	
+	<select id="findById" parameterType="String" resultType="LunTan">
+		select * from luntan where ltid=#{ltid}
+	</select>
 	
 	<!-- 查找所有的论坛栏目 -->
 	<select id="find" parameterType="map" resultType="LunTan">
 		select * from (select a.*,rownum rn from (select * from luntan order by ltid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
-	
 	
 </mapper>

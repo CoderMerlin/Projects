@@ -51,9 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</set> 
 	</update> 
 	
-	<delete id="delTieZi" parameterType="int">
+	<update id="delTieZi" parameterType="int">
 		update tiezi set status=0 where tid=#{tid}
-	</delete>
+	</update>
 	
 	<select id="total" resultType="int">
 		select count(1) from tiezi where status=1

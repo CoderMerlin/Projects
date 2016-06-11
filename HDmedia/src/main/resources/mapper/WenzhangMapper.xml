@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.WenzhangMapper">
+	
+	<insert id="addWenzhang" parameterType="Wenzhang">
+		insert into wenzhang values(seq_wenzhang_wzid.nextval,#{glid},#{wztypeid},#{wztitle},#{wztext},#{wzpicture},0,#{wzweight},1,#{wzyl1},'')
+	</insert>
+	
+	<update id="updateWenzhang" parameterType="Wenzhang">
+		update wenzhang 
+		<set>
+			
+			<if test="wztypeid!=null and wztypeid!=''">
+				wztypeid=#{wztypeid}
+			</if>
+			<if test="wztitle!=null and wztitle!=''">
+				,wztitle=#{wztitle}
+			</if>
+			<if test="wztext!=null and wztext!=''">
+				,wztext=#{wztext}
+			</if>
+			<if test="wzpicture!=null and wzpicture!=''">
+				,wzpicture=#{wzpicture}
+			</if>
+			<if test="wzdianjinnum!=null and wzdianjinnum!=''">
+				,wzdianjinnum=#{wzdianjinnum}
+			</if>
+			<if test="wzweight!=null and wzweight!=''">
+				,wzweight=#{wzweight}
+			</if>
+			<if test="wzyl1!=null and wzyl1!=''">
+				,wzyl1=#{wzyl1}
+			</if>
+		</set>
+		where wzid=#{wzid}
+	</update>
+	
+	<update id="del" parameterType="String">
+		update wenzhang set wzstatus=0 where wzid=#{wzid}
+	</update>
+	
+	<select id="total" resultType="int">
+		select count(1) from wenzhang
+	</select>
+	
+	<select id="findAllWenZhang" parameterType="map" resultType="Wenzhang">
+		select * from (select a.*,rownum rn from (select wzb.*,wzname from wenzhang wzb,wenzhangtype wztb where wzb.wztypeid=wztb.wztypeid and wzb.wzstatus=1 order by wzid desc)a where #{pageNo} >=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<select id="finds"  resultType="Wenzhang">
+		select * from wenzhang where wzstatus=1
+	</select>
+	
+	<select id="findType" resultType="WenzhangType">
+		select * from wenzhangtype where status=1
+	</select>
+	
+	<select id="findById" parameterType="int" resultType="Wenzhang">
+		select wzb.*,wzname,glb.glname from wenzhang wzb,wenzhangtype wztb,guanli glb where wzb.glid=glb.glid and wzb.wztypeid=wztb.wztypeid and wzid=#{wzid}
+	</select>
+	
+</mapper>

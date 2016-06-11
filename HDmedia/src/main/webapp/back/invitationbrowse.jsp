@@ -1,13 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <table id="huitie_info"  data-options="fit:true"></table>
 <script>
-/**
- * 发个
- */
 		var op;
 		var flag;
 		var statusObj=[{sid:0,sname:'不可用'},{sid:1,sname:'可用'}];
-		var ht;
 	$(function(){
 		var mydatagrid;
 		var editRow=undefined;
@@ -55,8 +51,9 @@
 		    		}else{
 						htid=rows.htid;
 						$.post("huiTie_findHuiTieByHtid",{op:"findHuiTieByHtid",htid:htid},function(data){
-							ht=data.rows[0];
+							var ht=data.rows[0];
 							console.info(data.rows);
+							$("#ht_updatehtid").val(ht.htid);
 							$("#ht_updateyhid").val(ht.yhid);
 							$("#ht_updatetzname").val(ht.tzname);
 							$("#ht_updatehttime").datebox('setValue',ht.httime);
@@ -123,7 +120,7 @@
 </style>
 
 <div id="huitie_add_huitie" class="easyui-dialog" title="添加回帖信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form style="padding:20px;float:left;display:inline-block;">
+	<form id="add_huitie" style="padding:20px;float:left;display:inline-block;">
 		<label>用户id:</label><input type="text" name="yhid" id="ht_yhid" class="myinput"><br/><br/>
 	    <label>帖子标题:</label><input type="text" name="tzname" id="ht_tzname" class="myinput"><br/><br/>
 	    <label>发表时间:</label><input name="tztime" id="ht_httime" class="easyui-datetimebox myinput" required/><br /><br />
@@ -137,7 +134,8 @@
 </div>
 
 <div id="huitie_update_huitie" class="easyui-dialog" title="修改回帖信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form style="padding:20px;float:left;display:inline-block;">
+	<form id="update_huitie" style="padding:20px;float:left;display:inline-block;" method="post">
+		<input type="text" name="htid" id="ht_updatehtid" style="display:none"/>
 		<label>用户id:</label><input type="text" name="yhid" id="ht_updateyhid" class="myinput"><br/><br/>
 	    <label>帖子标题:</label><input type="text" name="tzname" id="ht_updatetzname" class="myinput"><br/><br/>
 	    <label>发表时间:</label><input name="tztime" id="ht_updatehttime" class="easyui-datetimebox myinput" required/><br /><br />
@@ -184,7 +182,6 @@
 	}
 	
 	function updateHuiTie(){
-		var htid=ht.htid;
 		var yhid=$("#ht_updateyhid").val();
 		var tzname=$("#ht_updatetzname").val();
 		var httime=$("#ht_updatehttime").datebox('getValue');;
@@ -194,7 +191,7 @@
 			url:"huiTie_updateHuiTieInfo",
 			secureuri:false,
 			dataType:"json",
-			data:{htid:htid,yhid:yhid,tzname:tzname,httime:httime,htdianzan:htdianzan,httext:httext},
+			data:{yhid:yhid,tzname:tzname,httime:httime,htdianzan:htdianzan,httext:httext},
 			success:function(data,status){
 				if(data.total==1){
 					$("#huitie_update_huitie").dialog("close");
