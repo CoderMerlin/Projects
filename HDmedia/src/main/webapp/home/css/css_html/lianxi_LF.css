@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;
+}
+body{
+	margin:0px auto;
+	padding:0px;
+	text-align:center;
+	background:#C7C7C7;
+}
+#a{
+	width:80%;
+	height:80px;	
+}
+#a .b{
+	width:60%;
+	height:100px;
+	list-style:none;
+}
+#a li{
+	float:left;
+	width:120px;
+}
+#a .b li a{
+	font:bold 14px arial;
+	text-decoration:none;
+	color:#303030;
+	outline:none;
+	text-align:center;
+	top:6px;
+	letter-spacing:0;
+	display:block;
+	height:28px;
+	position:relative;
+	overflow:hidden;
+	font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";
+	font-weight:normal;
+	font-size:13px;
+}
+#a .b ul{
+	width:70px;
+	height:30px;
+	padding:2%;
+	opacity: 0;   /*设置不透明*/
+	visibility: hidden;
+	position: absolute;
+	background: #fff;
+	border:3px;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-box-border-radius: 10px 10px 0 0;
+	-o-linear-border-radius: 10px 10px 0 0;
+	-ms-linear-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	
+    -webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+#a .b li:hover > ul{
+	opacity: 1;
+	visibility: visible;   /*规定元素的可见*/
+	margin: 0;
+}
+#a .b a{
+	text-decoration:none;
+}
+#a .b ul li{
+	list-style:none;
+	margin-left:-30px;
+	display: block;
+	-moz-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	-webkit-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+#a .b ul li:last-child {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#a .b ul a {/*二级菜单的设置*/
+	padding: 5px;
+	width: 80px;
+	display: block;
+	white-space: nowrap;  /*规定段落中的文本不进行  换行文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+	float: none;
+	text-transform: none;
+}
+.b li a:hover, .b li a:active{
+	border:none;
+	color:#00B5F7;
+	text-decoration:none;
+}
+#a .b .c{
+	padding-top:10px;
+	background:#000;
+	float:left;
+	height:5px;
+	width:1px;
+	margin-top:5px;
+}

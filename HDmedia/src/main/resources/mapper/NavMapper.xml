@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用映射接口的方式， 命名空间的值必须与映射接口的全限定名一致 -->
+<mapper namespace="com.yc.hdmedia.mapper.NavMapper">
+	<select id="findNavBean" resultMap="NavBeanMap">
+		select * from hd_nav1
+	</select>
+	<resultMap type="NavBean" id="NavBeanMap">
+		<id property="nav1id" column="nav1id"/>
+		<collection property="navTow"  column="nav1id" javaType="list" select="getNavBeannav1id" />
+	</resultMap>
+	
+	<select id="getNavBeannav1id" parameterType="int" resultType="Hd_nav_two">
+		select * from hd_nav2 where nav1id=#{nav1id}
+	</select>
+	
+</mapper>

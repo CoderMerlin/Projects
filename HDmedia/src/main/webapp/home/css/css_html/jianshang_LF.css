@@ -1,0 +1,277 @@
+@charset "utf-8";
+/* CSS Document */
+
+#all{
+	width:940px;
+	height:1600px;	
+	float:left;
+	margin-left:230px;
+	margin-top:50px;
+}
+#a{
+	border:1px solid #333;
+	position:relative;
+	height:540px;
+}
+#a .a1{
+	height:45px;
+	width:940px;
+    border-bottom:1px solid #000;
+}
+#a .a1 .a12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#a .a1 .a12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#a span a{
+	float:right;
+	font-size:13px;
+	margin-top:20px;
+}
+#a ul{
+	float:left;	
+}
+.over{
+		background:#0ff;	
+	}
+#a .a2{
+	width:940px;
+	height:500px;
+}
+#a .a2 li{
+	float:left;
+	width:200px;
+	height:230px;
+}
+#a .a2 img{
+	width:180px;
+	height:180px;	
+}
+#a .a2 span{
+	margin-left:10px;
+	font-size:12px;
+}
+#b{
+	float:left;
+	position:relative;
+	height:230px;
+	border:1px solid #333;
+	width:320px;
+}
+#b .b1{
+	float:left;
+	height:45px;
+	width:320px;
+	border-bottom:1px solid #000;
+
+}
+#b .b1 .b12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#b .b1 .b12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#b .b1 ul{
+	height:700px;
+	width:300px; 
+}
+#b .b1 ul li{
+	line-height:30px;
+}
+#b .b1 ul li a{
+	color:#F00;
+}
+#b span a{
+	float:right;
+	font-size:13px;
+}
+#c{
+	float:left;
+	position:relative;
+	height:230px;
+	border:1px solid #333;
+	margin-left:115px;
+}
+#c .c1{
+	float:left;
+	height:45px;
+	width:500px;
+    border-bottom:1px solid #000;
+
+}
+#c .c1 .c12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#c .c1 .c12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#c span a{
+	float:right;
+	font-size:13px;
+}
+#c .c2 img{
+	width:500px;
+	height:183px;	
+}
+#d{
+	margin-top:50px;
+	float:left;
+	border:1px solid #333;
+	position:relative;
+	height:300px;
+	width:940px;
+}
+#d .d1{
+	float:left;
+	height:45px;
+	width:940px;
+    border-bottom:1px solid #000;
+
+}
+#d .d1 .d12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#d .d1 .d12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#d span a{
+	float:right;
+	font-size:13px;
+}
+#d .d2 img{
+	width:940px;
+	height:254px;	
+}
+#e{
+	float:left;
+	position:relative;
+	height:350px;
+	border:1px solid #333;
+	width:500px;
+	margin-top:50px;
+}
+#e .e1{
+	float:left;
+	height:45px;
+	width:500px;
+	border-bottom:1px solid #000;
+
+}
+#e .e1 .e12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#e .e1 .e12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#e .e2{
+	float:left;
+	width:500px;
+	height:200px;	
+}
+#e .e2 dt{
+	float:left;
+	width:180px;
+	height:300px;	
+	margin-top:20px;
+	margin-left:10px;
+}
+#e .e2 dt img{
+	width:190px;
+	height:200px;	
+}
+#e .e2 dd{
+	float:left;
+	width:260px;
+	height:300px;	
+}
+
+#e span a{
+	float:right;
+	font-size:13px;
+}
+#f{
+	float:left;
+	position:relative;
+	height:350px;
+	border:1px solid #333;
+	margin-left:50px;
+	margin-top:50px;
+	width:380px;
+}
+#f .f1{
+	float:left;
+	height:45px;
+	width:370px;
+    border-bottom:1px solid #000;
+
+}
+#f .f1 .f12{
+	float:left;	
+	width:250px;
+	height:50px;
+}
+#f .f1 .f12 a img{
+	float:left;	
+	height:43px;
+	width:120px;
+}
+#f span a{
+	float:right;
+	font-size:13px;
+}
+.f2{
+	float:left;
+	width:300px;
+	height:300px;w
+}
+.f2 .f3{
+	float:left;
+	width:380px;
+	height:200px;	
+}
+.f2 .f3 dt{
+	float:left;
+	width:180px;
+	height:300px;	
+	margin-top:20px;
+	margin-left:10px;
+}
+.f2 .f3 dt img{
+	width:160px;
+	height:180px;	
+}
+.f2 .f3 dd{
+	float:left;
+	width:180px;
+	height:200px;	
+	margin-top:30px;
+	margin-left:-1px;
+}
+.f2 .f3 dd h4{
+	margin-top:-15px;
+	height:10px;
+}
+.f2 .f3 dd p{
+	margin-left:32px;
+}

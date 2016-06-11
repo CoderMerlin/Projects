@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.yc.hdmedia.entity.HuiTie;
+import com.yc.hdmedia.entity.HuitieBean;
 import com.yc.hdmedia.mapper.HuiTieMapper;
 import com.yc.hdmedia.service.HuiTieService;
 
@@ -86,7 +88,19 @@ public class HuiTieServiceImpl implements HuiTieService {
 		return null;
 	}
 
+	@Override
+	public HuitieBean HuitieCount(int tid) {
+		return huiTieMapper.HuitieCount(tid);
+	}
 
+	@Override
+	public List<HuitieBean> findHuitieBean(int pageNo, int pageSize, int tid) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("pageNo", pageNo*pageSize);
+		params.put("pageSize", (pageNo-1)*pageSize);
+		params.put("tid",tid);		
+		return huiTieMapper.findHuitieBean(params);
+	}
 
 	
 

@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+	*{
+		margin:0 auto;
+		padding:0px;
+		background:#F7F7F7;
+	}
+	li{
+		background:#fff;
+	}
+	body{
+		width:80%;
+		margin-left:10%;
+		padding:0px;
+	}
+	
+	#head{
+		width:100%;
+		height:100px;
+		margin-top:15px;
+		background:#FFC;
+		
+	}
+	#head img{
+		width:80px;
+		height:80px;
+		float:left;
+		margin-left:50px;
+		margin-top:10px;
+	}
+	
+	#head p{
+		margin-top:30px;
+		float:left;
+		font-size:26px;
+		margin-left:10px;
+		font-weight:70px;
+		color:#EB5B0E;
+		letter-spacing:2px;
+		background:#FFC;
+	}
+	#menu{
+		margin-top:20px;
+		float:left;
+		width:22%;
+		height:200px;
+		border:1px #D1D1D1 solid;
+		background:#FFF;
+		
+	}
+	
+	#menu li,#menu p{
+		width:84%;
+		line-height:220%;
+		list-style:none;
+		font-size:15px;
+		color:#666;
+		padding-left:15%;
+		background:#FFF;
+		letter-spacing:2px;
+		cursor:pointer;
+		border-left:2px solid #fff;
+	}
+	
+	#content1,#content2,#content3,#content4{
+		margin-top:20px;
+		padding-top:20px;
+		margin-left:1.5%;
+		float:left;
+		width:76%;
+		height:auto;
+		border:1px #D1D1D1 solid;
+		background:#FFF;
+		display:none;
+	}
+	
+	#content1 span,#content2 span,#content3 span,#content4 span{
+		text-align:center;
+		width:100px;	
+		float:left;
+		margin-left:3%;
+		margin-bottom:10px;
+		background:#FFF;
+		cursor:pointer;
+	}
+	
+	#info{
+		width:92%;
+		margin-left:3%;
+		height:10%;
+		float:left;
+		border-bottom:solid 1px #999999;
+		margin-bottom:3%;
+		background:#fff;
+	}
+	#info img{
+		width:8%;
+		height:90%;
+		margin-bottom:1%;
+		float:left;
+	}
+	
+	#info li{
+		padding-left:12%;
+		list-style:none;
+	}
+	#info span{
+		font-size:14px;
+		color:#FF962D;
+		width:15%;
+		float:left;
+		margin-top:3%;
+		background:#fff;
+		cursor:pointer;
+	}
+	
+	#info a{
+		font-size:14px;
+		color:#FF962D;
+		width:6%;
+		float:left;
+		margin-top:3%;
+		background:#fff;
+		cursor:pointer;
+	}
+	#info a:hover{
+		color:#F30;
+		font-size:16px;
+	}
+	#gonggao,#xitong{
+		margin-top:20px;
+		margin-left:3%;
+		float:left;
+		width:93%;
+		height:auto;
+		background:#FFF;
+		display:none;
+		margin-bottom:30px;
+	}
+	

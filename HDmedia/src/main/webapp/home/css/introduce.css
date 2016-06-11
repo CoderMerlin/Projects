@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+.in_title{
+	text-align:center;	
+}
+
+#img img{
+	height:500px;
+	width:66%;
+	margin-left:17%;
+}
+
+#text ul{
+	height:100%;
+	width:70%;
+	margin-left:12%;
+}
+.co_title span{
+	width:10%;
+	float:left;
+	line-height:50px;
+	text-align:center;
+	color:#F00;
+}
+.co_title p{
+	width:10%;
+	float:left;
+	margin-left:80%;
+	
+}
+.co_title p a{
+	color:#F00;
+}
+
+#path ul{
+	list-style:none;
+}
+

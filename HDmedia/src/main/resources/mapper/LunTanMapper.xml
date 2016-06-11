@@ -46,5 +46,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from (select a.*,rownum rn from (select * from luntan order by ltid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
 	
+	<select id="findLunTan" resultType="LunTanBean">
+		select rownum,a.* from (select * from luntan where ltstatus=1)a
+	</select>
+
+	<select id="findLunTan_jlq" resultType="LunTanBean">
+		select rownum,a.* from (select luntan.*,(select count(1) from tiezi where luntan.ltid=tiezi.ltid) count,(select count(*) from tiezi where to_char(tztime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') and luntan.ltid=tiezi.ltid) dtcount,(select MAX(tztime) from tiezi where luntan.ltid=tiezi.ltid) tztime from luntan where ltstatus=1 and ltyl1='交流区' order by count desc)a
+	</select>
+	
+	<select id="findLunTan_whjlq" resultType="LunTanBean">
+		select rownum,a.* from (select luntan.*,(select count(1) from tiezi where luntan.ltid=tiezi.ltid) count,(select count(*) from tiezi where to_char(tztime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') and luntan.ltid=tiezi.ltid) dtcount,(select MAX(tztime) from tiezi where luntan.ltid=tiezi.ltid) tztime  from luntan where ltstatus=1 and ltyl1='文化交流社区' order by count desc)a
+	</select>
+	
+	<select id="findLunTan_zyfx" resultType="LunTanBean">
+		select rownum,a.* from (select luntan.*,(select count(1) from tiezi where luntan.ltid=tiezi.ltid) count,(select count(*) from tiezi where to_char(tztime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') and luntan.ltid=tiezi.ltid) dtcount,(select MAX(tztime) from tiezi where luntan.ltid=tiezi.ltid) tztime  from luntan where ltstatus=1 and ltyl1='资源分享' order by count desc)a
+	</select>
+	
+	<select id="findLunTan_zzhz" resultType="LunTanBean">
+		select rownum,a.* from (select luntan.*,(select count(1) from tiezi where luntan.ltid=tiezi.ltid) count,(select count(*) from tiezi where to_char(tztime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd') and luntan.ltid=tiezi.ltid) dtcount,(select MAX(tztime) from tiezi where luntan.ltid=tiezi.ltid) tztime  from luntan where ltstatus=1 and ltyl1='站务管理' order by count desc)a
+	</select>
 	
 </mapper>

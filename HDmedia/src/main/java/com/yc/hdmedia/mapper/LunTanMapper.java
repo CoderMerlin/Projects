@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.LunTan;
+import com.yc.hdmedia.entity.LunTanBean;
 
 /**
  * 论坛
@@ -68,4 +69,15 @@ public interface LunTanMapper {
 	 * @return
 	 */
 	public LunTan findltPic(int ltid);
+	
+	
+	//查询论坛首页
+		List<LunTanBean> findLunTan_jlq();
+
+		List<LunTanBean> findLunTan_whjlq();
+			
+		List<LunTanBean> findLunTan_zyfx();
+		List<LunTanBean> findLunTan_zzhz();
+
+		List<LunTanBean> findLunTan();
 }

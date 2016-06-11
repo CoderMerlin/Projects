@@ -76,5 +76,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
+	<select id="findCount" resultType="TieZiBean">
+		select count(*) count from tiezi
+	</select>
+	
+	<select id="findGongGao" resultType="GongGaoBean">
+		select rownum,a.* from(select * from gonggao order by gid desc)a
+	</select>
+	
+	<select id="findById" parameterType="map" resultType="TieZiBean">
+		select rownum,b.* from (select a.*,rownum rn from (select tz.*,lt.ltname,yh.yhzsname from tiezi tz,luntan lt,yonghu yh where tz.ltid=lt.ltid and lt.ltid=#{ltid} and tz.yhid=yh.yhid and tz.status=1 order by tz.tztime desc) a where #{pageNo}>=rownum)b where rn>#{pageSize}
+	</select>
+	<select id="findByIdCount" parameterType="int" resultType="TieZiBean">
+		select count(*) count from tiezi where ltid=#{ltid}
+	</select>
+	
+	<select id="findYesterdayCount"  resultType="TieZiBean">
+		select count(*) YesterdayCount from tiezi where to_char(tztime,'yyyy-mm')=to_char(sysdate,'yyyy-mm') and to_char(tztime,'dd')=(to_char(sysdate,'dd')-1)
+	</select>
+	<select id="findTerdayCount"  resultType="TieZiBean">
+		select count(*) TerdayCount from tiezi where to_char(tztime,'yyyy-mm-dd')=to_char(sysdate,'yyyy-mm-dd')
+	</select>
+	
+	<select id="findByTids" parameterType="int" resultType="TieZiBean">
+		select tz.*,yh.yhzsname from tiezi tz,yonghu yh where tz.tid=#{tid}
+	</select>
+	
+	<insert id="addTieZis" parameterType="map">
+		insert into tiezi values(seq_tiezi_tid.nextval,#{ltid},#{yhid},#{tzname},#{tzzy},sysdate,0,#{tztext},#{tzphoto},0,1,'','')
+	</insert>
+	
 	
 </mapper>

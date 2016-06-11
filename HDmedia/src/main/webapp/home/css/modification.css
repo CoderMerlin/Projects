@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* CSS Document */
+#left{
+	width:300px;
+	height:200px;
+	margin-left:3%;
+	margin-top:2%;
+	background:#FFF;
+	float:left;
+}
+#left_1{
+	width:280px;
+	height:190px;
+	margin-left:10px;
+	margin-top:10px;
+}
+#left_1 ul li{
+	width:297px;;
+	height:40px;
+    line-height:40px;
+	text-indent: 80px;
+	color:#333;
+	margin-left:-50px;
+    display: block;
+    font-size: 14px;
+}
+.menu_item_a{
+	display:block;
+}
+
+#right{
+	width:800px;
+	height:750px;
+	margin-top:2%;
+	margin-left:3%;
+	float:left;
+	background:#FFF;
+}
+.person dl dd{
+	line-height:40px;
+	height:40px;
+}
+.person dl dd span{
+	float:left;
+	width:100px;
+}
+.person dl dd em{
+	 color: #f62121;
+     float: left;
+     margin-right: 5px;
+	 width:10px;
+}
+.selectchose{
+	float:left;
+    width: 160px;
+}
+.J_province{
+	width:150px;
+}
+.J_city{
+	width:150px;
+}
+.J_district{
+	width:150px;
+}
+.postaddress{
+	width:465px;
+}
+.dropdown_text_middle{
+    width: 150px;
+}
+
+.selectlist{
+	width:150px;
+}
+.personsignature{
+	font-family: sans-serif;
+	width:465px;
+	height:100px;
+}
+.baocun{
+	float:left;
+	width:200px;
+	height:70px;
+	margin-top:80px;
+	margin-left:180px;
+}
+
+.headportrait{
+	width:100%;
+	height:200px;
+	float:left;
+}
+
+#max{
+	width:150px;
+	height:150px;	
+}
+
+#min{
+	width:150xp;
+	height:150px;
+	margin-left:50px;
+}
+
+#max img{
+	width:150px;
+	height:150px;
+}
+
+#min img{
+	width:50px;
+	height:50px;
+	margin-top:100px;
+}
+
+.size{
+	margin-left:50px;
+}
+
+.ll{
+	margin-left:33px;
+}
+
+.shangc{
+	float:left;
+	width:200px;
+	height:70px;
+	margin-top:57px;
+	margin-left:33px;
+}
+
+#large {  
+    position: absolute;  
+    display: none;  
+    z-index: 999;
+	margin-left:30px;
+	border:#F00 solid 1px;
+	 
+} 
+
+
+#demo img{
+	border:#F00 solid 1px;
+	width:150px;
+	height:150px;
+	margin-left:30px;
+}
+
+.erweima img{
+	width:40%;
+	height:30%;
+	margin-left:30%;
+	margin-top:10%;
+}

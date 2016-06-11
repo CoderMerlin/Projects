@@ -3,8 +3,10 @@ package com.yc.hdmedia.mapper;
 import java.util.List;
 import java.util.Map;
 
+import com.yc.hdmedia.entity.GongGaoBean;
 import com.yc.hdmedia.entity.HDSearch;
 import com.yc.hdmedia.entity.TieZi;
+import com.yc.hdmedia.entity.TieZiBean;
 
 /**
  * 帖子法国代购
@@ -64,4 +66,21 @@ public interface TieZiMapper {
 	 * @return
 	 */
 	public List<HDSearch> selectTeiZiByContent(String content);
+	
+	TieZiBean findCount();
+	
+	List<GongGaoBean> findGongGao();
+
+	List<TieZiBean> findById(Map<String, Object> params);
+
+	TieZiBean findByIdCount(int ltid);
+
+	TieZiBean findTerdayCount();
+
+	TieZiBean findYesterdayCount();
+
+	TieZiBean findByTids(int tid);
+
+	public int addTieZis(Map<String, Object> params);
+
 }

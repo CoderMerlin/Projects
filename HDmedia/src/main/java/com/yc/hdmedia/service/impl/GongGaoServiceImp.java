@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.GongGao;
+import com.yc.hdmedia.entity.GongGaoBean;
 import com.yc.hdmedia.mapper.GongGaoMapper;
+import com.yc.hdmedia.mapper.TieZiMapper;
 import com.yc.hdmedia.service.GongGaoService;
 
 @Service("gongGaoService")
@@ -16,6 +18,9 @@ public class GongGaoServiceImp implements GongGaoService {
 
 	@Autowired
 	private GongGaoMapper gongGaoMapper;
+	
+	@Autowired
+	public TieZiMapper tieZiMapper;
 	
 	@Override
 	public int addGongGao(GongGao gonggao) {
@@ -48,6 +53,11 @@ public class GongGaoServiceImp implements GongGaoService {
 	@Override
 	public GongGao findGongGaoByGid(int gid) {
 		return gongGaoMapper.findGongGaoByGid(gid);
+	}
+
+	@Override
+	public List<GongGaoBean> findGongGao() {
+		return tieZiMapper.findGongGao();
 	}
 
 

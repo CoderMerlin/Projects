@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+ul li,.xl li {
+	list-style: none;
+	float: left;
+}
+
+a {
+	color: #222;
+	text-decoration: none;
+}
+
+/*尾部样式编码*/
+.hd_tree_pic li{
+	width:500px;
+	height:200px;
+	float:left;
+}
+
+.hd_footer_menu_all{
+	padding-top:30px;
+	float:left;
+	width:940px;
+}
+.hd_menu_firstfont{
+	font-size:20px;
+}
+
+.hd_footer_menu_all div,img{
+	width:180px;
+	height:150px;
+	float:left;
+}
+
+.hd_footer_menu_all div li{
+	float:none;
+	line-height:30px;
+}
+
+/*鼠标放上去，改变颜色*/
+.hd_footer_menu_all div li a:hover{
+	float:none;
+	line-height:30px;
+	color:#00b5f7;
+}
+
+
+/*尾部最后*/
+.hd_footer_last{
+	padding:200px;
+}
+.hd_footer_last li{
+	float:left;
+	font:10px;
+	color:#999;
+}
+.hd_footer_last a{
+	float:left;
+	font:10px;
+	color:#999;
+}
+
+.hd_footer_last a:hover{
+	float:left;
+	font:10px;
+	color:#00b5f7;
+}
+
+#roll{
+	bottom:20px;
+	position:fixed;
+	width:15px;	
+	right:8%;
+}
+#roll_top img{
+	height:72px;
+	width:16px;	
+}
