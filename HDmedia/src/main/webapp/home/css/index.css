@@ -1,0 +1,175 @@
+@charset "utf-8";
+/* CSS Document */
+
+.sf_text_1{
+	width:23%;
+	height:230px;
+	float:left;
+	margin-top:20px;
+	margin-left:1.57%;
+}
+.sf_text_1 p{
+	width:100%;
+	height:30px;
+	float:left;
+	text-align:center;
+	margin-top:0px;
+}
+#gd_sf img{
+	height:200px;
+	width:100%;
+	border:#F00 solid 1px;
+}
+
+
+
+
+
+
+
+
+.gd_hh_text_1{
+	width:46%;
+	height:200px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:20px;
+	margin-left:10px;
+}
+.gd_1{
+	width:100%;
+	height:30px;
+	float:left;
+	margin-top:-34px;
+	opacity:0.8;
+	display:none;
+	position:relative;
+	background:#CCC;
+}
+.gd_1 h4{
+	line-height:30px;
+	text-align:center;
+	margin-top:0px;
+}
+
+.gd_hh_text_1 img{
+	width:80%;
+	height:200px;
+	margin-left:10%;
+}
+
+.gd_hh_text_2{
+	width:90%;
+	height:420px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:20px;
+	margin-left:20px;
+}
+.gd_2{
+	width:100%;
+	height:50px;
+	float:left;
+	margin-top:-54px;
+	opacity:0.8;
+	position:relative;
+	display:none;
+	background:#CCC;
+}
+.gd_2 h1{
+	line-height:50px;
+	text-align:center;
+	margin-top:0px;
+}
+
+.gd_hh_text_2 img{
+	width:80%;
+	height:420px;
+	margin-left:10%;
+}
+
+
+
+
+.jxd_sh_text_1{
+	width:46%;
+	height:200px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:20px;
+	margin-left:10px;
+}
+.jxd_sh_text_1 img{
+	width:80%;
+	height:200px;
+	margin-left:10%;
+}
+
+
+.jxd_1{
+	width:100%;
+	height:200px;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:20px;
+	text-align:center;
+	background:#CCC;
+}
+.jxd_2{
+	width:100%;
+	height:200px;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:20px;
+	text-align:center;
+	background:#CCC;
+}
+
+
+.dd_hh_text_1{
+	width:23%;
+	height:200px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:15px;
+	margin-left:10px;
+}
+.dd_hh_text_1 img{
+	width:100%;
+	height:200px;
+}
+
+.dd_hh_text_2{
+	width:90%;
+	height:415px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:15px;
+	margin-left:20px;
+}
+.dd_hh_text_2 img{
+	width:100%;
+	height:415px;
+	
+}
+
+
+.yh_hh_text_1{
+	width:19%;
+	height:200px;
+	background:#CCC;
+	float:left;
+	border:#F00 solid 1px;
+	margin-top:15px;
+	margin-left:6px;
+}
+
+.yh_hh_text_1 img{
+	width:100%;
+	height:200px;
+}

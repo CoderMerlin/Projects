@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.HuiTie;
+import com.yc.hdmedia.entity.HuitieBean;
 
 /**
  * 回帖Mapper的撒伐 
@@ -53,4 +54,8 @@ public interface HuiTieMapper {
 	public List<HuiTie> findHT();
 	
 	public List<HuiTie> findslcw();
+	
+	public HuitieBean HuitieCount(int tid);
+	
+	public List<HuitieBean> findHuitieBean(Map<String, Object> params);
 }

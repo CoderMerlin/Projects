@@ -12,8 +12,8 @@ body{
 }
 .hd_title{  /*图片与文字的区域*/
 	 margin-left:5%;
-	 padding:0px;
-	 width:30%;
+	 padding:0px; 
+	 width:30%; 
 	 height:100px;
 	 float:left;	
 }
@@ -33,10 +33,10 @@ body{
 
 .hd_nav_menu{ /*整个导航栏菜单*/
 	 margin:0; 
-	 padding:20px 35px 0; 
-	 width:60%; 
-	 height:0px; 
-	 float:left;
+	 padding:0px; 
+	 width:100%; 
+	 height:100px; 
+	 width:100%;
 	 position:relative;
 	 z-index:101;
 }
@@ -125,4 +125,48 @@ body{
 	border:none;
 	color:#ff7519;
 	text-decoration:none;
+}
+
+.user_wrap .user_login{
+	float:left;
+	width:100px;	
+	margin-top:8px;
+	margin-left:10px;
+}
+.user_wrap .user_login a{
+	font-size:13px;	
+}
+#login a{
+	font-size:13px;
+	font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";
+	color:#303030;
+}
+#caidan{
+	background:#FFF;
+	font-size:12px;	
+	width:220px;
+	height:140px;
+	margin-left:-100px;
+}
+#caidan p{
+	border-bottom:1px solid #444;
+	line-height:20px;
+	width:200px;
+	color:#ff8b3d;
+	padding-bottom:8px;
+}
+#caidan .cd2{
+	margin-top:10px;	
+}
+#caidan .cd2 a{
+	display:inline-block;
+	background:#ff8b3d;
+	color:#000;
+	width:55px;
+	height:20px;
+	text-align:center;
+	margin:5px 3px 5px 10px;
+}
+#caidan .cd2 a:hover{
+	color:#F00;
 }

@@ -30,7 +30,7 @@
                     <a href="#">经营许可证编号：湘B2-20130198</a>
                     <a href="#">营业执照</a>
                     <span>.ALL RIGHT BY YC_弘道传媒</span>
-                </ul>
+         
             </div>
         </div>         
     </div>

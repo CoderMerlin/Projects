@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+.on_title{
+	line-height:80px;
+	width:10%; 
+	text-align:center; 
+	float:left;
+}
+.two_title{
+	line-height:80px; 
+	text-align:center; 
+	float:left;
+}
+#goodfb126{
+	margin-left:60%;
+	margin-right:5%;
+}
+.co_title span{
+	width:10%;
+	float:left;
+	line-height:50px;
+	text-align:center;
+	color:#F00;
+}
+.co_title p{
+	width:10%;
+	float:left;
+	margin-left:80%;
+	
+}
+.co_title p a{
+	color:#F00;
+}

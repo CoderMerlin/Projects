@@ -48,7 +48,6 @@ public class LunTanAction implements ModelDriven<LunTan> {
 	
 	public String addLunTanInfo(){
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
-		System.out.println("获取路径"+path);
 		for(int i=0;i<upload.length;i++){
 			try {
 				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));	//开始上传

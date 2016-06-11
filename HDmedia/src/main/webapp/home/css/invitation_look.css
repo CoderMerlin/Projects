@@ -1,0 +1,547 @@
+@charset "utf-8";
+/* CSS Document */
+.invitation_template-mian{
+	margin:0 auto;width:100%; height:100%; float:left; background-color:#EAEBE9;
+}
+
+.invitation-main-all{
+	margin:5px 0 2% 5%;width:90%; float:left;
+}
+.forum-adv{
+	width:100%; height:100px;
+}
+
+.forum-adv .adv_1{ /*广告位1*/
+	width:49.5%; height:100%; float:left; background-color:#0FC;
+}
+
+.forum-adv .adv_2{ /*广告位2*/
+	width:49.5%; height:100%; float:right; margin-left:1%; background-color:#0FC;
+}
+
+.invitation_look-content{ /*帖子的内容*/
+	width:70%;  float:left; 	margin-top:5px;
+}
+
+.invitation_look-content-a{ /*热门推荐*/
+	padding: 20px 30px;
+    border: 1px solid #dfdfdf;
+    margin-bottom: 10px;
+    background: #fff;
+    color: #8c8c8c;
+    font-size: 14px;
+}
+
+
+.invitation_look-content-a a{ /*下面的a标签*/
+	line-height: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.invitation_look-content-a .attention{ /*关注*/
+	background: #f3f3f3;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 10px 0 15px;
+    width: 60px;
+    line-height: 20px;
+}
+
+.invitation_look-content-a .attention:hover{
+	background:#ff8b3d;;
+	color:#fff;
+}
+
+
+.invitation_look-content-a .sendtheme {  /*发表新主题*/
+    float: right;
+    width: 100px;
+    font-size: 12px;
+    color: #fff;
+    height: 22px;
+    line-height: 22px;
+}
+
+/*b区*/
+.invitation-content-b{/*帖子*/
+	width:100%;
+	margin-top:5px;
+	background-color: #fff;
+    border: 1px solid #e6e6e6;
+}
+
+.invitation{ 
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    padding-bottom: 35px;
+}
+
+
+
+.btn{
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 14px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #ff8b3d;
+    border: 1px solid #ff8b3d;
+    color: #fff;
+    padding: 0;
+    width: 148px;
+}
+.btn:hover, .btn:focus{
+	background-color:#ff7519;
+	color:#fff;
+	outline-color:-moz-use-text-color;
+	outline-style:none;
+	outline-width:0;
+}
+
+
+
+.invitation .invitation_con{  /*楼主发表事情区域*/
+	margin: 20px 30px;
+}
+
+.invitation .hot_invitation_img img{/*热帖图片*/
+	width:75px;
+	height:75px;
+	float:left;
+}
+
+.invitation .invitation_con h1{   /*主题名*/
+	color:#ff8b3d;
+	text-align: center;
+	margin-top:5px;
+}
+
+.invitation .invitation_con .txt{
+	font-size: 14px;
+    color: #8c8c8c;
+    line-height: 14px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #e6e6e6;
+	margin-top:15px;
+} 
+
+.invitation .invitation_con .txt .marktxt{  /*置顶跟精华*/
+	color:#F00;
+	margin-left:5px;
+	margin-right:10px;
+}
+
+.invitation .invitation_con .txt .comefrom_auth{  /*作者*/
+	margin-left:8px;
+	color:#222;
+}
+
+.invitation .invitation_con .txt .numb{
+	float: right;
+    display: inline-block;
+    font-size: 14px;
+    color: #9da5ab;
+    height: 18px;
+}
+
+.invitation .invitation_con .txt img{
+	width:20px;
+	height:15px;
+	float:left;
+}
+
+.invitation .invitation_con .invitation_content{
+	font-size: 18px;
+	font-weight:700;
+    margin-top: 40px;
+    word-wrap: break-word;
+}
+
+.invitation .invitation_con .invitation_content .p_img{
+		text-align:center;
+}
+
+.invitation .invitation_con .invitation_content img{
+	margin:0 auto;
+	width:600px;
+	height:400px;
+}
+
+
+
+.reply{ /*回复区*/
+	width:100%;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    padding-bottom: 35px;
+	overflow:hidden;
+}
+
+.reply .reply_con{
+	width:90%;
+	margin:20px auto 0;
+	overflow:hidden;
+}
+
+.reply .reply_con .reply_title{
+	margin-bottom:10px;
+}
+
+.reply .reply_con .reply_title .reply_nav{
+	font-size: 18px;
+    color: #8c8c8c;
+    line-height: 18px;
+}
+
+.reply .reply_con .reply_title .reply_nav a{
+	color: #8c8c8c;
+    font-size: 14px;
+}
+
+.reply .reply_con .reply_title .reply_nav a:hover{
+	color: #ff7519;
+}
+
+.reply .reply_con .reply_title .reply_nav  .currtent{
+	font-size: 20px;
+    color: #ff7519;
+	font-weight:600;
+}
+
+
+.reply .reply_con .reply_title .lookandcollect{  /*只看楼主和收藏*/
+	display: inline-block;
+    float: right;
+    height: 20px;
+    font-size: 14px;
+    color:#8c8c8c;
+}
+.reply .reply_con .reply_title .lookandcollect a{
+	color:#8c8c8c;
+}
+.reply .reply_con .reply_title .lookandcollect a:hover{
+	color: #ff7519;
+}
+
+.reply .reply_con .reply_list {
+	width:100%;
+	float:left;
+	position: relative;
+}
+
+.reply .reply_con .reply_list li{
+	margin-top:5px;
+	width:100%;
+	border-bottom: 1px solid #e6e6e6;
+	list-style: none;
+	float: left;
+}
+
+.reply .reply_con .reply_list .clearfix .reply_list_img img{  /*人物的头像*/
+	width: 70px;
+    height: 70px;
+    display: block;
+    border-radius: 50%;
+	float:left;
+}
+
+.reply_list li .reply_list_con{
+	width:85%;
+	float: left;
+    position: relative;
+	margin-left:30px;
+	
+}
+
+.reply_list li .reply_list_con .auth_msg{
+    line-height: 20px;
+    font-size: 12px;
+    color: #8c8c8c;
+    margin-top: 8px;
+	height:30px;	
+}
+
+
+.reply_list li .reply_list_con .auth_msg .auth_name{  /*作者*/
+	margin-right: 5px;
+    font-size: 14px;
+    color: #ff8b3d;
+	float:left;
+}
+.reply_list li .reply_list_con .auth_msg .vip_icon{
+	float:left;
+	width:20px;
+	height:20px;
+}
+
+.reply_list li .reply_list_con .auth_msg .vip_icon img{ /*等级*/
+	width:250px; height:20px;
+	margin-left:-25px;
+	margin-bottom:15px;
+	display:inline-block;
+	position:absolute;
+	clip:rect(0px 47px 20px 22px);
+	float:left;
+}
+
+
+
+.reply_list li .reply_list_con .auth_msg .span{
+	margin-left:10px;
+	float:left;
+}
+
+.reply_list li .reply_list_con .auth_msg .reply_list_float{  /*点赞*/
+	font-size: 14px;
+    color: #c3c3c3;
+    float: right;
+    padding: 0 5px;
+    margin-right: 0;
+    text-align: center;
+}
+
+
+.reply_list li .reply_list_con .auth_msg .shafa{
+	float:right;
+	display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    background: #ff4c4c;}
+
+.reply_list li .reply_list_con .auth_msg .reply_list_float a{
+	color: #fff;
+}
+
+.reply_list li .reply_list_con .reply_txt{
+	display:inline-block;
+    word-wrap: break-word;
+    overflow: hidden;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.reply_list li .reply_list_con .reply_bu{  /*举报和回复*/
+	height:40px;
+}
+
+
+
+.reply_list li .reply_list_con .reply_bu .reply_btn{
+    font-size: 12px;
+    color: #8c8c8c;
+    cursor: pointer;
+    margin: 10px 0 7px 14px;
+    line-height: 18px;
+	float:right;
+}
+
+.reply_list li .reply_list_con .reply_bu .reply_btn:hover{
+	color: #ff7519;
+}
+
+.reply_list li .reply_list_con .reply_bu span{
+	float:right;
+    font-size: 12px;
+    color: #8c8c8c;
+    cursor: pointer;
+    margin: 10px 0 7px 14px;
+    line-height: 18px;
+}
+
+.reply_list li .reply_list_con .reply_bu span:hover{
+	color: #ff7519;
+}
+
+
+/*显示页数*/
+
+.base_widget_paging{
+	margin-top:30px;
+	clear:both;
+}
+.base_widget_paging .paging_widget_2{
+	text-align:center;
+}
+
+.base_widget_paging .paging_widget_2 li{
+	width:auto;
+}
+
+.base_widget_paging .paging_widget_2 li, .base_widget_paging .paging_widget_2 a{
+	display:inline-block;
+}
+
+.base_widget_paging .paging_widget_2 .previous a,.base_widget_paging .paging_widget_2 .first a{
+	margin:0 10px 0 0;
+}
+.base_widget_paging .paging_widget_2 a{
+	line-height: 28px;
+    min-width: 28px;
+    color: #333;
+    border: 1px solid #dfdfdf;
+}
+
+.base_widget_paging .paging_widget_2 a:hover{
+	border-color: #ff8b3d;
+    background: #ff8b3d;
+    color: #fff;
+}
+
+.base_widget_paging .paging_widget_2 li, .base_widget_paging .paging_widget_2 a{
+	display:inline-block;
+}
+
+
+
+.invitation-content-b ul li .theme_list_con  .title .stamp{
+	margin-left: 5px;
+	width:23px; height:16px;
+}
+
+.invitation-content-b ul li .theme_list_con  .title img{  /*图片精*/
+	margin:0 3px 0 0;
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.invitation-content-b ul li .theme_list_con .auth_msg{  /*状态---用户的信息*/
+	line-height: 18px;
+    margin: 6px 60px 6px 10px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.invitation-content-b ul li .theme_list_con .auth_msg .user_name{
+	font-size: 14px;
+    color: #8c8c8c;
+}
+.invitation-content-b ul li .theme_list_con .auth_msg a{
+	float:left;
+	vertical-align: middle;
+	outline: 0;
+    text-decoration: none;
+}
+
+
+.invitation-content-b ul li .theme_list_con .auth_msg .vip_icon img{
+	width:250px; height:20px;
+	margin-left:5px;
+	margin-bottom:15px;
+	display:inline-block;
+	position:absolute;
+	clip:rect(0px 20px 20px 0px);
+	float:left;
+}
+
+.invitation-content-b ul li .theme_list_con .auth_msg .txt{ /*时间和置顶*/
+	font-size: 14px;
+    color: #8c8c8c;
+    margin-left: 25px;
+}
+
+
+.invitation-content-b ul li .look-more{ /*查看更多*/
+	text-align:center;
+	font-size:18px;
+	font-family:"仿宋";
+	font-weight:800;
+}
+
+
+.contain_left{ /*帖子精选内容*/ 
+	margin:0 0 0 3%;width:27%; height:1045px;  float:right;  z-index: 1; position: relative; 	margin-top:5px;
+}
+
+.fr{
+	float:right;
+}
+
+.left-wrap{
+
+	background: #fff;
+    margin-bottom: 15px;
+}
+
+.sidebarplate{
+	border: 1px solid #e6e6e6;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.sidebarplate .sidebarplate_tab{
+	height: 45px;
+    line-height: 45px;
+    background: #fafafa;
+    font-weight: bold;
+}
+
+.sidebarplate .sidebarplate_tab .tab {
+    width: 100%;
+    margin-left: -1px;
+    color: #333;
+	background-color:#0FF;
+}
+
+.sidebarplate .sidebarplate_tab .tab span.on {
+    height: 36px;
+    line-height: 32px;
+    border-top: 8px solid #ccd1d9;
+    background: #fff;
+}
+
+.sidebarplate .sidebarplate_tab .tab span {
+    cursor: pointer;
+    float: left;
+    width: 49%;
+    border-left: 1px solid #e8e8e8;
+    text-align: center;
+}
+
+.sidebarplate ul li {
+    float: left;
+    width: 49.5%;
+    height: 45px;
+    line-height: 45px;
+    border-right: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    text-align: center;
+	background-color:#FFF;
+}
+
+.right-warp {
+	margin-top:10px;
+	background-color:#fff;
+}
+
+.right-warp .con{ /*论坛公告*/
+	border: 1px solid #e6e6e6;
+    padding: 20px 20%;
+}
+
+.right-warp .con .forum_notice p{
+	text-align: center;
+	font-size:18px;
+	font-weight:800;
+}
+.right-warp .con .forum_notice{
+    border-bottom: 1px solid #e6e6e6;
+    margin-bottom: 20px;		
+}
+
+.right-warp .con .forum_notice_text{
+    font-size: 16px;
+	font-weight:600;
+    line-height: 16px;
+    display: block;
+    margin-top: 10px;	
+	text-align: center;
+}
+
+.right-warp .con .text_tuijian{
+	color:#FA0310;
+}

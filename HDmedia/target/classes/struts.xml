@@ -40,6 +40,13 @@
 			<result name="registerSuccess">/registerSuccess.jsp</result>
 			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
+			
+			<result name="listSuccess" type="redirect">home/index.jsp</result>
+			<result name="worksSuccess" type="redirect">home/indexlcw.jsp</result>
+			<result name="lunTanSuccess" type="redirect">home/ForumIndex.jsp</result>
+			<result name="tieziSuccess" type="redirect">home/invitation_template.jsp</result>
+			<result name="HuitieSuccess" type="redirect">home/comment.jsp</result>
+			<result name="tieziAddSuccess" type="redirect">home/addSuccess.jsp</result>
 		</action>
 		
 		

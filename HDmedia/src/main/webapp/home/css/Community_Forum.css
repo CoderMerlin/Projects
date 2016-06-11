@@ -1,0 +1,70 @@
+@charset "utf-8";
+/* CSS Document */
+
+.all-Forum-invitation{  /*整个文化帖子*/
+	background:#09F;
+	margin:0 5%;
+	padding:0px;
+}
+
+.all-Forum-invitation .Forum-publicity{  /*论坛宣传图片出*/
+	width:100%;
+	height:90px; 
+	float:left;
+}
+
+.all-Forum-invitation-two{ /*整个论坛的导航栏和其他*/
+	width:25%; 
+	height:1200px; 
+	margin-top:5px; 
+	background-color:#0F0;
+	float:left;
+}
+.all-Forum-invitation-two-1{
+	width:100%; 
+	height:500px; 
+	background-color:#06F; 
+	float:left;
+}
+.Forum-Sign_in{  /*签到*/
+	width:100%; 
+	height:100px; 
+	background-color:#0CF; 
+	float:left;
+}
+
+.recommend-plate{  /*推荐板块*/
+	width:100%; 
+	height:400px; 
+	background-color:#0FC; 
+	float:left;
+}
+.recommend-plate ul li{
+	display:block;
+	font-size:18px;
+	font-family:"仿宋";
+	text-align:center;
+	line-height:18px;
+}
+.recommend-plate ul li{
+	width:49%;height:20px;padding:1px;margin-top:5px;
+}
+.recommend-Others{ /*其他*/
+	width:100%; height:700px; background-color:#FF0; float:left;
+}
+
+.Forum-Invitation-all{  /*帖子总*/
+	width:75%; height:1200px; margin-top:5px; background-color:#666;float:left;
+}
+
+.Hot-plate-a{
+	width:100%; height:75px; background-color:#0FF;float:left;
+}
+
+.Hot-plate-b{
+	width:100%; height:1040px; margin-top:5px; background-color:#F0F;float:left;
+}
+
+.Show-Page{ /*显示页数*/
+	width:100%; height:80px; background-color:#9C6;float:left;
+}

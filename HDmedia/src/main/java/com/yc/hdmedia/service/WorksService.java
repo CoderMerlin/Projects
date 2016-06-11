@@ -3,6 +3,7 @@ package com.yc.hdmedia.service;
 import java.util.List;
 
 import com.yc.hdmedia.entity.Works;
+import com.yc.hdmedia.entity.WorksBean;
 import com.yc.hdmedia.entity.WorksType;
 
 public interface WorksService {
@@ -75,4 +76,9 @@ public interface WorksService {
 	public List<Works> findWork_lb();
 	
 	public List<Works> findWork();
+	//查询书画首页的信息
+	public List<WorksBean> findAllWorks();
+	public List<WorksBean> findWork_gdhh();
+	public List<WorksBean> findWork_jxdsh();
+	public List<WorksBean> findWork_xdsh();
 }

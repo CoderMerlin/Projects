@@ -68,7 +68,7 @@
                 </li>
                 <span class="sep">|</span>				
                 <li >
-                    <a href="">社区论坛</a>
+                    <a href="lunTan_find.action">社区论坛</a>
                 </li>
              </ul>
         </div>

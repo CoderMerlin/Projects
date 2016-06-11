@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.Works;
+import com.yc.hdmedia.entity.WorksBean;
 import com.yc.hdmedia.entity.WorksType;
 import com.yc.hdmedia.mapper.WorksMapper;
 import com.yc.hdmedia.service.WorksService;
@@ -150,6 +151,30 @@ public class WorksServiceImpl implements WorksService {
 
 	@Override
 	public List<Works> findWork() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<WorksBean> findAllWorks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<WorksBean> findWork_gdhh() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<WorksBean> findWork_jxdsh() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<WorksBean> findWork_xdsh() {
 		// TODO Auto-generated method stub
 		return null;
 	}

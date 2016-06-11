@@ -1,6 +1,8 @@
 package com.yc.hdmedia.service;
 import java.util.List;
+
 import com.yc.hdmedia.entity.HuiTie;
+import com.yc.hdmedia.entity.HuitieBean;
 
 //回帖Service工人体育
 public interface HuiTieService {
@@ -44,4 +46,8 @@ public interface HuiTieService {
 	public List<HuiTie> findHT();
 	
 	public List<HuiTie> findslcw();
+	
+	public HuitieBean HuitieCount(int tid);
+	
+	public List<HuitieBean> findHuitieBean(int pageNo,int pageSize,int tid);
 }

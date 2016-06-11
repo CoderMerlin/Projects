@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.TieZi;
+import com.yc.hdmedia.entity.TieZiBean;
 import com.yc.hdmedia.mapper.TieZiMapper;
 import com.yc.hdmedia.service.TieZiService;
 
@@ -86,6 +87,53 @@ public class TieZiServiceImpl implements TieZiService {
 	public TieZi findshow(int ltid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public TieZiBean findCount() {
+		return tieZiMapper.findCount();
+
+	}
+
+	@Override
+	public List<TieZiBean> findById(int pageNo, int pageSize, int ltid) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("pageNo", pageNo*pageSize);
+		params.put("pageSize", (pageNo-1)*pageSize);
+		params.put("ltid",ltid);
+		return tieZiMapper.findById(params);
+	}
+
+	@Override
+	public TieZiBean findByIdCount(int ltid) {
+		return tieZiMapper.findByIdCount(ltid);
+	}
+
+	@Override
+	public TieZiBean findTerdayCount() {
+		return tieZiMapper.findTerdayCount();
+	}
+
+	@Override
+	public TieZiBean findYesterdayCount() {
+		return tieZiMapper.findYesterdayCount();
+	}
+
+	@Override
+	public TieZiBean findByTids(int tid) {
+		return tieZiMapper.findByTids(tid);
+	}
+	
+	@Override
+	public int addTieZis(int ltid, int yhid, String tzname, String tzzy,String tztext,String tzphoto) {
+		Map<String,Object> params=new HashMap<String,Object>();
+		params.put("ltid", ltid);
+		params.put("yhid", yhid);
+		params.put("tzname", tzname);
+		params.put("tzzy", tzzy);
+		params.put("tztext", tztext);
+		params.put("tzphoto", tzphoto);
+		return tieZiMapper.addTieZis(params);
 	}
 	
 }

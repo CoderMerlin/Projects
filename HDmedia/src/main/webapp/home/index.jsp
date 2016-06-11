@@ -5,16 +5,20 @@
 <!doctype html>
 <html>
 <head>
-<title>弘道传媒</title>
 <base href="/HDmedia/">
+<title>弘道传媒</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/> <!--默认为屏幕的宽度-->
 <link rel="shortcut icon" type="image/x-icon" href="images/hd_01.png"> <!--小图标，需要浏览器兼容-->
+
 
 <link rel="stylesheet" href="home/css/footer.css" />
 <link rel="stylesheet" href="home/css/Hd_nav.css" />
 <link rel="stylesheet" href="home/css/mainPic.css" />
 
+ 
+ 
+ 
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="home/js/mainPic.js"></script>
 </head>
@@ -46,13 +50,34 @@
 			</div>
 		</div>
 	  </div>
-    </div>
+   
    <div class="hm_tail" style="padding:8px;"><!--尾部-->
   <div class="hd_culture_info"> <!-- 文化资讯-->
     	<div class="culture_info_container">
         	<p>文化资讯</p>
             <div class="figure-info">
             	<ul>
+<<<<<<< HEAD
+            		<%-- <c:forEach items="${zixun }" var="item" varStatus="i">
+            		 <li class="cul_info_four">
+           				<div>
+           					<img src="../${item.works_img }" alt="图片加载失败" class="info-img"/>
+           				</div>
+           				<div class="info_introduce"> <!--信息介绍-->
+           					<h4>${item.author_name}</h4>
+           					<c:choose>
+           						<c:when test="${fn:length(item.works_details) > 80}">
+           							<p>${fn:substring(item.works_details,0,150) }...</p>
+           						</c:when>
+           						<c:otherwise>
+           							<p>${item.works_details }</p>
+           						</c:otherwise>
+           					</c:choose>
+           					<button type="button" class="btn re-clr1"><a>详细介绍</a></button>
+           				</div>
+           			</li> 
+            		</c:forEach> --%>
+=======
                 	<li class="cul_info_four">
                             <div>
                             	<img src="home/images/LYteacher.jpg" alt="图片加载失败" class="info-img"/>
@@ -96,8 +121,9 @@
                 </ul>
             </div>
         </div>
-     </div> 
-     
+
+     </div>
+  </div>
     <%@ include file="footer.jsp" %>
     
 </body>

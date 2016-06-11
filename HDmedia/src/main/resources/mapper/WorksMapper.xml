@@ -64,4 +64,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAllType" resultType="WorksType">
 		select * from worktype
 	</select>
+
+	<select id="findAllWorks" resultType="WorksBean">
+		select rownum,a.* from (select * from works order by works_click desc) a
+	</select>
+	
+	<select id="findWork_gdsf" resultType="WorksBean">
+		select rownum,a.* from (select * from works where works_type='古代书法' and status=1 order by works_weight desc)a
+	</select>
+	
+	<select id="findWork_gdhh" resultType="WorksBean">
+		select rownum,a.* from (select * from works where works_type='古代绘画' and status=1 order by works_weight desc)a
+	</select>
+	<select id="findWork_jxdsh" resultType="WorksBean">
+		select rownum,a.* from (select * from works where works_type='近现代书画' and status=1 order by works_weight desc)a
+	</select>
+	
+	<select id="findWork_xdsh" resultType="WorksBean">
+		select rownum,a.* from (select * from works where works_type='现代书画' and status=1 order by works_weight desc)a
+	</select>
+	<select id="findWork_yhds" resultType="WorksBean">
+		select rownum,a.* from (select * from works where works_type='油画雕塑' and status=1 order by works_weight desc)a
+	</select>
+	<select id="findWork_px" resultType="WorksBean">
+		select rownum,a.* from (select * from works where status=1 order by works_weight desc) a
+	</select>
+	<select id="findWork_lb" resultType="WorksBean">
+		select rownum,a.* from (select * from works order by works_click desc) a
+	</select>
 </mapper>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.Works;
+import com.yc.hdmedia.entity.WorksBean;
 import com.yc.hdmedia.entity.WorksType;
 
 @Service("worksMapper")
@@ -46,12 +47,22 @@ public interface WorksMapper {
 	
 	public List<Works> findWork_xdsh_left();
 	public List<Works> findWork_xdsh_rigth();
-	
-	public List<Works> findWork_yhds();
-	
-	public List<Works> findWork_px();
-	
-	public List<Works> findWork_lb();
+
 	
 	public List<Works> findWork();
+	
+	//查询书画首页的信息
+	List<WorksBean> findAllWorks();
+	//查询古代绘画
+	List<WorksBean> findWork_gdhh();
+	//查询近现代书画
+	List<WorksBean> findWork_jxdsh();
+	//查询现代书画
+	List<WorksBean> findWork_xdsh();
+	//插叙油画雕塑
+	List<WorksBean> findWork_yhds();
+	//查询评选信息
+	List<WorksBean> findWork_px();
+	//查询轮播图片
+	List<WorksBean> findWork_lb();
 }

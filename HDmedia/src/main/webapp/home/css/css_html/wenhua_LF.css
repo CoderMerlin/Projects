@@ -1,0 +1,400 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0px auto;
+	padding:0px;
+
+}
+body{
+	margin:0px auto;
+	padding:0px;
+	text-align:center;
+	background:#C7C7C7;
+}
+.hd_title{  /*图片与文字的区域*/
+	 margin-left:5%;
+	 padding:0px; 
+	 width:30%; 
+	 height:100px;
+	 float:left;	
+}
+.hd_title img{ /*弘道图片*/
+	width:100px; 
+	height:100px; 
+	padding:0;
+	display:block;
+	float:left;
+}
+<!---->
+.hd_title li{
+	list-style:none;
+	float:left;
+}
+.hd_title li p{ /*弘道口号标题*/
+	font-family:'叶根友毛笔行书2.0版';
+	width:100%;
+	height:5%;
+	letter-spacing:5px; 
+	font-size:12px; 
+	float:left;
+}
+
+.hd_nav_menu{ /*整个导航栏菜单*/
+	 margin:0; 
+	 padding:0px; 
+	 width:62%; 
+	 height:100px; 
+	 float:left;
+	 position:relative;
+	 z-index:101;
+}
+
+
+.hd_nav_menu .sep{ /*竖线*/
+	padding-top:1.5%;
+	font-size:10px;
+	color:#aeadad;
+	float:left;
+	height:20px;
+	border-top:none;
+}
+
+.hd_menu_name li a{  /*含二级菜单的样式*/
+	font:bold 14px arial;
+	text-decoration:none;
+	color:#303030;
+	outline:none;
+	text-align:center;
+	top:6px;
+	letter-spacing:0;
+	display:block;
+	height:28px;
+	position:relative;
+	overflow:hidden;
+	font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";
+	font-weight:normal;
+	font-size:13px;
+}
+
+#hd_menu li {
+	float: left;
+	position: relative;
+	list-style:none;
+}
+#hd_menu li a{
+	padding:5px 20px 0;
+}
+
+#hd_menu ul {
+	padding:2.5%;
+	opacity: 0;   /*设置不透明*/
+	visibility: hidden;
+	position: absolute;
+	background: #fff;
+	border:3px;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-box-border-radius: 10px 10px 0 0;
+	-o-linear-border-radius: 10px 10px 0 0;
+	-ms-linear-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	
+    -webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+#hd_menu li:hover > ul {
+	opacity: 1;
+	visibility: visible;   /*规定元素的可见*/
+	margin: 0;
+}
+
+#hd_menu ul li {
+	display: block;
+	-moz-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	-webkit-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+#hd_menu ul li:last-child {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#hd_menu ul a {/*二级菜单的设置*/
+	padding: 5px;
+	width: 80px;
+	display: block;
+	white-space: nowrap;  /*规定段落中的文本不进行  换行文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+	float: none;
+	text-transform: none;
+}
+
+.hd_menu_name li a:hover,.hd_menu_name li a:active{
+	border:none;
+	color:#00B5F7;
+	text-decoration:none;
+}
+
+#b{
+	width:882px;
+	height:800px;
+	float:left;
+	margin-left:186px;
+	background: #f7f7f7 none repeat scroll 0 0;
+}
+#b .c{
+	width:260px;
+	height:120px;
+	float:left;
+	background:url(images/bg_wh.jpg);	
+	margin-top:20px;
+}
+#b .c a{
+	font-size:20px;
+	font-weight:bold;	
+}
+#b .c p{
+	float:left;
+	font-size:13px;	
+	height:100px;
+	width:160px;
+	margin-left:100px;
+	margin-top:20px;
+	text-align:left;
+	line-height:15px;
+}
+#b .c .c0{
+	font-size:13px;	
+}
+#b .c .c1{
+	width:250px;
+	border-top: 1px solid #e7e7e7;	
+	float:left;
+	margin-top:-12px;
+	margin-left:20px;
+}
+#b .c .c1 ul{
+	width:150px;
+	float:left;	
+	list-style:none;
+}
+#b .c .c1 li{
+	text-align:left;	
+}
+#b .c .c1 ul a{
+	font-size:12px;
+}
+#b .c .c2{
+	float:left;
+	width:100px;
+	height:100px;
+	background:url(images/1387517370_thumb.jpg);
+	margin-top:10px;
+}
+#b .d{
+	width:260px;
+	height:120px;
+	float:left;
+	background:url(images/bg_wh.jpg);	
+	margin-top:20px;
+	margin-left:20px;
+}
+#b .d a{
+	font-size:20px;
+	font-weight:bold;	
+}
+#b .d p{
+	float:left;
+	font-size:13px;	
+	height:100px;
+	width:160px;
+	margin-left:100px;
+	margin-top:20px;
+	text-align:left;
+	line-height:15px;
+}
+#b .d .d0{
+	font-size:13px;	
+}
+#b .d .d1{
+	width:280px;
+	border-top: 1px solid #e7e7e7;	
+	float:left;
+	margin-top:-12px;
+	margin-left:20px;
+}
+#b .d .d1 ul{
+	width:170px;
+	float:left;	
+	list-style:none;
+}
+#b .d .d1 li{
+	text-align:left;	
+}
+#b .d .d1 ul a{
+	font-size:12px;
+}
+#b .d .d2{
+	float:left;
+	width:100px;
+	height:100px;
+	background:url(images/1401863902_thumb.jpg);
+	margin-top:10px;
+}
+#b .e{
+	width:260px;
+	height:120px;
+	float:left;
+	background:url(images/bg_wh.jpg);	
+	margin-top:20px;
+	margin-left:30px;
+}
+#b .e a{
+	font-size:20px;
+	font-weight:bold;	
+}
+#b .e p{
+	float:left;
+	font-size:13px;	
+	height:100px;
+	width:160px;
+	margin-left:100px;
+	margin-top:20px;
+	text-align:left;
+	line-height:15px;
+}
+#b .e .e0{
+	font-size:13px;	
+}
+#b .e .e1{
+	width:250px;
+	border-top: 1px solid #e7e7e7;	
+	float:left;
+	margin-top:-12px;
+	margin-left:20px;
+}
+#b .e .e1 ul{
+	width:150px;
+	float:left;	
+	list-style:none;
+}
+#b .e .e1 li{
+	text-align:left;	
+}
+#b .e .e1 ul a{
+	font-size:12px;
+}
+#b .e .e2{
+	float:left;
+	width:100px;
+	height:100px;
+	background:url(images/1385617600_thumb.jpg);
+	margin-top:10px;
+}
+#b .f a{
+	text-align:center;
+}
+#b .f img{
+	margin-top:200px;
+}
+#b .g{
+	width:160px;
+	height:300px;	
+	float:left;
+	margin-left:10px;
+}
+#b .g .g1{
+	width:190px;
+	height:150px;
+	background:url(images/1403667635_thumb.jpg);
+	float:left;	
+}
+#b .g .g2{
+	width:190px;
+	height:150px;
+	float:left;
+}	
+#b .g .g2 ul{
+	list-style:none;
+}	
+#b .g .g2 ul li {
+	font-size:13px;
+	text-align:left;
+	line-height:20px;
+}	
+#b .h{
+	width:160px;
+	height:300px;	
+	float:left;
+	margin-left:50px;
+}
+#b .h .h1{
+	width:190px;
+	height:150px;
+	background:url(images/1387944009_thumb.jpg);
+	float:left;	
+}
+#b .h .h2{
+	width:190px;
+	height:150px;
+	float:left;
+}	
+#b .h .h2 ul{
+	list-style:none;
+}	
+#b .h .h2 ul li {
+	font-size:13px;
+	text-align:left;
+	line-height:20px;
+}	
+#b .i{
+	width:160px;
+	height:300px;	
+	float:left;
+	margin-left:50px;
+}
+#b .i .i1{
+	width:190px;
+	height:150px;
+	background:url(images/1385625596_thumb.jpg);
+	float:left;	
+}
+#b .i .i2{
+	width:190px;
+	height:150px;
+	float:left;
+}	
+#b .i .i2 ul{
+	list-style:none;
+}	
+#b .i .i2 ul li {
+	font-size:13px;
+	text-align:left;
+	line-height:20px;
+}	
+#b .l{
+	width:160px;
+	height:300px;	
+	float:left;
+	margin-left:50px;
+}
+#b .l .l1{
+	width:190px;
+	height:150px;
+	background:url(images/1384330559_thumb.png.jpg);
+	float:left;	
+}
+#b .l .l2{
+	width:190px;
+	height:150px;
+	float:left;
+}	
+#b .l .l2 ul{
+	list-style:none;
+}	
+#b .l .l2 ul li {
+	font-size:13px;
+	text-align:left;
+	line-height:20px;
+}	

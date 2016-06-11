@@ -1,0 +1,239 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin:0px auto;
+	padding:0px;
+}
+body{
+	margin:0px auto;
+	padding:0px;
+	text-align:center;
+	background:#FFF;
+}
+
+.hd_title{  /*图片与文字的区域*/
+	 margin-left:5%;
+	 padding:0px; 
+	 width:30%; 
+	 height:100px;
+	 float:left;	
+}
+.hd_title img{ /*弘道图片*/
+	width:100px; 
+	height:100px; 
+	padding:0;
+	display:block;
+	float:left;
+}
+<!---->
+.hd_title li{
+	list-style:none;
+	float:left;
+}
+.hd_title li p{ /*弘道口号标题*/
+	font-family:'叶根友毛笔行书2.0版';
+	width:100%;
+	height:5%;
+	letter-spacing:5px; 
+	font-size:12px; 
+	float:left;
+}
+.hd_nav_menu{ /*整个导航栏菜单*/
+	 margin:0; 
+	 padding:0px; 
+	 width:62%; 
+	 height:100px; 
+	 float:left;
+	 position:relative;
+	 z-index:101;
+}
+
+
+.hd_nav_menu .sep{ /*竖线*/
+	padding-top:1.5%;
+	font-size:10px;
+	color:#aeadad;
+	float:left;
+	height:20px;
+	border-top:none;
+}
+
+.hd_menu_name li a{  /*含二级菜单的样式*/
+	font:bold 14px arial;
+	text-decoration:none;
+	color:#303030;
+	outline:none;
+	text-align:center;
+	top:6px;
+	letter-spacing:0;
+	display:block;
+	height:28px;
+	position:relative;
+	overflow:hidden;
+	font-family:"Microsoft Yahei",Arial,Helvetica,sans-serif,"微软雅黑";
+	font-weight:normal;
+	font-size:13px;
+}
+
+#hd_menu li {
+	float: left;
+	position: relative;
+	list-style:none;
+}
+#hd_menu li a{
+	padding:5px 20px 0;
+}
+
+#hd_menu ul {
+	padding:2.5%;
+	opacity: 0;   /*设置不透明*/
+	visibility: hidden;
+	position: absolute;
+	background: #fff;
+	border:3px;
+	-webkit-border-radius: 10px 10px 0 0;
+	-moz-box-border-radius: 10px 10px 0 0;
+	-o-linear-border-radius: 10px 10px 0 0;
+	-ms-linear-border-radius: 10px 10px 0 0;
+	border-radius: 10px 10px 0 0;
+	
+    -webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	-ms-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+}
+#hd_menu li:hover > ul {
+	opacity: 1;
+	visibility: visible;   /*规定元素的可见*/
+	margin: 0;
+}
+
+#hd_menu ul li {
+	display: block;
+	-moz-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	-webkit-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+}
+#hd_menu ul li:last-child {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+#hd_menu ul a {/*二级菜单的设置*/
+	padding: 5px;
+	width: 80px;
+	display: block;
+	white-space: nowrap;  /*规定段落中的文本不进行  换行文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+	float: none;
+	text-transform: none;
+}
+
+.hd_menu_name li a:hover,.hd_menu_name li a:active{
+	border:none;
+	color:#00B5F7;
+	text-decoration:none;
+}
+
+#a{
+	width:80%;
+	height:1000px;	
+	float:left;
+	margin-left:100px;
+	margin-top:20px;
+}
+#a .b{
+	background: #fff none repeat scroll 0 0;
+    border: 1px solid #e6e6e6;
+    padding: 30px 40px;
+    position: relative;
+	width:100%;
+	height:900px;
+}
+.c{
+	position: absolute;
+    right: 40px;
+    top: 34px;	
+}
+.c img{
+	height:50px;
+	width:160px;	
+}
+.b h2{
+	color: #ff8b3d;
+    font-size: 30px;
+    font-weight: normal;
+	text-align:left;
+}
+.b p{
+	color: #333;
+    font-size: 12px;
+    line-height: 30px;
+    margin-top: 6px;
+	text-align:left;	
+}
+.b .d{
+	border-top: 1px solid #e6e6e6;
+    margin-top: 30px;
+    padding: 10px 0 20px;
+}	
+.d .d1{
+ 	width:100%;
+	height:160px;	
+}
+.d .d1.d11{
+	float: left;
+    height: 50px;
+    margin-right: 20px;
+    width: 80px;	
+}
+.d11 img{
+	height:70px;
+	width:80px;	
+}
+.contain{
+	float: left;
+    width: 880px;
+}
+.contain .contain_1{
+	float: left;
+    width: 500px;
+	margin-left:30px;
+	text-align:left;
+}
+.contain .contain_1 a{
+	color: #333;
+    font-size: 17.5px;
+    line-height: 30px;
+}
+.contain .contain_1 p{
+	color: #6d6d6d;
+    line-height: 20px;
+}
+.contain .contain_2{
+	float:right;
+	width:280px;
+}
+.contain .contain_2 .c_2{
+	background-color: #ff8b3d;
+    border: 1px solid #ff8b3d;
+    color: #fff;
+    width:120px;
+	height:30px;
+	font-size:14px;
+	text-align:center;
+	display:inline-block;
+	cursor:pointer;
+	line-height:28px;
+	margin-top:30px;
+}
+.contain .contain_2 span{
+	color: #8c8c8c;
+    float: right;
+    font-size: 12px;
+    margin-top: 37px;
+	margin-left:20px;
+}
+
+

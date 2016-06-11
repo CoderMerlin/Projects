@@ -3,6 +3,7 @@ package com.yc.hdmedia.service;
 import java.util.List;
 
 import com.yc.hdmedia.entity.GongGao;
+import com.yc.hdmedia.entity.GongGaoBean;
 
 public interface GongGaoService {
 	public int addGongGao(GongGao gonggao); //添加公告
@@ -27,4 +28,6 @@ public interface GongGaoService {
 	 * @return
 	 */
 	public GongGao findGongGaoByGid(int gid);
+	
+	List<GongGaoBean> findGongGao();
 }

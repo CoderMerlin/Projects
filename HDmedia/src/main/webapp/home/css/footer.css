@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+ul li,.xl li {
+	list-style: none;
+	float: left;
+}
 
 
 a {  /*去除a标签的下划线*/
@@ -15,6 +19,13 @@ a {  /*去除a标签的下划线*/
 	clear:both;
 	height:200px;
 }
+
+.hd_nav_menu ul{
+	list-style:none;	
+}
+
+
+
 .hd_footer_menu_all .hd_footer_menu_content{
 	width:100%;
 	padding: 45px 0 5px;
@@ -30,7 +41,7 @@ a {  /*去除a标签的下划线*/
 
 .hd_footer_menu_all .hd_footer_menu_content .menu_content .footer_menu_con{
 	width:100%;
-	margin-left:33%;
+	margin-left:20%;
 }
 
 .hd_footer_menu_all .hd_footer_menu_content .menu_content dl{
@@ -82,3 +93,4 @@ a {  /*去除a标签的下划线*/
 .hd_footer_last span{
 	display:block;
 }
+
