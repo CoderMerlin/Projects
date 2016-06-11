@@ -28,7 +28,7 @@ public class GongGaoServiceImp implements GongGaoService {
 	}
 
 	@Override
-	public int del(int gid) {
+	public int del(int[] gid) {
 		return gongGaoMapper.del(gid);
 	}
 

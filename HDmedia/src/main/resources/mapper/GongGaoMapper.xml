@@ -48,4 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	
+	<delete id="del" parameterType="int">
+		<foreach collection="array" item="gids" close=")"  open="delete gonggao where gid in (" separator=",">
+		 	#{gids}
+		 </foreach>
+	</delete>
+	
 </mapper>

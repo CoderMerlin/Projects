@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
@@ -27,9 +28,9 @@ public class GongGaoAction implements ModelDriven<GongGao>, SessionAware {
 	private GongGao gonggao;
 	private int page;
 	private int rows;
-	private File[] upload;//ÉÏ´«ÎÄ¼ş
-	private String[] uploadFileName;//ÉÏ´«ÎÄ¼şÃû
-	private String[] uploadContentType;//ÉÏ´«ÎÄ¼şÀàĞÍ
+	private File[] upload;//ä¸Šä¼ æ–‡ä»¶
+	private String[] uploadFileName;//ä¸Šä¼ æ–‡ä»¶å
+	private String[] uploadContentType;//ä¸Šä¼ æ–‡ä»¶ç±»å‹
 	public void setUpload(File[] upload) {
 		this.upload = upload;
 	}
@@ -63,29 +64,35 @@ public class GongGaoAction implements ModelDriven<GongGao>, SessionAware {
 		DataMap = dataMap;
 	}
 
-	// Ìí¼Ó
+	// æ·»åŠ 
 	public String add() {
-		LogManager.getLogger().debug("Ìí¼Ó...");
-		System.out.println("gonggao"+gonggao);
 		DataMap.clear();
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
-		System.out.println("ÉÏ´«µÄµØÖ·£º"+path);
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		System.out.println(path);
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//¿ªÊ¼ÉÏ´«
-				File[] fs=new File(path).listFiles(); //È¡³öËùÓĞÉÏ´«ÎÄ¼ş
-				List<String> files=new ArrayList<String>();
-				for(File file:fs){
-					files.add(file.getName());
-				}
-				ActionContext.getContext().getSession().put("image",files);//½âñîºÏ·½·¨È¡³ösession
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
+    			//ä¸ºäº†æ–¹ä¾¿å¤šæ¬¡æµ‹è¯•ï¼ŒæŠŠä¸Šä¼ åˆ°æœåŠ¡å™¨çš„æ–‡ä»¶ä¸­ï¼Œåœ¨å·¥ç¨‹ä¸­ä¹Ÿä¼ ä¸€ä»½ï¼Œå¼€å‘å®Œæˆååœ¨åˆ é™¤
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
+    			System.out.println("ä¸Šä¼ æˆåŠŸï¼");
+    			
 			} catch (IOException e) {
-				System.out.println("ÉÏ´«Ê§°Ü...");
+				System.out.println("ä¸Šä¼ å¤±è´¥...");
 				e.printStackTrace();
 			}
-			gonggao.setGgyl1((path+"/"+uploadFileName[0]));
-			
 		}
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		
+		gonggao.setGgyl1(fileName+picture);
 		int result = gongGaoService.addGongGao(gonggao);
 		System.out.println("result"+result);
 		if (result > 0) {
@@ -112,36 +119,60 @@ public class GongGaoAction implements ModelDriven<GongGao>, SessionAware {
 		return "success";
 	}
 	
-	// ĞŞ¸Ä
+	// ä¿®æ”¹
 	public String update() {
 		DataMap.clear();
 		String path=ServletActionContext.getServletContext().getRealPath("upload/");
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//¿ªÊ¼ÉÏ´«
-				System.out.println("ÉÏ´«³É¹¦...");
-				File[] fs=new File(path).listFiles(); //È¡³öËùÓĞÉÏ´«ÎÄ¼ş
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
+    			//ä¸ºäº†æ–¹ä¾¿å¤šæ¬¡æµ‹è¯•ï¼ŒæŠŠä¸Šä¼ åˆ°æœåŠ¡å™¨çš„æ–‡ä»¶ä¸­ï¼Œåœ¨å·¥ç¨‹ä¸­ä¹Ÿä¼ ä¸€ä»½ï¼Œå¼€å‘å®Œæˆååœ¨åˆ é™¤
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//å¼€å§‹ä¸Šä¼ 
+				System.out.println("ä¸Šä¼ æˆåŠŸ...");
+				File[] fs=new File(path).listFiles(); //å–å‡ºæ‰€æœ‰ä¸Šä¼ æ–‡ä»¶
 				List<String> files=new ArrayList<String>();
 				for(File file:fs){
 					files.add(file.getName());
 				}
-				ActionContext.getContext().getSession().put("image",files);//½âñîºÏ·½·¨È¡³ösession
+				ActionContext.getContext().getSession().put("image",files);//è§£è€¦åˆæ–¹æ³•å–å‡ºsession
 			} catch (IOException e) {
-				System.out.println("ÉÏ´«Ê§°Ü...");
+				System.out.println("ä¸Šä¼ å¤±è´¥...");
 				e.printStackTrace();
 			}
-			gonggao.setGgyl1((path+"/"+uploadFileName[0]));
+			
 		}
+		
+		gonggao.setGgyl1(path+picture);
 		System.out.println("gog"+gonggao);
 		int result=gongGaoService.updateGongGao(gonggao);
 		if(result>0){
 			DataMap.put("results", result);
-			System.out.println("½øÀ´l"+result+"        "+DataMap);
+			System.out.println("è¿›æ¥l"+result+"        "+DataMap);
 			return "updatesuccess";
 		}
 		return "fail";
 	}
-
+	
+	//åˆ é™¤
+	public String delete(){
+		String gids=ServletActionContext.getRequest().getParameter("gids");
+		String[] gidss=gids.split(",");
+		int[] gids2=new int[gidss.length];     
+        for (int i=0; i<gids2.length; i++) {
+        	gids2[i] = Integer.parseInt(gidss[i]);
+        	System.out.println(gids2[i]);
+        }
+        int result=gongGaoService.del(gids2);
+		System.out.println(result);
+		if(result>0){
+			DataMap.put("delId", result);
+			return "success";
+		}
+		return "fail";
+	}
+	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

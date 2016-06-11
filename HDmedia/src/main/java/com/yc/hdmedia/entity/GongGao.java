@@ -5,13 +5,13 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class GongGao {
-	private int gid;  //¹«¸æid
-	private String gtitle;//¹«¸æ±êÌâ
-	private String gtext;//¹«¸æÄÚÈİ
-	private String gtime;//¹«¸æ´´½¨Ê±¼ä
-	private String gstatus;//×´Ì¬       -- 0 ±íÊ¾É¾³ı   1±íÊ¾´æÔÚ
-	private String ggyl1;//Ô¤Áô×Ö¶Î1
-	private String ggyl2;//Ô¤Áô×Ö¶Î2
+	private int gid;  //å…¬å‘Šid
+	private String gtitle;//å…¬å‘Šæ ‡é¢˜
+	private String gtext;//å…¬å‘Šå†…å®¹
+	private String gtime;//å…¬å‘Šåˆ›å»ºæ—¶é—´
+	private String gstatus;//çŠ¶æ€       -- 0 è¡¨ç¤ºåˆ é™¤   1è¡¨ç¤ºå­˜åœ¨
+	private String ggyl1;//é¢„ç•™å­—æ®µ1
+	private String ggyl2;//é¢„ç•™å­—æ®µ2
 	
 	public GongGao(){
 		Date currDate = Calendar.getInstance().getTime();
