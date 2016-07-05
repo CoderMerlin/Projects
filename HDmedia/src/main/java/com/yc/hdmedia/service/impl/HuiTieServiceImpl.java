@@ -77,17 +77,7 @@ public class HuiTieServiceImpl implements HuiTieService {
 		String sql="select * from huitie ht,";
 		return null;
 	}
-
-	@Override
-	public int total() {
-		return huiTieMapper.total();
-	}
-
-	@Override
-	public List<HuiTie> findHT() {
-		return null;
-	}
-
+	
 	@Override
 	public HuitieBean HuitieCount(int tid) {
 		return huiTieMapper.HuitieCount(tid);
@@ -100,6 +90,35 @@ public class HuiTieServiceImpl implements HuiTieService {
 		params.put("pageSize", (pageNo-1)*pageSize);
 		params.put("tid",tid);		
 		return huiTieMapper.findHuitieBean(params);
+	}
+
+	@Override
+	public int addHuities(int tid, int yhid, String httext) {
+		Map<String , Object> params=new HashMap<String , Object> ();
+		params.put("tid", tid);
+		params.put("yhid", yhid);
+		params.put("httext", httext);
+		return huiTieMapper.addHuities(params);
+	}
+
+	@Override
+	public int total() {
+		return huiTieMapper.total();
+	}
+
+	@Override
+	public List<HuiTie> findHT() {
+		return null;
+	}
+
+	@Override
+	public int updateDianzan(int htid) {
+		return huiTieMapper.updateDianzan(htid);
+	}
+
+	@Override
+	public HuitieBean findByHtids(int htid) {
+		return huiTieMapper.findByHtids(htid);
 	}
 
 	

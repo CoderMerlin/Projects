@@ -1,6 +1,4 @@
-/**
- * Created by yangjunxiong on 2015/3/23.
- */
+
 $j(function(){
     var $ = $j;
     var Search = function(){

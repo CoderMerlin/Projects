@@ -32,7 +32,7 @@ public class CheckGuanLiLogin implements Filter {
 		HttpServletResponse response=(HttpServletResponse) servletResponse;
 		
 		HttpSession session=request.getSession();
-		if(session.getAttribute("guanLi")==null || session.getAttribute("guanLi")==""){ //说明没有登录
+		if(session.getAttribute("loginGuanLi")==null || session.getAttribute("loginGuanLi")==""){ //说明没有登录
 			PrintWriter out=response.getWriter();
 			//获取基址路径，即到WebRoot下
 			String bassPath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath()+"/";
@@ -42,7 +42,6 @@ public class CheckGuanLiLogin implements Filter {
 		} else{ //说明已经登录，则调用下一个过滤器过滤
 			filterChain.doFilter(servletRequest, servletResponse);
 		}
-
 	}
 
 	@Override

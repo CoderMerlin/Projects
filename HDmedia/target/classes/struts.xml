@@ -18,7 +18,6 @@
 			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
 			<result name="updateSuccess">/back/guanli.jsp</result>
-			
 			<interceptor-ref name="fileUpload"><!-- 文件上传的拦截器 -->
 				<param name="allowedExtensions">jpg,png</param>
 				<param name="allowedTypes">image/jpeg,image/png,application/octet-stream</param>
@@ -28,37 +27,72 @@
 		
 	</package>
 	<package name="json" namespace="/" extends="json-default">
+	
+		<interceptors>  
+			<interceptor name="loginInterceptor" class="com.yc.hdmedia.interceptor.LoginInterceptor" />
+			<interceptor-stack name="myStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="loginInterceptor">
+					<param name="includeMethods">find</param>
+				</interceptor-ref>
+				
+				<interceptor-ref name="fileUpload"><!-- 文件上传的拦截器 -->
+				<param name="allowedExtensions">jpg,png,gif</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack" /><!-- 基本struts拦截器 -->
+			</interceptor-stack>
+		</interceptors>
+	
+		<!-- 全局 result -->
+		<global-results>
+			<result name="login" type="redirect">login.jsp</result>
+		</global-results> 
+		
+		<action name="huities_dianzan" class="com.yc.hdmedia.web.action.HuitiesAction" method="dianzan">
+	        <!-- 因为请求是异步请求，所以不能是页面跳转，使用json类型 -->
+	        <result type="json">
+	            <!-- 要转换成json对象的对象名， 要响应的必须在action中定义出来  例如：filmTypes  要提供getFilmTypes方法   -->
+	            <param name="root">huitieBean</param>
+	        </result>
+	    </action>
 		 <action name="*_*" class="{1}Action" method="{2}">
+		 	<interceptor-ref name="myStack" /> 
 			<result type="json">
 				<param name="root">DataMap</param> 
 			</result>
+			<result name="getsuccess">/home/Chinese_Literature.jsp</result>
+			<result name="detail">/home/LiterDetail.jsp</result>
 			<result name="addSuccess">/back/yonghu.jsp</result>
 			<result name="updatesuccess">/back/index.jsp</result>
 			<result name="fail">/fail.jsp</result>
 			<result name="{2}">/{2}.jsp</result>
 			<result name="login">/login.jsp</result>
+			<result name="guanli">/guanLi.jsp</result>
+			<result name="guanLiIndex">/back/index.jsp</result>
 			<result name="registerSuccess">/registerSuccess.jsp</result>
-			<result name="index">/index.jsp</result>
 			<result name="mail">/mail.jsp</result>
-			
-			<result name="listSuccess" type="redirect">home/index.jsp</result>
-			<result name="worksSuccess" type="redirect">home/indexlcw.jsp</result>
-			<result name="lunTanSuccess" type="redirect">home/ForumIndex.jsp</result>
-			<result name="tieziSuccess" type="redirect">home/invitation_template.jsp</result>
-			<result name="HuitieSuccess" type="redirect">home/comment.jsp</result>
-			<result name="tieziAddSuccess" type="redirect">home/addSuccess.jsp</result>
+			<result name="index">home/index.jsp</result>
+			<result name="hdIndexInfoSuccess">home/index.jsp</result>			
+			<result name="searchSuccess">/forum/hdsearch.jsp</result>
+			<result name="geography">/home/geography.jsp</result>
+			<result name="lunTanSuccess" type="redirect">forum/ForumIndex.jsp</result>
+			<result name="tieziSuccess" type="redirect">forum/invitation_template.jsp</result>
+			<result name="HuitieSuccess" type="redirect">forum/invitationlook.jsp</result>
+			<result name="tieziAddSuccess" type="redirect">forum/addSuccess.jsp</result>
+			<result name="addhuitieSuccess" type="redirect">forum/addHuitiesSuccess.jsp</result>
+			<result name="fail">/fail.jsp</result>
 		</action>
-		
-		
-		<action name="*_*" class="{1}Action" method="{2}">
+			
+		<!-- <action name="*_*" class="{1}Action" method="{2}">
 			<result type="json">
 				<param name="root">jsonObject</param>
 			</result>
-			<interceptor-ref name="fileUpload"><!-- 文件上传的拦截器 -->
+			<interceptor-ref name="fileUpload">文件上传的拦截器
 				<param name="allowedExtensions">jpg,png,gif</param>
 			</interceptor-ref>
-			<interceptor-ref name="defaultStack" /><!-- 基本struts拦截器 -->
-			<result name="fail">/fail.jsp</result>
-		</action>
+			<interceptor-ref name="defaultStack" />基本struts拦截器
+			
+			
+		</action>  -->
 	</package>
 </struts>

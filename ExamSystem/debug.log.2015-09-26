@@ -1,0 +1,224 @@
+2015-09-26 08:50:17  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-26 08:53:44  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 51, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:15 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 176, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:31 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 237, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:32 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 178, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:48 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 77, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:79 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 72, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:94 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 69, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:94 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 57, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:110 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 71, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:126 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 63, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:126 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBOPTION" 的值太大 (实际值: 178, 最大值: 50)
+
+2015-09-26 08:53:44  [ main:266 ] - [ ERROR ]  java.sql.SQLException: ORA-12899: 列 "SCOTT"."QUESTIONBANK"."QBCONTENT" 的值太大 (实际值: 133, 最大值: 100)
+
+2015-09-26 08:53:45  [ main:1311 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 08:53:45  [ main:1311 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 08:55:56  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 08:55:56  [ main:16 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 08:55:56  [ main:16 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 08:55:56  [ main:31 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 08:58:59  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 08:58:59  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:01:27  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:01:27  [ main:16 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:01:27  [ main:16 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:01:27  [ main:31 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:04:54  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:04:54  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:05:18  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:05:18  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:05:18  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:05:18  [ main:15 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:09:20  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:09:20  [ main:16 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:09:20  [ main:31 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:09:20  [ main:47 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:14:09  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:14:09  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:15:03  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:15:03  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:19:10  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:19:10  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:19:41  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:16 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:16 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:32 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:48 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:95 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:95 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:110 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:126 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:141 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:157 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:173 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:188 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:188 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:204 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:219 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:219 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:235 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:251 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:42  [ main:251 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10020 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10020 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10052 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10068 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10084 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10099 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10115 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10115 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10130 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10146 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10240 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10240 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10255 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10271 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10286 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10286 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10302 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10318 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10333 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:52  [ main:10333 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006490)
+
+2015-09-26 09:19:55  [ main:13469 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:19:55  [ main:13469 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:22:50  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:22:50  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:26:44  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Listener refused the connection with the following error:
+ORA-12519, TNS:no appropriate service handler found
+The Connection descriptor used by the client was:
+127.0.0.1:1521:orcl
+
+2015-09-26 09:26:44  [ main:0 ] - [ ERROR ]  java.sql.SQLException: 关闭的连接
+2015-09-26 09:59:52  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00947: 没有足够的值
+
+2015-09-26 10:00:17  [ main:24458 ] - [ ERROR ]  java.sql.SQLException: ORA-00947: 没有足够的值
+
+2015-09-26 10:00:23  [ main:30617 ] - [ ERROR ]  java.sql.SQLException: ORA-00947: 没有足够的值
+
+2015-09-26 10:15:52  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00933: SQL 命令未正确结束
+
+2015-09-26 12:26:01  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00933: SQL 命令未正确结束
+
+2015-09-26 12:26:37  [ main:36099 ] - [ ERROR ]  java.sql.SQLException: ORA-00933: SQL 命令未正确结束
+
+2015-09-26 12:27:15  [ main:74411 ] - [ ERROR ]  java.sql.SQLException: ORA-00933: SQL 命令未正确结束
+
+2015-09-26 12:43:38  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00933: SQL 命令未正确结束
+

@@ -3,6 +3,7 @@ package com.yc.hdmedia.service;
 import java.util.List;
 
 import com.yc.hdmedia.entity.PropersonBack;
+import com.yc.hdmedia.entity.Proscenery;
 import com.yc.hdmedia.entity.ProvinceBack;
 
 
@@ -53,6 +54,10 @@ public interface GeoraphyBackService {
 	 * @return
 	 */
 	int addPersonInfo(PropersonBack propersonBack);
+
+	List<PropersonBack> getPropersonBack();
+
+	List<Proscenery> getProscenery();
 	
 
 }

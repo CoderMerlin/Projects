@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.hdmedia.entity.User;
 import com.yc.hdmedia.service.UserService;
+import com.yc.hdmedia.utils.HDmediaData;
 import com.yc.hdmedia.utils.VerifyCode;
 
 @Controller("userAction")
@@ -68,19 +69,21 @@ public class UserAction implements ModelDriven<User>,SessionAware{
 			User us=(User) ActionContext.getContext().getSession().get("user");
 			String yhemail=us.getYhemail();
 			int result=userService.update(yhemail);
-			return "registerSuccess";
-			
+			if(result>0){
+				return "registerSuccess";
+			}
 		}
 		return  "false";
 	}
 	
 	public String login(){
-		LogManager.getLogger().debug("login登陆操作...");
 		User users=userService.login(user);
 		System.out.println(users);
 		if(users==null){
-			return "fail";
+			session.put(HDmediaData.ERROR_MSG, "用户名或密码错误!");
+			return "login";
 		}
+		session.put(HDmediaData.LOGIN_USER, users);
 		return "index";
 	}
 	

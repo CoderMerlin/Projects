@@ -53,7 +53,6 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public List<Author> findAuthor_jxdsh() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -2,26 +2,20 @@ package com.yc.hdmedia.web.action;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.hdmedia.entity.YongHu;
-import com.yc.hdmedia.entity.YongHuZC;
 import com.yc.hdmedia.service.YongHuService;
-import com.yc.hdmedia.utils.UploadUtil;
 
 @Controller("yongHuAction")
 public class YongHuAction implements ModelDriven<YongHu>{
@@ -64,6 +58,11 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		DataMap.clear();
 		List<YongHu> yongHus=yongHuService.findAllYongHu(page,rows);
 		if(yongHus!=null){
+			/*for (YongHu yongHu : yongHus) {
+				String yhindentity=yongHu.getYhindentity();
+				String yhindentitys=yhindentity.substring(0,3)+"*****"+yhindentity.substring(11,yhindentity.length());
+				yongHu.setYhindentity(yhindentitys);
+			}*/
 			DataMap.put("total",yongHuService.total());
 			DataMap.put("rows", yongHus);
 			return "success";
@@ -76,47 +75,69 @@ public class YongHuAction implements ModelDriven<YongHu>{
 		return "success";
 	}
 	public String addYongHuInfo(){
-		String path=ServletActionContext.getServletContext().getRealPath("upload/");
+		DataMap.clear();
+		String path=ServletActionContext.getServletContext().getRealPath("../upload");
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));
-				File[] fs=new File(path).listFiles(); 
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//开始上传
-				List<String> files=new ArrayList<String>();
-				for(File file:fs){
-					files.add(file.getName());
-				}
-				ActionContext.getContext().getSession().put("image",files);//解耦合方法取出session
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//开始上传
+    			//为了方便多次测试，把上传到服务器的文件中，在工程中也传一份，开发完成后在删除
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//开始上传
+    			System.out.println("上传成功！");
+    			
 			} catch (IOException e) {
 				System.out.println("上传失败...");
 				e.printStackTrace();
 			}
 		}
-		yongHu.setYhphoto(path+"/"+uploadFileName[0]);
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		yongHu.setYhphoto(fileName+picture);
 		int result=yongHuService.addYungHuInfo(yongHu);
-		return "addSuccess";
+		if(result>0){
+			return "addSuccess";
+		}
+		return "fail";
 	}
 	
 	public String updateYongHuInfo(){
-		String path=ServletActionContext.getServletContext().getRealPath("upload/");
+		DataMap.clear();
+		String path=ServletActionContext.getServletContext().getRealPath("../upload");
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));//开始上传
-				System.out.println("上传成功...");
-				File[] fs=new File(path).listFiles(); //取出所有上传文件
-				List<String> files=new ArrayList<String>();
-				for(File file:fs){
-					files.add(file.getName());
-				}
-				ActionContext.getContext().getSession().put("image",files);//解耦合方法取出session
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//开始上传
+    			//为了方便多次测试，把上传到服务器的文件中，在工程中也传一份，开发完成后在删除
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//开始上传
+    			System.out.println("上传成功！");
+    			
 			} catch (IOException e) {
 				System.out.println("上传失败...");
 				e.printStackTrace();
 			}
 		}
-		yongHu.setYhphoto(path+"/"+uploadFileName[0]);
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		yongHu.setYhphoto(fileName+picture);
 		int result=yongHuService.updateYungHuInfo(yongHu);
-		return "updatesuccess";
+		if(result>0){
+			return "updatesuccess";
+		}
+		return "fail";
 	}
 	
 	public String findPageYongHuInfo(){

@@ -51,13 +51,11 @@ var ltid;
 		    	handler:function(){
 		    		//获取要修改的行
 		    		var rows=datagrid.datagrid("getChecked")[0];
-		    		
 		    		if(rows==undefined){
 		    			$.messager.show({title:'温馨提示',msg:'请选择您要修改的论坛名称！',timeout:2000,showType:'slide'});
 		    		}else{
 		    			var ltid=rows.ltid;
 		    			$.post("lunTan_findLunTanById",{ltid:ltid},function(data){
-		    				console.info(data);
 		    				luntan=data.rows[0];
 		    				$("#ltid").val(luntan.ltid);
 		    				$("#lt_upltname").val(luntan.ltname);
@@ -70,7 +68,7 @@ var ltid;
  							if(luntan.ltyl2!=null){
  								var ltyl2=luntan.ltyl2.split(",");
  								for(var i=0;i<ltyl2.length;i++){
- 									str+="<img src='upload/"+ltyl2[i]+"' width='100px' height='100px'>&nbsp;";
+ 									str+="<img src='../upload/"+ltyl2[i]+"' width='100px' height='100px'>&nbsp;";
  								}
  							}
  							$("#luntan_upimg_show").html($(str));
@@ -87,12 +85,12 @@ var ltid;
 		    		if(rows.length<=0){ //说明没有选中任意一行
 		    			$.messager.show({
     						title:'温馨提示',
-    						msg:'请选择您要删除的用户注册信息！',
+    						msg:'请选择您要删除的论坛栏目信息！',
     						timeout:2000, //时间
     						showType:'slide'
     					});
 		    		}else{
-		    			$.messager.confirm('信息确认', '您确定要删除所选中的用户注册信息吗？', function(r){
+		    			$.messager.confirm('信息确认', '您确定要删除所选中的论坛栏目信息吗？', function(r){
 		    				if (r){
 		    					var ltids="";
 		    					for(var i=0;i<rows.length-1;i++){
@@ -143,7 +141,7 @@ var ltid;
 		padding-right:10px;
 	}
 </style>
-<div id="luntan_add_luntan" class="easyui-dialog" title="添加帖子信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+<div id="luntan_add_luntan" class="easyui-dialog" title="添加帖子信息" style="width:700px;height:300px" data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form id="add_luntan" method="post" action="luntan_addluntanInfo" style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data" >
 	    <label>论坛名字:</label><input type="text" name="ltname" id="lt_ltname" class=" myinput" /><br/><br/>
 	    <label>创建时间:</label><input name="lttime" id="lt_lttime" class="easyui-datetimebox myinput"/><br /><br />
@@ -151,10 +149,10 @@ var ltid;
 		<label>论坛图片:</label ><input type="file" name="upload" id="ltyl2" multiple="multiple" onchange="previewMultipleImage(this,'luntan_img_show')"/><br /><br />
 		<div>
 		</div><br/><br/>
- 		<a href="javascript:addluntan()" class="easyui-linkbutton" data-option="iconCls:'icon-add'">添加</a>
+ 		<a href="javascript:addluntan()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="margin-left:150px;width: 80px;">添加</a>
 	</form>
 	
-	<div style="margin-left:30px;width:380px; ">
+	<div style="margin-left:30px;width:200px; float: left; ">
 		<fieldset id="luntan_img_show">
 			<legend>图片预览</legend>
 		</fieldset>
@@ -162,7 +160,7 @@ var ltid;
 </div>
 
 
-<div id="luntan_update_luntan" class="easyui-dialog" title="更新论坛信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+<div id="luntan_update_luntan" class="easyui-dialog" title="更新论坛信息"  style="width:700px;height:300px" data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form id="update_luntan" method="post" action="luntan_updateluntanInfo" style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data" >
 		<input type="text" name="ltid" id="ltid" style="display:none"/>
 	    <label>论坛名字:</label><input type="text" name="ltname" id="lt_upltname" class=" myinput" /><br/><br/>
@@ -174,7 +172,7 @@ var ltid;
  		<a href="javascript:updateluntan()" class="easyui-linkbutton" data-option="iconCls:'icon-add'">修改 </a>
 	</form>
 	
-	<div style="margin-left:30px;width:380px; ">
+	<div style="margin-left:30px;width:200px; float: left; ">
 		<fieldset id="luntan_upimg_show">
 			<legend>图片预览</legend>
 		</fieldset>

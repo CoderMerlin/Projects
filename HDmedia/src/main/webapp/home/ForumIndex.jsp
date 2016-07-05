@@ -71,7 +71,7 @@
 											<div
 												style="width: 30%; height: 80px; margin-left: 2.2%; margin-top: 15px; float: left">
 												<div style="width: 80px; height: 80px; float: left;">
-													<a><img src="../images/${item.ltyl2 }"
+													<a><img src="../upload/${item.ltyl2 }"
 														style="width: 25% px; height: 100%;" /></a>
 												</div>
 												<div>
@@ -114,7 +114,7 @@
 									<div
 										style="width: 30%; height: 80px; margin-left: 2.2%; margin-top: 15px; float: left">
 										<div style="width: 80px; height: 80px; float: left;">
-											<a><img src="../images/${item.ltyl2 }" style="width: 25% px; height: 100%;" /></a>
+											<a><img src="../upload/${item.ltyl2 }" style="width: 25% px; height: 100%;" /></a>
 										</div>
 										<div>
 											<dl style="margin-left: 100px;">
@@ -151,7 +151,7 @@
 										<c:if test="${item.rownum < 4}">
 											<td style="width: 30%; height: 80px;">
 												<div style="width: 80px; height: 80px; float: left;">
-													<a><img src="../images/${item.ltyl2 }"
+													<a><img src="../upload/${item.ltyl2 }"
 														style="width: 100%; height: 100%;" /></a>
 												</div>
 												<div>
@@ -191,7 +191,7 @@
 										<c:if test="${item.rownum < 4}">
 											<td style="width: 30%; height: 80px;">
 												<div style="width: 80px; height: 80px; float: left;">
-													<a><img src="../images/${item.ltyl2 }"
+													<a><img src="../upload/${item.ltyl2 }"
 														style="width: 100%; height: 100%;" /></a>
 												</div>
 												<div>

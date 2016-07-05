@@ -73,7 +73,7 @@
 		<div class="wp">
 			<a href="" id="logo" class="iconfont">
 			</a>
-			<form class="searchform" method="post" autocomplete="off" action="">
+			<form class="searchform" method="post" autocomplete="off" action="hDSearch_getTeiZiByContent.action">
 				<input name="formhash" value="057f0564" type="hidden">
 				<div id="searchNav">
 					<a href="#"><span data-type="forum" class="searchNav pull-left active">帖子</span></a> 
@@ -88,7 +88,7 @@
 				</div>
 				<input id="searchType" name="searchType" value="forum" type="hidden">
 				<div class="searchBtn">
-					<input name="srchtxt" class="searchTxt" placeholder="请输入搜索内容" value="aaa" maxlength="50" type="text"> 
+					<input name="srchtxt" class="searchTxt" placeholder="请输入搜索内容" value="" maxlength="50" type="text"> 
 					<input name="searchsubmit" value="yes" type="hidden">
 					<button id="scform_submit" class="searchSubmit" type="submit">
 						<i class="icon icon_search"></i> <!-- 搜索的图片 -->
@@ -98,8 +98,8 @@
 					<span><a href="#" target="_blank">华 夏</a></span> <span><a
 						href="#" target="_blank"> 美食文化</a></span> <span><a href="#"
 						target="_blank">新手学堂</a></span> <span><a href="#" target="_blank">道玩</a></span>
-					<span><a href="#" target="_blank">Flyme公摄</a></span> <span><a
-						href="#" target="_blank">Flyme辩</a></span> <span><a href="#"
+					<span><a href="#" target="_blank">公摄</a></span> <span><a
+						href="#" target="_blank">辩道</a></span> <span><a href="#"
 						target="_blank">大嘴巴</a></span> <span><a href="#" target="_blank">因你不同</a></span>
 				</div>
 				<div style="left: 967.6px; top: 243.6px; display: none;"
@@ -112,7 +112,7 @@
 			<div class="wp copyr2">
 				<div class="result">
 					<p class="resultTips">
-						结果: <em>找到 “<span class="emfont">aaa</span>” 相关内容 38 个
+						结果: <em>找到 “<span class="emfont">${sessionScope.searchs[0].keyword}</span>” 相关内容
 						</em>
 					</p>
 					<div class="rlt_table">
@@ -130,458 +130,33 @@
 							</div>
 						</div>
 						<div class="rlt_tbody">
+						<c:forEach items="${sessionScope.searchs}" var="searchs">
 							<div class="rlt_tr">
 								<div class="rlt_th rlt_title">
-									<a href="#" target="_blank" title="聚爆直装破解版">聚爆直装破解版</a>
+									<a href="#"
+									target="_blank" title="">${searchs.tzname}</a>
 								</div>
 								<div class="rlt_th rlt_module">
-									<a href="#" title="精品游戏">精品游戏</a>
+									<a href="#" title="${searchs.ltname}">${searchs.ltname}</a>
 								</div>
 								<div class="rlt_th rlt_author">
 									<a href="#"
-										title="黑底哈哈">黑底哈哈</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">0</a>/<a
-										href="javascript:void(0);" class="check">60</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-31 22:28">2016-5-31
-									22:28</div>
-								<div class="rlt_th rlt_content">
-									... 体验新开发的乔纳森技能系统 【官方介绍】 继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机！ 在离开地球的20年后，人类文明又再度面临了考验。
-									你将操作第 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="#"
-										target="_blank" title="【资源组】聚爆完整版 v1.2.7">【资源组】聚爆完整版
-										v1.2.7</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-110040825.html"
-										title="微凉JP">微凉JP</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">42</a>/<a
-										href="javascript:void(0);" class="check">1140</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-17 10:51">2016-5-17
-									10:51</div>
-								<div class="rlt_th rlt_content">
-									继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span class="keyword">AAA</span>等
-									级游戏体验带上手机！ 在离开地球的20年后，人类文明又再度面临了考验。 你将操作第三代战神装甲（WM-III），对抗神秘的物
-									...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="#"
-										target="_blank" title="[免付费] 聚爆 v1.2.7">[免付费] 聚爆 v1.2.7</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-15875998.html"
-										title="lzl_17948876">lzl_179488 ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">39</a>/<a
-										href="javascript:void(0);" class="check">1120</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-17 09:10">2016-5-17
-									09:10</div>
-								<div class="rlt_th rlt_content">
-									... Inc 游戏介绍 《聚爆 Implosion》是继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年后，人类文明又再度面临了考验
-									...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=897483&amp;highlight=aaa"
-										target="_blank" title="内存卡来了！">内存卡来了！</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100043-1.html"
-										title="魅蓝 note2">魅蓝 note2</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-20754305.html"
-										title="AAABBBM">AAABBBM</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">3</a>/<a
-										href="javascript:void(0);" class="check">140</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-7 14:57">2016-5-7
-									14:57</div>
-								<div class="rlt_th rlt_content">
-									3.0的，速度快。微信<span class="keyword">AAA</span>我恨我痴心
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=897136&amp;highlight=aaa"
-										target="_blank" title="3-4次。稳定。快冲">3-4次。稳定。快冲</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100043-1.html"
-										title="魅蓝 note2">魅蓝 note2</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-20754305.html"
-										title="AAABBBM">AAABBBM</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">4</a>/<a
-										href="javascript:void(0);" class="check">140</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-7 12:07">2016-5-7
-									12:07</div>
-								<div class="rlt_th rlt_content">
-									80包邮。微信<span class="keyword">AAA</span>我恨我痴心
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=897114&amp;highlight=aaa"
-										target="_blank" title="手机配件">手机配件</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100069-1.html"
-										title="魅蓝 metal">魅蓝 metal</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-20754305.html"
-										title="AAABBBM">AAABBBM</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">4</a>/<a
-										href="javascript:void(0);" class="check">200</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-5-7 12:01">2016-5-7
-									12:01</div>
-								<div class="rlt_th rlt_content">
-									19套餐（钢化膜+保护套+手环数据线+随机礼品） 39套餐（19套餐+耳机+原装数据线）
-									49套餐（19套餐+10400充电宝） 其他配件单买不包邮，价格最低。买买买。 微信<span class="keyword">AAA</span>我恨我痴心。
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=858315&amp;highlight=aaa"
-										target="_blank" title="魅族Flyme5无障碍反馈报告">魅族Flyme5无障碍反馈报告</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-88-1.html" title="综合讨论">综合讨论</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-114725756.html"
-										title="情歌悠扬1993">情歌悠扬19 ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">65</a>/<a
-										href="javascript:void(0);" class="check">1140</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-4-21 21:19">2016-4-21
-									21:19</div>
-								<div class="rlt_th rlt_content">
-									... 解性、健全性。这四大原则的每一项均包括若干条指导方针（共12条），划分为3个合规等级：A、AA或<span
-										class="keyword">AAA</span>。 2.1 可访问性
-									（1）为所有非文本内容提供替代文本，使之可以转化为用户需要的其他形式（例如大 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=843216&amp;highlight=aaa"
-										target="_blank" title="[免付费] 勇士的世界 v1.12.1">[免付费] 勇士的世界
-										v1.12.1</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-15875998.html"
-										title="lzl_17948876">lzl_179488 ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">1</a>/<a
-										href="javascript:void(0);" class="check">180</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-4-16 09:43">2016-4-16
-									09:43</div>
-								<div class="rlt_th rlt_content">
-									... ！战斗，训练和升级你的团队在勇士！ 游戏特色 - 令人震惊的漂亮的3D画面，获奖的声音设计和<span
-										class="keyword">AAA</span>制作价值。 - 招聘基于100多个的历史上真实的战士。 -
-									释放不可思议的特殊攻击。 - 通过野地战打 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=834220&amp;highlight=aaa"
-										target="_blank" title="【忍者】写轮眼逆转局势 少年带土解读">【忍者】写轮眼逆转局势
-										少年带土解读</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-117269649.html"
-										title="基拉哥">基拉哥</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">2</a>/<a
-										href="javascript:void(0);" class="check">180</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-4-13 14:09">2016-4-13
-									14:09</div>
-								<div class="rlt_th rlt_content">
-									... 迷你小火遁。否则会出现衔接不上。 写轮眼+火遁+普攻<span class="keyword">AAA</span>(不要打最后一式迷你小火遁)+普攻<span
-										class="keyword">AAA</span>(不要打最后一式迷你小火遁)+普攻<span
-										class="keyword">AAA</span>+火遁 写轮眼： 少年带土主要的攻击方式就是依靠 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=804864&amp;highlight=aaa"
-										target="_blank" title="「魅料理」每周热门应用推荐（2016.03.28-04.03）">「魅料理」每周热门应用推荐（2016.03.28-04.03）</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100057-1.html" title="精品软件">精品软件</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-13841574.html"
-										title="Shaodengdeng">Shaodengde ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">56</a>/<a
-										href="javascript:void(0);" class="check">5720</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-4-3 17:11">2016-4-3
-									17:11</div>
-								<div class="rlt_th rlt_content">
-									... 【远离寂寞】高人气小说社区，千万书友走心畅聊 NO.5 真正的手机看片神器来了！！！ 来自：@哎呦呦<span
-										class="keyword">aaa</span> 应用名字叫蜜蜂视频。魅族应用商店就可以下载。
-									怎么样？你想看的所有电影基本这都有，而且有非常 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=804332&amp;highlight=aaa"
-										target="_blank" title="[破解] 聚爆 v1.1.0">[破解] 聚爆 v1.1.0</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-15875998.html"
-										title="lzl_17948876">lzl_179488 ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">2</a>/<a
-										href="javascript:void(0);" class="check">460</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-4-3 09:08">2016-4-3
-									09:08</div>
-								<div class="rlt_th rlt_content">
-									《聚爆 Implosion》是继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年后，人类文明又再度面临了考验。
-									你将操作第三代战神装甲 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=774466&amp;highlight=aaa"
-										target="_blank" title="aaa"><span class="keyword">aaa</span></a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-123-1.html"
-										title="魅族 MX4 Pro">魅族 MX4 P ...</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-114747462.html"
-										title="小钦109">小钦109</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">0</a>/<a
-										href="javascript:void(0);" class="check">20</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-3-23 21:54">2016-3-23
-									21:54</div>
-								<div class="rlt_th rlt_content">被偷手机终于上线了，应该怎么找回呢</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=771596&amp;highlight=aaa"
-										target="_blank" title="自带音乐播放器文件名排序">自带音乐播放器文件名排序</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-88-1.html" title="综合讨论">综合讨论</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-111600209.html"
-										title="筠溪幽梦">筠溪幽梦</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">2</a>/<a
-										href="javascript:void(0);" class="check">40</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-3-22 20:06">2016-3-22
-									20:06</div>
-								<div class="rlt_th rlt_content">
-									... 、bbb了（前面的数字没了），然后播放顺序就按字母排序了（先<span class="keyword">aaa</span>，
-									后bbb了）。对于普通专辑文件也没多大影响，但对于影视原声专辑，这种不按影片顺序播放歌曲就让人不能接受了。
-									各位魅友有没有解决办 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=713220&amp;highlight=aaa"
-										target="_blank" title="月度 | 开学季必Bei 2月精品游戏合集">月度 | 开学季必Bei
-										2月精品游戏合集</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-15570326.html"
-										title="蟲蟲飝">蟲蟲飝</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">445</a>/<a
-										href="javascript:void(0);" class="check">9400</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-3-1 20:15">2016-3-1
-									20:15</div>
-								<div class="rlt_th rlt_content">
-									... 计，人物的外貌刻画还是十分漂亮柔和的。 继Deemo，Mandora，Cytus後，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年後，人类文明又再度面临了考验。
-									你将操作第三 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=675426&amp;highlight=aaa"
-										target="_blank" title="【VIP资源】科幻风顶级ARPG大作《聚爆》破解版 全网首发！">【VIP资源】科幻风顶级ARPG大作《聚爆》破解版
-										全网首发！</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-8343552.html"
-										title="总有逆贼忤逆朕">总有逆贼忤 ...</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">382</a>/<a
-										href="javascript:void(0);" class="check">12350</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-2-16 03:58">2016-2-16
-									03:58</div>
-								<div class="rlt_th rlt_content">
-									... 人物的外貌刻画还是十分漂亮柔和的。 继Deemo，Mandora，Cytus後，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年後，人类文明又再度面临了考验。
-									你将 ...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=644975&amp;highlight=aaa"
-										target="_blank" title="【资源组】冬天BU再冷 1月精品游戏合集">【资源组】冬天BU再冷
-										1月精品游戏合集</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-15570326.html"
-										title="蟲蟲飝">蟲蟲飝</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">793</a>/<a
-										href="javascript:void(0);" class="check">10900</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-2-2 16:18">2016-2-2
-									16:18</div>
-								<div class="rlt_th rlt_content">
-									... 《聚爆 Implosion》 《聚爆
-									Implosion》是继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年后，人类文明又再度面临了
-									...
-								</div>
-							</div>
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="http://bbs.flyme.cn/forum.php?mod=viewthread&amp;tid=600604&amp;highlight=aaa"
-										target="_blank" title="「魅料理-游戏」每周热门推荐（2016.01.11-01.17）">「魅料理-游戏」每周热门推荐（2016.01.11-01.17）</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-100058-1.html" title="精品游戏">精品游戏</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-10905903.html"
-										title="_浩轩_">_浩轩_</a>
+										title="${searchs.yhname }">${searchs.yhname }</a>
 								</div>
 								<div class="rlt_th rlt_complex">
 									<a href="javascript:void(0);" class="reply">8</a>/<a
 										href="javascript:void(0);" class="check">2580</a>
 								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2016-1-17 16:09">2016-1-17
-									16:09</div>
+								<div class="rlt_th rlt_lastUpdate" title="${searchs.tztime}">${searchs.tztime}</div>
 								<div class="rlt_th rlt_content">
-									... 《聚爆 Implosion》 《聚爆
-									Implosion》是继Deemo，Mandora，Cytus后，雷亚游戏最新年度力作，将<span
-										class="keyword">AAA</span>等级游戏体验带上手机! 在离开地球的20年后，人类文明又再度面临了
+									...${searchs.keyWordBefore}<span
+										class="keyword">${searchs.keyword}</span>${searchs.keyWordAfter}
 									...
 								</div>
 							</div>
-
-
-							<div class="rlt_tr">
-								<div class="rlt_th rlt_title">
-									<a
-										href="#"
-										target="_blank" title="aaa"'"=""><span class="keyword">aaa</span>&lt;&gt;"'</a>
-								</div>
-								<div class="rlt_th rlt_module">
-									<a href="http://bbs.flyme.cn/forum-96-1.html" title="Nexus 5">Nexus
-										5</a>
-								</div>
-								<div class="rlt_th rlt_author">
-									<a href="http://bbs.flyme.cn/space-uid-10763231.html"
-										title="answer_c">answer_c</a>
-								</div>
-								<div class="rlt_th rlt_complex">
-									<a href="javascript:void(0);" class="reply">2</a>/<a
-										href="javascript:void(0);" class="check">520</a>
-								</div>
-								<div class="rlt_th rlt_lastUpdate" title="2015-12-12 10:35">2015-12-12
-									10:35</div>
-								<div class="rlt_th rlt_content">bbb"'dffdf</div>
-							</div>
-						</div>
-						<div class="rlt_tfoot">
+						</c:forEach>
+						<!-- 尾部 -->
+						<%-- <div class="rlt_tfoot">
 							<div class="pgs cl mbm">
 								<div class="pg">
 									<strong>1</strong><a
@@ -594,7 +169,7 @@
 										type="text"></label>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 			</div>

@@ -57,6 +57,8 @@
 					onclick="nextstep()" /> <input type="button" name="submit"
 					id="submit" value="提交" style="display: none;" onclick="submitpwd()" />
 			</form>
+			<div class="error">${sessionScope.errorMsg}</div>
+			<c:remove var="errorMsg" scope="session"/> <!-- 清除session中的数据 -->
 			<div id="line" style="display: block">
 				<li
 					style="border-height: 0; border-width: 20%; border: 0.5px solid #ccc;"></li>

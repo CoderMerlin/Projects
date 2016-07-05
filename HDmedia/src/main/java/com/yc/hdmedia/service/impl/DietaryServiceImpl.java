@@ -19,6 +19,7 @@ public class DietaryServiceImpl implements DietaryService {
 	private DietaryMapper dietaryMapper;
 	@Override
 	public int addDietary(Dietary dietary) {
+		System.out.println("实现=》"+dietary);
 		return dietaryMapper.addDietary(dietary);
 	}
 
@@ -49,6 +50,7 @@ public class DietaryServiceImpl implements DietaryService {
 
 	@Override
 	public List<Dietary> findAll(Integer pageNo, Integer pageSize) {
+		System.out.println(pageNo+"============="+pageSize);
 		Map<String , Object> params=new HashMap<String , Object>();
 		params.put("pageNo", pageNo*pageSize);
 		params.put("pageSize", (pageNo-1)*pageSize);

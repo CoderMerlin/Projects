@@ -135,8 +135,6 @@ $(function(){
 				var rows=datagrid.datagrid("getChanges")[0];
 				var wzname=rows.wzname;
 				var status=rows.status;
-				alert(rows);
-				console.info(rows);
 				if(rows==undefined){
 					datagrid.datagrid("rejectChanges"); //回滚自创建以来或自上次调用AcceptChanges，所有的变化数据。
 					datagrid.datagrid("unselectAll");

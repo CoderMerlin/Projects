@@ -1,5 +1,8 @@
 package com.yc.hdmedia.entity;
 
+
+import com.yc.hdmedia.utils.MD5Encryption;
+
 public class GuanLi {
 	
 	private int    glid;
@@ -21,6 +24,8 @@ public class GuanLi {
 	}
 	
 	public int getGlids() {  
+		
+		
 		return glid;
 	}
 	
@@ -37,6 +42,7 @@ public class GuanLi {
 		return glpwd;
 	}
 	public void setGlpwd(String glpwd) {
+		glpwd=MD5Encryption.createPassword(glpwd);
 		this.glpwd = glpwd;
 	}
 	public String getGlsex() {
@@ -67,10 +73,7 @@ public class GuanLi {
 		return glindentity;
 	}
 	public void setGlindentity(String glindentity) {
-		if(glindentity!=null){
-			String glidents=glindentity.substring(0,3)+"*****"+glindentity.substring(11,glindentity.length());
-			this.glindentity = glidents;
-		}
+		this.glindentity = glindentity;
 	}
 	public String getGlzhtime() {
 		return glzhtime;
@@ -98,6 +101,12 @@ public class GuanLi {
 	}
 	
 	
+	public GuanLi() {
+		/*Date currDate = Calendar.getInstance().getTime();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		glzhtime= sdf.format(currDate);*/
+	}
+
 	@Override
 	public String toString() {
 		return "\nGuanLi [glid=" + glid + ", glname=" + glname + ", glpwd="

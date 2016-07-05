@@ -236,15 +236,15 @@ $(function(){
 				}else{
 					$.messager.confirm('信息确认', '您确定导出选中的数据吗?', function(r){
 						if (r){
-							var glids="";
+							var toglids="";
 							for(var i=0;i<rows.length-1;i++){
-								glids+=rows[i].glid+",";
+								toglids+=rows[i].glid+",";
 							}
-							glids+=rows[i].glid;
+							toglids+=rows[i].glid;
 							var numb=rows.length-1;
 							//获取当前选择的行索引
-							$.post("../guanliServlet",{op:"oracleGlInfoToExcel",glids:glids,numb:numb},function(data){
-								if(data==1){ //添加成功
+							$.post("guanLi_oracleGlInfoToExcel.action",{toglids:toglids,numb:numb},function(data){
+								if(data!=null){ //添加成功
 									$.messager.show({
 										title:'导出提示',
 										msg:'管理员信息导出成功...',
@@ -277,24 +277,20 @@ $(function(){
 	}
 </style>
 
-<div id="admin_add_adminInfo" class="easyui-dialog" title="添加管理员信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
+<div id="admin_add_adminInfo" class="easyui-dialog" title="添加管理员信息" style="width:350px;height:400px" data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
 		<input type="hidden" name="glid" id="glid_add"/> 
-		<label>管理员姓名：</label><input type="text" id="glname_add" name="glname" class="myinput"/>&nbsp;&nbsp;&nbsp;
-		<label>性别：</label><input type="text"  id="glsex_add" name="glsex" class="myinput"/>&nbsp;&nbsp;&nbsp;
-		<label>真实姓名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>管理员姓名：</label><input type="text" id="glname_add" name="glname" class="myinput"/><br/><br/>
+		<label>性 &nbsp;&nbsp;&nbsp;别：&nbsp;&nbsp;&nbsp;&nbsp; </label><input type="text"  id="glsex_add" name="glsex" class="myinput"/><br/><br/>
+		<label>真实姓名：&nbsp;
 		</label><input type="text" id="glzsname_add"  name="glzsname" class="myinput" /><br/><br/>
-		
-		<label>管理员密码：</label><input type="text" id="glpwd_add" name="glpwd" class="myinput" />&nbsp;&nbsp;&nbsp;
-		<label>邮箱：</label><input type="text"  id="glemail_add" name="glemail" class="easyui-validatebox" data-options="required:true,validType:'email'"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<label>身份证码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<label>管理员密码：</label><input type="text" id="glpwd_add" name="glpwd" class="myinput" /><br/><br/>
+		<label>邮 &nbsp;&nbsp;&nbsp;箱：&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text"  id="glemail_add" name="glemail" class="easyui-validatebox" data-options="required:true,validType:'email'"/><br/><br/>
+		<label>身份证码：&nbsp;
 		</label><input type="text"  id="glindentity_add" name="glindentity" class="myinput" /><br/><br/>
-		
-		<label>状态：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</label><input type="combobox" id="glstatus_add" name="glstatus" class="myinput"/>&nbsp;&nbsp;&nbsp;
-		<label>电话：</label><input type="text" id="glphone_add" name="glphone" class="myinput" ><br/><br/>
+		<label>电 &nbsp;&nbsp;&nbsp;话：&nbsp;&nbsp;&nbsp;&nbsp;</label><input type="text" id="glphone_add" name="glphone" class="myinput" ><br/><br/>
 		<input type="hidden" name="glzhtime" id="glzhtime_update"/>
-		<a href="javascript:addAdminInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>	
+		<a href="javascript:addAdminInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="margin-left: 100px;width: 80px;">添加</a>	
 	</form>
 </div>
 

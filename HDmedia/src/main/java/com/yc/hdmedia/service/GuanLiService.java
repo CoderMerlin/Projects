@@ -70,4 +70,19 @@ public interface GuanLiService {
 
 	public GuanLi getGuanLiById(int glid);
 
+	/**
+	 * 管理员登录后修改登录时间
+	 * @param glid
+	 * @param glTime
+	 * @return
+	 */
+	public int updateGuanLiLoginTime(int glid, String glTime);
+
+	/**
+	 * 管理员导出excel
+	 * @param toglids
+	 * @return
+	 */
+	public List<GuanLi> getoracleGlInfoToExcel(String toglids);
+
 }

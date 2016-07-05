@@ -58,4 +58,8 @@ public interface HuiTieMapper {
 	public HuitieBean HuitieCount(int tid);
 	
 	public List<HuitieBean> findHuitieBean(Map<String, Object> params);
+	public int addHuities(Map<String, Object> params);
+	
+	public int updateDianzan(int htid);
+	public HuitieBean findByHtids(int htid);
 }

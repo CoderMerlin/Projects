@@ -26,7 +26,7 @@
 		<label>文 章 权 重 :</label><input name="wzweight" id="wzweight" class="myinput" required/><br /><br />
 		<label>文 章 内 容 :</label>
 		<div>
-			<script id="editor" type="text/javascript" style="width:800px;height:200px;"></script>
+			<script id="editorArtic" type="text/javascript" style="width:800px;height:200px;"></script>
 		</div><br/><br/>
 		<a href="javascript:addwenzhangInfo()" class="easyui-linkbutton" data-options="iconCls:'icon-add'">添加</a>
 	</form>
@@ -160,7 +160,7 @@ $(function(){
 							var str = "";
 							var pics = wenzhang.wzpicture.split(",");
 							for ( var i = 0; i < pics.length; i++) {
-								str += "<img src='upload/"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+								str += "<img src='../upload/"+pics[i]+"' width='100px' height='100px'>&nbsp;";
 							}
 							$("#update_pic_show").html($(str));
 						}
@@ -222,7 +222,7 @@ $(function(){
 });
 </script>
 <script>
-var ue = UE.getEditor('editor');
+var ue = UE.getEditor('editorArtic');
 var uee = UE.getEditor('editors');
 
 function showwenzhangDetail(wzid) {
@@ -240,7 +240,7 @@ function showwenzhangDetail(wzid) {
 				var str = "";
 				var pics = news.wzpicture.split(",");
 				for ( var i = 0; i < pics.length; i++) {
-					str += "<img src='upload/"+pics[i]+"' width='100px' height='100px'>&nbsp;";
+					str += "<img src='../upload/"+pics[i]+"' width='100px' height='100px'>&nbsp;";
 				}
 				$("#show_pic_show").html($(str));
 			}
@@ -251,7 +251,6 @@ function showwenzhangDetail(wzid) {
 
 function updatewenzhangInfo(){
 	$("#wz_upwztext").val(uee.getContent());
-	console.info($("#wz_upwztext").val());
 	var formData=new FormData($("#wz_upwz")[0]);
 	$.ajax({
 		type:"post",
@@ -263,8 +262,7 @@ function updatewenzhangInfo(){
 		data:formData,
 		success:function(data){
 			if (data.total =="1") {//说明是成功的
-				$.messager.show({title : '成功提示',msg : '文章信息修改成功...',timeout : 2000,showType : 'slide'
-				});
+				$.messager.show({title : '成功提示',msg : '文章信息修改成功...',timeout : 2000,showType : 'slide'});
 				$("#wenzhang_update_Info").dialog("close");
 				$("#wenzhang_info").datagrid("reload");
 			} else {

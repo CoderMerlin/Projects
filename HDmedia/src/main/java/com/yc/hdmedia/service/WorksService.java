@@ -3,7 +3,6 @@ package com.yc.hdmedia.service;
 import java.util.List;
 
 import com.yc.hdmedia.entity.Works;
-import com.yc.hdmedia.entity.WorksBean;
 import com.yc.hdmedia.entity.WorksType;
 
 public interface WorksService {
@@ -76,9 +75,22 @@ public interface WorksService {
 	public List<Works> findWork_lb();
 	
 	public List<Works> findWork();
-	//查询书画首页的信息
-	public List<WorksBean> findAllWorks();
-	public List<WorksBean> findWork_gdhh();
-	public List<WorksBean> findWork_jxdsh();
-	public List<WorksBean> findWork_xdsh();
+	
+	//查询所有小学文言文
+		public List<Works> findAllXWorks();
+		//查询所有初中文言文
+		public List<Works> findAllCWorks();
+		//查询所有高中文言文
+		public List<Works> findAllGWorks();
+		//查询所有古今观止
+		public List<Works> findAllGJWorks();
+		
+		public Works findXWork();
+		
+		public Works findCWork();
+		
+		public Works findGWork();
+		
+		public Works findGJWork();
+		public Works getWorkInfoById(int works_id);
 }

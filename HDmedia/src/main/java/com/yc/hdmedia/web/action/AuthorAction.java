@@ -2,25 +2,32 @@ package com.yc.hdmedia.web.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.opensymphony.xwork2.ModelDriven;
 import com.yc.hdmedia.entity.Author;
-import com.yc.hdmedia.entity.JsonObject;
 import com.yc.hdmedia.service.AuthorService;
 
 @Controller("authorAction")
 public class AuthorAction implements ModelDriven<Author>{
 	@Autowired
 	private AuthorService authorService;
-	private Author author=new Author();
-	private JsonObject< Author> jsonObject;
+	private Author	author=new Author();
+	private Map<String,Object> DataMap=new HashMap<String,Object>();
+	public Map<String, Object> getDataMap() {
+		return DataMap;
+	}
+	public void setDataMap(Map<String, Object> dataMap) {
+		DataMap = dataMap;
+	}
 	private int page;
 	private int rows;
 	private String author_ids;
@@ -31,80 +38,111 @@ public class AuthorAction implements ModelDriven<Author>{
 	
 	
 	public String getPageAuthorInfo(){
+		DataMap.clear();
 		List<Author> dtp=authorService.findAllAuthor(page, rows);
-		int total=authorService.total();
-		jsonObject=new JsonObject<Author>();
-		jsonObject.setRows(dtp);
-		jsonObject.setTotal(total);
-		return "success";
+		if(dtp!=null){
+			DataMap.put("rows", dtp);
+			DataMap.put("total",authorService.total());
+			return "success";
+		}
+		return "fail";
 	}
 	
 	public String addAuthorInfo(){
-		String path=ServletActionContext.getServletContext().getRealPath("upload/");
-		String photo="";
+		DataMap.clear();
+		String path=ServletActionContext.getServletContext().getRealPath("../upload");
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		System.out.println("图片"+upload);
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));	//开始上传
-				System.out.println("上传成功!!!!");
-				if(i<upload.length-1){
-					photo+=uploadFileName[i]+",";
-				}
-		} catch (IOException e) {
-				System.out.println("图片上传失败!!!!!!!!!!");
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//开始上传
+    			//为了方便多次测试，把上传到服务器的文件中，在工程中也传一份，开发完成后在删除
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//开始上传
+    			System.out.println("上传成功！");
+    			
+			} catch (IOException e) {
+				System.out.println("上传失败...");
 				e.printStackTrace();
 			}
 		}
-		photo+=uploadFileName[upload.length-1];
-		author.setAuthor_photo(photo);
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		author.setAuthor_photo(fileName+picture);
 		int total=authorService.addAuthor(author);
-		jsonObject=new JsonObject<Author>();
-		jsonObject.setTotal(total);
-		return "success";
+		if(total>0){
+			DataMap.put("total", total);
+			return "success";
+		}
+		return "fail";
 	}
 	
 	public String findAuthorById(){
+		DataMap.clear();
 		List<Author> dtp=authorService.findById(author.getAuthor_id());
-		jsonObject=new JsonObject<Author>();
-		jsonObject.setRows(dtp);
-		return "success";
+		if(dtp!=null){
+			DataMap.put("rows", dtp);
+			return "success";
+		}
+		return "fail";
 	}
 	
+	/**
+	 * 肯定有问题
+	 * @return
+	 */
 	public String delAuthorInfo(){
 		int total=authorService.delAuthor(author_ids);
-		jsonObject=new JsonObject<Author>();
-		jsonObject.setTotal(total);;
-		return "success";
+		if(total>0){
+			DataMap.put("total", total);
+			return "success";
+		}
+		return "fail";
 	}
 	
 	public String updateAuthorInfo(){
-		LogManager.getLogger().debug("修改信息======>"+author);
-		String path=ServletActionContext.getServletContext().getRealPath("upload/");
-		String photo="";
+		DataMap.clear();
+		String path=ServletActionContext.getServletContext().getRealPath("../upload");
+		String fileName = String.valueOf(System.currentTimeMillis()+new Random().nextInt(10000));
+		String picture="";
 		for(int i=0;i<upload.length;i++){
 			try {
-				FileUtils.copyFile(upload[i], new File(path+"/"+uploadFileName[i]));	//开始上传
-				System.out.println("上传成功!!!!");
-				if(i<upload.length-1){
-					photo+=uploadFileName[i]+",";
-					System.out.println(photo);
-				}
-		} catch (IOException e) {
-				System.out.println("图片上传失败!!!!!!!!!!");
+				FileUtils.copyFile(upload[i], new File(path+"/"+fileName+uploadFileName[i]));//开始上传
+    			//为了方便多次测试，把上传到服务器的文件中，在工程中也传一份，开发完成后在删除
+    			FileUtils.copyFile(upload[i], new File("D:\\pictrues"+"/"+fileName+uploadFileName[i]));//开始上传
+    			System.out.println("上传成功！");
+    			
+			} catch (IOException e) {
+				System.out.println("上传失败...");
 				e.printStackTrace();
 			}
 		}
-		photo+=uploadFileName[upload.length-1];
-		author.setAuthor_photo(photo);
-		LogManager.getLogger().debug("修改信息======>"+author);
+		if(uploadFileName.length==1){
+			picture = uploadFileName[0];
+	    }else if(uploadFileName.length>1){
+		    for(String as:uploadFileName){
+		    	picture += as+",";
+		    }
+		    picture = picture.substring(0, picture.length()-1);
+	    }
+		System.out.println(path+"       "+fileName+picture);
+		
+		System.out.println("修改的作者信息"+author);
+		author.setAuthor_photo(fileName+picture);
 		int total=authorService.updateAuthor(author);
-		jsonObject=new JsonObject<Author>();
-		jsonObject.setTotal(total);
-		return "success";
+		if(total>0){
+			DataMap.put("total", total);
+			return "success";
+		}
+		return "fail";
 	}
 	
-	public JsonObject<Author> getJsonObject() {
-		return jsonObject;
-	}
 	public void setPage(int page) {
 		this.page = page;
 	}

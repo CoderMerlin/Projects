@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 通过论坛id删除论坛的相应栏目 可以同时删除多个 -->
 	<delete id="delLunTan" parameterType="int">
-		delete from luntan where ltid=#{ltid}
+		update luntan set ltstatus=0 where ltid=#{ltid}
 	</delete>
 	
 	<!-- 更新论坛栏目的内容 -->
@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 查找所有的论坛栏目 -->
 	<select id="find" parameterType="map" resultType="LunTan">
-		select * from (select a.*,rownum rn from (select * from luntan order by ltid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
+		select * from (select a.*,rownum rn from (select * from luntan where ltstatus=1 order by ltid) a where #{pageNo} >=rownum)b where rn>#{pageSize}
 	</select>
 	
 	<select id="findLunTan" resultType="LunTanBean">

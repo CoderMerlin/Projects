@@ -1,0 +1,122 @@
+@charset "utf-8";
+/* CSS Document */
+
+.forum-main{  /*整个论坛*/
+	margin:0 auto;
+	width:100%; 
+	height:1150px;
+	float:left; 
+	background-color:#EAEBE9;	
+}
+
+.main-all{ /*论坛的中心*/
+	margin:5px 0 5% 5%;
+	width:90%; 
+	height:995px; 
+	float:left;
+}
+
+.forum-adv{ /*论坛的广告*/
+	width:100%; 
+	height:100px;
+}
+
+.forum-adv .adv_1{  /*广告位1*/
+	width:49.5%; 
+	height:100%; 
+	background-color:#0FF; 
+	float:left;
+}
+
+.forum-adv .adv_2{ /*广告位2*/
+	width:49.5%; 
+	height:100%; 
+	float:left; 
+	background-color:#0FF; 
+	margin-left:1%;
+}
+
+.invitation-and-user{  /*显示帖子和用户数量*/
+	height:20px; 
+	width:100%; 
+	background-color:#FFF;
+}
+
+.invitation-and-user p{  /*下面的p标签*/
+	height:100%; 
+	width:60%; 
+	float:left; 
+	font-size:12px; 
+	font-family:宋体,Arial,Helvetica,sans-serif; 
+	line-height:24px;
+}
+
+.check-invitation {  /*查看帖子的数量*/
+	height:100%; 
+	width:40%; 
+	float:left; 
+	text-align:right; 
+	font-size:14px; 
+	font-family:宋体,Arial,Helvetica,sans-serif; 
+	line-height:24px; 
+	color:#F00;
+}
+
+.all-invitation{ /*所有的帖子*/
+	margin:5px 0 0 0; 
+	height:870px; 
+	width:100%;
+}
+
+.invitation-1 {  /*第一个帖子区*/
+	width:100%; 
+	height:200px;
+}
+
+.communication-region { /*交流区*/
+	width:100%; 
+	height:60px; 
+	background-color:#FFF;
+}
+
+.Newbie-communication{ /*新手交流区*/
+	width:100%; 
+	height:140px; 
+	background-color:#FFF; 
+	margin-top:1px;
+}
+
+.communication-region-table {  /*交流区的table 标签*/
+	width:100%; 
+	height:140px; 
+	padding:10px 20px;
+}
+
+comminocation-region-td-1{  /*td标签*/
+	width:30%; 
+	height:80px;
+}
+comminocation-region-td-2{  /*td标签*/
+	width:30%; 
+	height:80px;
+}
+comminocation-region-td-3{  /*td标签*/
+	width:30%; 
+	height:80px;
+}
+
+
+.xinshoushuiba {
+	width:80px; 
+	height:80px;
+	float:left;
+}
+
+.xinshoushuiba a img{
+	width:100%;
+    height:100%;
+}
+
+.smoll-title{
+	font-size:18px; line-height:24px; color:#F00; 
+}

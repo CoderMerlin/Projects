@@ -1,12 +1,12 @@
 package com.yc.hdmedia.web.action;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.yc.hdmedia.entity.JsonObject;
 import com.yc.hdmedia.entity.WenzhangType;
 import com.yc.hdmedia.service.IWenzhangTypeService;
 
@@ -16,7 +16,13 @@ public class WenZhangTypeAction{
 	@Autowired
 	private IWenzhangTypeService iWenzhangTypeService;
 	private WenzhangType wzType=new WenzhangType();
-	private JsonObject<WenzhangType> jsonObject;
+	private Map<String,Object> DataMap=new HashMap<String,Object>();
+	public Map<String, Object> getDataMap() {
+		return DataMap;
+	}
+	public void setDataMap(Map<String, Object> dataMap) {
+		DataMap = dataMap;
+	}
 	private int page;
 	private int rows;
 	private String wztypeids;
@@ -24,45 +30,80 @@ public class WenZhangTypeAction{
 	private String wzname; //文章类型名
 	private int status; //文章类型状态
 	
+	/**
+	 * @author HM
+上午11:40:38修改
+	 * @return
+	 */
 	public String addTypeInfo(){
+		DataMap.clear();
 		wzType.setWzname(wzname);
 		wzType.setStatus(status);
 		int result=iWenzhangTypeService.addWenzhangtype(wzType);
-		jsonObject=new JsonObject<WenzhangType>();
-		jsonObject.setTotal(result);
-		return "success";
+		if(result>0){
+			DataMap.put("total", result);
+			return "success";
+		}
+		return "fail";
 	}
 	
+	/**
+	 * @author HM
+上午11:41:17修改
+	 * @return
+	 */
 	public String delTypeInfo(){
+		DataMap.clear();
 		int result=iWenzhangTypeService.del(wztypeids);
-		jsonObject=new JsonObject<WenzhangType>();
-		jsonObject.setTotal(result);
-		return "success";
+		if(result>0){
+			DataMap.put("total", result);
+			return "success";
+		}
+		return "fail";
 	}
 	
 	public String updateTypeInfo(){
+		DataMap.clear();
 		wzType.setWztypeid(wztypeid);
 		wzType.setWzname(wzname);
 		wzType.setStatus(status);
 		int result=iWenzhangTypeService.update(wzType);
-		jsonObject=new JsonObject<WenzhangType>();
-		jsonObject.setTotal(result);
-		return "success";
-	}
-	public String getPageTypeInfo(){
-		List<WenzhangType> wenZhangType=iWenzhangTypeService.find(page, rows);
-		jsonObject=new JsonObject<WenzhangType>();
-		jsonObject.setRows(wenZhangType);
-		jsonObject.setTotal(iWenzhangTypeService.total());
-		return "success";
+		if(result>0){
+			DataMap.put("total", result);
+			return "success";
+		}
+		return "fail";
 	}
 	
+	/**
+	 * @author HM
+上午11:44:21修改
+	 * @return
+	 */
+	public String getPageTypeInfo(){
+		DataMap.clear();
+		List<WenzhangType> wenZhangType=iWenzhangTypeService.find(page, rows);
+		if(wenZhangType!=null){
+			DataMap.put("total", iWenzhangTypeService.total());
+			DataMap.put("rows", wenZhangType);
+			return "success";
+		}
+		return "fail";
+	}
+	
+	/**
+	 * @author HM
+上午11:42:54修改
+	 * @return
+	 */
 	public String getAllType(){
+		DataMap.clear();
 		List<WenzhangType> wztype=iWenzhangTypeService.finds();
-		LogManager.getLogger().debug("所有文章类型==========>"+wztype);
-		jsonObject=new JsonObject<WenzhangType>();
-		jsonObject.setRows(wztype);
-		return "success";
+		if(wztype!=null){
+			DataMap.put("rows", wztype);
+			return "success";
+		}
+		return "fail";
 	}
 	
 	public void setWztypeid(int wztypeid) {
@@ -73,9 +114,6 @@ public class WenZhangTypeAction{
 	}
 	public void setStatus(int status) {
 		this.status = status;
-	}
-	public JsonObject<WenzhangType> getJsonObject() {
-		return jsonObject;
 	}
 	public void setPage(int page) {
 		this.page = page;

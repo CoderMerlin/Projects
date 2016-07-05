@@ -3,14 +3,14 @@
 <table id="author_info"  data-options="fit:true"></table>
 
 <script>
-		var op;
-		var flag;
+		
 		var author;
+		
 	$(function(){
 		var datagrid;
 		var editRow=undefined;
-		
-		
+		var op;
+		var flag;
 		datagrid=$('#author_info').datagrid({
 			url:"author_getPageAuthorInfo",
 			fitColumns:true,
@@ -50,7 +50,6 @@
 		    		if(rows.length!=1){
 		    			$.messager.show({title:'温馨提示',msg:'您没有选中数据或选中多行数据,请重新选择...',timeout:2000,showType:'slide'});
 		    		}else{
-		    			
 		    			author=rows[0];
 		    			var author_id=author.author_id;
 		    			$.post("author_findAuthorById",{author_id:author_id},function(data){
@@ -59,10 +58,8 @@
 		    				$("#author_updatename").val(author.author_name);
 		    				if(author.author_sex=="女"){
 		    					$("#author_updatesex1").checked=false;
-		    					console.info("男");
 		    				}else{
 		    					$("#author_updatesex2").checked=false;
-		    					console.info("女");
 		    				}
 							
 							$("#author_updatetime").val(author.author_time);
@@ -73,7 +70,7 @@
 								var str="";
 								var author_photo=author.author_photo.split(",");
 								for(var i=0;i<author_photo.length;i++){
-									str+="<img src='upload/"+author_photo[i]+"' width='100px' height='100px'>&nbsp;";
+									str+="<img src='../upload/"+author_photo[i]+"' width='100px' height='100px'>&nbsp;";
 								}
 								$("#author_img_update").html($(str));
 							}
@@ -89,7 +86,6 @@
 		    	iconCls:'icon-remove',
 		    	handler:function(){
 		    		var rows=datagrid.datagrid("getChecked");
-		    		
 		    		if(rows.length<=0){
 		    			$.messager.show({title:'温馨提示',msg:'请选择您要删除的数据...',timeout:2000,showType:'slide'});
 		    		}else{
@@ -152,7 +148,7 @@
 		<label>权&nbsp;&nbsp;&nbsp;&nbsp;重</label><input class="easyui-numberbox myinput" name="author_weight" id="author_authorweight" value="0"/><br/><br/>
 		<label>作者简介</label>
 		<div>
-			<script type="text/javascript" id="editor" style="width:800px;height:400px;"></script>
+			<script type="text/javascript" id="editorauthor" style="width:800px;height:400px;"></script>
 		</div><br/><br/>
 		<a href="javascript:addAuthorInfo()" class="easyui-linkbutton" data-option="iconCls:'icon-add'">添加</a>
 	</form>
@@ -185,7 +181,7 @@
 </div>
 
 <div id="author_update_authorinfo" class="easyui-dialog" title="修改作者信息"  data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
-	<form id="update_author" style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data">
+	<form id="update_author"   method="post" style="padding:20px;float:left;display:inline-block;" enctype="multipart/form-data">
 		<input type="text" name="author_id" id="author_upid" style="display:none"/>
 		<input type="text" name="author_details" id="author_updetails" style="display:none"/>
 		<label>作者姓名:</label><input type="text" name="author_name" id="author_updatename" class="myinput"/><br/><br/>
@@ -193,7 +189,7 @@
 							<input type="radio" name="author_sex" id="author_updatesex2" value="女"><label>女</label><br/><br/>
 		<label>作者年代:</label><input type="text" name="author_time" id="author_updatetime" class=" myinput"/><br/><br/>
 		<label>籍&nbsp;&nbsp;&nbsp;&nbsp;贯:</label><input type="text" name="author_area" id="author_updatearea" class="myinput" /><br/><br/>
-		<label>照&nbsp;&nbsp;&nbsp;&nbsp;片:</label><input type="file" name="author_photo" id="author_updateimg" multiple="multiple" onchange="previewMultipleImage(this,'author_img_update')"/><br /><br />
+		<label>照&nbsp;&nbsp;&nbsp;&nbsp;片:</label><input type="file" name="upload" id="author_updateimg" multiple="multiple" onchange="previewMultipleImage(this,'author_img_update')"/><br /><br />
 		<label>作者类型:</label><input type="text" name="author_type" id="authhor_updatetype" class="myinput"/><br/><br/>
 		<label>权&nbsp;&nbsp;&nbsp;&nbsp;重</label><input class="easyui-numberbox myinput" name="author_weight" id="author_updateweight"/><br/><br/>
 		<label>作者简介</label>
@@ -211,12 +207,40 @@
 </div>
 
 <script>
-	var ue=UE.getEditor("editor");
+	var ue22=UE.getEditor("editorauthor");
 	var updateUE=UE.getEditor("updateeditor");
 	function returnAuthorInfo(){
 		$("#author_show_authorinfo").dialog("close");
 		$("#author_info").datagrid("reload");
 	}
+	
+	function updateAuthorInfo(){
+		$("#author_updetails").val(updateUE.getContent());
+		var formData=new FormData($("#update_author")[0]);
+		console.info("要修改的数据"+formData);
+		$.ajax({
+			type:"post",
+			url:"author_updateAuthorInfo",
+			processData:false,
+			contentType:false,
+			async:false,
+			cache:false,
+			data:formData,
+			success:function(data){
+				if(data.total=="1"){
+					$.messager.show({title:'成功提示',msg:'作者信息修改成功...',timeout:2000,showType:'slide'});
+					$("#author_update_authorinfo").dialog("close");
+					$("#author_info").datagrid("reload");
+				}else{
+					$.messager.alert("失败提示","作者信息修改失败...","error");
+
+				}
+			}
+		});
+	}
+	
+	
+	
 	function showAuthorInfo(author_id){
 		$("#author_show_authorinfo").dialog("open");
 		$.post("author_findAuthorById",{author_id:author_id},function (data){
@@ -232,7 +256,7 @@
 				var str="";
 				var author_photo=author.author_photo.split(",");
 				for(var i=0;i<author_photo.length;i++){
-					str+="<img src='upload/"+author_photo[i]+"' width='100px' height='100px'>&nbsp;";
+					str+="<img src='../upload/"+author_photo[i]+"' width='100px' height='100px'>&nbsp;";
 				}
 				$("#author_img_show_info").html($(str));
 			}
@@ -240,8 +264,9 @@
 	}
 	
 	function addAuthorInfo(){
-		$("#author_details").val(ue.getContent());
+		$("#author_details").val(ue22.getContent());
 		var formData=new FormData($("#add_author")[0]);
+		console.info(formData);
 		$.ajax({
 			type:"post",
 			url:"author_addAuthorInfo",
@@ -259,8 +284,8 @@
 					$("#author_authorsex1").checked;
 					$("#author_authortime").val("");
 					$("#author_authorarea").val("");
-					$("#author_authorweight").numberbox("setValue",0);
-					ue.setContent("");
+					$("#author_authorweight").val("0");
+					ue22.setContent("");
 				}else{
 					$.messager.alert("失败提示","作者信息添加失败...","error");
 				}
@@ -268,28 +293,6 @@
 		});
 	}
 	
-	function updateAuthorInfo(){
-		$("#author_updetails").val(updateUE.getContent());
-		var formData=new FormData($("#update_author")[0]);
-		$.ajax({
-			type:"post",
-			url:"author_updateAuthorInfo",
-			processData:false,
-			contentType:false,
-			async:false,
-			cache:false,
-			data:formData,
-			success:function(data){
-				if(data.total=="1"){
-					$("#author_update_authorinfo").dialog("close");
-					$("#author_info").datagrid("reload");
-					$.messager.show({title:'成功提示',msg:'作者信息修改成功...',timeout:2000,showType:'slide'});
-				}else{
-					$.messager.alert("失败提示","作者信息修改失败...","error");
-
-				}
-			}
-		});
-	}
+	
 	
 </script>

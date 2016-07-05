@@ -143,4 +143,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 	#{glids}
 		 </foreach>
 	</delete>
+	
+	<update id="updateGuanLiLoginTime" parameterType="map">
+		update GuanLi set glzhtime=to_date(#{glzhtime},'yyyy-MM-dd hh24:mi:ss') where glid=#{glid}
+	</update>
+	
+	<!-- 导出多个管理员hm -->
+	<select id="getMoreGLInfoToExcel" parameterType="String" resultType="GuanLi">
+		<foreach collection="list" item="params" close=")" open="select * from Guanli where glid in( " separator=",">
+			#{params}
+		</foreach>
+	</select>
+	
+	<!-- 导出单个管理员hm -->
+	<select id="getGLInfoToExcel" parameterType="String" resultType="GuanLi">
+		select * from Guanli where glid=#{toglids}
+	</select>
 </mapper>

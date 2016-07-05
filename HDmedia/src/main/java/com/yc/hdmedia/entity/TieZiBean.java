@@ -21,9 +21,9 @@ public class TieZiBean implements Serializable{
 	private int pageNo;
 	private int pageSize;
 	private int count;
-	private int TerdayCount;
-	private int YesterdayCount;
-	
+	private int terdayCount;
+	private int yesterdayCount;
+	private int htcount;
 	public int getTid() {
 		return tid;
 	}
@@ -108,12 +108,6 @@ public class TieZiBean implements Serializable{
 	public void setYhphoto(String yhphoto) {
 		this.yhphoto = yhphoto;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-	
 	public int getPageNo() {
 		return pageNo;
 	}
@@ -126,44 +120,54 @@ public class TieZiBean implements Serializable{
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-	
-	
 	public int getCount() {
 		return count;
 	}
 	public void setCount(int count) {
 		this.count = count;
 	}
-	
+
 	
 	public int getTerdayCount() {
-		return TerdayCount;
+		return terdayCount;
 	}
 	public void setTerdayCount(int terdayCount) {
-		TerdayCount = terdayCount;
+		this.terdayCount = terdayCount;
 	}
 	public int getYesterdayCount() {
-		return YesterdayCount;
+		return yesterdayCount;
 	}
 	public void setYesterdayCount(int yesterdayCount) {
-		YesterdayCount = yesterdayCount;
+		this.yesterdayCount = yesterdayCount;
 	}
+	
+	
+	public int getHtcount() {
+		return htcount;
+	}
+	public void setHtcount(int htcount) {
+		this.htcount = htcount;
+	}
+
+	
 	@Override
 	public String toString() {
-		return "\nTieZiBean [tid=" + tid + ", ltid=" + ltid + ", yhid=" + yhid
+		return "TieZiBean [tid=" + tid + ", ltid=" + ltid + ", yhid=" + yhid
 				+ ", tzname=" + tzname + ", tzzy=" + tzzy + ", tztime="
 				+ tztime + ", weight=" + weight + ", tztext=" + tztext
 				+ ", tzphoto=" + tzphoto + ", tzclick=" + tzclick + ", status="
 				+ status + ", ltname=" + ltname + ", yhzsname=" + yhzsname
 				+ ", yhphoto=" + yhphoto + ", pageNo=" + pageNo + ", pageSize="
-				+ pageSize + ", count=" + count + ", TerdayCount="
-				+ TerdayCount + ", YesterdayCount=" + YesterdayCount + "]";
+				+ pageSize + ", count=" + count + ", terdayCount="
+				+ terdayCount + ", yesterdayCount=" + yesterdayCount
+				+ ", htcount=" + htcount + "]";
 	}
+	
 	public TieZiBean(int tid, int ltid, int yhid, String tzname, String tzzy,
 			String tztime, int weight, String tztext, String tzphoto,
 			int tzclick, int status, String ltname, String yhzsname,
 			String yhphoto, int pageNo, int pageSize, int count,
-			int terdayCount, int yesterdayCount) {
+			int terdayCount, int yesterdayCount, int htcount) {
 		super();
 		this.tid = tid;
 		this.ltid = ltid;
@@ -182,16 +186,13 @@ public class TieZiBean implements Serializable{
 		this.pageNo = pageNo;
 		this.pageSize = pageSize;
 		this.count = count;
-		TerdayCount = terdayCount;
-		YesterdayCount = yesterdayCount;
+		this.terdayCount = terdayCount;
+		this.yesterdayCount = yesterdayCount;
+		this.htcount = htcount;
 	}
 	public TieZiBean() {
-		super();
+	
 	}
-	
-	
-	
-	
 	
 	
 }

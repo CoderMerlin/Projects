@@ -80,7 +80,6 @@
 							//	$("#yh_sex_update").val(yh.yhsex);   //用户性别
 								
 								if(yh.yhsex=="男"){
-									 alert("1"+yh.yhsex);
 									// $("#yh_sex_update option:eq('男')").attr("selected","selected");
 									document.getElementById('yh_sex_update').options[0].value='yh.yhsex';
 									 document.getElementById('yh_sex_update').options[0].text='yh.yhsex';
@@ -104,7 +103,6 @@
 								$("#yh_qianming_update").val(yh.yhqianming); //用户签名
 								
 								var str="";
-								c
 								$("#yonghu_photo_show").html($(str)); //用户头像
 							}
 							
@@ -119,8 +117,6 @@
 		
 		
 	});
-
-
 
 
 
@@ -163,7 +159,8 @@
 				$("#yh_jy_show").val(yonghu.yhjy);  //用户用户经验
 				$("#yh_qianming_show").val(yonghu.yhqianming);  //用户签名
 				var str="";
-				str="<img src='../../uploadPic/"+yonghu.yhphoto+"' width='100px' height='100px' />&nbsp;";
+				str="<img src='../upload/"+yonghu.yhphoto+"' width='100px' height='100px' />&nbsp;";
+				console.info("str"+str);
 				$("#yh_photo_show_info").html($(str)); //用户头像
 			}		
 		},"json");

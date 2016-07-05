@@ -17,6 +17,7 @@ import com.yc.hdmedia.service.DietaryService;
 
 @Controller("dietaryAction")
 public class DietaryAction implements ModelDriven<Dietary>{
+	
 	@Autowired
 	private DietaryService dietaryService;
 	private Dietary dietary=new Dietary();
@@ -28,7 +29,6 @@ public class DietaryAction implements ModelDriven<Dietary>{
 	private File[] upload;		//上传文件
 	private String[] uploadFileName;	//上传的文件名
 	private String[] uploadContentType;		//上传的文件类型
-	
 	
 	public String getPageDietaryInfo(){
 		List<Dietary> dtp=dietaryService.findAll(page, rows);
@@ -56,7 +56,9 @@ public class DietaryAction implements ModelDriven<Dietary>{
 		}
 		photo+=uploadFileName[upload.length-1];
 		dietary.setPhoto(photo);
+		LogManager.getLogger().debug(dietary);
 		int total=dietaryService.addDietary(dietary);
+		System.out.println("添加======>"+total);
 		jsonObject=new JsonObject<Dietary>();
 		jsonObject.setTotal(total);
 		return "success";

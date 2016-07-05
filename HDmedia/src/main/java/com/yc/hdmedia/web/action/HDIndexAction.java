@@ -11,9 +11,10 @@ import com.yc.hdmedia.entity.HDIndexBean;
 import com.yc.hdmedia.service.HDIndexService;
 
 
-
+@Controller("hDIndexAction")
 public class HDIndexAction implements SessionAware{
 
+	@Autowired
 	private HDIndexService hDIndexService;
 	private Map<String, Object> session;
 	
@@ -25,8 +26,14 @@ public class HDIndexAction implements SessionAware{
 	public String getIndexAllInfo(){
 		List<HDIndexBean>  hdIndexInfo=hDIndexService.getIndexAllInfo();
 		if(hdIndexInfo!=null){
-			System.out.println("获取的首页信息:"+hdIndexInfo);
-			return "success";
+			for (HDIndexBean hdIndexBean : hdIndexInfo) {
+				String wztext=hdIndexBean.getWztext();
+				wztext=wztext.substring(0,75)+"....";
+				hdIndexBean.setWztext(wztext);
+			}
+			System.out.println("信息"+hdIndexInfo);
+			session.put("hdIndexInfos", hdIndexInfo);
+			return "hdIndexInfoSuccess";
 		}
 		return "fail";
 	}

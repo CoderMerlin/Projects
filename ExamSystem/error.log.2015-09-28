@@ -1,0 +1,29 @@
+2015-09-28 18:57:47  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006442)
+
+2015-09-28 18:58:01  [ main:13678 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006442)
+
+2015-09-28 18:58:14  [ main:26151 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006442)
+
+2015-09-28 19:17:24  [ main:0 ] - [ ERROR ]  java.sql.SQLException: Io 异常: Connection reset
+2015-09-28 19:22:05  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006417)
+
+2015-09-28 20:28:46  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:11 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:36 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:46 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:96 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:108 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:119 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:130 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:141 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+
+2015-09-28 20:28:46  [ main:164 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006502)
+

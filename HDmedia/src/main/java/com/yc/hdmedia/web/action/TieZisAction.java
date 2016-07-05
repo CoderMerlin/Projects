@@ -97,6 +97,7 @@ public class TieZisAction implements ModelDriven<TieZiBean>, SessionAware{
 		session.put("pageNo", pageNo);
 		List<TieZiBean> TieZiBean=tieZiService.findById(pageNo, 12, id);
 		session.put("TieZiBean", TieZiBean);
+		System.out.println("跳转的论坛内容"+TieZiBean);
 		List<GongGaoBean> GongGaoBean=gongGaoService.findGongGao();
 		session.put("GongGaoBean", GongGaoBean);
 		return "tieziSuccess";
@@ -104,9 +105,8 @@ public class TieZisAction implements ModelDriven<TieZiBean>, SessionAware{
 	}
 	
 	public String add(){
-		String path=null;
+		/*String path=null;
 		for(int i=0;i<upload.length;i++){
-			//Ҫ�þ�Ե�ַ
 			path=ServletActionContext.getServletContext().getRealPath("upload/"+uploadFileName[i]);
 			
 			try {
@@ -122,19 +122,31 @@ public class TieZisAction implements ModelDriven<TieZiBean>, SessionAware{
 			files.append(uploadFileName[i]+",");
 		}
 		s=String.valueOf(files);
-		System.out.println(s);
+		System.out.println(s);*/
 		String id=ServletActionContext.getRequest().getParameter("ltid"); 
 		int ltid=Integer.parseInt(id);
 		session.put("ltid", ltid);
 		String tzname=ServletActionContext.getRequest().getParameter("tzname"); 
-		String tzzy=ServletActionContext.getRequest().getParameter("tzzy"); 
 		String tztext=ServletActionContext.getRequest().getParameter("tztext"); 
-		int result=tieZiService.addTieZis(ltid, 1001, tzname, tzzy, tztext,s);
+		String tzzy=ServletActionContext.getRequest().getParameter("tzzy"); 
+		int result=tieZiService.addTieZis(ltid, 1001, tzname, "", tztext,"");
 		session.put("addtieziltid", ltid);
 		if(result==1){
 			return "tieziAddSuccess";
 		}
 		return "fail";
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public String  publishTop(){
+		System.out.println("发表帖子");
+		
+		//进来了
+		
+		return null;
 	}
 
 	

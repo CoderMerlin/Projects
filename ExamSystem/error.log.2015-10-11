@@ -1,0 +1,146 @@
+2015-10-11 14:10:43  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:10:59  [ main:15989 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:10:59  [ main:16005 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:02  [ main:19848 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:11  [ main:28146 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:11  [ main:28162 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:11  [ main:28204 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:11  [ main:28217 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:14  [ main:31636 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:15  [ main:32780 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:16  [ main:33799 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:17  [ main:34454 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:11:18  [ main:35490 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:01  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:02  [ main:1394 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:04  [ main:2993 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:05  [ main:3688 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:09  [ main:7945 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13680 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13694 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13728 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13743 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13821 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13836 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13875 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13887 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13926 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:15  [ main:13939 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:18  [ main:17355 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:19  [ main:18292 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:20  [ main:19523 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:21  [ main:20308 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:26  [ main:25313 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:27  [ main:25960 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:28  [ main:26773 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:28  [ main:27443 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:29  [ main:27750 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:29  [ main:27915 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:29  [ main:28098 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:29  [ main:28279 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:12:29  [ main:28430 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:20:45  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:20:53  [ main:8066 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:20:53  [ main:8087 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:20:57  [ main:11527 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:03  [ main:17240 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:03  [ main:17265 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:03  [ main:17303 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:03  [ main:17316 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:06  [ main:20598 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:07  [ main:21448 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:07  [ main:22092 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:08  [ main:22814 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:08  [ main:22973 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:08  [ main:23117 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:09  [ main:23608 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:10  [ main:24352 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:10  [ main:24801 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:10  [ main:24940 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:11  [ main:25163 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:11  [ main:25885 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:13  [ main:27209 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:46  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:51  [ main:4852 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:51  [ main:4867 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:53  [ main:6895 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:59  [ main:12222 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:59  [ main:12236 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:59  [ main:12271 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:21:59  [ main:12286 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:22:01  [ main:14351 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:22:02  [ main:15518 ] - [ ERROR ]  java.sql.SQLException: ORA-00942: 表或视图不存在
+
+2015-10-11 14:47:43  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01400: 无法将 NULL 插入 ("SCOTT"."CLASSES"."CNAME")
+

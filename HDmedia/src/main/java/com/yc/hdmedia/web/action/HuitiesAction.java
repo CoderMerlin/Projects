@@ -27,13 +27,24 @@ public class HuitiesAction implements ModelDriven<HuitieBean>,SessionAware{
 	
 	
 	
+	public HuitieBean getHuitieBean() {
+		return huitieBean;
+	}
+
+
+	public void setHuitieBean(HuitieBean huitieBean) {
+		this.huitieBean = huitieBean;
+	}
+
+
 	public String findHuitie(){
 		String tid=ServletActionContext.getRequest().getParameter("tid"); 
-		System.out.println(tid);
+		
 		int id=Integer.parseInt(tid);
 		session.put("tid", id);
 		TieZiBean TZ= tieZiService.findByTids(id);
 		session.put("TZ", TZ);
+		System.out.println(TZ);
 		if(TZ.getTzphoto()!=null){
 			String s=TZ.getTzphoto();
 			String[] tzphoto=s.split(",");
@@ -72,11 +83,32 @@ public class HuitiesAction implements ModelDriven<HuitieBean>,SessionAware{
 		}
 		session.put("pageNo", pageNo);
 		List<HuitieBean> huitieBean=huitieService.findHuitieBean(pageNo, 8, id);
+		System.out.println("取到的回帖Xinxi "+huitieBean);
 		session.put("HuitieBean", huitieBean);
 		return "HuitieSuccess";
 	}
 	
 	
+	public String add(){
+		System.out.println("********************");
+		String tid=ServletActionContext.getRequest().getParameter("tid"); 
+		String httext=ServletActionContext.getRequest().getParameter("httext"); 
+		int id=Integer.parseInt(tid);
+		int result=huitieService.addHuities(id, 1001, httext);
+		if(result==0){
+			return "fail";
+		}
+		return "addhuitieSuccess";
+	}
+	
+	public String dianzan(){
+		String id=ServletActionContext.getRequest().getParameter("htid");
+		int htid=Integer.parseInt(id);
+		huitieService.updateDianzan(htid);
+		huitieBean=huitieService.findByHtids(htid);
+		
+		return "success";
+	}
 	
 	
 	public HuitieBean getModel() {

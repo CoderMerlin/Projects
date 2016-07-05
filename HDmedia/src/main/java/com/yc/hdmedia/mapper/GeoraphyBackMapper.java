@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.yc.hdmedia.entity.PropersonBack;
+import com.yc.hdmedia.entity.Proscenery;
 import com.yc.hdmedia.entity.ProvinceBack;
 
 public interface GeoraphyBackMapper {
@@ -47,4 +48,9 @@ public interface GeoraphyBackMapper {
 	 * @return
 	 */
 	public int insertPersonInfo(PropersonBack propersonBack);
+
+	public List<PropersonBack> getPropersonBack();
+
+	public List<Proscenery> getProscenery();
+
 }

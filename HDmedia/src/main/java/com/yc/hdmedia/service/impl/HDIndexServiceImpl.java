@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.HDIndexBean;
-import com.yc.hdmedia.entity.HDSearch;
 import com.yc.hdmedia.mapper.HDIndexMapper;
 import com.yc.hdmedia.service.HDIndexService;
-import com.yc.hdmedia.service.HDSearchService;
 
 
+@Service("hDIndexService")
 public class HDIndexServiceImpl implements HDIndexService {
 
+	@Autowired
 	private HDIndexMapper hDIndexMapper;
 	
 

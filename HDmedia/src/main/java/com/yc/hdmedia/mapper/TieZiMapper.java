@@ -58,6 +58,12 @@ public interface TieZiMapper {
 	
 	public TieZi findshow(int ltid);
 
+	/**
+	 * 帖子查询
+	 * @param content
+	 * @return
+	 * @author HM
+	 */
 	public List<HDSearch> selectTeiZiByContent(String content);
 	
 	TieZiBean findCount();

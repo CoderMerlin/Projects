@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.Works;
-import com.yc.hdmedia.entity.WorksBean;
 import com.yc.hdmedia.entity.WorksType;
 import com.yc.hdmedia.mapper.WorksMapper;
 import com.yc.hdmedia.service.WorksService;
@@ -154,29 +153,45 @@ public class WorksServiceImpl implements WorksService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public List<WorksBean> findAllWorks() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Works> findAllXWorks() {
+		return worksMapper.findAllXWorks();
+	}
+	@Override
+	public List<Works> findAllCWorks() {
+		return worksMapper.findAllCWorks();
+	}
+	@Override
+	public List<Works> findAllGWorks() {
+		return worksMapper.findAllGWorks();
+	}
+	@Override
+	public List<Works> findAllGJWorks() {
+		return worksMapper.findAllGJWorks();
 	}
 
 	@Override
-	public List<WorksBean> findWork_gdhh() {
-		// TODO Auto-generated method stub
-		return null;
+	public Works findXWork() {
+		return worksMapper.findXwork();
 	}
 
 	@Override
-	public List<WorksBean> findWork_jxdsh() {
-		// TODO Auto-generated method stub
-		return null;
+	public Works findCWork() {
+		return worksMapper.findCwork();
 	}
 
 	@Override
-	public List<WorksBean> findWork_xdsh() {
-		// TODO Auto-generated method stub
-		return null;
+	public Works findGWork() {
+		return worksMapper.findGwork();
 	}
 
+	@Override
+	public Works findGJWork() {
+		return worksMapper.findGJwork();
+	}
+
+	@Override
+	public Works getWorkInfoById(int works_id) {
+		return worksMapper.findWorkInfoById(works_id);
+	}
 }

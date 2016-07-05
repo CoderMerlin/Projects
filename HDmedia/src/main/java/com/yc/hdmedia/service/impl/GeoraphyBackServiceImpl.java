@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yc.hdmedia.entity.PropersonBack;
+import com.yc.hdmedia.entity.Proscenery;
 import com.yc.hdmedia.entity.ProvinceBack;
 import com.yc.hdmedia.mapper.GeoraphyBackMapper;
 import com.yc.hdmedia.service.GeoraphyBackService;
@@ -19,6 +20,7 @@ import com.yc.hdmedia.service.GeoraphyBackService;
  */
 @Service("georaphyBackService")
 public class GeoraphyBackServiceImpl implements GeoraphyBackService {
+	
 	@Autowired
 	private GeoraphyBackMapper georaphyBackMapper;
 	
@@ -81,6 +83,18 @@ public class GeoraphyBackServiceImpl implements GeoraphyBackService {
 	@Override
 	public int addPersonInfo(PropersonBack propersonBack) {
 		return georaphyBackMapper.insertPersonInfo(propersonBack);
+	}
+
+
+	@Override
+	public List<PropersonBack> getPropersonBack() {
+		return georaphyBackMapper.getPropersonBack();
+	}
+
+
+	@Override
+	public List<Proscenery> getProscenery() {
+		return georaphyBackMapper.getProscenery();
 	}
 
 }

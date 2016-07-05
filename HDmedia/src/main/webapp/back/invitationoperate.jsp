@@ -200,7 +200,7 @@
 			cache:false,
 			data:formData,
 			success:function(data){
-				if(data.total=="1"){
+				if(data.rows>0){
 					$("#tiezi_update_tiezixu").dialog("close");
 					$("#tiezi_info").datagrid("reload");
 					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
@@ -214,7 +214,7 @@
 					$("#tz_photo").val("")
 					uezxl1.setContent("");
 				}else{
-					$.messager.alert("失败提示","作品信息添加失败...","error");
+					$.messager.alert("失败提示","帖子信息添加失败...","error");
 				}
 			}
 		});
@@ -235,7 +235,7 @@
 				if(data.total=="1"){
 					$("#tiezi_add_tiezixu").dialog("close");
 					$("#tiezi_info").datagrid("reload");
-					$.messager.show({title:'成功提示',msg:'作品信息添加成功...',timeout:2000,showType:'slide'});
+					$.messager.show({title:'成功提示',msg:'帖子信息添加成功...',timeout:2000,showType:'slide'});
 				}else{
 					$.messager.alert("失败提示","作品信息添加失败...","error");
 				}

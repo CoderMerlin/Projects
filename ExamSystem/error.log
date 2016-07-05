@@ -1,0 +1,4 @@
+2016-06-27 10:14:44  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (EXAM.SYS_C0010831)
+
+2016-06-27 10:14:49  [ main:5529 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (EXAM.SYS_C0010831)
+

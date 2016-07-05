@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-  	<%@ include file="header.jsp" %>
+     <%@ include file="header.jsp" %>
     <div id="hd_Ancient_poetry_title" class="hd_Ancient_poetry_title" name="hd_Ancient_poetry_title"> <!---->
     	<p>中华文化 -> 地理</p>
         <img src="home/images/Chinese_Literature_underline.jpg" 
@@ -110,15 +111,14 @@
         <div id="c7">
             <div class="c72">
             	<ul>
-                	<li class="c721"><img width="150" height="185" src="home/images/1388126103_thumb - 副本.jpg"><p><a href="">王实甫</a></p><p class="p1"> &nbsp;&nbsp;&nbsp;&nbsp;王实甫，名德信，定兴(今定兴县)人。著有杂剧十四种，现存《西厢记》、《丽春堂》、《破窑记》三种。</p></li>
-                  
-                    <li class="c722"><img width="150" height="185" src="home/images/1385709937_thumb.jpg"><p><a href="">程砚秋</a></p><p class="p2">&nbsp;&nbsp;&nbsp;&nbsp;程砚秋(1904-1958)，男，北京人，京剧旦角，四大名旦之一，程派艺术的创始人。</p></li>
+                	<li class="c721"><img width="150" height="185" src="../upload/${sessionScope.pb[0].ppimg}"><p><a href="">${sessionScope.pb[0].ppname}</a></p><p class="p1"> &nbsp;&nbsp;&nbsp;&nbsp;${sessionScope.pb[0].ppcontent}</p></li>
+                    <li class="c722"><img width="150" height="185" src="../upload/${sessionScope.pb[1].ppimg}"><p><a href="">${sessionScope.pb[1].ppname}</a></p><p class="p2">&nbsp;&nbsp;&nbsp;&nbsp;${sessionScope.pb[1].ppcontent}</p></li>
                 </ul>
             </div>
             <div class="c73">
             	<ul>
-            	<li class="c731"><img width="150" height="185" src="images/res11_attpic_brief.jpg"><p><a href="">老舍</a></p><p class="p3">&nbsp;&nbsp;&nbsp;&nbsp;老舍，本名舒庆春，字舍予，笔名老舍。北京满族正红旗人，中国现代著名小说家、文学家、戏剧家。</p></li>
-                    <li class="c732"><img width="150" height="185" src="images/1385707246_thumb.jpg"><p><a href="">马致远</a></p><p class="p4">&nbsp;&nbsp;&nbsp;&nbsp;马致远(约1250-1321至1324)，字千里，号东篱，(一说字致远，晚号“东篱”)。</p></li>
+            	<li class="c731"><img width="150" height="185" src="../upload/${sessionScope.pb[2].ppimg}"><p><a href="">${sessionScope.pb[2].ppname}</a></p><p class="p3">&nbsp;&nbsp;&nbsp;&nbsp;${sessionScope.pb[2].ppcontent}</p></li>
+                    <li class="c732"><img width="150" height="185" src="../upload/${sessionScope.pb[3].ppimg}"><p><a href="">${sessionScope.pb[3].ppname}</a></p><p class="p4">&nbsp;&nbsp;&nbsp;&nbsp;${sessionScope.pb[3].ppcontent}</p></li>
                  </ul>   
             </div>
         </div>
@@ -137,29 +137,30 @@
             <div class="c102">
             	<ul>
                 	<li class="c102-1"><a href=""><img width:"180px"
-	height:"130px" src="home/images/1384421243_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">中国帝王的象征——故宫</a></p></li>
+	height:"130px" src="home/images/1384421243_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">${sessionScope.ps[0].prsname}</a></p></li>
                     <li class="c102-2"><a href=""><img width:"180px"
-	height:"130px" src="home/images/1385713932_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">八达岭长城</a></p></li>
+	height:"130px" src="home/images/1385713932_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">${sessionScope.ps[1].prsname}</a></p></li>
                     <li class="c102-3"><a href=""><img width:"180px"
-	height:"130px" src="home/images/1385712439_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">万园之园--圆明园</a></p></li>
+	height:"130px" src="home/images/1385712439_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">${sessionScope.ps[2].prsname}</a></p></li>
                     <li class="c102-4"><a href=""><img width:"180px"
-	height:"130px" src="home/images/1385711007_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">皇家园林博物馆--颐和园</a></p></li>
+	height:"130px" src="home/images/1385711007_thumb.jpg" data-bd-imgshare-binded="1"/></a><p><a href="">${sessionScope.ps[3].prsname}</a></p></li>
                 </ul>
             </div>
             <div class="c103">
             	<ul>
-                	<li><a href=""><img height:"65px" width:"85px" src="home/images/1384421243_thumb.jpg"/></a><p><a href="">故宫</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388124671_thumb.jpg"/></a><p><a href="">香山公园</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388123591_thumb.jpg"/></a><p><a href="">王府井大街</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388116661_thumb.jpg"/></a><p><a href="">天安门</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388115141_thumb.jpg"/></a><p><a href="">国家大剧院</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385713932_thumb.jpg"/></a><p><a href="">八达岭长城</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385712439_thumb.jpg"/></a><p><a href="">圆明园</a></p></li>
-                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385711007_thumb.jpg"/></a><p><a href="">颐和园</a></p></li>
+                	<li><a href=""><img height:"65px" width:"85px" src="home/images/1384421243_thumb.jpg"/></a><p><a href="">${sessionScope.ps[4].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388124671_thumb.jpg"/></a><p><a href="">${sessionScope.ps[5].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388123591_thumb.jpg"/></a><p><a href="">${sessionScope.ps[6].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388116661_thumb.jpg"/></a><p><a href="">${sessionScope.ps[7].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1388115141_thumb.jpg"/></a><p><a href="">${sessionScope.ps[8].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385713932_thumb.jpg"/></a><p><a href="">${sessionScope.ps[9].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385712439_thumb.jpg"/></a><p><a href="">${sessionScope.ps[10].prsname}</a></p></li>
+                    <li><a href=""><img height:"65px" width:"85px" src="home/images/1385711007_thumb.jpg"/></a><p><a href="">${sessionScope.ps[11  ].prsname}</a></p></li>
                 </ul>
             </div>
       </div>
       
-    <%@ include file="footer.jsp" %>
+      <!--尾部-->
+      <%@ include file="footer.jsp" %>
 </body>
 </html>

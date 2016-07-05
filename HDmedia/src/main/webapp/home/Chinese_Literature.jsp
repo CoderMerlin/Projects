@@ -28,7 +28,7 @@
     <div id="hd_Ancient_poetry_list" class="hd_Ancient_poetry_list">
         <div id="hd_allBut" class="hd_allBut"> <!--所有的按钮-->
             <h2><a href="#"><strong>&nbsp;</strong>古诗词导航栏目<i>&nbsp;</i></a></h2>
-            <ul style="width:125%" class="jspop box">
+            <ul style="width:110%" class="jspop box">
                 <li class="hd_Tang1"><!--唐诗大全--> 
                     <div class=tx><a href="#"><i>&nbsp;</i>唐诗大全</a> </div>
                     <dl>
@@ -347,18 +347,20 @@
                 </p>
             </div>
             <div style="padding:0; margin:0; width:100%; height:10%;">
-            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">陈元方候袁公原文及翻译，注释赏析及写作背景中心思想</p>
+            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">${sessionScope.xwork.works_name}原文及翻译，注释赏析及写作背景中心思想</p>
             </div>
             <div style="width:100%; height:20%;">
-            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">陈元方候袁公 &nbsp;&nbsp;作者:&nbsp;&nbsp; 刘义庆&nbsp;&nbsp; 陈元方年十一岁时，候袁公。袁公问曰：贤家君在太丘，远近称之，何所履行？元方曰：老父在太丘，强者绥（suí）之以德，弱者抚之以仁... <a>【阅读全文】</a></p>
+            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">${sessionScope.xwork.works_details}...<a href="works_getworkDetailInfo?works_id=${sessionScope.xwork.works_id }">【阅读全文】</a></p>
             </div>
             <div style="width:100%; height:60%;">
             	 <ul style="font-size:15px; padding:0 10%;">
-                    <li>孟母三迁原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>揠苗助长原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>画蛇添足原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>北人食菱原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>愚人食盐原文及翻译，注释赏析及写作背景中心思想</li>
+            	 <c:set value="1" var="count"></c:set>
+            	 <c:forEach items="${sessionScope.Xworks}" var="xwork" varStatus="i">
+            	 	<c:if test="${not empty xwork and count<6}">
+            	 		<c:set value="${count+1 }" var="count"></c:set>
+                    	<li><a href="works_getworkDetailInfo?works_id=${xwork.works_id }">${xwork.works_name }原文及翻译，注释赏析及写作背景中心思想</a></li>
+                    </c:if>
+                   </c:forEach>
             	</ul>
             </div>
            
@@ -371,18 +373,20 @@
                 </p>
             </div>
              <div style="padding:0; margin:0; width:100%; height:10%;">
-            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">王安石待客_王安石待客阅读答案及翻译</p>
+            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">${sessionScope.cwork.works_name}阅读答案及翻译</p>
             </div>
             <div style="width:100%; height:20%;">
-            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">王安石待客 王安石在相位，子妇之亲①萧氏子至京师②，因谒公，公约之饭。翌日，萧氏子盛服而往，意为公必盛馔。日过..<a>【阅读全文】</a></p>
+            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">${sessionScope.cwork.works_details}...<a href="works_getworkDetailInfo?works_id=${sessionScope.cwork.works_id }">【阅读全文】</a></p>
             </div>
             <div style="width:100%; height:60%;">
             	 <ul style="font-size:15px; padding:0 10%;">
-                    <li>乐羊子妻原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>岳阳楼记原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>宋定伯捉鬼原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>木兰诗原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>送董邵南游河北序原文及翻译，注释赏析及写作背景中心思</li>
+                   <c:set value="1" var="count"></c:set>
+            	 	<c:forEach items="${sessionScope.Cworks}" var="cwork" varStatus="i">
+            	 	<c:if test="${not empty cwork and count<6}">
+            	 		<c:set value="${count+1 }" var="count"></c:set>
+                    	<li><a href="works_getworkDetailInfo?works_id=${cwork.works_id }">${cwork.works_name }原文及翻译，注释赏析及写作背景中心思想</a></li>
+                    </c:if>
+                   </c:forEach>
             	</ul>
             </div>
         </div>
@@ -394,18 +398,20 @@
                 </p>
             </div>
              <div style="padding:0; margin:0; width:100%; height:10%;">
-            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">项羽之死：《项王军壁垓下》原文翻译及赏析</p>
+            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">${sessionScope.gwork.works_name}原文翻译及赏析</p>
             </div>
             <div style="width:100%; height:20%;">
-            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">《项王军壁垓下》讲述项羽之死。项王军壁垓下，兵少食尽，汉军及诸侯兵围之数重。项王乃欲东渡乌江。项王笑曰：纵江东父兄怜而王我，我何面目见之？纵彼不言，籍独不愧于心乎？”乃自刎而死。<a>【阅读全文】</a></p>
+            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">${sessionScope.gwork.works_details}...<a href="works_getworkDetailInfo?works_id=${sessionScope.gwork.works_id }">【阅读全文】</a></p>
             </div>
             <div style="width:100%; height:60%;">
             	 <ul style="font-size:15px; padding:0 10%;">
-                    <li>王慎中《朱碧潭诗序》原文翻译及阅读答案</li>
-                    <li>苏辙《为兄轼下狱上书》原文翻译及阅读答案</li>
-                    <li>鸿门宴原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>前赤壁赋原文及翻译，注释赏析及写作背景中心思想</li>
-                    <li>"韩子高，会稽山阴人也"原文翻译及阅读答案</li>
+                    <c:set value="1" var="count"></c:set>
+            	 	<c:forEach items="${sessionScope.Gworks}" var="gwork" varStatus="i">
+            	 	<c:if test="${not empty gwork and count<6}">
+            	 		<c:set value="${count+1 }" var="count"></c:set>
+                    	<li><a href="works_getworkDetailInfo?works_id=${gwork.works_id }">${gwork.works_name }原文翻译及阅读答案</a></li><br/>
+                    </c:if>
+                   </c:forEach>
             	</ul>
             </div>
         </div>
@@ -417,17 +423,20 @@
                 </p>
             </div>
              <div style="padding:0; margin:0; width:100%; height:10%;">
-            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">信陵君救赵论</p>
+            	<p style=" display:block; font-size:16px; font-family:'方正舒体';">${sessionScope.gjwork.works_name}</p>
             </div>
             <div style="width:100%; height:20%;">
-            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">信陵君救赵论 作者： 唐顺之 论者以窃符为信陵君之罪，余以为此未足以罪信陵也。夫强秦之暴亟矣，今悉兵以临赵，赵必... <a>【阅读全文】</a></p>
+            	<p style="text-indent:2em; display:block; font-size:14px; font-family:'微软雅黑'; float:left;">${sessionScope.gjwork.works_details}... <a href="works_getworkDetailInfo?works_id=${sessionScope.gjwork.works_id }">【阅读全文】</a></p>
             </div>
             <div style="width:100%; height:60%;">
             	 <ul style="font-size:15px; padding:0 10%;">
-                    <li><a>《送天台陈庭学序》</a></li><br/><li><a>《阅江楼记》</a></li><br/>
-                    <li><a>《司马季主论卜》</a></li><br/>
-                    <li><a>《卖柑者言》</a></li><br/>
-                    <li><a>《深虑论》</a></li><br/>
+                    <c:set value="1" var="count"></c:set>
+            	 	<c:forEach items="${sessionScope.GJworks}" var="gjwork" varStatus="i">
+            	 	<c:if test="${not empty gjwork and count<6}">
+            	 		<c:set value="${count+1 }" var="count"></c:set>
+                    	<li><a href="works_getworkDetailInfo?works_id=${gjwork.works_id }">${gjwork.works_name }</a></li><br/>
+                    </c:if>
+                   </c:forEach>
             	</ul>
             </div>
         </div>

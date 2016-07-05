@@ -47,28 +47,17 @@ public class HDIndexBean {
 	public void setWzpicture(String wzpicture) {
 		this.wzpicture = wzpicture;
 	}
-	@Override
-	public String toString() {
-		return "HDIndexBean [wzid=" + wzid + ", wzyl1=" + wzyl1 + ", wztitle="
-				+ wztitle + ", wztext=" + wztext + ", wzpicture=" + wzpicture
-				+ "]";
-	}
-	public HDIndexBean(int wzid, String wzyl1, String wztitle, String wztext,
-			String wzpicture) {
-		super();
-		this.wzid = wzid;
-		this.wzyl1 = wzyl1;
-		this.wztitle = wztitle;
-		this.wztext = wztext;
-		this.wzpicture = wzpicture;
-	}
-	
+
 	public HDIndexBean() {
 		
 		
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "HDIndexBean [wzid=" + wzid + ", wzyl1=" + wzyl1 + ", wztitle="
+				+ wztitle + ", wztext=" + wztext + ", wzpicture=" + wzpicture
+				+ ", pspics=" + pspics + ", pstitile=" + pstitile + "]";
+	}
 	
 	
 	

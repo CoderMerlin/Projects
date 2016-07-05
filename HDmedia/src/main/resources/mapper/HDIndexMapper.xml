@@ -5,8 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.hdmedia.mapper.HDIndexMapper">
 	
 	<select id="selectIndexAllInfo" resultType="HDIndexBean">
-
-		
+		select wzid,wzyl1,wztitle,wztext,wzpicture from wenzhang where wzstatus=1
 	</select>
 
 </mapper>

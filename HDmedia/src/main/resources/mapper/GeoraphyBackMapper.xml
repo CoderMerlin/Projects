@@ -44,4 +44,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertPersonInfo" parameterType="PropersonBack">
 		insert into properson values (seq_properson_ppid.nextval,#{prid},#{ppname},#{ppcontent},#{ppimg},#{ppstatus},'','')
 	</insert>
+	
+	
+	<!--前台查询人物  -->
+	<select id="getPropersonBack" parameterType="PropersonBack" resultType="PropersonBack">
+		select * from properson order by prpid asc
+	</select>
+	
+	<!--前台查询风景  -->
+	<select id="getProscenery" parameterType="Proscenery" resultType="Proscenery">
+		select * from Proscenery order by prsid asc
+	</select>
 </mapper>

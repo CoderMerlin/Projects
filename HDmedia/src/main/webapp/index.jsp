@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<jsp:forward page="home/index.jsp" />
+<jsp:forward page="hDIndex_getIndexAllInfo.action" />
 
 <!-- <!DOCTYPE html>
 <html>

@@ -58,6 +58,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count(*) htcount from huitie where tid=#{tid}
 	</select>
 	<select id="findHuitieBean" parameterType="map" resultType="HuitieBean">
-		select rownum,b.* from (select a.*,rownum rn from (select yh.yhzsname,yh.yhphoto,ht.httext,ht.httime from huitie ht,yonghu yh where ht.yhid=yh.yhid and ht.tid=#{tid} order by ht.httime desc) a where #{pageNo}>=rownum)b where rn>#{pageSize}
+		select rownum,b.* from (select a.*,rownum rn from (select yh.yhzsname,yh.yhphoto,ht.httext,ht.httime,ht.htid from huitie ht,yonghu yh where ht.yhid=yh.yhid and ht.tid=#{tid} order by ht.httime desc) a where #{pageNo}>=rownum)b where rn>#{pageSize}
+	</select>
+	
+	<insert id="addHuities" parameterType="map">
+		insert into huitie values(seq_huitie_htid.nextval,#{yhid},#{tid},#{httext},sysdate,0,1,'','')
+	</insert>
+	
+	<update id="updateDianzan" parameterType="int">
+		update huitie set htdianzan=htdianzan+1 where htid=#{htid}
+	</update>
+	
+	<select id="findByHtids" parameterType="int" resultType="HuitieBean">
+		select * from huitie where htid=#{htid}
 	</select>
 </mapper>

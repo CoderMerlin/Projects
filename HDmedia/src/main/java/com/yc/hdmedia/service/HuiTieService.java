@@ -50,4 +50,10 @@ public interface HuiTieService {
 	public HuitieBean HuitieCount(int tid);
 	
 	public List<HuitieBean> findHuitieBean(int pageNo,int pageSize,int tid);
+	
+	public int addHuities(int tid,int yhid,String httext);
+	
+public int updateDianzan(int htid);
+	
+	public HuitieBean findByHtids(int htid);
 }

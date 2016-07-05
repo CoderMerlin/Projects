@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!doctype html>
 <html>
 <head>
@@ -13,18 +13,18 @@
 <body>
 	<center>
 		<div id="register">
-			<br />
-			<br />
+			<br /> <br />
 			<div id="register_logo">
 				<img src="images/hd_02.png" style="width: 100%" ; height="100%" ;"/>
 			</div>
 			<div id="register_title" style="display: block;">帐号登录</div>
 			<div id="pwd_reset" style="display: none;">重置密码</div>
-			<form id="mianform" action="guanLi_login.action"
-				method="post" role="form">
+			<form id="mianform" action="guanLi_login.action" method="post"
+				role="form">
 				<p id="p1" style="display: none;">请输入注册的邮箱地址、手机号码或弘道账号：</p>
 				<p id="p2" style="display: none;">请重设您的帐号密码：</p>
-				<input type="text" name="glname" id="user" placeholder="邮箱/手机号码/弘道账号"
+				<input type="text" name="glname" id="user"
+					placeholder="邮箱/手机号码/弘道账号"
 					style="width: 350px; height: 40px; display: block;" /> <label
 					id="usert" style="color: #EB5B0E; display: none;"> <img
 					src="images/tishi.png" style="margin-left: 5px; margin-right: 5px;" />请输入您的账号
@@ -46,15 +46,15 @@
 					onclick="change()" /> <label id="yzmt"
 					style="color: #EB5B0E; display: none;"> <img
 					src="images/tishi.png" style="margin-left: 5px; margin-right: 5px;" />验证码错误或已过期
-				</label> <input type="submit" name="load" id="load" value="立即登录"
-					style="display: block;" /> <input type="button" name="next"
-					id="next" value="下一步" style="display: none; margin-top: 12%;"
-					onclick="nextstep()" /> <input type="button" name="submit"
-					id="submit" value="提交" style="display: none;" onclick="submitpwd()" />
+				</label> 
+					<input type="submit" name="load" id="load" value="立即登录" style="display: block;" /> 
+					<input type="button" name="next" id="next" value="下一步" style="display: none; margin-top: 12%;" onclick="nextstep()" /> 
+					<input type="button" name="submit" id="submit" value="提交" style="display: none;" onclick="submitpwd()" />
 			</form>
+			<div class="error">${sessionScope.errorMsg}</div>
+			<c:remove var="errorMsg" scope="session"/> <!-- 清除session中的数据 -->
 			<div id="line" style="display: block">
-				<li
-					style="border-height: 0; border-width: 20%; border: 0.5px solid #ccc;"></li>
+				<li style="border-height: 0; border-width: 20%; border: 0.5px solid #ccc;"></li>
 				<li style="line-height: 30%;">其他方式登录</li>
 				<li
 					style="border-height: 0; border-width: 20%; border: 0.5px solid #ccc;"></li>

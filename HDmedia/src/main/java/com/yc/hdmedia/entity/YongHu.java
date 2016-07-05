@@ -86,7 +86,12 @@ public class YongHu {
 		return yhindentity;
 	}
 	public void setYhindentity(String yhindentity) {
+		/*if(yhindentity!=null){
+			String yhindentitys=yhindentity.substring(0,3)+"*****"+yhindentity.substring(11,yhindentity.length());
+			this.yhindentity = yhindentitys;
+		}*/
 		this.yhindentity = yhindentity;
+		
 	}
 	public String getYhqq() {
 		return yhqq;

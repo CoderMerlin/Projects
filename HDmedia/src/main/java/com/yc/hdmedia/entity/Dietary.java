@@ -12,6 +12,9 @@ public class Dietary {
 	public int getDtid() {
 		return dtid;
 	}
+	public int getDtids() {
+		return dtid;
+	}
 	public void setDtid(int dtid) {
 		this.dtid = dtid;
 	}

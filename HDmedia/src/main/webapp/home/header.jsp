@@ -8,16 +8,16 @@
         	<p>弘扬中华文化	传颂道德品行</p>
         </div>
          <div id="hd_nav_menu" class="hd_nav_menu">
-        	<ul  id="hd_menu" class="hd_menu_name">	  	
+        	<ul  id="hd_menu" class="hd_menu_name" style="padding-top: 20px;">	  	
                 <li class="hd_home_page">
-                    <a href="">首页</a>
+                    <a href="hDIndex_getIndexAllInfo.action">首页</a>
                 </li>
                 <span class="sep">|</span>	
                 <li>
-                    <a href="home/geography.jsp">人文地理</a>
+                    <a href="georaphyBack_properson.action">人文地理</a>
                     <ul>
-                        <li><a href="home/geography.jsp">名族</a></li>
-                        <li><a href="home/geography.jsp">地域</a></li> 
+                        <li><a href="georaphyBack_properson.action">名族</a></li>
+                        <li><a href="georaphyBack_properson.action">地域</a></li> 
                     </ul>
                 </li>
                 <span class="sep">|</span>				
@@ -31,7 +31,7 @@
                 </li>
                 <span class="sep">|</span>				
                 <li >
-                    <a href="home/Chinese_Literature.jsp">中华文学</a>
+                    <a href="works_getAllWorks.action">中华文学</a>
                     <ul>
                         <li><a href="home/Chinese_Literature.jsp" name="hd_Ancient_poetry_title">古诗词</a></li>
                         <li><a href="home/Chinese_Literature.jsp">文言文</a></li>

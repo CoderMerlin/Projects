@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.yc.hdmedia.utils.MD5Encryption;
+
 public class YongHuZC {
 	private int yhzcid;
 	private String yhname;
@@ -43,7 +45,9 @@ public class YongHuZC {
 	public String getYhpwd() {
 		return yhpwd;
 	}
+	//给用户密码加密
 	public void setYhpwd(String yhpwd) {
+		yhpwd=MD5Encryption.createPassword(yhpwd);
 		this.yhpwd = yhpwd;
 	}
 	public String getYhzctime() {

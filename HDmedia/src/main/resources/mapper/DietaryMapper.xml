@@ -5,7 +5,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.yc.hdmedia.mapper.DietaryMapper">
 	<select id="findAll" parameterType="map" resultType="Dietary">
 		select * from (select a.*,rownum rn from (select dt.*,dtp.dtpname from dietary dt,dietarytype dtp where dt.status=1 and dt.dtpid=dtp.dtpid order by dt.dtid)a  where #{pageNo} >=rownum)b where rn>#{pageSize}
-		
 	</select>
 	
 	<insert id="addDietary" parameterType="Dietary">

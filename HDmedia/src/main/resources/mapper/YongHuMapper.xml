@@ -152,7 +152,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<trim prefixOverrides="," suffixOverrides="," prefix="values(" suffix=")">
 			 <choose>
 			 	<when test="yhid!=0 and yhid!=null">yhid=#{yhid},</when>
-			 	<otherwise> seq_yonghu_yhid.nextval,</otherwise>
+			 	<otherwise> <!-- seq_yonghu_yhid.nextval -->#{yhzcid},</otherwise>
 			 </choose>
 			#{yhzcid},
 			<if test="yhzsname!=null and yhzsname!=''">

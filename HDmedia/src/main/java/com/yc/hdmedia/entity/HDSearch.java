@@ -14,6 +14,17 @@ public class HDSearch {
 	private String tzname; //帖子名称
 	private String tztext; //帖子内容
 	private String tztime;  //帖子时间
+	private int  searchCount; //搜索到的帖子数量
+	private String srchtxt;  //搜索的内容
+	
+	
+	
+	public String getSrchtxt() {
+		return srchtxt;
+	}
+	public void setSrchtxt(String srchtxt) {
+		this.srchtxt = srchtxt;
+	}
 	public int getLtid() {
 		return ltid;
 	}
@@ -56,30 +67,24 @@ public class HDSearch {
 	public void setTztime(String tztime) {
 		this.tztime = tztime;
 	}
-	@Override
-	public String toString() {
-		return "HDSearch [ltid=" + ltid + ", ltname=" + ltname + ", yhname="
-				+ yhname + ", tzclick=" + tzclick + ", tzname=" + tzname
-				+ ", tztext=" + tztext + ", tztime=" + tztime + "]";
+	public int getSearchCount() {
+		return searchCount;
 	}
-	public HDSearch(int ltid, String ltname, String yhname, int tzclick,
-			String tzname, String tztext, String tztime) {
-		super();
-		this.ltid = ltid;
-		this.ltname = ltname;
-		this.yhname = yhname;
-		this.tzclick = tzclick;
-		this.tzname = tzname;
-		this.tztext = tztext;
-		this.tztime = tztime;
+	public void setSearchCount(int searchCount) {
+		this.searchCount = searchCount;
 	}
-	
 	
 	public HDSearch() {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		return "HDSearch [ltid=" + ltid + ", ltname=" + ltname + ", yhname="
+				+ yhname + ", tzclick=" + tzclick + ", tzname=" + tzname
+				+ ", tztext=" + tztext + ", tztime=" + tztime
+				+ ", searchCount=" + searchCount + ", srchtxt=" + srchtxt + "]";
+	}
 	
 	
 	

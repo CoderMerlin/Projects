@@ -130,7 +130,7 @@ form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
 	letter-spacing: 3px;
 	cursor: pointer;
 	float: left;
-	margin-left: 9%;
+	margin-left: 16%;
 }
 
 #pwd, #pwd1, #pwd2 {
@@ -150,8 +150,11 @@ form #p1, #p2, #p3, #usert, #yzmt, #pwdt1, #pwdt2 {
 
 .login a:link, .login a:visited {
 	color: #ff8000;
+	text-decoration:none;
 }
 .login a:hover,.login a:active {
 	color: #F00;
 	text-decoration: none;
 }
+
+.error { color:#f00; text-align:center; clear:both; }

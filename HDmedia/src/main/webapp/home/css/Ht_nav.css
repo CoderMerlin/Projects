@@ -35,7 +35,7 @@
 
 
 .hd_nav_menu .sep{ /*竖线*/
-	padding-top:1.5%;
+	padding-top:1%;
 	font-size:10px;
 	color:#aeadad;
 	float:left;
@@ -101,6 +101,7 @@
 	-moz-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
 	-webkit-box-shadow: 0 1px 0 #111, 0 2px 0 #666;
 	box-shadow: 0 1px 0 #111, 0 2px 0 #666;
+	padding-top: 20px;
 }
 #hd_menu ul li:last-child {
 	-moz-box-shadow: none;

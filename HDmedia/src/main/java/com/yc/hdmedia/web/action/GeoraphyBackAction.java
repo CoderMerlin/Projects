@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.yc.hdmedia.entity.PropersonBack;
+import com.yc.hdmedia.entity.Proscenery;
 import com.yc.hdmedia.entity.ProvinceBack;
 import com.yc.hdmedia.service.GeoraphyBackService;
 
@@ -52,6 +53,7 @@ public class GeoraphyBackAction implements SessionAware{
 	public String getAllProvinces(){
 		DataMap.clear();
 		List<ProvinceBack> provinces=georaphyBackService.getAllProvinces(page,rows);
+		System.out.println("地域信息"+provinces);
 		if(provinces!=null){
 			DataMap.put("total",georaphyBackService.total());
 			DataMap.put("rows", provinces);
@@ -67,6 +69,7 @@ public class GeoraphyBackAction implements SessionAware{
 	public String getAllPersons(){
 		DataMap.clear();
 		List<PropersonBack> persons=georaphyBackService.getAllPersonsByPrid(prid);
+		System.out.println("获取的人物信息"+persons);
 		if(persons!=null){
 			DataMap.put("persons", persons);
 			return "success";
@@ -115,7 +118,27 @@ public class GeoraphyBackAction implements SessionAware{
 		
 		return "fail";
 	}
-	
+
+	//前台查数据
+	public String properson(){
+		List<PropersonBack> pb=georaphyBackService.getPropersonBack();
+		if(pb!=null){
+			/*for (PropersonBack propersonBack : pb) {
+				
+				String ppcontent=propersonBack.getPpcontent();
+				ppcontent=ppcontent.substring(0,35)+"....";
+				propersonBack.setPpcontent(ppcontent);
+			}*/
+			session.put("pb", pb);
+			System.out.println("前台页面"+pb);
+			List<Proscenery> ps=georaphyBackService.getProscenery();
+			session.put("ps",ps);
+			return "geography";
+		}
+		return "fail";
+		
+		
+	}
 	
 	@Override
 	public void setSession(Map<String, Object> session) {

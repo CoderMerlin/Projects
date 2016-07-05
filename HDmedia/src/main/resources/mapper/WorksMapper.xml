@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyColumn="author_id" keyProperty="author_id" order="BEFORE" resultType="int" >
 			select author_id from author where author_name=#{author_name}
 		</selectKey>
-		insert into works values(seq_works_works_id.nextval,#{author_id},#{works_name},to_date(substr(#{works_time},0,10),'yyyy-mm-dd'),#{works_img},#{works_click},#{works_weight},#{wtid},1,#{works_details},'','')
+		insert into works values(seq_works_works_id.nextval,#{author_id},#{works_name},#{works_time},#{works_img},#{works_click},#{works_weight},#{wtid},1,#{works_details},'','')
 	</insert>
 	
 	<update id="updateWorks" parameterType="Works">
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				,works_name=#{works_name}
 			</if>
 			<if test="works_time!=null and works_time!=''">
-				,works_time=to_date(substr(#{works_time},0,10),'yyyy-mm-dd')
+				,works_time=#{works_time}
 			</if>
 			<if test="works_img!=null and works_img!=''">
 				,works_img=#{works_img}
@@ -64,32 +64,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findAllType" resultType="WorksType">
 		select * from worktype
 	</select>
-
-	<select id="findAllWorks" resultType="WorksBean">
-		select rownum,a.* from (select * from works order by works_click desc) a
-	</select>
 	
-	<select id="findWork_gdsf" resultType="WorksBean">
-		select rownum,a.* from (select * from works where works_type='古代书法' and status=1 order by works_weight desc)a
+	<select id="findAllXWorks" resultType="Works">
+		select * from works where works_yl1='小学文言文' order by works_weight  desc
 	</select>
-	
-	<select id="findWork_gdhh" resultType="WorksBean">
-		select rownum,a.* from (select * from works where works_type='古代绘画' and status=1 order by works_weight desc)a
+	<select id="findAllCWorks" resultType="Works">
+		select * from works where works_yl1='初中文言文' order by works_weight desc
 	</select>
-	<select id="findWork_jxdsh" resultType="WorksBean">
-		select rownum,a.* from (select * from works where works_type='近现代书画' and status=1 order by works_weight desc)a
+	<select id="findAllGWorks" resultType="Works">
+		select * from works where works_yl1='高中文言文' order by works_weight desc
 	</select>
-	
-	<select id="findWork_xdsh" resultType="WorksBean">
-		select rownum,a.* from (select * from works where works_type='现代书画' and status=1 order by works_weight desc)a
+	<select id="findAllGJWorks" resultType="Works">
+		select * from works where works_yl1='古文观止' order by works_weight desc
 	</select>
-	<select id="findWork_yhds" resultType="WorksBean">
-		select rownum,a.* from (select * from works where works_type='油画雕塑' and status=1 order by works_weight desc)a
+	<select id="findXwork" resultType="Works">
+		select * from works where works_yl1='小学文言文' and rownum = 1
 	</select>
-	<select id="findWork_px" resultType="WorksBean">
-		select rownum,a.* from (select * from works where status=1 order by works_weight desc) a
+	<select id="findCwork" resultType="Works">
+		select * from works where works_yl1='初中文言文' and rownum = 1
 	</select>
-	<select id="findWork_lb" resultType="WorksBean">
-		select rownum,a.* from (select * from works order by works_click desc) a
+	<select id="findGwork" resultType="Works">
+		select * from works where works_yl1='高中文言文' and rownum = 1
+	</select>
+	<select id="findGJwork" resultType="Works">
+		select * from works where works_yl1='古文观止' and rownum = 1
+	</select>
+	<select id="findWorkInfoById" parameterType="int" resultType="Works">
+		select w.*,a.author_name from works w,author a  where a.author_id=w.author_id and works_id=#{works_id}
 	</select>
 </mapper>

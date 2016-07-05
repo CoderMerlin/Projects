@@ -1,0 +1,16 @@
+2015-09-25 19:37:45  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-25 19:38:52  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-25 19:50:24  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-25 19:51:53  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-25 19:52:49  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-01465: 无效的十六进制数字
+
+2015-09-25 19:56:23  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 杩濆弽鍞竴绾︽潫鏉′欢 (SCOTT.SYS_C006232)
+
+2015-09-25 19:58:17  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006232)
+
+2015-09-25 19:59:56  [ main:0 ] - [ ERROR ]  java.sql.SQLException: ORA-00001: 违反唯一约束条件 (SCOTT.SYS_C006232)
+

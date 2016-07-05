@@ -9,10 +9,10 @@ import com.yc.hdmedia.entity.HDSearch;
 import com.yc.hdmedia.mapper.TieZiMapper;
 import com.yc.hdmedia.service.HDSearchService;
 
-
+@Service("hDSearchService")
 public class HDSearchServiceImpl implements HDSearchService {
 	
-
+	@Autowired
 	private TieZiMapper tieZiMapper;
 	
 	@Override

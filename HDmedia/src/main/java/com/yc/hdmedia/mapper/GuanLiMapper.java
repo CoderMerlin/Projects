@@ -21,5 +21,24 @@ public interface GuanLiMapper {
 	public int addGuanLi(GuanLi guanLi);
 
 	public int deleteGuanLiById(int[] glid);
+
+	
+	/**
+	 * 管理员登录后修改最后登录时间
+	 */
+	int updateGuanLiLoginTime(Map<String,Object> params);
+
+	/**
+	 * 获取多个管理员
+	 * @return
+	 */
+	List<GuanLi> getMoreGLInfoToExcel(List<String> params);
+
+	/**
+	 * 单个导出
+	 * @param toglids
+	 * @return
+	 */
+	List<GuanLi> getGLInfoToExcel(String toglids);
 	
 }

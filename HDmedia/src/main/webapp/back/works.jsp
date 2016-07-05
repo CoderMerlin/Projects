@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+ <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <table id="works_info" data-options="fit:true"></table>
 
 <script>
@@ -56,14 +56,14 @@
 							$("#works_updatetype").val(workss.works_type);
 							$("#works_updatename").val(workss.works_name);
 							$("#author_updateauthorname").val(workss.author_name);
-							$("#works_updatetime").datebox('setValue',workss.works_time);
+							$("#works_updatetime").val(workss.works_time);
 							$("#works_updaclick").datebox('setValue',workss.works_click);
 							$("#works_updateweight").val(workss.works_weight);
 							if(workss.works_img!=null){
 								var str="";
 								var works_img=workss.works_img.split(",");
 								for(var i=0;i<works_img.length;i++){
-									str+="<img src='upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+									str+="<img src='../upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
 								}
 								$("#works_img_update").html($(str));
 							}
@@ -138,7 +138,7 @@
 		</select><br /><br />
 		<label>作品名称:</label><input type="text" name="works_name" id="works_worksname" class="myinput"/><br /><br />
 		<label>作者名称:</label><input type="text" name="author_name" id="author_authorname" class="myinput"/><br /><br />
-		<label>发表时间:</label><input name="works_time" id="works_workstime" class="easyui-datebox myinput" required/><br /><br />
+		<label>发表时间:</label><input name="works_time" id="works_workstime" class="myinput" required/><br /><br />
 		<label>作品图片:</label><input type="file" name="upload" id="works_worksimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_show')"/><br /><br />
 		<label>作品权重:</label><input class="easyui-numberbox myinput" name="works_weight" id="works_worksweight" value="0"/><br /><br />
 		<label>作品内容:</label>
@@ -183,7 +183,7 @@
 		</select><br /><br />
 		<label>作品名称:</label><input type="text" name="works_name" id="works_updatename" class="myinput"/><br /><br />
 		<label>作者名称:</label><input type="text" name="author_name" id="author_updateauthorname" class="myinput"/><br /><br />
-		<label>发表时间:</label><input name="works_time" id="works_updatetime" class="easyui-datebox myinput" required/><br /><br />
+		<label>发表时间:</label><input name="works_time" id="works_updatetime" class="myinput" required/><br /><br />
 		<label>作品图片:</label><input type="file" name="upload" id="works_updateimg" multiple="multiple" onchange="previewMultipleImage(this,'works_img_update')"/><br /><br />
 		<label>作品点击量:</label><input  class="easyui-numberbox myinput" name="works_click" id="works_updateclick"/><br /><br />
 		<label>作品权重:</label><input class="easyui-numberbox myinput" name="works_weight" id="works_updateweight" value="0"/><br /><br />
@@ -251,7 +251,7 @@ $.post("worksType_getAllWorksType",function(data){
 				var str="";
 				var works_img=workss.works_img.split(",");
 				for(var i=0;i<works_img.length;i++){
-					str+="<img src='upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
+					str+="<img src='../upload/"+works_img[i]+"' width='100px' height='100px'>&nbsp;";
 				}
 				$("#works_img_show_info").html($(str));
 			}
@@ -280,7 +280,7 @@ $.post("worksType_getAllWorksType",function(data){
 					$("#works_info").datagrid("reload");
 					$("#works_worksname").val("");
 					$("#author_authorname").val("");
-					$("#works_workstime").datebox('setValue',"");
+					$("#works_workstime").val("");
 					$("#works_workstype").val("");
 					$("#works_worksweight").val("0");
 					ue11.setContent("");

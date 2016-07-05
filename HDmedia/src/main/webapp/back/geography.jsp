@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+
 <center id="georaphy">
 </center>
 <style>
@@ -11,7 +12,7 @@
 		padding-right:10px;
 	}
 </style>
-<!--添加-->
+<!-- 添加
 <div id="diyu_add_Info" class="easyui-dialog" title="添加地域信息" data-options="fit:true,iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
 		<label>作品编号:</label><input name="works_id" id="works_id" class="myinput"><br /><br />
@@ -37,7 +38,7 @@
 	</div>
 </div>
 
-
+ -->
 <!--修改-->
 <div id="diyu_update_Info" class="easyui-dialog" title="修改地域" data-options="fit:true,iconCls:'icon-edit',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
@@ -88,23 +89,19 @@
 <div id="diyu_show_person_Info" class="easyui-dialog" title="人物查看" style="width:1000px;height:450px" data-options="iconCls:'icon-add',resizable:true,modal:true,closed:true">
 	<form action="" style="padding:20px;float:left;display:inline-block;">
 		<label>人物姓名:</label>
-		<!-- <input name="ppname" id="show_person_ppname" class="easyui-combobox" data-options="valueField:'prid',textField:'ppname',url:'georaphyBack_getAllPersonNamesByPrid.action'" /><br /><br /> -->
 		<select id="show_person_ppname" name="ppname" style="width:150px;">
 		</select>
-		<!-- <input id="show_person_ppname" class="easyui-combobox" name="ppname"  />   -->
 		<label>人物状态 :</label><input name="ppstatus" id="show_person_status" class="myinput" readonly/><br /><br />
-		<label>人物图片:</label><input name="ppimg" id="show_person_ppimg" class="myinput"><br /><br />
+		
+		<label>人物图片:</label>
+		<div id="show_person_ppimg" >
+			
+		</div>
 		<label>人物详解:</label>
 		<div id="show_person_content">
 			
 		</div>
 	</form>
-	<div style="float:right;width:380px;margin-right:20px;">
-		<fieldset id="show_pic_show">
-			<legend>图片预览</legend>
-		
-		</fieldset>
-	</div>
 </div>
 
 
@@ -303,14 +300,16 @@ $(function(){
 </script>
 <script>
 var geue1 = UE.getEditor('editors');
-
+//查看不同的人的信息
 function getPersonDetal(prpid){
 	$.post("georaphyBack_getPersonByPrpid.action",{prpid:prpid},function(data){
 		var person=data.rows;
-		console.info("person "+person);
 		$("#show_person_status").val(person.ppsatus);
 		$("#show_person_content").html(person.ppcontent);
+		var pics=person.ppimg;
 		
+		var str="<img src='../upload/"+pics+"' width='100px' height='100px' alt='图片加载失败'>"
+		$("#show_person_ppimg").html($(str)); 
 	},"json");
 
 } 
@@ -320,18 +319,23 @@ function showdiyuperson(prid) {
 	$("#diyu_show_person_Info").dialog("open");
 	$("#show_person_status").val();
 	$("#show_person_content").html("");
+	$("#show_person_ppimg").html("");
 	$.post("georaphyBack_getAllPersons.action",{prid :prid},
 		function(data) {
-			var persons = data.persons[0];
+			var person = data.persons[0];
 			/* $("#show_person_ppname").val(persons.ppname); */
-			$("#show_person_status").val(persons.ppsatus);
-			$("#show_person_content").html(persons.ppcontent);
+			$("#show_person_status").val(person.ppsatus);
+			$("#show_person_content").html(person.ppcontent);
 			/* var str = "";
 			var pics = persons.ppimg.split(",");
 			for ( var i = 0; i < pics.length; i++) {
 				str += "<img src='../"+pics[i]+"' width='100px' height='100px'>&nbsp;";
-			}
-			$("#show_person_ppimg").html($(str)); */
+			}*/
+			var pics=person.ppimg;
+			
+			var str="<img src='../upload/"+pics+"' width='100px' height='100px' alt='图片加载失败'>"
+			console.info(str);
+			$("#show_person_ppimg").html($(str)); 
 		}, "json");
 
 	$.post("georaphyBack_getAllPersonNamesByPrid.action",function(data){
@@ -340,7 +344,6 @@ function showdiyuperson(prid) {
 		var opt="";
 		$.each(data.rows,function(index,item){
 			opt="<option value='"+item.prpid+"' onclick='getPersonDetal("+item.prpid+")'>"+item.ppname+"</option>";
-			console.info(opt);
 			obj.append($(opt));
 		});
 	},"json");
@@ -356,50 +359,10 @@ function openAddPersonInfo(){
 		var opt="";
 		$.each(data.rows,function(index,item){
 			opt="<option value='"+item.prid+"'>"+item.prname+"</option>";
-			console.info(opt);
 			obj.append($(opt));
 		});
 	},"json");
 }
-
-//添加人物信息
-/* function addPersonInfo(){
-	console.info("添加人物信息");
-	var prid=$("#show_province_prname").val();
-	var ppname = $("#person_Info_ppname").val();
-	var ppstatus= $("#person_Info_ppstatus").val();	
-	var ppcontent = addPersonUE.getContent();
-	$.ajaxFileUpload({
-		url : "propersonBack_addPersonInfo.action",
-		secureuri : false,
-		fileElementId : "person_Info_ppimg",
-		dataType : "json",
-		data : {
-				prid : prid,
-				ppname : ppname,
-				ppstatus:ppstatus,
-				ppcontent : ppcontent
-			 },
-		success : function(data, status) {
-			console.info(data);
-			if (parseInt($.trim(data.rows)) == 1) {//说明是成功的
-				$.messager.show({
-					title : '成功提示',
-					msg : '人物信息添加成功...',
-					timeout : 2000,
-					showType : 'slide'
-				});
-				$("#add_person_Info").dialog("close");
-				$("#georaphy").datagrid("reload");
-			} else {
-				$.messager.alert("失败提示", "地域信息添加失败...", "error");
-			}
-		}
-	});
-}
-
- */
-
 
 
 function updatediyuInfo(){

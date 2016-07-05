@@ -5,16 +5,29 @@ import java.util.Map;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
+import com.yc.hdmedia.utils.HDmediaData;
 
-public class LoginInterceptor extends MethodFilterInterceptor{
+public class LoginInterceptor extends MethodFilterInterceptor {
+
+	
+
+
+	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1959146806672781463L;
+
 	@Override
-	protected String doIntercept(ActionInvocation invocation) throws Exception {
-		Map<String,Object> session=ActionContext.getContext().getSession(); //取到session的封装对象
-		Object obj=session.get("user");
+	protected String doIntercept(ActionInvocation invacation) throws Exception {
+		Map<String,Object> session=ActionContext.getContext().getSession();//鍙栧埌Session灏佽瀵硅薄
+		Object obj=session.get(HDmediaData.LOGIN_USER);
 		if(obj==null){
-			session.put("errorMsg", "请登陆后,再进行操作!!!");
-			return "index";
+			session.put(HDmediaData.ERROR_MSG, "璇峰厛鐧诲綍");
+			return "login";
 		}
-		return invocation.invoke();
+		return invacation.invoke();
 	}
+
 }

@@ -2,7 +2,7 @@ package com.yc.hdmedia.web.action;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -21,7 +21,6 @@ public class DietaryTypeAction implements ModelDriven<DietaryType>{
 	public JsonObject<DietaryType> getJsonObject() {
 		return jsonObject;
 	}
-	
 	
 	public String getAllType(){
 		List<DietaryType> dtp=dietaryService.findAllType();

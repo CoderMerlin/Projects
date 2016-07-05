@@ -72,12 +72,12 @@ public interface LunTanMapper {
 	
 	
 	//查询论坛首页
-		List<LunTanBean> findLunTan_jlq();
+			List<LunTanBean> findLunTan_jlq();
 
-		List<LunTanBean> findLunTan_whjlq();
-			
-		List<LunTanBean> findLunTan_zyfx();
-		List<LunTanBean> findLunTan_zzhz();
+			List<LunTanBean> findLunTan_whjlq();
+				
+			List<LunTanBean> findLunTan_zyfx();
+			List<LunTanBean> findLunTan_zzhz();
 
-		List<LunTanBean> findLunTan();
+			List<LunTanBean> findLunTan();
 }

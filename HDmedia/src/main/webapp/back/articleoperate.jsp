@@ -180,7 +180,6 @@ $.post("wenZhang_getAllWenzhangTitle",function(data){
 		$("#wzyhpinglun_show_Info").dialog("open");
 		$.post("wenZhangPl_findPingLunById",{wzplid : wzplid},function(data){
 			var news = data.rows[0];
-			console.info(news);
 			$("#show_yhzcid").val(news.yhzcid);
 			$("#show_wztitle").val(news.wztitle);
 			$("#show_wzpltime").datetimebox('setValue',news.wzpltime);

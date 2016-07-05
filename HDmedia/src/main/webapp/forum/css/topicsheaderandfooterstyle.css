@@ -1,0 +1,477 @@
+@charset "utf-8";
+/* CSS Document */
+a:visited {
+    color: #222222;
+    outline: none;
+}
+a:link {
+    color: #222222;
+    outline: none;
+}
+a {
+    color: #222222;
+    text-decoration: none;
+    outline: none;
+}
+
+/**page header**/
+.meizu-header-content{float:right;*width: 650px;}
+
+.meizu-header{
+	font-size:14px;border-bottom:1px solid #e9e9e9;
+	font-family:"微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";
+	background-color:#FFF;
+}
+.meizu-header a.hover,.meizu-header a:hover{
+	color:#ff7519;
+}
+.meizu-header-wrap{
+	width:1040px; 
+	height:85px;
+	margin:0 auto;
+	padding:0 20px;
+	overflow:visible;
+}
+.meizu-header-logo{
+	display:inline; 
+	float:left; 
+	padding:30px 0
+}
+.meizu-header-logo-img{
+	display:block; 
+	width:150px; 
+	height:30px; 
+	background-repeat:no-repeat; 
+	background-position:center center; 
+	background-image:url(../images/hongdao_2.png)
+}
+.not-login-block-sub {
+	position: absolute;
+	top: 83px;
+	margin-left: -107px;
+	padding: 24px 22px 11px 22px!important;
+	background-color: #FFF;
+	width: 108px;
+	font-size: 12px;
+	border: 1px #e5e5e5 solid;
+	border-top: none;
+	z-index: 9999;
+}
+.meizu-header-link{
+	display:inline;
+	overflow:hidden
+}
+.meizu-header-link li{
+	display:inline; 
+	float:left
+}
+.meizu-header-link a {
+    display: block;
+    padding-bottom: 30px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 31px;
+}
+.meizu-header-log{
+	display:inline; 
+	float:right; 
+	padding:32px 0 0 30px; 
+	text-align:right; 
+	font-size:12px
+}
+.login-box {float: right;}
+
+.loginArea {
+	border-left: 1px #FFF solid;
+	border-right: 1px #FFF solid;
+	border-top: 3px #FFF solid;
+	padding: 24px 11px 29px 15px;
+	height: 24px;
+	background: #fff;
+}
+.loginArea-hover {
+	height: 29px;
+	border-left: 1px #e5e5e5 solid;
+	border-right: 1px #e5e5e5 solid;
+	border-top: 3px #ff7519 solid;
+}
+
+
+.u-btn{  /*注册的样式*/
+	display:block;
+	width:108px;
+	height:34px;
+	margin-bottom:10px;
+	line-height:34px;
+	text-align:center;
+	color:#fff!important;
+	background-color:#ff7519!important
+}
+
+.log-dropdown {
+	display: none;
+	position: absolute;
+	right: -65px;
+	z-index: 99999;
+	width: 150px;
+	background-color: #fff;
+	top: 40px;
+	padding: 10px 10px 0;
+	border: solid 1px #e5e5e5;
+	border-top: none;
+	box-sizing: border-box;
+	overflow:inherit;
+}
+.log-dropdown li {
+	padding: 0 5px;
+   text-align: center;
+}
+.log-img-box {
+	display: inline-block;
+	position: relative;
+	z-index: 99;
+}
+.log-img-box img {
+	vertical-align: middle;
+}
+.log-img-box .user-avatar {
+	width: 30px;
+	height: 30px;
+	border-radius: 15px;
+}
+
+.log-img-box .arrow img{
+	margin-left:10px;
+	
+}
+.log-dropdown a {
+	display: block;
+	font-size: 14px;
+	color:#000000;
+	line-height: 34px;
+	height: 34px;
+}
+.log-dropdown .actmanage_mzcust {
+	border-bottom: 1px solid #E5E5E5;
+	color: #ff7519 !important;
+}
+.log-dropdown .logout_mzcust{
+	margin: 0px -16px;
+	border-width: 1px 1px 0px 1px;
+	border-style: solid;
+	border-color: #E5E5E5;
+	background-color: #FAFAFA;
+}
+		
+	
+
+
+/*头像*/
+.meizu-header-link-product:hover .meizu-header-link-product-a,.meizu-header-link-product.hover .meizu-header-link-product-a{color:#ff7519}
+
+#newsNum {
+	 max-width: 25px;
+	 margin: 4px 0px 0px 8px;
+	  float: right; height: 20px; 
+	  line-height: 20px; 
+	  padding: 0px 4px;
+	   text-align: center; 
+	   background-color: #c8212b; 
+	   color: #FFFFFF; 
+	   border-radius: 2px;
+}
+
+
+#mzCust .empty_newsnum{background-color:#C2C2C2;}
+
+#mzUserHead,#mzUserHead img,#mzUserHead .shadowbox_avatar{width:28px;height:28px;border-radius:14px;}
+
+
+
+
+
+/*发表下面的css*/
+.wp {
+    margin: 0 auto;
+    width: 1040px;
+    padding: 0px 20px;
+}
+
+.wp1{
+	height:70px;
+}
+#nv {
+    overflow: hidden;
+    padding: 17px 0px;
+    height: 36px;
+    float: left;
+}
+
+body, ul, ol, li, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset, .pr, .pc {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+#nv li {
+    float: left;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+}
+.newthread_post{
+	background-color: #FFFFFF;
+    border: 1px solid #e6e6e6;
+}
+
+
+/*发表帖子*/
+.newthread_post #pt {
+    height: 74px;
+    line-height: 74px;
+    padding-left: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+#pt {
+    margin: 2px 0;
+    height: 29px;
+    border: none;
+    background: transparent;
+    line-height: 29px;
+}
+
+#pt .z a, #pt .z em, #pt .z span {
+    float: left;
+    height: 29px;
+    color: #999999;
+    padding: 0px;
+}
+
+
+#pt .z {
+    padding-right: 20px;
+    font-size: 14px;
+}
+.z {
+    float: left;
+	width:100%;
+}
+
+.z em{
+	margin:0px 10px;
+}
+
+ul li{
+    list-style: none;
+}
+
+#nv li a {
+    display: inline-block;
+    padding: 0px 6px;
+    margin: 0px 19px;
+}
+
+
+
+/*搜索*/
+
+#scbar {
+    float: right;
+    height: 36px;
+    line-height: 36px;
+    padding: 17px 0px;
+    overflow: hidden;
+}
+
+.scbar_wrap {
+    position: relative;
+}
+.scbar_wrap {
+    _float: right;
+    height: 34px;
+    background: url(http://bbs.res.meizu.com/resources/php/bbs/static/image/common/main_icon.png) no-repeat 0 0;
+    _background-image: url(http://bbs.res.meizu.com/resources/php/bbs/static/image/common/main_icon.gif);
+}
+
+#scbar_txt {
+    width: 170px;
+    height: 34px;
+    padding: 0px 0px 0px 10px;
+    outline: none;
+    font-size: 14px;
+    border: none;
+    background: none transparent;
+    float: left;
+}
+
+#scbar_btn {
+    width: 40px;
+    height: 34px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none transparent;
+    cursor: pointer;
+    float: left;
+}
+
+
+/*发表主题*/
+.newthread_post .editorbox_post {
+    padding: 30px 69px 62px;
+}
+
+.tab_editorbox {
+    border: none;
+    padding: 0px;
+    margin-bottom: 30px;
+}
+
+
+.tab_editorbox span a {
+    line-height: 36px;
+    color: #FFFFFF;
+    border-color: #ff7519;
+    background-color: #ff7519;
+}
+
+.tb{
+	height:50px;
+}
+
+.tb li {
+    float: left;
+    margin: 0 3px -1px 0;
+    height: 50px;
+    line-height: 48px;
+    width: 106px;
+    text-align: center;
+}
+
+
+.tab_editorbox li.a a {
+    line-height: 36px;
+    color: #FFFFFF;
+    border-color: #ff7519;
+    background-color: #ff7519;
+}
+.tb .a a, .tb .current a {
+    border: 1px solid #e6e6e6;
+    border-bottom-color: #FFF;
+    background: #FFF;
+    color: #ff7519;
+    line-height: 50px;
+}
+.tab_editorbox li a {
+    width: 98px;
+    height: 36px;
+    line-height: 36px;
+    border: 1px solid #e6e6e6;
+    background-color: #f5f5f5;
+}
+.tb a {
+    display: block;
+    padding: 0px;
+    color: #515151;
+}
+.pbt{
+	height:5px;
+}
+
+#postbox .pbt {
+    margin-bottom: 20px;
+}
+
+#postbox .pbt .z span {
+    line-height: 34px;
+    float: left;
+}
+
+.input_style3 {
+    margin-right: 20px;
+}
+
+.input_style3 {
+    width: 338px;
+    height: 38px;
+    line-height: 38px\9;
+    padding: 0px 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #e6e6e6;
+}
+
+/*编辑器*/
+
+.edt{
+	margin-top:50px;
+	width:100%;
+	height:400px;
+}
+
+#e_body {
+    border: 1px solid #e6e6e6;
+    background-color: #FFFFFF;
+}
+
+
+/*验证码*/
+.mtm{
+ margin-top: 20px;
+}
+   
+
+.identifying_code .px, .sec .px {
+    background-color: #FFFFFF;
+    border: 1px solid #E3E7EA;
+    height: 30px;
+    margin: 0 6px 0 16px;
+    width: 98px;
+    line-height: 30px\9;
+}
+
+/*验证码*/
+#seccode2 img{
+	width: 100px;
+    height: 32px;
+    margin-right: 6px;
+	margin-top:10px;
+}
+
+/*发表帖子*/
+
+.normalbtn, a.normalbtn {
+    _display: block;
+    width: 96px;
+    height: 36px;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px !important;
+}
+a.bluebtn {
+    color: #FFFFFF !important;
+    display: inline-block;
+}
+.bluebtn {
+    background-color: #ff7519;
+    border: 1px solid #ff7519;
+    border-radius: 2px 2px 2px 2px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.newthread_post #postsubmit {
+    float: right;
+}
+a.bluebtn button, a.bluebtn input {
+    background: none;
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 36px;
+}
+
+.newthread_post #postbox .pnpost {
+    float: right;
+}
